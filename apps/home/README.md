@@ -1,0 +1,1 @@
+A simple beer template to start an awesome library 🍻
