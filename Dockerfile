@@ -12,7 +12,4 @@ ENV API_TOKEN=${API_TOKEN}
 COPY ./*.json ./
 COPY apps/. ./apps/
 
-RUN CYPRESS_INSTALL_BINARY=0 npm i --production
-
-
 ENTRYPOINT ["node", "./apps/home/dist/index.js"]
