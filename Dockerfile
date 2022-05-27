@@ -11,8 +11,6 @@ ENV API_TOKEN=${API_TOKEN}
 
 COPY ./*.json ./
 COPY apps/. ./apps/
-COPY packages/. ./packages/
-
-RUN npm i --production
+COPY node_modules/. ./node_modules/
 
 ENTRYPOINT ["node", "./apps/home/dist/index.js"]
