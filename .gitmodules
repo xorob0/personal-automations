@@ -1,0 +1,3 @@
+[submodule "packages/herja"]
+	path = packages/herja
+	url = git@github.com:xorob0/herja.git
