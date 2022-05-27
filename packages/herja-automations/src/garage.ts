@@ -1,4 +1,4 @@
-import { callService, effect, StateChangeEvent } from "@herja/core";
+import { callService, effect } from "@herja/core";
 import { binary_sensor, switches } from "generated/src";
 import * as mqtt from 'mqtt';
 
