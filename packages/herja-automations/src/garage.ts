@@ -154,8 +154,10 @@ export const garage = (client: mqtt.MqttClient) => {
   }, [{ eventType: 'garage.stop' }]);
 
   effect(
-    async (event:StateChangeEvent) => {
+    async (event) => {
       console.log(event.data.position);
+      if(typeof event.data.position !== 'number')
+        return
       clearInterval(intervalID as number|undefined);
       // TODO handle position 0
       console.log('setting position', event.data.position);
