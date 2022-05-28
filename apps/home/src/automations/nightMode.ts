@@ -1,5 +1,5 @@
 import { callService, effect, shadowState } from "@herja/core";
-import { sun, sensor, person, light } from "generated/src";
+import { sun, sensor, person, light, alarm_control_panel } from "generated/src";
 import { clearTimeout } from "timers";
 
 let timeoutID: NodeJS.Timer|undefined = undefined;
@@ -17,7 +17,7 @@ export const nightMode = () => {
 
     if(isALightOn)
     {
-      callService("alarm_control_panel", 'alarm_arm_night', {code: process.env.ALARM_CODE}, {entity_id: 'alarm_control_panel.alarmo'})
+      alarm_control_panel.alarmo.armNight()
       callService('light', 'turn_off', undefined, {entity_id: allLights})
       callService('switch', 'turn_off', undefined, {entity_id: allSwitches})
       if(person.gaby.isHome() && !light.bedside_lamp.isOn()){
@@ -30,6 +30,7 @@ export const nightMode = () => {
       }
     else{
       callService("alarm_control_panel", 'alarm_disarm', {code: process.env.ALARM_CODE}, {entity_id: 'alarm_control_panel.alarmo'})
+
       light.bedside_lamp.turn_on()
       timeoutID = setTimeout(() => {
         light.bedside_lamp.turn_off()
@@ -37,14 +38,23 @@ export const nightMode = () => {
     }
   }, [sensor.bedside_button_action])
 
+  effect(()=>{
+    if(shadowState['alarm_control_panel.alarmo'].state !== 'armed_night')
+      return
+
+    if( sun.sun.isAboveHorizon()){
+      alarm_control_panel.alarmo.disarm()
+    }
+  }, [sun.sun])
+
   effect((event)=>{
     if(shadowState['alarm_control_panel.alarmo'].state !== 'armed_night')
       return
-    if(event.data.actionName === 'alarm')
-      callService("alarm_control_panel", 'alarm_disarm', {code: process.env.ALARM_CODE}, {entity_id: 'alarm_control_panel.alarmo'})
-    if(sun.sun.isAboveHorizon())
-      callService("alarm_control_panel", 'alarm_disarm', {code: process.env.ALARM_CODE}, {entity_id: 'alarm_control_panel.alarmo'})
-  }, [sun.sun, {eventType: "shortcut_event"}])
+
+    if(event.data.actionName === 'alarm'){
+      alarm_control_panel.alarmo.disarm()
+    }
+  }, [{eventType: "shortcut_event"}])
 
 
 };
