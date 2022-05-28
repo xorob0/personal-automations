@@ -13,7 +13,6 @@ import { coffeeMachineButton } from "./automations/coffeeMachineButton";
 import { alertFridgeOpen } from "./automations/alertFridgeOpen";
 import { wakeup } from "./automations/wakeup";
 import { garageRemote } from "./automations/garageRemote";
-import { alarm_control_panel } from "generated/src/alarm_control_panel";
 import { turnOnTripodOnSunset } from "./automations/turnOnTripodOnSunset";
 import { turnOnToiletLightWithDoor } from "./automations/TurnOnToiletLightWithDoor";
 
