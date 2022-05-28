@@ -1,7 +1,6 @@
 import { callService, effect, shadowState } from "@herja/core";
-import { sensor, person, light } from "generated/src";
+import { sun, sensor, person, light } from "generated/src";
 import { clearTimeout } from "timers";
-import { binary_sensor, sun } from "generated";
 
 let timeoutID: NodeJS.Timer|undefined = undefined;
 
