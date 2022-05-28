@@ -6,6 +6,7 @@ import { turnOnGarageLightWhenADoorIsOpened } from "./automations/turnOnGarageLi
 import { turnEverythingOffWhenLeaving } from "./automations/turnEverythingOffWhenLeaving";
 import { turnOnSomeLightsWhenComingHome } from "./automations/turnOnSomeLightsWhenComingHome";
 import { nightMode } from "./automations/nightMode";
+import { wallSwitches } from "./automations/wallSwitches";
 
 require('dotenv').config();
 
@@ -23,6 +24,7 @@ const base = async () => {
   turnEverythingOffWhenLeaving()
   turnOnSomeLightsWhenComingHome()
   nightMode()
+  wallSwitches()
   garage(client);
 };
 
