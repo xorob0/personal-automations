@@ -13,6 +13,6 @@ COPY ./*.json ./
 COPY apps/. ./apps/
 COPY packages/. ./packages/
 
-RUN npm i
+RUN npm i --production
 
 ENTRYPOINT ["node", "./apps/home/dist/index.js"]

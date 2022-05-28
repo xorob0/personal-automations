@@ -4,6 +4,7 @@ import { light } from "generated/src";
 import { garage } from "@herja/automations";
 import { turnOnGardenLightWithGardenDoorAtNight } from "./automations/turnOnGardenLightWithGardenDoorAtNight";
 import { turnOnGarageLightWhenADoorIsOpened } from "./automations/turnOnGarageLightWenADoorIsOpened";
+import { turnEverythingOffWhenLeaving } from "./automations/turnEverythingOffWhenLeaving";
 
 require('dotenv').config();
 
@@ -14,11 +15,11 @@ const base = async () => {
   await configure({
     url: process.env.API_URL,
     access_token: process.env.API_TOKEN,
-    path: './libs/generated/src/lib',
+    path: '../../packages/generated/src',
   });
-  console.log(JSON.stringify(light.garage.state));
   turnOnGarageLightWhenADoorIsOpened();
   turnOnGardenLightWithGardenDoorAtNight();
+  turnEverythingOffWhenLeaving()
   garage(client);
 };
 
