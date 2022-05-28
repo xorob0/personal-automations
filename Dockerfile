@@ -12,4 +12,6 @@ ENV API_TOKEN=${API_TOKEN}
 COPY ./*.json ./
 COPY apps/. ./apps/
 
-ENTRYPOINT ["/bin/sh", "-c" , "npm i && node ./apps/home/dist/index.js"]
+RUN npm i
+
+ENTRYPOINT ["node", "./apps/home/dist/index.js"]
