@@ -11,6 +11,7 @@ ENV API_TOKEN=${API_TOKEN}
 
 COPY ./*.json ./
 COPY apps/. ./apps/
+COPY packages/. ./packages/
 
 RUN npm i
 
