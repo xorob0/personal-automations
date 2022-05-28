@@ -45,7 +45,21 @@ export const garage = (client: mqtt.MqttClient) => {
     }, MOVE_SPEED);
   };
 
-  effect(() => {
+  if (!binary_sensor.garage_electric_door_sensor_closed_contact.isOn()) {
+    setState(GarageState.Closed)
+    console.log('detected as closed')
+    percentOpen = 0
+  }
+  else if (!binary_sensor.garage_electric_door_sensor_open_contact.isOn()) {
+    setState(GarageState.Open)
+    percentOpen = 100
+  }
+  else {
+    setState(GarageState.Opening)
+    percentOpen = 0
+  }
+
+    effect(() => {
     if (binary_sensor.garage_electric_door_sensor_closed_contact.isOn()) {
       setState(GarageState.Opening);
       IntervalIncrement();
