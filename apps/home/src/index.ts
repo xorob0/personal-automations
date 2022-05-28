@@ -8,6 +8,9 @@ import { turnOnSomeLightsWhenComingHome } from "./automations/turnOnSomeLightsWh
 import { nightMode } from "./automations/nightMode";
 import { wallSwitches } from "./automations/wallSwitches";
 import { automaticAlarm } from "./automations/automaticAlarm";
+import { tripodButton } from "./automations/tripodButton";
+import { coffeeMachineButton } from "./automations/coffeeMachineButton";
+import { alertFridgeOpen } from "./automations/alertFridgeOpen";
 
 require('dotenv').config();
 
@@ -27,6 +30,9 @@ const base = async () => {
   nightMode()
   wallSwitches()
   automaticAlarm()
+  tripodButton()
+  coffeeMachineButton()
+  alertFridgeOpen()
   garage(client);
 };
 

@@ -1,11 +1,10 @@
-import { callService, effect, shadowState } from "@herja/core";
-import { sensor, person, light } from "generated/src";
-import { clearTimeout } from "timers";
+import {  effect} from "@herja/core";
+import { sensor, light } from "generated/src";
 
 
 export const tripodButton = () => {
   effect(()=>{
-  }, [sensor.])
-
-
+    if(sensor.tripod_button_action.state !== '')
+      light.living_room_tripod.toggle()
+  }, [sensor.tripod_button_action])
 };

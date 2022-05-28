@@ -1,5 +1,5 @@
 import { effect, shadowState } from '@herja/core';
-import { binary_sensor, light } from "generated/src";
+import { binary_sensor, light, sun } from "generated/src";
 
 let timeoutID: NodeJS.Timer|undefined = undefined;
 
@@ -16,5 +16,5 @@ export const turnOnGardenLightWithGardenDoorAtNight = () => {
         light.garden.turn_off();
       }, 10 * 60 * 1000);
     }
-  }, ['sun.sun', binary_sensor.garden_door_contact]);
+  }, [sun.sun, binary_sensor.garden_door_contact]);
 };

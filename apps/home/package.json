@@ -24,8 +24,9 @@
     "commitlint": "commitlint"
   },
   "dependencies": {
-    "@herja/core": "*",
     "@herja/automations": "*",
+    "@herja/core": "*",
+    "date-fns": "^2.28.0",
     "mqtt": "^4.3.7"
   },
   "devDependencies": {

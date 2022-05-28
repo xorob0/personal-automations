@@ -9,6 +9,7 @@ export const turnEverythingOffWhenLeaving = () => {
       person.gaby.isHome() || person.tim.isHome()
     ) {
       clearTimeout(timeoutID as number|undefined);
+      callService('vacuum', 'return_to_base', undefined, {entity_id: 'vacuum.valetudo'})
     } else {
       timeoutID = setTimeout(() => {
         const allLights = Object.keys(shadowState).filter(key=> key.match(/^light\./)).filter(key=> !key.match(/light.[0-9a-f]{8}_[0-9a-f]{8}$/))

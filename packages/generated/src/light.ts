@@ -1,5 +1,5 @@
 import {callService, shadowState, Light} from "@herja/core"
-    export type LightIDs = "bedside_lamp" | "garden" | "living_room_tripod" | "living_room_spot_3" | "living_room_spot_2" | "dining_room_spot_3" | "kitchen_spot_1" | "living_room_light" | "dining_room_spot_2" | "dining_room_spot_1" | "kitchen_spot_2" | "bedroom_bed_light" | "bathroom_spot_2" | "hall_upstairs_spot_3" | "hall_upstairs_spot_2" | "hall_upstairs_spot_1" | "garage_fridge" | "hall_entrance" | "garage_car" | "kitchen_spot_3" | "living_room_spot_1" | "hall_stairs" | "bathroom_spot_1" | "kitchen_spots" | "living_room_spots" | "dining_room_spots" | "living_room_all" | "hall" | "hall_upstairs" | "garage" | "bathroom" | "b8030a1c_3ebf007c" | "ebbff7dd_e82b404f" | "aadf3129_ecd1ece2" | "dc3b1fc5_4961a7e0" | "8ef2ec82_947cc02d" | "da2cf25e_bb796133" | "ccbd4341_01cc53c2" | "00e9e4f0_03e3732b" | "2bd1a2c0_2263df99" | "fde49bad_fb722687" | "7999b6c0_f93fbc37" | "50a79e21_74701770" | "187a9779_66735846" | "a788d83b_085169a8" | "21adb4aa_66a6b9a2" | "3f2bb951_563ca5f2" | "toilet"
+    export type LightIDs = "bedside_lamp" | "garden" | "living_room_tripod" | "living_room_spot_3" | "living_room_spot_2" | "dining_room_spot_3" | "kitchen_spot_1" | "living_room_light" | "dining_room_spot_2" | "dining_room_spot_1" | "kitchen_spot_2" | "bedroom_bed_light" | "bathroom_spot_2" | "hall_upstairs_spot_3" | "hall_upstairs_spot_2" | "hall_upstairs_spot_1" | "hall_entrance" | "garage_car" | "kitchen_spot_3" | "living_room_spot_1" | "hall_stairs" | "bathroom_spot_1" | "kitchen_spots" | "living_room_spots" | "dining_room_spots" | "living_room_all" | "hall" | "hall_upstairs" | "garage" | "bathroom" | "b8030a1c_3ebf007c" | "ebbff7dd_e82b404f" | "aadf3129_ecd1ece2" | "dc3b1fc5_4961a7e0" | "8ef2ec82_947cc02d" | "da2cf25e_bb796133" | "ccbd4341_01cc53c2" | "00e9e4f0_03e3732b" | "2bd1a2c0_2263df99" | "fde49bad_fb722687" | "7999b6c0_f93fbc37" | "50a79e21_74701770" | "187a9779_66735846" | "a788d83b_085169a8" | "21adb4aa_66a6b9a2" | "3f2bb951_563ca5f2" | "toilet" | "0x00178801026d1fe9"
 export const light: Light<LightIDs> = {
 
 ["bedside_lamp"]: {
@@ -144,15 +144,6 @@ turn_off: (serviceData = {}) => callService("light", 'turn_off', serviceData, {e
 isOn: () => shadowState["light.hall_upstairs_spot_1"].state === "on",
 toggle: (serviceData = {}) => callService("light", 'toggle', serviceData, {entity_id: "light.hall_upstairs_spot_1"}),
 get state() { return shadowState["light.hall_upstairs_spot_1"]},
-},
-
-["garage_fridge"]: {
-entity_id: "light.garage_fridge",
-turn_on: (serviceData = {}) => callService("light", 'turn_on', serviceData, {entity_id: "light.garage_fridge"}),
-turn_off: (serviceData = {}) => callService("light", 'turn_off', serviceData, {entity_id: "light.garage_fridge"}),
-isOn: () => shadowState["light.garage_fridge"].state === "on",
-toggle: (serviceData = {}) => callService("light", 'toggle', serviceData, {entity_id: "light.garage_fridge"}),
-get state() { return shadowState["light.garage_fridge"]},
 },
 
 ["hall_entrance"]: {
@@ -432,5 +423,14 @@ turn_off: (serviceData = {}) => callService("light", 'turn_off', serviceData, {e
 isOn: () => shadowState["light.toilet"].state === "on",
 toggle: (serviceData = {}) => callService("light", 'toggle', serviceData, {entity_id: "light.toilet"}),
 get state() { return shadowState["light.toilet"]},
+},
+
+["0x00178801026d1fe9"]: {
+entity_id: "light.0x00178801026d1fe9",
+turn_on: (serviceData = {}) => callService("light", 'turn_on', serviceData, {entity_id: "light.0x00178801026d1fe9"}),
+turn_off: (serviceData = {}) => callService("light", 'turn_off', serviceData, {entity_id: "light.0x00178801026d1fe9"}),
+isOn: () => shadowState["light.0x00178801026d1fe9"].state === "on",
+toggle: (serviceData = {}) => callService("light", 'toggle', serviceData, {entity_id: "light.0x00178801026d1fe9"}),
+get state() { return shadowState["light.0x00178801026d1fe9"]},
 },
 }
