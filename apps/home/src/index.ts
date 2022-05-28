@@ -1,10 +1,11 @@
 import { configure } from '@herja/core';
 import * as mqtt from 'mqtt';
-import { light } from "generated/src";
 import { garage } from "@herja/automations";
 import { turnOnGardenLightWithGardenDoorAtNight } from "./automations/turnOnGardenLightWithGardenDoorAtNight";
 import { turnOnGarageLightWhenADoorIsOpened } from "./automations/turnOnGarageLightWenADoorIsOpened";
 import { turnEverythingOffWhenLeaving } from "./automations/turnEverythingOffWhenLeaving";
+import { turnOnSomeLightsWhenComingHome } from "./automations/turnOnSomeLightsWhenComingHome";
+import { nightMode } from "./automations/nightMode";
 
 require('dotenv').config();
 
@@ -20,6 +21,8 @@ const base = async () => {
   turnOnGarageLightWhenADoorIsOpened();
   turnOnGardenLightWithGardenDoorAtNight();
   turnEverythingOffWhenLeaving()
+  turnOnSomeLightsWhenComingHome()
+  nightMode()
   garage(client);
 };
 
