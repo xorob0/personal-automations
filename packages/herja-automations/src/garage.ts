@@ -56,7 +56,7 @@ export const garage = (client: mqtt.MqttClient) => {
   }
   else {
     setState(GarageState.Opening)
-    percentOpen = 0
+    percentOpen = 50
   }
 
     effect(() => {
