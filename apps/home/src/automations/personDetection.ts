@@ -1,6 +1,6 @@
 import mqtt from 'mqtt'
 import { effect } from "@herja/core";
-import { sensor } from "generated";
+import { sensor } from "generated/src";
 
 export const personDetection = (client:mqtt.MqttClient) => {
   effect(()=>{

@@ -27,4 +27,9 @@ export const wallSwitches = () => {
       return
     light.garage.toggle()
   }, [switches.garage_light_switch])
+  effect(()=>{
+    if(!switches.bedroom_switch.state.state.match(/(on|off)/ ))
+      return
+    light.bedroom_lights.toggle()
+  }, [switches.bedroom_switch])
 };
