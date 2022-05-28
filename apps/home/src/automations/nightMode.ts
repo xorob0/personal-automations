@@ -6,6 +6,8 @@ let timeoutID: NodeJS.Timer|undefined = undefined;
 
 export const nightMode = () => {
   effect(()=>{
+    if(alarm_control_panel.alarmo.state === 'armed_night')
+      return
     if(sensor.bedside_button_action.state.state !== 'single')
       return
     clearTimeout(timeoutID as number|undefined)
