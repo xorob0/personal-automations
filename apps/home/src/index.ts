@@ -44,7 +44,7 @@ const base = async () => {
   turnOnTripodOnSunset()
   turnOnToiletLightWithDoor()
   TurnOnUpstairsHallWithSensor()
-  personDetection(client)
+  // personDetection(client)
   garage(client);
 };
 
