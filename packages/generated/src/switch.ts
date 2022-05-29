@@ -1,5 +1,5 @@
 import {callService, shadowState, Switch} from "@herja/core"
-        export type SwitchIDs = "adaptive_lighting_floor0" | "adaptive_lighting_sleep_mode_floor0" | "adaptive_lighting_adapt_color_floor0" | "adaptive_lighting_adapt_brightness_floor0" | "adaptive_lighting_floor1" | "adaptive_lighting_sleep_mode_floor1" | "adaptive_lighting_adapt_color_floor1" | "adaptive_lighting_adapt_brightness_floor1" | "adaptive_lighting_bathroom" | "adaptive_lighting_sleep_mode_bathroom" | "adaptive_lighting_adapt_color_bathroom" | "adaptive_lighting_adapt_brightness_bathroom" | "adaptive_lighting_toilets" | "adaptive_lighting_sleep_mode_toilets" | "adaptive_lighting_adapt_color_toilets" | "adaptive_lighting_adapt_brightness_toilets" | "scene_max_brightness" | "scene_medium_brightness" | "siren" | "living_room_humidifier" | "bedroom_humidifier" | "garage_bluetooth_inquiries" | "hall_stairs_switch" | "coffee_machine_outlet" | "garage_button" | "fridge" | "bedside_lamp" | "washing_machine" | "garage_light_switch" | "garden" | "hall_dual_switch_l1" | "hall_dual_switch_l2" | "hall_entrance" | "desk_outlet" | "siren_humidity_alarm" | "siren_temperature_alarm" | "siren_alarm" | "1_yjx_427_auxheat" | "living_room_bluetooth_inquiries" | "nibe_133481_48043" | "bedroom_bluetooth_inquiries" | "bedroom_switch" | "bedroom"
+        export type SwitchIDs = "adaptive_lighting_floor0" | "adaptive_lighting_sleep_mode_floor0" | "adaptive_lighting_adapt_color_floor0" | "adaptive_lighting_adapt_brightness_floor0" | "adaptive_lighting_floor1" | "adaptive_lighting_sleep_mode_floor1" | "adaptive_lighting_adapt_color_floor1" | "adaptive_lighting_adapt_brightness_floor1" | "adaptive_lighting_bathroom" | "adaptive_lighting_sleep_mode_bathroom" | "adaptive_lighting_adapt_color_bathroom" | "adaptive_lighting_adapt_brightness_bathroom" | "adaptive_lighting_toilets" | "adaptive_lighting_sleep_mode_toilets" | "adaptive_lighting_adapt_color_toilets" | "adaptive_lighting_adapt_brightness_toilets" | "scene_max_brightness" | "scene_medium_brightness" | "siren" | "living_room_humidifier" | "bedroom_humidifier" | "garage_bluetooth_inquiries" | "hall_stairs_switch" | "coffee_machine_outlet" | "garage_button" | "fridge" | "bedside_lamp" | "washing_machine" | "garage_light_switch" | "garden" | "hall_dual_switch_l1" | "hall_dual_switch_l2" | "hall_entrance" | "desk_outlet" | "siren_humidity_alarm" | "siren_temperature_alarm" | "siren_alarm" | "1_yjx_427_auxheat" | "living_room_bluetooth_inquiries" | "nibe_133481_48043" | "bedroom_bluetooth_inquiries" | "bedroom_switch"
 export const switches: Switch<SwitchIDs> = {
   
   ["adaptive_lighting_floor0"]: {
@@ -378,15 +378,6 @@ export const switches: Switch<SwitchIDs> = {
     isOn: () => shadowState["switch.bedroom_switch"].state === "on",
     toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.bedroom_switch"}),
     get state() { return shadowState["switch.bedroom_switch"]},
-  },
-
-  ["bedroom"]: {
-    entity_id: "switch.bedroom",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.bedroom"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.bedroom"}),
-    isOn: () => shadowState["switch.bedroom"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.bedroom"}),
-    get state() { return shadowState["switch.bedroom"]},
   },
 }
   
