@@ -30,6 +30,6 @@ export const wallSwitches = () => {
   effect(()=>{
     if(!switches.bedroom_switch.state.state.match(/(on|off)/ ))
       return
-    light.bedroom_lights.toggle()
+    light.bedroom_lights.toggle({brightness: 65})
   }, [switches.bedroom_switch])
 };
