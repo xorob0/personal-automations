@@ -15,6 +15,7 @@ import { garageRemote } from "./automations/garageRemote";
 import { turnOnTripodOnSunset } from "./automations/turnOnTripodOnSunset";
 import { turnOnToiletLightWithDoor } from "./automations/TurnOnToiletLightWithDoor";
 import { TurnOnUpstairsHallWithSensor } from "./automations/TurnOnUpstairsHallWithSensor";
+import { turnEverythingOffWhenLeaving } from "./automations/turnEverythingOffWhenLeaving";
 
 require('dotenv').config();
 
@@ -29,7 +30,7 @@ const base = async () => {
   });
   turnOnGarageLightWhenADoorIsOpened();
   turnOnGardenLightWithGardenDoorAtNight();
-  // turnEverythingOffWhenLeaving()
+  turnEverythingOffWhenLeaving()
   turnOnSomeLightsWhenComingHome()
   nightMode()
   wallSwitches()
