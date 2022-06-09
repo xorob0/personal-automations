@@ -3,7 +3,6 @@ import * as mqtt from 'mqtt';
 import { garage } from "@herja/automations";
 import { turnOnGardenLightWithGardenDoorAtNight } from "./automations/turnOnGardenLightWithGardenDoorAtNight";
 import { turnOnGarageLightWhenADoorIsOpened } from "./automations/turnOnGarageLightWenADoorIsOpened";
-import { turnEverythingOffWhenLeaving } from "./automations/turnEverythingOffWhenLeaving";
 import { turnOnSomeLightsWhenComingHome } from "./automations/turnOnSomeLightsWhenComingHome";
 import { nightMode } from "./automations/nightMode";
 import { wallSwitches } from "./automations/wallSwitches";
