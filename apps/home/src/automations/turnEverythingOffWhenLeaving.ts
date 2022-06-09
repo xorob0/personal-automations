@@ -12,8 +12,9 @@ export const turnEverythingOffWhenLeaving = () => {
       callService('vacuum', 'return_to_base', undefined, {entity_id: 'vacuum.valetudo'})
     } else {
       timeoutID = setTimeout(() => {
+        // TODO extract turn on/off all lights
         const allLights = Object.keys(shadowState).filter(key=> key.match(/^light\./)).filter(key=> !key.match(/light.[0-9a-f]{8}_[0-9a-f]{8}$/))
-        const allSwitches = Object.keys(shadowState).filter(key=> key.match(/^switch\./))
+        const allSwitches = Object.keys(shadowState).filter(key=> key.match(/^switch\..*outlet$/))
         callService('light', 'turn_off', undefined, {entity_id: allLights})
         callService('switch', 'turn_off', undefined, {entity_id: allSwitches})
 

@@ -12,7 +12,7 @@ const isALightOn = (entities: string[]) => entities.map(key => shadowState[key].
 
 export const nightMode = () => {
   effect(async (e)=>{
-    if(e.data.new_state.state === '')
+    if(e.data.new_state.state !== 'single')
       return
 
     clearTimeout(timeoutID as number|undefined)

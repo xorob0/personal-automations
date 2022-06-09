@@ -30,7 +30,7 @@ const base = async () => {
   });
   turnOnGarageLightWhenADoorIsOpened();
   turnOnGardenLightWithGardenDoorAtNight();
-  turnEverythingOffWhenLeaving()
+  // turnEverythingOffWhenLeaving()
   turnOnSomeLightsWhenComingHome()
   nightMode()
   wallSwitches()

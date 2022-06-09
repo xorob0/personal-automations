@@ -1,5 +1,5 @@
 import {callService, shadowState, Switch} from "@herja/core"
-        export type SwitchIDs = "adaptive_lighting_floor0" | "adaptive_lighting_sleep_mode_floor0" | "adaptive_lighting_adapt_color_floor0" | "adaptive_lighting_adapt_brightness_floor0" | "adaptive_lighting_floor1" | "adaptive_lighting_sleep_mode_floor1" | "adaptive_lighting_adapt_color_floor1" | "adaptive_lighting_adapt_brightness_floor1" | "adaptive_lighting_bathroom" | "adaptive_lighting_sleep_mode_bathroom" | "adaptive_lighting_adapt_color_bathroom" | "adaptive_lighting_adapt_brightness_bathroom" | "adaptive_lighting_toilets" | "adaptive_lighting_sleep_mode_toilets" | "adaptive_lighting_adapt_color_toilets" | "adaptive_lighting_adapt_brightness_toilets" | "hall_stairs_switch" | "coffee_machine_outlet" | "garage_button" | "bedside_lamp" | "washing_machine" | "garage_light_switch" | "garden" | "hall_dual_switch_l1" | "hall_dual_switch_l2" | "hall_entrance" | "desk_outlet" | "siren_humidity_alarm" | "siren_temperature_alarm" | "siren_alarm" | "bedroom_switch" | "1_yjx_427_auxheat" | "garage_bluetooth_inquiries" | "nibe_133481_48043" | "scene_max_brightness" | "scene_medium_brightness" | "living_room_humidifier" | "bedroom_humidifier" | "siren" | "living_room_bluetooth_inquiries" | "bedroom_bluetooth_inquiries" | "all" | "bedroom_secondary_lamp"
+        export type SwitchIDs = "adaptive_lighting_floor0" | "adaptive_lighting_sleep_mode_floor0" | "adaptive_lighting_adapt_color_floor0" | "adaptive_lighting_adapt_brightness_floor0" | "adaptive_lighting_floor1" | "adaptive_lighting_sleep_mode_floor1" | "adaptive_lighting_adapt_color_floor1" | "adaptive_lighting_adapt_brightness_floor1" | "adaptive_lighting_bathroom" | "adaptive_lighting_sleep_mode_bathroom" | "adaptive_lighting_adapt_color_bathroom" | "adaptive_lighting_adapt_brightness_bathroom" | "adaptive_lighting_toilets" | "adaptive_lighting_sleep_mode_toilets" | "adaptive_lighting_adapt_color_toilets" | "adaptive_lighting_adapt_brightness_toilets" | "garage_bluetooth_inquiries" | "hall_stairs_switch" | "coffee_machine_outlet" | "garage_button" | "bedroom_secondary_lamp" | "bedside_lamp" | "washing_machine" | "garage_light_switch" | "garden" | "hall_dual_switch_l1" | "hall_dual_switch_l2" | "hall_entrance" | "desk_outlet" | "siren_humidity_alarm" | "siren_temperature_alarm" | "siren_alarm" | "1_yjx_427_auxheat" | "bedroom_switch" | "nibe_133481_48043" | "scene_max_brightness" | "scene_medium_brightness" | "living_room_humidifier" | "bedroom_humidifier" | "siren" | "living_room_bluetooth_inquiries" | "bedroom_bluetooth_inquiries"
 export const switches: Switch<SwitchIDs> = {
   
   ["adaptive_lighting_floor0"]: {
@@ -146,6 +146,15 @@ export const switches: Switch<SwitchIDs> = {
     get state() { return shadowState["switch.adaptive_lighting_adapt_brightness_toilets"]},
   },
 
+  ["garage_bluetooth_inquiries"]: {
+    entity_id: "switch.garage_bluetooth_inquiries",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.garage_bluetooth_inquiries"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.garage_bluetooth_inquiries"}),
+    isOn: () => shadowState["switch.garage_bluetooth_inquiries"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.garage_bluetooth_inquiries"}),
+    get state() { return shadowState["switch.garage_bluetooth_inquiries"]},
+  },
+
   ["hall_stairs_switch"]: {
     entity_id: "switch.hall_stairs_switch",
     turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.hall_stairs_switch"}),
@@ -171,6 +180,15 @@ export const switches: Switch<SwitchIDs> = {
     isOn: () => shadowState["switch.garage_button"].state === "on",
     toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.garage_button"}),
     get state() { return shadowState["switch.garage_button"]},
+  },
+
+  ["bedroom_secondary_lamp"]: {
+    entity_id: "switch.bedroom_secondary_lamp",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.bedroom_secondary_lamp"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.bedroom_secondary_lamp"}),
+    isOn: () => shadowState["switch.bedroom_secondary_lamp"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.bedroom_secondary_lamp"}),
+    get state() { return shadowState["switch.bedroom_secondary_lamp"]},
   },
 
   ["bedside_lamp"]: {
@@ -272,15 +290,6 @@ export const switches: Switch<SwitchIDs> = {
     get state() { return shadowState["switch.siren_alarm"]},
   },
 
-  ["bedroom_switch"]: {
-    entity_id: "switch.bedroom_switch",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.bedroom_switch"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.bedroom_switch"}),
-    isOn: () => shadowState["switch.bedroom_switch"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.bedroom_switch"}),
-    get state() { return shadowState["switch.bedroom_switch"]},
-  },
-
   ["1_yjx_427_auxheat"]: {
     entity_id: "switch.1_yjx_427_auxheat",
     turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.1_yjx_427_auxheat"}),
@@ -290,13 +299,13 @@ export const switches: Switch<SwitchIDs> = {
     get state() { return shadowState["switch.1_yjx_427_auxheat"]},
   },
 
-  ["garage_bluetooth_inquiries"]: {
-    entity_id: "switch.garage_bluetooth_inquiries",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.garage_bluetooth_inquiries"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.garage_bluetooth_inquiries"}),
-    isOn: () => shadowState["switch.garage_bluetooth_inquiries"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.garage_bluetooth_inquiries"}),
-    get state() { return shadowState["switch.garage_bluetooth_inquiries"]},
+  ["bedroom_switch"]: {
+    entity_id: "switch.bedroom_switch",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.bedroom_switch"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.bedroom_switch"}),
+    isOn: () => shadowState["switch.bedroom_switch"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.bedroom_switch"}),
+    get state() { return shadowState["switch.bedroom_switch"]},
   },
 
   ["nibe_133481_48043"]: {
@@ -369,24 +378,6 @@ export const switches: Switch<SwitchIDs> = {
     isOn: () => shadowState["switch.bedroom_bluetooth_inquiries"].state === "on",
     toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.bedroom_bluetooth_inquiries"}),
     get state() { return shadowState["switch.bedroom_bluetooth_inquiries"]},
-  },
-
-  ["all"]: {
-    entity_id: "switch.all",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.all"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.all"}),
-    isOn: () => shadowState["switch.all"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.all"}),
-    get state() { return shadowState["switch.all"]},
-  },
-
-  ["bedroom_secondary_lamp"]: {
-    entity_id: "switch.bedroom_secondary_lamp",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.bedroom_secondary_lamp"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.bedroom_secondary_lamp"}),
-    isOn: () => shadowState["switch.bedroom_secondary_lamp"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.bedroom_secondary_lamp"}),
-    get state() { return shadowState["switch.bedroom_secondary_lamp"]},
   },
 }
   
