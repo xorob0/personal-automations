@@ -5,7 +5,7 @@ let timeoutID: NodeJS.Timer|undefined = undefined;
 
 export const coffeeMachineButton = () => {
   effect(()=>{
-    if(sensor.tripod_button_action.state.state !== '')
+    if(sensor.tripod_button_action.state.state === 'single')
       switches.coffee_machine_outlet.toggle()
   }, [sensor.coffee_machine_button_action])
   effect(()=>{

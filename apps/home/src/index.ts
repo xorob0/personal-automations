@@ -3,7 +3,6 @@ import * as mqtt from 'mqtt';
 import { garage } from "@herja/automations";
 import { turnOnGardenLightWithGardenDoorAtNight } from "./automations/turnOnGardenLightWithGardenDoorAtNight";
 import { turnOnGarageLightWhenADoorIsOpened } from "./automations/turnOnGarageLightWenADoorIsOpened";
-import { turnOnSomeLightsWhenComingHome } from "./automations/turnOnSomeLightsWhenComingHome";
 import { nightMode } from "./automations/nightMode";
 import { wallSwitches } from "./automations/wallSwitches";
 import { automaticAlarm } from "./automations/automaticAlarm";
@@ -15,7 +14,6 @@ import { garageRemote } from "./automations/garageRemote";
 import { turnOnTripodOnSunset } from "./automations/turnOnTripodOnSunset";
 import { turnOnToiletLightWithDoor } from "./automations/TurnOnToiletLightWithDoor";
 import { TurnOnUpstairsHallWithSensor } from "./automations/TurnOnUpstairsHallWithSensor";
-import { turnEverythingOffWhenLeaving } from "./automations/turnEverythingOffWhenLeaving";
 
 require('dotenv').config();
 
@@ -30,8 +28,8 @@ const base = async () => {
   });
   turnOnGarageLightWhenADoorIsOpened();
   turnOnGardenLightWithGardenDoorAtNight();
-  turnEverythingOffWhenLeaving()
-  turnOnSomeLightsWhenComingHome()
+  // turnEverythingOffWhenLeaving()
+  // turnOnSomeLightsWhenComingHome()
   nightMode()
   wallSwitches()
   automaticAlarm()
