@@ -17,14 +17,12 @@ export const nightMode = () => {
 
     clearTimeout(timeoutID as number|undefined)
 
-    const allLights = getAllLights()
-    const allSwitches = Object.keys(shadowState).filter(key=> key.match(/^switch\..*outlet$/))
+    const allLightsWithoutExceptions = getAllLights({exceptions: lightExceptions})
 
-    if(isALightOn(allLights))
+    if(isALightOn(allLightsWithoutExceptions))
     {
-      const allLightsWithoutExceptions = getAllLights({exceptions: lightExceptions})
+      const allSwitches = Object.keys(shadowState).filter(key=> key.match(/^switch\..*outlet$/))
       const allSwitchesWithoutExceptions = allSwitches.filter(key => !switchExceptions.includes(key))
-
       if(!isALightOn(allLightsWithoutExceptions)){
         turnOffAllLights()
         callService('switch', 'turn_off', undefined, {entity_id: allSwitches })
