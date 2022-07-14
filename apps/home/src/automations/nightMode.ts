@@ -6,7 +6,7 @@ import { getAllLights, turnOffAllLights } from "../utils/allLights";
 let timeoutID: NodeJS.Timer|undefined = undefined;
 
 const switchExceptions = [switches.bedside_lamp.entity_id, switches.bedroom_secondary_lamp.entity_id]
-const lightExceptions = [light.bedroom_secondary_lamp.entity_id, light.bedside_lamp.entity_id, light.bedroom_lights.entity_id]
+const lightExceptions = [light.bedroom_secondary_lamp.entity_id, light.bedside_lamp.entity_id, light.bedroom_lights.entity_id, light.bedroom_secondary_lights]
 
 const isALightOn = (entities: string[]) => entities.map(key => shadowState[key].state === 'on').includes(true)
 
@@ -17,12 +17,14 @@ export const nightMode = () => {
 
     clearTimeout(timeoutID as number|undefined)
 
-    const allLightsWithoutExceptions = getAllLights({exceptions: lightExceptions})
+    const allLights = getAllLights()
+    const allSwitches = Object.keys(shadowState).filter(key=> key.match(/^switch\..*outlet$/))
 
-    if(isALightOn(allLightsWithoutExceptions))
+    if(isALightOn(allLights))
     {
-      const allSwitches = Object.keys(shadowState).filter(key=> key.match(/^switch\..*outlet$/))
+      const allLightsWithoutExceptions = getAllLights({exceptions: lightExceptions})
       const allSwitchesWithoutExceptions = allSwitches.filter(key => !switchExceptions.includes(key))
+
       if(!isALightOn(allLightsWithoutExceptions)){
         turnOffAllLights()
         callService('switch', 'turn_off', undefined, {entity_id: allSwitches })
@@ -31,12 +33,12 @@ export const nightMode = () => {
 
       alarm_control_panel.alarmo.armNight()
       light.bedroom_secondary_lights.turn_on()
-
       turnOffAllLights({exceptions: lightExceptions})
       callService('switch', 'turn_off', undefined, {entity_id: allSwitchesWithoutExceptions })
 
       timeoutID = setTimeout(() => {
         light.bedroom_secondary_lights.turn_off()
+
       },  15 * 60 * 1000)
       }
     else{

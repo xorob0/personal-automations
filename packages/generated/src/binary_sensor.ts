@@ -1,83 +1,47 @@
 import {shadowState, BinarySensor} from "@herja/core"
-        export type BinarySensorIDs = "protection_window" | "tims_ipone_focus" | "sm_g980f_is_charging" | "mirahi_c02d96kqmd6t_camera_in_use" | "mirahi_c02d96kqmd6t_audio_input_in_use" | "mirahi_c02d96kqmd6t_audio_output_in_use" | "mirahi_c02d96kqmd6t_focus" | "mirahi_c02d96kqmd6t_active" | "tims_macbook_pro_audio_output_in_use" | "tims_macbook_pro_camera_in_use" | "tims_macbook_pro_audio_input_in_use" | "tims_macbook_pro_active" | "tims_macbook_pro_focus" | "living_room_spot_3_update_available" | "dining_room_spot_3_update_available" | "kitchen_spot_1_update_available" | "living_room_light_update_available" | "dining_room_spot_2_update_available" | "coffee_machine_outlet_update_available" | "dining_room_spot_1_update_available" | "kitchen_spot_2_update_available" | "living_room_remote_update_available" | "bedroom_bed_light_update_available" | "bathroom_spot_2_update_available" | "bedroom_secondary_lamp_update_available" | "stairs_motion_sensor_occupancy" | "stairs_motion_sensor_battery_low" | "stairs_motion_sensor_tamper" | "hall_upstairs_spot_3_update_available" | "hall_upstairs_spot_2_update_available" | "hall_upstairs_spot_1_update_available" | "fridge_door_sensor_contact" | "bedside_lamp_update_available" | "toilet_update_available" | "garage_electric_door_sensor_open_contact" | "garage_remote_update_available" | "washing_machine_update_available" | "garage_door_contact" | "garden_door_contact" | "toilet_door_contact" | "toilet_door_battery_low" | "entrance_door_contact" | "garage_fridge_update_available" | "hall_entrance_update_available" | "garage_car_update_available" | "kitchen_spot_3_update_available" | "hall_stairs_update_available" | "bathroom_spot_1_update_available" | "desk_outlet_update_available" | "bedroom_window_bed_contact" | "garage_electric_door_sensor_closed_contact" | "siren_battery_low" | "1_yjx_427_park_brake_status" | "bathroom_door_contact" | "bathroom_door_battery_low" | "1_yjx_427_tire_warning" | "1_yjx_427_low_brake_fluid_warning" | "1_yjx_427_low_wash_water_warning" | "1_yjx_427_windows_closed" | "1_yjx_427_low_coolant_level_warning" | "updater" | "1_yjx_427_liquid_range_critical" | "my_wall_panel_usb_plugged" | "my_wall_panel_ac_plugged" | "my_wall_panel_charging" | "my_wall_panel_face_detected" | "my_wall_panel_motion_detected"
+        export type BinarySensorIDs = "1_yjx_427_park_brake_status" | "1_yjx_427_tire_warning" | "1_yjx_427_low_brake_fluid_warning" | "1_yjx_427_low_coolant_level_warning" | "1_yjx_427_low_wash_water_warning" | "1_yjx_427_windows_closed" | "protection_window" | "living_room_spot_3_update_available" | "dining_room_spot_3_update_available" | "kitchen_spot_1_update_available" | "living_room_light_update_available" | "dining_room_spot_2_update_available" | "coffee_machine_outlet_update_available" | "dining_room_spot_1_update_available" | "kitchen_spot_2_update_available" | "living_room_remote_update_available" | "bedroom_bed_light_update_available" | "bathroom_spot_2_update_available" | "bedroom_secondary_lamp_update_available" | "stairs_motion_sensor_occupancy" | "stairs_motion_sensor_battery_low" | "stairs_motion_sensor_tamper" | "hall_upstairs_spot_3_update_available" | "hall_upstairs_spot_2_update_available" | "hall_upstairs_spot_1_update_available" | "fridge_door_sensor_contact" | "bedside_lamp_update_available" | "toilet_update_available" | "garage_electric_door_sensor_open_contact" | "garage_remote_update_available" | "bedroom_humidifier_switch_update_available" | "garage_door_contact" | "garden_door_contact" | "toilet_door_contact" | "toilet_door_battery_low" | "entrance_door_contact" | "garage_fridge_update_available" | "hall_entrance_update_available" | "garage_car_update_available" | "kitchen_spot_3_update_available" | "hall_stairs_update_available" | "bathroom_spot_1_update_available" | "desk_outlet_update_available" | "bedroom_window_bed_contact" | "garage_electric_door_sensor_closed_contact" | "siren_battery_low" | "bathroom_door_contact" | "bathroom_door_battery_low" | "tims_ipone_focus" | "sm_g980f_is_charging" | "mirahi_c02d96kqmd6t_camera_in_use" | "mirahi_c02d96kqmd6t_audio_input_in_use" | "mirahi_c02d96kqmd6t_audio_output_in_use" | "mirahi_c02d96kqmd6t_focus" | "mirahi_c02d96kqmd6t_active" | "tims_macbook_pro_audio_output_in_use" | "tims_macbook_pro_camera_in_use" | "tims_macbook_pro_audio_input_in_use" | "tims_macbook_pro_active" | "tims_macbook_pro_focus" | "s22_is_charging" | "updater" | "1_yjx_427_liquid_range_critical" | "my_wall_panel_usb_plugged" | "my_wall_panel_ac_plugged" | "my_wall_panel_charging" | "my_wall_panel_face_detected" | "my_wall_panel_motion_detected" | "bedroom_button_tim_update_available" | "bedroom_button_gaby_update_available"
 export const binary_sensor: BinarySensor<BinarySensorIDs> = {
   
+  ["1_yjx_427_park_brake_status"]: {
+    entity_id: "binary_sensor.1_yjx_427_park_brake_status",
+    isOn: () => shadowState["binary_sensor.1_yjx_427_park_brake_status"].state === "on",
+    get state() { return shadowState["binary_sensor.1_yjx_427_park_brake_status"]},
+  },
+
+  ["1_yjx_427_tire_warning"]: {
+    entity_id: "binary_sensor.1_yjx_427_tire_warning",
+    isOn: () => shadowState["binary_sensor.1_yjx_427_tire_warning"].state === "on",
+    get state() { return shadowState["binary_sensor.1_yjx_427_tire_warning"]},
+  },
+
+  ["1_yjx_427_low_brake_fluid_warning"]: {
+    entity_id: "binary_sensor.1_yjx_427_low_brake_fluid_warning",
+    isOn: () => shadowState["binary_sensor.1_yjx_427_low_brake_fluid_warning"].state === "on",
+    get state() { return shadowState["binary_sensor.1_yjx_427_low_brake_fluid_warning"]},
+  },
+
+  ["1_yjx_427_low_coolant_level_warning"]: {
+    entity_id: "binary_sensor.1_yjx_427_low_coolant_level_warning",
+    isOn: () => shadowState["binary_sensor.1_yjx_427_low_coolant_level_warning"].state === "on",
+    get state() { return shadowState["binary_sensor.1_yjx_427_low_coolant_level_warning"]},
+  },
+
+  ["1_yjx_427_low_wash_water_warning"]: {
+    entity_id: "binary_sensor.1_yjx_427_low_wash_water_warning",
+    isOn: () => shadowState["binary_sensor.1_yjx_427_low_wash_water_warning"].state === "on",
+    get state() { return shadowState["binary_sensor.1_yjx_427_low_wash_water_warning"]},
+  },
+
+  ["1_yjx_427_windows_closed"]: {
+    entity_id: "binary_sensor.1_yjx_427_windows_closed",
+    isOn: () => shadowState["binary_sensor.1_yjx_427_windows_closed"].state === "on",
+    get state() { return shadowState["binary_sensor.1_yjx_427_windows_closed"]},
+  },
+
   ["protection_window"]: {
     entity_id: "binary_sensor.protection_window",
     isOn: () => shadowState["binary_sensor.protection_window"].state === "on",
     get state() { return shadowState["binary_sensor.protection_window"]},
-  },
-
-  ["tims_ipone_focus"]: {
-    entity_id: "binary_sensor.tims_ipone_focus",
-    isOn: () => shadowState["binary_sensor.tims_ipone_focus"].state === "on",
-    get state() { return shadowState["binary_sensor.tims_ipone_focus"]},
-  },
-
-  ["sm_g980f_is_charging"]: {
-    entity_id: "binary_sensor.sm_g980f_is_charging",
-    isOn: () => shadowState["binary_sensor.sm_g980f_is_charging"].state === "on",
-    get state() { return shadowState["binary_sensor.sm_g980f_is_charging"]},
-  },
-
-  ["mirahi_c02d96kqmd6t_camera_in_use"]: {
-    entity_id: "binary_sensor.mirahi_c02d96kqmd6t_camera_in_use",
-    isOn: () => shadowState["binary_sensor.mirahi_c02d96kqmd6t_camera_in_use"].state === "on",
-    get state() { return shadowState["binary_sensor.mirahi_c02d96kqmd6t_camera_in_use"]},
-  },
-
-  ["mirahi_c02d96kqmd6t_audio_input_in_use"]: {
-    entity_id: "binary_sensor.mirahi_c02d96kqmd6t_audio_input_in_use",
-    isOn: () => shadowState["binary_sensor.mirahi_c02d96kqmd6t_audio_input_in_use"].state === "on",
-    get state() { return shadowState["binary_sensor.mirahi_c02d96kqmd6t_audio_input_in_use"]},
-  },
-
-  ["mirahi_c02d96kqmd6t_audio_output_in_use"]: {
-    entity_id: "binary_sensor.mirahi_c02d96kqmd6t_audio_output_in_use",
-    isOn: () => shadowState["binary_sensor.mirahi_c02d96kqmd6t_audio_output_in_use"].state === "on",
-    get state() { return shadowState["binary_sensor.mirahi_c02d96kqmd6t_audio_output_in_use"]},
-  },
-
-  ["mirahi_c02d96kqmd6t_focus"]: {
-    entity_id: "binary_sensor.mirahi_c02d96kqmd6t_focus",
-    isOn: () => shadowState["binary_sensor.mirahi_c02d96kqmd6t_focus"].state === "on",
-    get state() { return shadowState["binary_sensor.mirahi_c02d96kqmd6t_focus"]},
-  },
-
-  ["mirahi_c02d96kqmd6t_active"]: {
-    entity_id: "binary_sensor.mirahi_c02d96kqmd6t_active",
-    isOn: () => shadowState["binary_sensor.mirahi_c02d96kqmd6t_active"].state === "on",
-    get state() { return shadowState["binary_sensor.mirahi_c02d96kqmd6t_active"]},
-  },
-
-  ["tims_macbook_pro_audio_output_in_use"]: {
-    entity_id: "binary_sensor.tims_macbook_pro_audio_output_in_use",
-    isOn: () => shadowState["binary_sensor.tims_macbook_pro_audio_output_in_use"].state === "on",
-    get state() { return shadowState["binary_sensor.tims_macbook_pro_audio_output_in_use"]},
-  },
-
-  ["tims_macbook_pro_camera_in_use"]: {
-    entity_id: "binary_sensor.tims_macbook_pro_camera_in_use",
-    isOn: () => shadowState["binary_sensor.tims_macbook_pro_camera_in_use"].state === "on",
-    get state() { return shadowState["binary_sensor.tims_macbook_pro_camera_in_use"]},
-  },
-
-  ["tims_macbook_pro_audio_input_in_use"]: {
-    entity_id: "binary_sensor.tims_macbook_pro_audio_input_in_use",
-    isOn: () => shadowState["binary_sensor.tims_macbook_pro_audio_input_in_use"].state === "on",
-    get state() { return shadowState["binary_sensor.tims_macbook_pro_audio_input_in_use"]},
-  },
-
-  ["tims_macbook_pro_active"]: {
-    entity_id: "binary_sensor.tims_macbook_pro_active",
-    isOn: () => shadowState["binary_sensor.tims_macbook_pro_active"].state === "on",
-    get state() { return shadowState["binary_sensor.tims_macbook_pro_active"]},
-  },
-
-  ["tims_macbook_pro_focus"]: {
-    entity_id: "binary_sensor.tims_macbook_pro_focus",
-    isOn: () => shadowState["binary_sensor.tims_macbook_pro_focus"].state === "on",
-    get state() { return shadowState["binary_sensor.tims_macbook_pro_focus"]},
   },
 
   ["living_room_spot_3_update_available"]: {
@@ -218,10 +182,10 @@ export const binary_sensor: BinarySensor<BinarySensorIDs> = {
     get state() { return shadowState["binary_sensor.garage_remote_update_available"]},
   },
 
-  ["washing_machine_update_available"]: {
-    entity_id: "binary_sensor.washing_machine_update_available",
-    isOn: () => shadowState["binary_sensor.washing_machine_update_available"].state === "on",
-    get state() { return shadowState["binary_sensor.washing_machine_update_available"]},
+  ["bedroom_humidifier_switch_update_available"]: {
+    entity_id: "binary_sensor.bedroom_humidifier_switch_update_available",
+    isOn: () => shadowState["binary_sensor.bedroom_humidifier_switch_update_available"].state === "on",
+    get state() { return shadowState["binary_sensor.bedroom_humidifier_switch_update_available"]},
   },
 
   ["garage_door_contact"]: {
@@ -314,12 +278,6 @@ export const binary_sensor: BinarySensor<BinarySensorIDs> = {
     get state() { return shadowState["binary_sensor.siren_battery_low"]},
   },
 
-  ["1_yjx_427_park_brake_status"]: {
-    entity_id: "binary_sensor.1_yjx_427_park_brake_status",
-    isOn: () => shadowState["binary_sensor.1_yjx_427_park_brake_status"].state === "on",
-    get state() { return shadowState["binary_sensor.1_yjx_427_park_brake_status"]},
-  },
-
   ["bathroom_door_contact"]: {
     entity_id: "binary_sensor.bathroom_door_contact",
     isOn: () => shadowState["binary_sensor.bathroom_door_contact"].state === "on",
@@ -332,34 +290,82 @@ export const binary_sensor: BinarySensor<BinarySensorIDs> = {
     get state() { return shadowState["binary_sensor.bathroom_door_battery_low"]},
   },
 
-  ["1_yjx_427_tire_warning"]: {
-    entity_id: "binary_sensor.1_yjx_427_tire_warning",
-    isOn: () => shadowState["binary_sensor.1_yjx_427_tire_warning"].state === "on",
-    get state() { return shadowState["binary_sensor.1_yjx_427_tire_warning"]},
+  ["tims_ipone_focus"]: {
+    entity_id: "binary_sensor.tims_ipone_focus",
+    isOn: () => shadowState["binary_sensor.tims_ipone_focus"].state === "on",
+    get state() { return shadowState["binary_sensor.tims_ipone_focus"]},
   },
 
-  ["1_yjx_427_low_brake_fluid_warning"]: {
-    entity_id: "binary_sensor.1_yjx_427_low_brake_fluid_warning",
-    isOn: () => shadowState["binary_sensor.1_yjx_427_low_brake_fluid_warning"].state === "on",
-    get state() { return shadowState["binary_sensor.1_yjx_427_low_brake_fluid_warning"]},
+  ["sm_g980f_is_charging"]: {
+    entity_id: "binary_sensor.sm_g980f_is_charging",
+    isOn: () => shadowState["binary_sensor.sm_g980f_is_charging"].state === "on",
+    get state() { return shadowState["binary_sensor.sm_g980f_is_charging"]},
   },
 
-  ["1_yjx_427_low_wash_water_warning"]: {
-    entity_id: "binary_sensor.1_yjx_427_low_wash_water_warning",
-    isOn: () => shadowState["binary_sensor.1_yjx_427_low_wash_water_warning"].state === "on",
-    get state() { return shadowState["binary_sensor.1_yjx_427_low_wash_water_warning"]},
+  ["mirahi_c02d96kqmd6t_camera_in_use"]: {
+    entity_id: "binary_sensor.mirahi_c02d96kqmd6t_camera_in_use",
+    isOn: () => shadowState["binary_sensor.mirahi_c02d96kqmd6t_camera_in_use"].state === "on",
+    get state() { return shadowState["binary_sensor.mirahi_c02d96kqmd6t_camera_in_use"]},
   },
 
-  ["1_yjx_427_windows_closed"]: {
-    entity_id: "binary_sensor.1_yjx_427_windows_closed",
-    isOn: () => shadowState["binary_sensor.1_yjx_427_windows_closed"].state === "on",
-    get state() { return shadowState["binary_sensor.1_yjx_427_windows_closed"]},
+  ["mirahi_c02d96kqmd6t_audio_input_in_use"]: {
+    entity_id: "binary_sensor.mirahi_c02d96kqmd6t_audio_input_in_use",
+    isOn: () => shadowState["binary_sensor.mirahi_c02d96kqmd6t_audio_input_in_use"].state === "on",
+    get state() { return shadowState["binary_sensor.mirahi_c02d96kqmd6t_audio_input_in_use"]},
   },
 
-  ["1_yjx_427_low_coolant_level_warning"]: {
-    entity_id: "binary_sensor.1_yjx_427_low_coolant_level_warning",
-    isOn: () => shadowState["binary_sensor.1_yjx_427_low_coolant_level_warning"].state === "on",
-    get state() { return shadowState["binary_sensor.1_yjx_427_low_coolant_level_warning"]},
+  ["mirahi_c02d96kqmd6t_audio_output_in_use"]: {
+    entity_id: "binary_sensor.mirahi_c02d96kqmd6t_audio_output_in_use",
+    isOn: () => shadowState["binary_sensor.mirahi_c02d96kqmd6t_audio_output_in_use"].state === "on",
+    get state() { return shadowState["binary_sensor.mirahi_c02d96kqmd6t_audio_output_in_use"]},
+  },
+
+  ["mirahi_c02d96kqmd6t_focus"]: {
+    entity_id: "binary_sensor.mirahi_c02d96kqmd6t_focus",
+    isOn: () => shadowState["binary_sensor.mirahi_c02d96kqmd6t_focus"].state === "on",
+    get state() { return shadowState["binary_sensor.mirahi_c02d96kqmd6t_focus"]},
+  },
+
+  ["mirahi_c02d96kqmd6t_active"]: {
+    entity_id: "binary_sensor.mirahi_c02d96kqmd6t_active",
+    isOn: () => shadowState["binary_sensor.mirahi_c02d96kqmd6t_active"].state === "on",
+    get state() { return shadowState["binary_sensor.mirahi_c02d96kqmd6t_active"]},
+  },
+
+  ["tims_macbook_pro_audio_output_in_use"]: {
+    entity_id: "binary_sensor.tims_macbook_pro_audio_output_in_use",
+    isOn: () => shadowState["binary_sensor.tims_macbook_pro_audio_output_in_use"].state === "on",
+    get state() { return shadowState["binary_sensor.tims_macbook_pro_audio_output_in_use"]},
+  },
+
+  ["tims_macbook_pro_camera_in_use"]: {
+    entity_id: "binary_sensor.tims_macbook_pro_camera_in_use",
+    isOn: () => shadowState["binary_sensor.tims_macbook_pro_camera_in_use"].state === "on",
+    get state() { return shadowState["binary_sensor.tims_macbook_pro_camera_in_use"]},
+  },
+
+  ["tims_macbook_pro_audio_input_in_use"]: {
+    entity_id: "binary_sensor.tims_macbook_pro_audio_input_in_use",
+    isOn: () => shadowState["binary_sensor.tims_macbook_pro_audio_input_in_use"].state === "on",
+    get state() { return shadowState["binary_sensor.tims_macbook_pro_audio_input_in_use"]},
+  },
+
+  ["tims_macbook_pro_active"]: {
+    entity_id: "binary_sensor.tims_macbook_pro_active",
+    isOn: () => shadowState["binary_sensor.tims_macbook_pro_active"].state === "on",
+    get state() { return shadowState["binary_sensor.tims_macbook_pro_active"]},
+  },
+
+  ["tims_macbook_pro_focus"]: {
+    entity_id: "binary_sensor.tims_macbook_pro_focus",
+    isOn: () => shadowState["binary_sensor.tims_macbook_pro_focus"].state === "on",
+    get state() { return shadowState["binary_sensor.tims_macbook_pro_focus"]},
+  },
+
+  ["s22_is_charging"]: {
+    entity_id: "binary_sensor.s22_is_charging",
+    isOn: () => shadowState["binary_sensor.s22_is_charging"].state === "on",
+    get state() { return shadowState["binary_sensor.s22_is_charging"]},
   },
 
   ["updater"]: {
@@ -402,6 +408,18 @@ export const binary_sensor: BinarySensor<BinarySensorIDs> = {
     entity_id: "binary_sensor.my_wall_panel_motion_detected",
     isOn: () => shadowState["binary_sensor.my_wall_panel_motion_detected"].state === "on",
     get state() { return shadowState["binary_sensor.my_wall_panel_motion_detected"]},
+  },
+
+  ["bedroom_button_tim_update_available"]: {
+    entity_id: "binary_sensor.bedroom_button_tim_update_available",
+    isOn: () => shadowState["binary_sensor.bedroom_button_tim_update_available"].state === "on",
+    get state() { return shadowState["binary_sensor.bedroom_button_tim_update_available"]},
+  },
+
+  ["bedroom_button_gaby_update_available"]: {
+    entity_id: "binary_sensor.bedroom_button_gaby_update_available",
+    isOn: () => shadowState["binary_sensor.bedroom_button_gaby_update_available"].state === "on",
+    get state() { return shadowState["binary_sensor.bedroom_button_gaby_update_available"]},
   },
 }
   
