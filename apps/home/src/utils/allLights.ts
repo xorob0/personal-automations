@@ -3,7 +3,7 @@ import { callService, Light, shadowState } from "@herja/core";
 
 export const missingLights = [light.toilet.entity_id, light.bathroom.entity_id, light.bathroom_spot_2.entity_id, light.bathroom_spot_1.entity_id]
 
-type AllLightsProps = {exceptions: (Light|string)[]}
+type AllLightsProps = {exceptions: string[]}
 
 export const getAllLights = ({exceptions}: AllLightsProps = {exceptions:[]} ) => Object.keys(shadowState).filter(key=>{
   if(!key.match(/^light\./))
@@ -13,10 +13,10 @@ export const getAllLights = ({exceptions}: AllLightsProps = {exceptions:[]} ) =>
   if(missingLights.includes(key))
     return false
   if(!exceptions.includes(key))
-  return true
+    return true
 })
 
-export const turnOffAllLights = ({exceptions}: AllLightsProps = {exceptions:[]}) => {
+export const turnOffAllLights = async ({exceptions}: AllLightsProps = {exceptions:[]}) => {
   const allLights = getAllLights().filter(key => !exceptions.includes(key))
-  callService('light', 'turn_off', undefined, {entity_id:allLights})
+  await callService('light', 'turn_off', undefined, {entity_id:allLights})
 }
