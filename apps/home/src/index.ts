@@ -9,12 +9,14 @@ import { automaticAlarm } from "./automations/automaticAlarm";
 import { tripodButton } from "./automations/tripodButton";
 import { coffeeMachineButton } from "./automations/coffeeMachineButton";
 import { alertFridgeOpen } from "./automations/alertFridgeOpen";
-import { wakeup } from "./automations/wakeup";
 import { garageRemote } from "./automations/garageRemote";
 import { turnOnTripodOnSunset } from "./automations/turnOnTripodOnSunset";
 import { turnOnToiletLightWithDoor } from "./automations/TurnOnToiletLightWithDoor";
 import { TurnOnUpstairsHallWithSensor } from "./automations/TurnOnUpstairsHallWithSensor";
 import { BedroomACTimer } from "./automations/bedroomACTimer";
+import { turnOnSomeLightsWhenComingHome } from "./automations/turnOnSomeLightsWhenComingHome";
+import { turnEverythingOffWhenLeaving } from "./automations/turnEverythingOffWhenLeaving";
+import { personDetection } from "./automations/personDetection";
 
 require('dotenv').config();
 
@@ -29,20 +31,19 @@ const base = async () => {
   });
   turnOnGarageLightWhenADoorIsOpened();
   turnOnGardenLightWithGardenDoorAtNight();
-  // turnEverythingOffWhenLeaving()
-  // turnOnSomeLightsWhenComingHome()
+  turnEverythingOffWhenLeaving();
+  turnOnSomeLightsWhenComingHome()
   nightMode()
   wallSwitches()
   automaticAlarm()
   tripodButton()
   coffeeMachineButton()
   alertFridgeOpen()
-  wakeup()
   garageRemote()
   turnOnTripodOnSunset()
   turnOnToiletLightWithDoor()
   TurnOnUpstairsHallWithSensor()
-  // personDetection(client)
+  personDetection(client)
   garage(client);
   BedroomACTimer();
 };
