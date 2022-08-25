@@ -14,6 +14,7 @@ import { garageRemote } from "./automations/garageRemote";
 import { turnOnTripodOnSunset } from "./automations/turnOnTripodOnSunset";
 import { turnOnToiletLightWithDoor } from "./automations/TurnOnToiletLightWithDoor";
 import { TurnOnUpstairsHallWithSensor } from "./automations/TurnOnUpstairsHallWithSensor";
+import { BedroomACTimer } from "./automations/bedroomACTimer";
 
 require('dotenv').config();
 
@@ -43,6 +44,7 @@ const base = async () => {
   TurnOnUpstairsHallWithSensor()
   // personDetection(client)
   garage(client);
+  BedroomACTimer();
 };
 
 base();
