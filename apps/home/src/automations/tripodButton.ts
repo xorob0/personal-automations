@@ -1,4 +1,4 @@
-import {  effect} from "@herja/core";
+import { effect} from "@herja/core";
 import { sensor, light } from "generated/src";
 
 

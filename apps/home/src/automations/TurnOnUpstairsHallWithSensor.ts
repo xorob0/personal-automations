@@ -1,6 +1,5 @@
 import {  effect} from "@herja/core";
-import { alarm_control_panel, binary_sensor, light } from "generated/src";
-import { sun } from "generated";
+import { alarm_control_panel, binary_sensor, light, sun } from "generated/src";
 
 export const TurnOnUpstairsHallWithSensor = () => {
   effect((event)=>{

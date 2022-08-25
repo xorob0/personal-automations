@@ -1,5 +1,5 @@
-import {  effect, shadowState } from "@herja/core";
-import { sun, sensor, light, alarm_control_panel, switches } from "generated/src";
+import { callService, effect, shadowState } from "@herja/core";
+import { sun, sensor, light, alarm_control_panel, switches, binary_sensor } from "generated/src";
 import { clearTimeout } from "timers";
 import { getAllLights, turnOffAllLights } from "../utils/allLights";
 
@@ -43,6 +43,7 @@ export const nightMode = () => {
         await turnOffAllLights()
       }
       alarm_control_panel.alarmo.armNight()
+      console.log('alarm should be armed for night')
     }
     else {
       turnOnBedroomLight()
@@ -57,4 +58,11 @@ export const nightMode = () => {
       alarm_control_panel.alarmo.disarm()
     }
   }, [sun.sun])
+  effect((e)=>{
+    if(e.data.new_state.state !== 'off')
+      return
+    if(alarm_control_panel.alarmo.state.state !== 'armed_night')
+      return
+    alarm_control_panel.alarmo.disarm()
+  }, [binary_sensor.tim_s_id_4_car_is_active])
 };
