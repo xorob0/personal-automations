@@ -48,4 +48,13 @@ export const nightMode = () => {
       turnOnBedroomLight()
     }
   }, [sensor.bedside_button_action, sensor.bedroom_button_tim_action, sensor.bedroom_button_gaby_action])
+
+  effect(()=>{
+    if(alarm_control_panel.alarmo.state.state !== 'armed_night')
+      return
+
+    if( sun.sun.isAboveHorizon()){
+      alarm_control_panel.alarmo.disarm()
+    }
+  }, [sun.sun])
 };

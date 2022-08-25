@@ -1,9 +1,10 @@
 import {  effect} from "@herja/core";
 import { alarm_control_panel, binary_sensor, light } from "generated/src";
+import { sun } from "generated";
 
 export const TurnOnUpstairsHallWithSensor = () => {
   effect((event)=>{
-    if(event.data.new_state.state && alarm_control_panel.alarmo.isDisarmed())
+    if(event.data.new_state.state && alarm_control_panel.alarmo.isDisarmed() && sun.sun.isBelowHorizon())
     {
       light.hall_upstairs.turn_on()
       setTimeout(() => {
