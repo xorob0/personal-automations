@@ -1,4 +1,4 @@
-import { callService, effect, Light, shadowState, Switch, SwitchEntityId } from "@herja/core";
+import {  effect, shadowState } from "@herja/core";
 import { sun, sensor, light, alarm_control_panel, switches } from "generated/src";
 import { clearTimeout } from "timers";
 import { getAllLights, turnOffAllLights } from "../utils/allLights";
@@ -42,27 +42,10 @@ export const nightMode = () => {
       else{
         await turnOffAllLights()
       }
+      alarm_control_panel.alarmo.armNight()
     }
     else {
       turnOnBedroomLight()
     }
   }, [sensor.bedside_button_action, sensor.bedroom_button_tim_action, sensor.bedroom_button_gaby_action])
-
-  // effect(()=>{
-  //   if(alarm_control_panel.alarmo.state.state !== 'armed_night')
-  //     return
-  //
-  //   if( sun.sun.isAboveHorizon()){
-  //     alarm_control_panel.alarmo.disarm()
-  //   }
-  // }, [sun.sun])
-  //
-  // effect((event)=>{
-  //   if(alarm_control_panel.alarmo.state.state !== 'armed_night')
-  //     return
-  //
-  //   if(event.data.actionName === 'alarm'){
-  //     alarm_control_panel.alarmo.disarm()
-  //   }
-  // }, [{eventType: "shortcut_event"}])
 };
