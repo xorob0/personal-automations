@@ -23,22 +23,27 @@ let state = GarageState.Unknown;
 let intervalID: NodeJS.Timer|undefined  = undefined;
 
 export const garage = (client: mqtt.MqttClient) => {
+  console.log('starting garage')
   const setPercentOpen = (value: number) => {
+    console.log("setPercentOpen", value);
     percentOpen = value;
     client.publish('herja/sensor/garage_position', value.toString());
   };
   const setState = (value: GarageState) => {
+    console.log("setState", value);
     state = value;
     client.publish('herja/sensor/garage_state', value.toString());
   };
 
   const IntervalIncrement = () => {
+    console.log("IntervalIncrement");
     clearInterval(intervalID as number|undefined);
     intervalID = setInterval(() => {
       if (percentOpen < 99) setPercentOpen(percentOpen + 1);
     }, MOVE_SPEED);
   };
   const IntervalDecrement = () => {
+    console.log("IntervalDecrement");
     clearInterval(intervalID as number|undefined);
     intervalID = setInterval(() => {
       if (percentOpen > 1) setPercentOpen(percentOpen - 1);
@@ -52,14 +57,17 @@ export const garage = (client: mqtt.MqttClient) => {
   }
   else if (!binary_sensor.garage_electric_door_sensor_open_contact.isOn()) {
     setState(GarageState.Open)
+    console.log('detected as open')
     percentOpen = 100
   }
   else {
     setState(GarageState.Opening)
+    console.log('detected as unknown, assuming opening')
     percentOpen = 50
   }
 
     effect(() => {
+      console.log('binary_sensor.garage_electric_door_sensor_closed_contact changed', binary_sensor.garage_electric_door_sensor_closed_contact.isOn())
     if (binary_sensor.garage_electric_door_sensor_closed_contact.isOn()) {
       setState(GarageState.Opening);
       IntervalIncrement();
@@ -71,6 +79,7 @@ export const garage = (client: mqtt.MqttClient) => {
   }, [binary_sensor.garage_electric_door_sensor_closed_contact]);
 
   effect(() => {
+    console.log('binary_sensor.garage_electric_door_sensor_open_contact changed', binary_sensor.garage_electric_door_sensor_open_contact.isOn())
     if (binary_sensor.garage_electric_door_sensor_open_contact.isOn()) {
       setState(GarageState.Closing);
       IntervalDecrement();
@@ -82,6 +91,7 @@ export const garage = (client: mqtt.MqttClient) => {
   }, [binary_sensor.garage_electric_door_sensor_open_contact]);
 
   effect(() => {
+    console.log('switches.garage_button changed', switches.garage_button.isOn(), state)
     if (switches.garage_button.isOn()) {
       clearInterval(intervalID as number|undefined);
       switch (state) {
@@ -104,6 +114,7 @@ export const garage = (client: mqtt.MqttClient) => {
   }, [switches.garage_button]);
 
   effect(() => {
+    console.log('event garage open', percentOpen, state)
     clearInterval(intervalID as number|undefined);
     if (percentOpen === 0) {
       switches.garage_button.turn_on();
@@ -130,6 +141,7 @@ export const garage = (client: mqtt.MqttClient) => {
   }, [{ eventType: 'garage.open' }]);
 
   effect(() => {
+    console.log('event garage close', percentOpen, state)
     clearInterval(intervalID as number|undefined);
     if (percentOpen === 100) {
       switches.garage_button.turn_on();
@@ -156,6 +168,7 @@ export const garage = (client: mqtt.MqttClient) => {
   }, [{ eventType: 'garage.close' }]);
 
   effect(() => {
+    console.log('event garage stop', percentOpen, state)
     clearInterval(intervalID as number|undefined);
     switch (state) {
       case GarageState.Closing:
@@ -169,6 +182,7 @@ export const garage = (client: mqtt.MqttClient) => {
 
   effect(
     async (event) => {
+      console.log('event garage set position', percentOpen, state, event)
       console.log(event.data.position);
       if(typeof event.data.position !== 'number')
         return
