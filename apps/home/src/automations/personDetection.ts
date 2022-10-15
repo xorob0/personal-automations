@@ -1,28 +1,53 @@
 import mqtt from 'mqtt'
 import { effect } from "@herja/core";
-import { sensor, device_tracker } from "generated/src";
+import { sensor, binary_sensor } from 'generated/src'
 
+TIMEOUT = 5 * 60 * 1000
+
+const tim_sensors = [
+    {
+      sensor: sensor.s22_wifi_connection,
+      value: 'Private',
+      weight: 2
+    },
+    {
+      sensor: binary_sensor.tim_s_galaxy_s22_living_room,
+      value: true,
+      weight: 1
+    },
+    {
+      sensor: binary_sensor.tim_s_galaxy_s22_bedroom,
+      value: true,
+      weight: 2
+    },
+    {
+      sensor: binary_sensor.tim_s_galaxy_s22_office,
+      value: true,
+      weight: 2
+    },
+    {
+      sensor: binary_sensor.tim_s_galaxy_s22_garage,
+      value: true,
+      weight: 2
+    },
+    {
+      sensor: binary_sensor.tim_s_galaxy_s22_victor,
+      value: true,
+      weight: -100
+    },
+  ]
 
 export const personDetection = (client:mqtt.MqttClient) => {
-  const detectTim = () =>{
-    console.log(sensor.s22_wifi_connection.state.state)
-    if(sensor.s22_wifi_connection.state.state === "Private" || device_tracker.s22.isHome() || device_tracker.galaxy_s22.isHome() )
-      client.publish('herja/sensor/tim_presence', "home");
-    else
-      client.publish('herja/sensor/tim_presence', "not_home");
-  }
-  const detectGaby = () => {
-    if(device_tracker.gaby_s_phone_tracker.isHome() || device_tracker.kapy.isHome() )
-      client.publish('herja/sensor/gaby_presence', "home");
-    else
-      client.publish('herja/sensor/gaby_presence', "not_home");
-  }
-  detectTim()
-  detectGaby()
   effect(()=>{
-    detectTim()
-  }, [sensor.s22_wifi_connection, device_tracker.s22, device_tracker.galaxy_s22])
-  effect(()=>{
-    detectGaby()
-  }, [device_tracker.gaby_s_phone_tracker, device_tracker.kapy])
+    const weight = tim_sensors.reduce((acc, s) => {
+      if(s.sensor.state.state === s.value)
+        return acc + s.weight;
+      return acc
+    }, 0)
+    if(weight > 0){
+      client.publish('herja/device_tracker/tim', 'home' )
+    }else{
+      client.publish('herja/device_tracker/tim', 'not_home' )
+    }
+  }, tim_sensors.map(s => s.sensor))
 };
