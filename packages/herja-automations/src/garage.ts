@@ -1,6 +1,6 @@
 import { callService, effect } from "@herja/core";
 import { binary_sensor, switches } from "generated/src";
-import * as mqtt from 'mqtt';
+import { createMQTTSensor } from "mqtt-utils/src";
 
 const MOVE_SPEED = 190;
 
@@ -22,17 +22,19 @@ let state = GarageState.Unknown;
 
 let intervalID: NodeJS.Timer|undefined  = undefined;
 
-export const garage = (client: mqtt.MqttClient) => {
+export const garage = () => {
   console.log('starting garage')
+  const garagePosition = createMQTTSensor('garage_position')
+  const garageState = createMQTTSensor('garage_state')
   const setPercentOpen = (value: number) => {
     console.log("setPercentOpen", value);
     percentOpen = value;
-    client.publish('herja/sensor/garage_position', value.toString());
+    garagePosition.set(value.toString());
   };
   const setState = (value: GarageState) => {
     console.log("setState", value);
     state = value;
-    client.publish('herja/sensor/garage_state', value.toString());
+    garageState.set(value.toString());
   };
 
   const IntervalIncrement = () => {

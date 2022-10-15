@@ -23,7 +23,6 @@ require('dotenv').config();
 const base = async () => {
   if (!process.env.API_URL || !process.env.API_TOKEN)
     throw new Error('You need to specify API_URL and API_TOKEN');
-  const client = mqtt.connect('mqtt://192.168.2.65:1883');
   await configure({
     url: process.env.API_URL,
     access_token: process.env.API_TOKEN,
@@ -43,8 +42,8 @@ const base = async () => {
   turnOnTripodOnSunset()
   turnOnToiletLightWithDoor()
   TurnOnUpstairsHallWithSensor()
-  personDetection(client)
-  garage(client);
+  personDetection()
+  garage();
   BedroomACTimer();
 };
 
