@@ -12,26 +12,26 @@ const tim_sensors = [
       value: 'Private',
       weight: 2
     },
-    // {
-    //   sensor: binary_sensor.tim_s_galaxy_s22_living_room,
-    //   value: true,
-    //   weight: 1
-    // },
-    // {
-    //   sensor: binary_sensor.tim_s_galaxy_s22_bedroom,
-    //   value: true,
-    //   weight: 2
-    // },
-    // {
-    //   sensor: binary_sensor.tim_s_galaxy_s22_office,
-    //   value: true,
-    //   weight: 2
-    // },
-    // {
-    //   sensor: binary_sensor.tim_s_galaxy_s22_garage,
-    //   value: true,
-    //   weight: 2
-    // },
+    {
+      sensor: binary_sensor.tim_s_galaxy_s22_living_room,
+      value: true,
+      weight: 1
+    },
+    {
+      sensor: binary_sensor.tim_s_galaxy_s22_bedroom,
+      value: true,
+      weight: 2
+    },
+    {
+      sensor: binary_sensor.tim_s_galaxy_s22_office,
+      value: true,
+      weight: 2
+    },
+    {
+      sensor: binary_sensor.tim_s_galaxy_s22_garage,
+      value: true,
+      weight: 2
+    },
     // {
     //   sensor: binary_sensor.tim_s_galaxy_s22_victor,
     //   value: true,
@@ -43,7 +43,8 @@ let lastTim = 'unknown'
 
 export const personDetection = () => {
   const {setHome, setNotHome} = createMQTTDeviceTracker('Tim calculated')
-  effect(()=>{
+  effect((e)=>{
+    console.log(e)
     const weight = tim_sensors.reduce((acc, s) => {
       if(s.sensor.state.state === s.value)
         return acc + s.weight;

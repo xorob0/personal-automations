@@ -1,5 +1,5 @@
 import {shadowState, BinarySensor} from "@herja/core"
-        export type BinarySensorIDs = "1_yjx_427_park_brake_status" | "1_yjx_427_tire_warning" | "1_yjx_427_low_brake_fluid_warning" | "1_yjx_427_low_coolant_level_warning" | "1_yjx_427_low_wash_water_warning" | "1_yjx_427_windows_closed" | "gaby_s_galaxy_s21_4" | "tim_s_galaxy_s22_4" | "id_4_2" | "gaby_s_galaxy_s21_living_room" | "tim_s_galaxy_s22_living_room" | "gaby_s_galaxy_s21_3" | "tim_s_galaxy_s22_3" | "id_4" | "sm_g980f_is_charging" | "sm_g980f_headphones" | "sm_g980f_mic_muted" | "sm_g980f_speakerphone" | "sm_g980f_music_active" | "sm_g980f_bluetooth_state" | "sm_g980f_device_locked" | "sm_g980f_device_secure" | "sm_g980f_keyguard_locked" | "sm_g980f_keyguard_secure" | "sm_g980f_mobile_data" | "sm_g980f_mobile_data_roaming" | "sm_g980f_wifi_state" | "tims_macbook_pro_audio_output_in_use" | "tims_macbook_pro_camera_in_use" | "tims_macbook_pro_audio_input_in_use" | "tims_macbook_pro_active" | "tims_macbook_pro_focus" | "s22_is_charging" | "s22_app_inactive" | "s22_headphones" | "s22_mic_muted" | "s22_speakerphone" | "s22_music_active" | "s22_bluetooth_state" | "s22_work_profile" | "s22_device_locked" | "s22_device_secure" | "s22_keyguard_locked" | "s22_keyguard_secure" | "s22_mobile_data" | "s22_mobile_data_roaming" | "s22_wifi_state" | "s22_interactive" | "s22_doze_mode" | "s22_power_save" | "0x00124b002520a310_battery_low" | "0x00124b002520a310_contact" | "0xb4e3f9fffebc2a4e_update_available" | "0xb4e3f9fffe77c636_update_available" | "0x14b457fffefafbcf_update_available" | "0x00124b002519b204_battery_low" | "0x00124b002519b204_contact" | "bedroom_button_gaby_update_available" | "bedroom_button_tim_update_available" | "bathroom_door_battery_low" | "bathroom_door_contact" | "siren_battery_low" | "garage_electric_door_sensor_closed_contact" | "bedroom_window_bed_contact" | "desk_outlet_update_available" | "bathroom_spot_1_update_available" | "hall_stairs_update_available" | "kitchen_spot_3_update_available" | "garage_car_update_available" | "hall_entrance_update_available" | "garage_fridge_update_available" | "entrance_door_contact" | "toilet_door_battery_low" | "toilet_door_contact" | "garden_door_contact" | "garage_door_contact" | "bedroom_humidifier_switch_update_available" | "garage_remote_update_available" | "garage_electric_door_sensor_open_contact" | "toilet_update_available" | "bedside_lamp_update_available" | "fridge_door_sensor_contact" | "hall_upstairs_spot_1_update_available" | "hall_upstairs_spot_2_update_available" | "hall_upstairs_spot_3_update_available" | "stairs_motion_sensor_tamper" | "stairs_motion_sensor_battery_low" | "stairs_motion_sensor_occupancy" | "bedroom_secondary_lamp_update_available" | "bathroom_spot_2_update_available" | "bedroom_bed_light_update_available" | "living_room_remote_update_available" | "kitchen_spot_2_update_available" | "dining_room_spot_1_update_available" | "coffee_machine_outlet_update_available" | "dining_room_spot_2_update_available" | "living_room_light_update_available" | "kitchen_spot_1_update_available" | "dining_room_spot_3_update_available" | "living_room_spot_3_update_available" | "tim_s_galaxy_s22" | "gaby_s_galaxy_s21" | "updater" | "1_yjx_427_liquid_range_critical" | "my_wall_panel_usb_plugged" | "my_wall_panel_ac_plugged" | "my_wall_panel_charging" | "my_wall_panel_face_detected" | "my_wall_panel_motion_detected" | "wvgzzze2zmp011645_climatisation_without_external_power" | "wvgzzze2zmp011645_climatisation_at_unlock" | "wvgzzze2zmp011645_zone_front_left_enabled" | "wvgzzze2zmp011645_zone_front_right_enabled" | "wvgzzze2zmp011645_window_heating_enabled" | "wvgzzze2zmp011645_front_window_heating_state" | "wvgzzze2zmp011645_rear_window_heating_state" | "wvgzzze2zmp011645_auto_unlock_plug_when_charged" | "wvgzzze2zmp011645_plug_connection_state" | "wvgzzze2zmp011645_plug_lock_state" | "tim_s_id_4_insufficient_battery_level_warning" | "tim_s_id_4_car_is_online" | "tim_s_id_4_car_is_active" | "gaby_s_galaxy_s21_2" | "tim_s_galaxy_s22_2"
+        export type BinarySensorIDs = "1_yjx_427_park_brake_status" | "1_yjx_427_tire_warning" | "1_yjx_427_low_brake_fluid_warning" | "1_yjx_427_low_coolant_level_warning" | "1_yjx_427_low_wash_water_warning" | "1_yjx_427_windows_closed" | "gaby_s_galaxy_s21_4" | "tim_s_galaxy_s22_4" | "id_4_2" | "gaby_s_galaxy_s21_living_room" | "tim_s_galaxy_s22_living_room" | "sm_g980f_is_charging" | "sm_g980f_headphones" | "sm_g980f_mic_muted" | "sm_g980f_speakerphone" | "sm_g980f_music_active" | "sm_g980f_bluetooth_state" | "sm_g980f_device_locked" | "sm_g980f_device_secure" | "sm_g980f_keyguard_locked" | "sm_g980f_keyguard_secure" | "sm_g980f_mobile_data" | "sm_g980f_mobile_data_roaming" | "sm_g980f_wifi_state" | "tims_macbook_pro_audio_output_in_use" | "tims_macbook_pro_camera_in_use" | "tims_macbook_pro_audio_input_in_use" | "tims_macbook_pro_active" | "tims_macbook_pro_focus" | "s22_is_charging" | "s22_app_inactive" | "s22_headphones" | "s22_mic_muted" | "s22_speakerphone" | "s22_music_active" | "s22_bluetooth_state" | "s22_work_profile" | "s22_device_locked" | "s22_device_secure" | "s22_keyguard_locked" | "s22_keyguard_secure" | "s22_mobile_data" | "s22_mobile_data_roaming" | "s22_wifi_state" | "s22_interactive" | "s22_doze_mode" | "s22_power_save" | "0x00124b002520a310_battery_low" | "0x00124b002520a310_contact" | "0xb4e3f9fffebc2a4e_update_available" | "0xb4e3f9fffe77c636_update_available" | "0x14b457fffefafbcf_update_available" | "0x00124b002519b204_battery_low" | "0x00124b002519b204_contact" | "bedroom_button_gaby_update_available" | "bedroom_button_tim_update_available" | "bathroom_door_battery_low" | "bathroom_door_contact" | "siren_battery_low" | "garage_electric_door_sensor_closed_contact" | "bedroom_window_bed_contact" | "desk_outlet_update_available" | "bathroom_spot_1_update_available" | "hall_stairs_update_available" | "kitchen_spot_3_update_available" | "garage_car_update_available" | "hall_entrance_update_available" | "garage_fridge_update_available" | "entrance_door_contact" | "toilet_door_battery_low" | "toilet_door_contact" | "garden_door_contact" | "garage_door_contact" | "bedroom_humidifier_switch_update_available" | "garage_remote_update_available" | "garage_electric_door_sensor_open_contact" | "toilet_update_available" | "bedside_lamp_update_available" | "fridge_door_sensor_contact" | "hall_upstairs_spot_1_update_available" | "hall_upstairs_spot_2_update_available" | "hall_upstairs_spot_3_update_available" | "stairs_motion_sensor_tamper" | "stairs_motion_sensor_battery_low" | "stairs_motion_sensor_occupancy" | "bedroom_secondary_lamp_update_available" | "bathroom_spot_2_update_available" | "bedroom_bed_light_update_available" | "living_room_remote_update_available" | "kitchen_spot_2_update_available" | "dining_room_spot_1_update_available" | "coffee_machine_outlet_update_available" | "dining_room_spot_2_update_available" | "living_room_light_update_available" | "kitchen_spot_1_update_available" | "dining_room_spot_3_update_available" | "living_room_spot_3_update_available" | "tim_s_galaxy_s22" | "gaby_s_galaxy_s21" | "updater" | "1_yjx_427_liquid_range_critical" | "my_wall_panel_usb_plugged" | "my_wall_panel_ac_plugged" | "my_wall_panel_charging" | "my_wall_panel_face_detected" | "my_wall_panel_motion_detected" | "wvgzzze2zmp011645_climatisation_without_external_power" | "wvgzzze2zmp011645_climatisation_at_unlock" | "wvgzzze2zmp011645_zone_front_left_enabled" | "wvgzzze2zmp011645_zone_front_right_enabled" | "wvgzzze2zmp011645_window_heating_enabled" | "wvgzzze2zmp011645_front_window_heating_state" | "wvgzzze2zmp011645_rear_window_heating_state" | "wvgzzze2zmp011645_auto_unlock_plug_when_charged" | "wvgzzze2zmp011645_plug_connection_state" | "wvgzzze2zmp011645_plug_lock_state" | "tim_s_id_4_insufficient_battery_level_warning" | "tim_s_id_4_car_is_online" | "tim_s_id_4_car_is_active" | "gaby_s_galaxy_s21_2" | "tim_s_galaxy_s22_2" | "0x0017880109bde997_update_available" | "gaby_s_galaxy_s21_bedroom" | "tim_s_galaxy_s22_bedroom" | "gaby_s_galaxy_s21_garage" | "tim_s_galaxy_s22_garage" | "id_4_garage" | "gaby_s_galaxy_s21_office" | "tim_s_galaxy_s22_office"
 export const binary_sensor: BinarySensor<BinarySensorIDs> = {
   
   ["1_yjx_427_park_brake_status"]: {
@@ -66,24 +66,6 @@ export const binary_sensor: BinarySensor<BinarySensorIDs> = {
     entity_id: "binary_sensor.tim_s_galaxy_s22_living_room",
     isOn: () => shadowState["binary_sensor.tim_s_galaxy_s22_living_room"].state === "on",
     get state() { return shadowState["binary_sensor.tim_s_galaxy_s22_living_room"]},
-  },
-
-  ["gaby_s_galaxy_s21_3"]: {
-    entity_id: "binary_sensor.gaby_s_galaxy_s21_3",
-    isOn: () => shadowState["binary_sensor.gaby_s_galaxy_s21_3"].state === "on",
-    get state() { return shadowState["binary_sensor.gaby_s_galaxy_s21_3"]},
-  },
-
-  ["tim_s_galaxy_s22_3"]: {
-    entity_id: "binary_sensor.tim_s_galaxy_s22_3",
-    isOn: () => shadowState["binary_sensor.tim_s_galaxy_s22_3"].state === "on",
-    get state() { return shadowState["binary_sensor.tim_s_galaxy_s22_3"]},
-  },
-
-  ["id_4"]: {
-    entity_id: "binary_sensor.id_4",
-    isOn: () => shadowState["binary_sensor.id_4"].state === "on",
-    get state() { return shadowState["binary_sensor.id_4"]},
   },
 
   ["sm_g980f_is_charging"]: {
@@ -744,6 +726,54 @@ export const binary_sensor: BinarySensor<BinarySensorIDs> = {
     entity_id: "binary_sensor.tim_s_galaxy_s22_2",
     isOn: () => shadowState["binary_sensor.tim_s_galaxy_s22_2"].state === "on",
     get state() { return shadowState["binary_sensor.tim_s_galaxy_s22_2"]},
+  },
+
+  ["0x0017880109bde997_update_available"]: {
+    entity_id: "binary_sensor.0x0017880109bde997_update_available",
+    isOn: () => shadowState["binary_sensor.0x0017880109bde997_update_available"].state === "on",
+    get state() { return shadowState["binary_sensor.0x0017880109bde997_update_available"]},
+  },
+
+  ["gaby_s_galaxy_s21_bedroom"]: {
+    entity_id: "binary_sensor.gaby_s_galaxy_s21_bedroom",
+    isOn: () => shadowState["binary_sensor.gaby_s_galaxy_s21_bedroom"].state === "on",
+    get state() { return shadowState["binary_sensor.gaby_s_galaxy_s21_bedroom"]},
+  },
+
+  ["tim_s_galaxy_s22_bedroom"]: {
+    entity_id: "binary_sensor.tim_s_galaxy_s22_bedroom",
+    isOn: () => shadowState["binary_sensor.tim_s_galaxy_s22_bedroom"].state === "on",
+    get state() { return shadowState["binary_sensor.tim_s_galaxy_s22_bedroom"]},
+  },
+
+  ["gaby_s_galaxy_s21_garage"]: {
+    entity_id: "binary_sensor.gaby_s_galaxy_s21_garage",
+    isOn: () => shadowState["binary_sensor.gaby_s_galaxy_s21_garage"].state === "on",
+    get state() { return shadowState["binary_sensor.gaby_s_galaxy_s21_garage"]},
+  },
+
+  ["tim_s_galaxy_s22_garage"]: {
+    entity_id: "binary_sensor.tim_s_galaxy_s22_garage",
+    isOn: () => shadowState["binary_sensor.tim_s_galaxy_s22_garage"].state === "on",
+    get state() { return shadowState["binary_sensor.tim_s_galaxy_s22_garage"]},
+  },
+
+  ["id_4_garage"]: {
+    entity_id: "binary_sensor.id_4_garage",
+    isOn: () => shadowState["binary_sensor.id_4_garage"].state === "on",
+    get state() { return shadowState["binary_sensor.id_4_garage"]},
+  },
+
+  ["gaby_s_galaxy_s21_office"]: {
+    entity_id: "binary_sensor.gaby_s_galaxy_s21_office",
+    isOn: () => shadowState["binary_sensor.gaby_s_galaxy_s21_office"].state === "on",
+    get state() { return shadowState["binary_sensor.gaby_s_galaxy_s21_office"]},
+  },
+
+  ["tim_s_galaxy_s22_office"]: {
+    entity_id: "binary_sensor.tim_s_galaxy_s22_office",
+    isOn: () => shadowState["binary_sensor.tim_s_galaxy_s22_office"].state === "on",
+    get state() { return shadowState["binary_sensor.tim_s_galaxy_s22_office"]},
   },
 }
   
