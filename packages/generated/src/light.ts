@@ -1,5 +1,5 @@
 import {callService, shadowState, Light} from "@herja/core"
-    export type LightIDs = "bedside_lamp" | "garden" | "bedroom_secondary_lamp" | "bedroom_lights" | "bedroom_secondary_lights" | "living_room_tripod" | "bathroom" | "garage" | "hall_upstairs" | "hall" | "living_room_all" | "dining_room_spots" | "living_room_spots" | "kitchen_spots" | "0xb4e3f9fffebc2a4e" | "0xb4e3f9fffe77c636" | "0x14b457fffefafbcf" | "bathroom_spot_1" | "hall_stairs" | "living_room_spot_1" | "kitchen_spot_3" | "garage_car" | "hall_entrance" | "garage_fridge" | "toilet" | "hall_upstairs_spot_1" | "hall_upstairs_spot_2" | "hall_upstairs_spot_3" | "bathroom_spot_2" | "bedroom_bed_light" | "kitchen_spot_2" | "dining_room_spot_1" | "dining_room_spot_2" | "living_room_light" | "kitchen_spot_1" | "dining_room_spot_3" | "living_room_spot_2" | "living_room_spot_3" | "0x0017880109bde997"
+    export type LightIDs = "bedside_lamp" | "garden" | "bedroom_secondary_lamp" | "bedroom_lights" | "bedroom_secondary_lights" | "garage" | "hall_upstairs" | "hall" | "living_room_all" | "dining_room_spots" | "living_room_spots" | "kitchen_spots" | "0x0017880109bde997" | "0xb4e3f9fffebc2a4e" | "0xb4e3f9fffe77c636" | "bathroom_spot_1" | "hall_stairs" | "living_room_spot_1" | "kitchen_spot_3" | "garage_car" | "hall_entrance" | "garage_fridge" | "toilet" | "hall_upstairs_spot_1" | "hall_upstairs_spot_2" | "hall_upstairs_spot_3" | "bathroom_spot_2" | "bedroom_bed_light" | "kitchen_spot_2" | "dining_room_spot_1" | "dining_room_spot_2" | "living_room_light" | "kitchen_spot_1" | "dining_room_spot_3" | "living_room_spot_2" | "living_room_spot_3" | "bathroom" | "living_room_tripod"
 export const light: Light<LightIDs> = {
 
 ["bedside_lamp"]: {
@@ -45,24 +45,6 @@ turn_off: (serviceData = {}) => callService("light", 'turn_off', serviceData, {e
 isOn: () => shadowState["light.bedroom_secondary_lights"].state === "on",
 toggle: (serviceData = {}) => callService("light", 'toggle', serviceData, {entity_id: "light.bedroom_secondary_lights"}),
 get state() { return shadowState["light.bedroom_secondary_lights"]},
-},
-
-["living_room_tripod"]: {
-entity_id: "light.living_room_tripod",
-turn_on: (serviceData = {}) => callService("light", 'turn_on', serviceData, {entity_id: "light.living_room_tripod"}),
-turn_off: (serviceData = {}) => callService("light", 'turn_off', serviceData, {entity_id: "light.living_room_tripod"}),
-isOn: () => shadowState["light.living_room_tripod"].state === "on",
-toggle: (serviceData = {}) => callService("light", 'toggle', serviceData, {entity_id: "light.living_room_tripod"}),
-get state() { return shadowState["light.living_room_tripod"]},
-},
-
-["bathroom"]: {
-entity_id: "light.bathroom",
-turn_on: (serviceData = {}) => callService("light", 'turn_on', serviceData, {entity_id: "light.bathroom"}),
-turn_off: (serviceData = {}) => callService("light", 'turn_off', serviceData, {entity_id: "light.bathroom"}),
-isOn: () => shadowState["light.bathroom"].state === "on",
-toggle: (serviceData = {}) => callService("light", 'toggle', serviceData, {entity_id: "light.bathroom"}),
-get state() { return shadowState["light.bathroom"]},
 },
 
 ["garage"]: {
@@ -128,6 +110,15 @@ toggle: (serviceData = {}) => callService("light", 'toggle', serviceData, {entit
 get state() { return shadowState["light.kitchen_spots"]},
 },
 
+["0x0017880109bde997"]: {
+entity_id: "light.0x0017880109bde997",
+turn_on: (serviceData = {}) => callService("light", 'turn_on', serviceData, {entity_id: "light.0x0017880109bde997"}),
+turn_off: (serviceData = {}) => callService("light", 'turn_off', serviceData, {entity_id: "light.0x0017880109bde997"}),
+isOn: () => shadowState["light.0x0017880109bde997"].state === "on",
+toggle: (serviceData = {}) => callService("light", 'toggle', serviceData, {entity_id: "light.0x0017880109bde997"}),
+get state() { return shadowState["light.0x0017880109bde997"]},
+},
+
 ["0xb4e3f9fffebc2a4e"]: {
 entity_id: "light.0xb4e3f9fffebc2a4e",
 turn_on: (serviceData = {}) => callService("light", 'turn_on', serviceData, {entity_id: "light.0xb4e3f9fffebc2a4e"}),
@@ -144,15 +135,6 @@ turn_off: (serviceData = {}) => callService("light", 'turn_off', serviceData, {e
 isOn: () => shadowState["light.0xb4e3f9fffe77c636"].state === "on",
 toggle: (serviceData = {}) => callService("light", 'toggle', serviceData, {entity_id: "light.0xb4e3f9fffe77c636"}),
 get state() { return shadowState["light.0xb4e3f9fffe77c636"]},
-},
-
-["0x14b457fffefafbcf"]: {
-entity_id: "light.0x14b457fffefafbcf",
-turn_on: (serviceData = {}) => callService("light", 'turn_on', serviceData, {entity_id: "light.0x14b457fffefafbcf"}),
-turn_off: (serviceData = {}) => callService("light", 'turn_off', serviceData, {entity_id: "light.0x14b457fffefafbcf"}),
-isOn: () => shadowState["light.0x14b457fffefafbcf"].state === "on",
-toggle: (serviceData = {}) => callService("light", 'toggle', serviceData, {entity_id: "light.0x14b457fffefafbcf"}),
-get state() { return shadowState["light.0x14b457fffefafbcf"]},
 },
 
 ["bathroom_spot_1"]: {
@@ -344,12 +326,21 @@ toggle: (serviceData = {}) => callService("light", 'toggle', serviceData, {entit
 get state() { return shadowState["light.living_room_spot_3"]},
 },
 
-["0x0017880109bde997"]: {
-entity_id: "light.0x0017880109bde997",
-turn_on: (serviceData = {}) => callService("light", 'turn_on', serviceData, {entity_id: "light.0x0017880109bde997"}),
-turn_off: (serviceData = {}) => callService("light", 'turn_off', serviceData, {entity_id: "light.0x0017880109bde997"}),
-isOn: () => shadowState["light.0x0017880109bde997"].state === "on",
-toggle: (serviceData = {}) => callService("light", 'toggle', serviceData, {entity_id: "light.0x0017880109bde997"}),
-get state() { return shadowState["light.0x0017880109bde997"]},
+["bathroom"]: {
+entity_id: "light.bathroom",
+turn_on: (serviceData = {}) => callService("light", 'turn_on', serviceData, {entity_id: "light.bathroom"}),
+turn_off: (serviceData = {}) => callService("light", 'turn_off', serviceData, {entity_id: "light.bathroom"}),
+isOn: () => shadowState["light.bathroom"].state === "on",
+toggle: (serviceData = {}) => callService("light", 'toggle', serviceData, {entity_id: "light.bathroom"}),
+get state() { return shadowState["light.bathroom"]},
+},
+
+["living_room_tripod"]: {
+entity_id: "light.living_room_tripod",
+turn_on: (serviceData = {}) => callService("light", 'turn_on', serviceData, {entity_id: "light.living_room_tripod"}),
+turn_off: (serviceData = {}) => callService("light", 'turn_off', serviceData, {entity_id: "light.living_room_tripod"}),
+isOn: () => shadowState["light.living_room_tripod"].state === "on",
+toggle: (serviceData = {}) => callService("light", 'toggle', serviceData, {entity_id: "light.living_room_tripod"}),
+get state() { return shadowState["light.living_room_tripod"]},
 },
 }

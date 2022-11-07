@@ -17,6 +17,7 @@ import { BedroomACTimer } from "./automations/bedroomACTimer";
 import { turnOnSomeLightsWhenComingHome } from "./automations/turnOnSomeLightsWhenComingHome";
 import { turnEverythingOffWhenLeaving } from "./automations/turnEverythingOffWhenLeaving";
 import { personDetection } from "./automations/personDetection";
+import { deskButton } from "./automations/DeskButton";
 
 require('dotenv').config();
 
@@ -45,6 +46,7 @@ const base = async () => {
   personDetection()
   garage();
   BedroomACTimer();
+  deskButton();
 };
 
 base();

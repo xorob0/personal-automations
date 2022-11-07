@@ -7,4 +7,5 @@ export * from './person'
 export * from './alarm_control_panel'
 export * from './cover'
 export * from './device_tracker'
+export * from './media_player'
 

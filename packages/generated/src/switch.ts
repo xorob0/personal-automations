@@ -1,151 +1,7 @@
 import {callService, shadowState, Switch} from "@herja/core"
-        export type SwitchIDs = "adaptive_lighting_floor0" | "adaptive_lighting_sleep_mode_floor0" | "adaptive_lighting_adapt_color_floor0" | "adaptive_lighting_adapt_brightness_floor0" | "adaptive_lighting_floor1" | "adaptive_lighting_sleep_mode_floor1" | "adaptive_lighting_adapt_color_floor1" | "adaptive_lighting_adapt_brightness_floor1" | "adaptive_lighting_bathroom" | "adaptive_lighting_sleep_mode_bathroom" | "adaptive_lighting_adapt_color_bathroom" | "adaptive_lighting_adapt_brightness_bathroom" | "adaptive_lighting_toilets" | "adaptive_lighting_sleep_mode_toilets" | "adaptive_lighting_adapt_color_toilets" | "adaptive_lighting_adapt_brightness_toilets" | "wallbox_portal_pause_resume" | "nibe_133481_48043" | "bedroom_switch" | "siren_alarm" | "siren_temperature_alarm" | "siren_humidity_alarm" | "desk_outlet" | "hall_entrance" | "hall_dual_switch_l2" | "hall_dual_switch_l1" | "garden" | "garage_light_switch" | "bedroom_humidifier_switch" | "bedside_lamp" | "bedroom_secondary_lamp" | "garage_button" | "coffee_machine_outlet" | "hall_stairs_switch" | "1_yjx_427_auxheat" | "scene_max_brightness" | "scene_medium_brightness" | "living_room_humidifier" | "bedroom_humidifier" | "siren" | "living_room_bluetooth_inquiries" | "bedroom_bluetooth_inquiries" | "garage_bluetooth_inquiries"
+        export type SwitchIDs = "wallbox_portal_pause_resume" | "bedroom_switch" | "siren_alarm" | "siren_temperature_alarm" | "siren_humidity_alarm" | "desk_outlet" | "hall_entrance" | "hall_dual_switch_l2" | "hall_dual_switch_l1" | "garden" | "garage_light_switch" | "bedroom_humidifier_switch" | "bedside_lamp" | "bedroom_secondary_lamp" | "garage_button" | "coffee_machine_outlet" | "hall_stairs_switch" | "nibe_133481_48043" | "scene_max_brightness" | "scene_medium_brightness" | "living_room_humidifier" | "bedroom_humidifier" | "siren" | "living_room_bluetooth_inquiries" | "bedroom_bluetooth_inquiries" | "garage_bluetooth_inquiries" | "0x00124b00239c172d" | "adaptive_lighting_bedroom" | "adaptive_lighting_sleep_mode_bedroom" | "adaptive_lighting_adapt_color_bedroom" | "adaptive_lighting_adapt_brightness_bedroom" | "adaptive_lighting_hall" | "adaptive_lighting_sleep_mode_hall" | "adaptive_lighting_adapt_color_hall" | "adaptive_lighting_adapt_brightness_hall" | "adaptive_lighting_living_room" | "adaptive_lighting_sleep_mode_living_room" | "adaptive_lighting_adapt_color_living_room" | "adaptive_lighting_adapt_brightness_living_room"
 export const switches: Switch<SwitchIDs> = {
   
-  ["adaptive_lighting_floor0"]: {
-    entity_id: "switch.adaptive_lighting_floor0",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_floor0"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_floor0"}),
-    isOn: () => shadowState["switch.adaptive_lighting_floor0"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_floor0"}),
-    get state() { return shadowState["switch.adaptive_lighting_floor0"]},
-  },
-
-  ["adaptive_lighting_sleep_mode_floor0"]: {
-    entity_id: "switch.adaptive_lighting_sleep_mode_floor0",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_floor0"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_floor0"}),
-    isOn: () => shadowState["switch.adaptive_lighting_sleep_mode_floor0"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_floor0"}),
-    get state() { return shadowState["switch.adaptive_lighting_sleep_mode_floor0"]},
-  },
-
-  ["adaptive_lighting_adapt_color_floor0"]: {
-    entity_id: "switch.adaptive_lighting_adapt_color_floor0",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_floor0"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_floor0"}),
-    isOn: () => shadowState["switch.adaptive_lighting_adapt_color_floor0"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_floor0"}),
-    get state() { return shadowState["switch.adaptive_lighting_adapt_color_floor0"]},
-  },
-
-  ["adaptive_lighting_adapt_brightness_floor0"]: {
-    entity_id: "switch.adaptive_lighting_adapt_brightness_floor0",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_floor0"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_floor0"}),
-    isOn: () => shadowState["switch.adaptive_lighting_adapt_brightness_floor0"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_floor0"}),
-    get state() { return shadowState["switch.adaptive_lighting_adapt_brightness_floor0"]},
-  },
-
-  ["adaptive_lighting_floor1"]: {
-    entity_id: "switch.adaptive_lighting_floor1",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_floor1"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_floor1"}),
-    isOn: () => shadowState["switch.adaptive_lighting_floor1"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_floor1"}),
-    get state() { return shadowState["switch.adaptive_lighting_floor1"]},
-  },
-
-  ["adaptive_lighting_sleep_mode_floor1"]: {
-    entity_id: "switch.adaptive_lighting_sleep_mode_floor1",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_floor1"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_floor1"}),
-    isOn: () => shadowState["switch.adaptive_lighting_sleep_mode_floor1"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_floor1"}),
-    get state() { return shadowState["switch.adaptive_lighting_sleep_mode_floor1"]},
-  },
-
-  ["adaptive_lighting_adapt_color_floor1"]: {
-    entity_id: "switch.adaptive_lighting_adapt_color_floor1",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_floor1"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_floor1"}),
-    isOn: () => shadowState["switch.adaptive_lighting_adapt_color_floor1"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_floor1"}),
-    get state() { return shadowState["switch.adaptive_lighting_adapt_color_floor1"]},
-  },
-
-  ["adaptive_lighting_adapt_brightness_floor1"]: {
-    entity_id: "switch.adaptive_lighting_adapt_brightness_floor1",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_floor1"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_floor1"}),
-    isOn: () => shadowState["switch.adaptive_lighting_adapt_brightness_floor1"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_floor1"}),
-    get state() { return shadowState["switch.adaptive_lighting_adapt_brightness_floor1"]},
-  },
-
-  ["adaptive_lighting_bathroom"]: {
-    entity_id: "switch.adaptive_lighting_bathroom",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_bathroom"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_bathroom"}),
-    isOn: () => shadowState["switch.adaptive_lighting_bathroom"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_bathroom"}),
-    get state() { return shadowState["switch.adaptive_lighting_bathroom"]},
-  },
-
-  ["adaptive_lighting_sleep_mode_bathroom"]: {
-    entity_id: "switch.adaptive_lighting_sleep_mode_bathroom",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_bathroom"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_bathroom"}),
-    isOn: () => shadowState["switch.adaptive_lighting_sleep_mode_bathroom"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_bathroom"}),
-    get state() { return shadowState["switch.adaptive_lighting_sleep_mode_bathroom"]},
-  },
-
-  ["adaptive_lighting_adapt_color_bathroom"]: {
-    entity_id: "switch.adaptive_lighting_adapt_color_bathroom",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_bathroom"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_bathroom"}),
-    isOn: () => shadowState["switch.adaptive_lighting_adapt_color_bathroom"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_bathroom"}),
-    get state() { return shadowState["switch.adaptive_lighting_adapt_color_bathroom"]},
-  },
-
-  ["adaptive_lighting_adapt_brightness_bathroom"]: {
-    entity_id: "switch.adaptive_lighting_adapt_brightness_bathroom",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_bathroom"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_bathroom"}),
-    isOn: () => shadowState["switch.adaptive_lighting_adapt_brightness_bathroom"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_bathroom"}),
-    get state() { return shadowState["switch.adaptive_lighting_adapt_brightness_bathroom"]},
-  },
-
-  ["adaptive_lighting_toilets"]: {
-    entity_id: "switch.adaptive_lighting_toilets",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_toilets"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_toilets"}),
-    isOn: () => shadowState["switch.adaptive_lighting_toilets"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_toilets"}),
-    get state() { return shadowState["switch.adaptive_lighting_toilets"]},
-  },
-
-  ["adaptive_lighting_sleep_mode_toilets"]: {
-    entity_id: "switch.adaptive_lighting_sleep_mode_toilets",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_toilets"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_toilets"}),
-    isOn: () => shadowState["switch.adaptive_lighting_sleep_mode_toilets"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_toilets"}),
-    get state() { return shadowState["switch.adaptive_lighting_sleep_mode_toilets"]},
-  },
-
-  ["adaptive_lighting_adapt_color_toilets"]: {
-    entity_id: "switch.adaptive_lighting_adapt_color_toilets",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_toilets"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_toilets"}),
-    isOn: () => shadowState["switch.adaptive_lighting_adapt_color_toilets"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_toilets"}),
-    get state() { return shadowState["switch.adaptive_lighting_adapt_color_toilets"]},
-  },
-
-  ["adaptive_lighting_adapt_brightness_toilets"]: {
-    entity_id: "switch.adaptive_lighting_adapt_brightness_toilets",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_toilets"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_toilets"}),
-    isOn: () => shadowState["switch.adaptive_lighting_adapt_brightness_toilets"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_toilets"}),
-    get state() { return shadowState["switch.adaptive_lighting_adapt_brightness_toilets"]},
-  },
-
   ["wallbox_portal_pause_resume"]: {
     entity_id: "switch.wallbox_portal_pause_resume",
     turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.wallbox_portal_pause_resume"}),
@@ -153,15 +9,6 @@ export const switches: Switch<SwitchIDs> = {
     isOn: () => shadowState["switch.wallbox_portal_pause_resume"].state === "on",
     toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.wallbox_portal_pause_resume"}),
     get state() { return shadowState["switch.wallbox_portal_pause_resume"]},
-  },
-
-  ["nibe_133481_48043"]: {
-    entity_id: "switch.nibe_133481_48043",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.nibe_133481_48043"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.nibe_133481_48043"}),
-    isOn: () => shadowState["switch.nibe_133481_48043"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.nibe_133481_48043"}),
-    get state() { return shadowState["switch.nibe_133481_48043"]},
   },
 
   ["bedroom_switch"]: {
@@ -308,13 +155,13 @@ export const switches: Switch<SwitchIDs> = {
     get state() { return shadowState["switch.hall_stairs_switch"]},
   },
 
-  ["1_yjx_427_auxheat"]: {
-    entity_id: "switch.1_yjx_427_auxheat",
-    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.1_yjx_427_auxheat"}),
-    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.1_yjx_427_auxheat"}),
-    isOn: () => shadowState["switch.1_yjx_427_auxheat"].state === "on",
-    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.1_yjx_427_auxheat"}),
-    get state() { return shadowState["switch.1_yjx_427_auxheat"]},
+  ["nibe_133481_48043"]: {
+    entity_id: "switch.nibe_133481_48043",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.nibe_133481_48043"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.nibe_133481_48043"}),
+    isOn: () => shadowState["switch.nibe_133481_48043"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.nibe_133481_48043"}),
+    get state() { return shadowState["switch.nibe_133481_48043"]},
   },
 
   ["scene_max_brightness"]: {
@@ -387,6 +234,123 @@ export const switches: Switch<SwitchIDs> = {
     isOn: () => shadowState["switch.garage_bluetooth_inquiries"].state === "on",
     toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.garage_bluetooth_inquiries"}),
     get state() { return shadowState["switch.garage_bluetooth_inquiries"]},
+  },
+
+  ["0x00124b00239c172d"]: {
+    entity_id: "switch.0x00124b00239c172d",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.0x00124b00239c172d"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.0x00124b00239c172d"}),
+    isOn: () => shadowState["switch.0x00124b00239c172d"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.0x00124b00239c172d"}),
+    get state() { return shadowState["switch.0x00124b00239c172d"]},
+  },
+
+  ["adaptive_lighting_bedroom"]: {
+    entity_id: "switch.adaptive_lighting_bedroom",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_bedroom"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_bedroom"}),
+    isOn: () => shadowState["switch.adaptive_lighting_bedroom"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_bedroom"}),
+    get state() { return shadowState["switch.adaptive_lighting_bedroom"]},
+  },
+
+  ["adaptive_lighting_sleep_mode_bedroom"]: {
+    entity_id: "switch.adaptive_lighting_sleep_mode_bedroom",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_bedroom"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_bedroom"}),
+    isOn: () => shadowState["switch.adaptive_lighting_sleep_mode_bedroom"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_bedroom"}),
+    get state() { return shadowState["switch.adaptive_lighting_sleep_mode_bedroom"]},
+  },
+
+  ["adaptive_lighting_adapt_color_bedroom"]: {
+    entity_id: "switch.adaptive_lighting_adapt_color_bedroom",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_bedroom"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_bedroom"}),
+    isOn: () => shadowState["switch.adaptive_lighting_adapt_color_bedroom"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_bedroom"}),
+    get state() { return shadowState["switch.adaptive_lighting_adapt_color_bedroom"]},
+  },
+
+  ["adaptive_lighting_adapt_brightness_bedroom"]: {
+    entity_id: "switch.adaptive_lighting_adapt_brightness_bedroom",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_bedroom"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_bedroom"}),
+    isOn: () => shadowState["switch.adaptive_lighting_adapt_brightness_bedroom"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_bedroom"}),
+    get state() { return shadowState["switch.adaptive_lighting_adapt_brightness_bedroom"]},
+  },
+
+  ["adaptive_lighting_hall"]: {
+    entity_id: "switch.adaptive_lighting_hall",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_hall"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_hall"}),
+    isOn: () => shadowState["switch.adaptive_lighting_hall"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_hall"}),
+    get state() { return shadowState["switch.adaptive_lighting_hall"]},
+  },
+
+  ["adaptive_lighting_sleep_mode_hall"]: {
+    entity_id: "switch.adaptive_lighting_sleep_mode_hall",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_hall"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_hall"}),
+    isOn: () => shadowState["switch.adaptive_lighting_sleep_mode_hall"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_hall"}),
+    get state() { return shadowState["switch.adaptive_lighting_sleep_mode_hall"]},
+  },
+
+  ["adaptive_lighting_adapt_color_hall"]: {
+    entity_id: "switch.adaptive_lighting_adapt_color_hall",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_hall"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_hall"}),
+    isOn: () => shadowState["switch.adaptive_lighting_adapt_color_hall"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_hall"}),
+    get state() { return shadowState["switch.adaptive_lighting_adapt_color_hall"]},
+  },
+
+  ["adaptive_lighting_adapt_brightness_hall"]: {
+    entity_id: "switch.adaptive_lighting_adapt_brightness_hall",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_hall"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_hall"}),
+    isOn: () => shadowState["switch.adaptive_lighting_adapt_brightness_hall"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_hall"}),
+    get state() { return shadowState["switch.adaptive_lighting_adapt_brightness_hall"]},
+  },
+
+  ["adaptive_lighting_living_room"]: {
+    entity_id: "switch.adaptive_lighting_living_room",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_living_room"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_living_room"}),
+    isOn: () => shadowState["switch.adaptive_lighting_living_room"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_living_room"}),
+    get state() { return shadowState["switch.adaptive_lighting_living_room"]},
+  },
+
+  ["adaptive_lighting_sleep_mode_living_room"]: {
+    entity_id: "switch.adaptive_lighting_sleep_mode_living_room",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_living_room"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_living_room"}),
+    isOn: () => shadowState["switch.adaptive_lighting_sleep_mode_living_room"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_sleep_mode_living_room"}),
+    get state() { return shadowState["switch.adaptive_lighting_sleep_mode_living_room"]},
+  },
+
+  ["adaptive_lighting_adapt_color_living_room"]: {
+    entity_id: "switch.adaptive_lighting_adapt_color_living_room",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_living_room"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_living_room"}),
+    isOn: () => shadowState["switch.adaptive_lighting_adapt_color_living_room"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_adapt_color_living_room"}),
+    get state() { return shadowState["switch.adaptive_lighting_adapt_color_living_room"]},
+  },
+
+  ["adaptive_lighting_adapt_brightness_living_room"]: {
+    entity_id: "switch.adaptive_lighting_adapt_brightness_living_room",
+    turn_on: (serviceData = {}) => callService("switch", 'turn_on', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_living_room"}),
+    turn_off: (serviceData = {}) => callService("switch", 'turn_off', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_living_room"}),
+    isOn: () => shadowState["switch.adaptive_lighting_adapt_brightness_living_room"].state === "on",
+    toggle: (serviceData = {}) => callService("switch", 'toggle', serviceData, {entity_id: "switch.adaptive_lighting_adapt_brightness_living_room"}),
+    get state() { return shadowState["switch.adaptive_lighting_adapt_brightness_living_room"]},
   },
 }
   
