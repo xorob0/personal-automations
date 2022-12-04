@@ -17,7 +17,6 @@ import { turnOnSomeLightsWhenComingHome } from "./automations/turnOnSomeLightsWh
 import { turnEverythingOffWhenLeaving } from "./automations/turnEverythingOffWhenLeaving";
 import { personDetection } from "./automations/personDetection";
 import { deskButton } from "./automations/DeskButton";
-import { alarm_control_panel } from "generated/src";
 
 require('dotenv').config();
 
@@ -29,25 +28,24 @@ const base = async () => {
     access_token: process.env.API_TOKEN,
     path: '../../packages/generated/src',
   });
-  console.log('ici', shadowState["alarm_control_panel.alarmo"])
-  // turnOnGarageLightWhenADoorIsOpened();
-  // turnOnGardenLightWithGardenDoorAtNight();
-  // turnEverythingOffWhenLeaving();
-  // turnOnSomeLightsWhenComingHome()
-  // nightMode()
-  // wallSwitches()
-  // automaticAlarm()
-  // tripodButton()
-  // coffeeMachineButton()
-  // alertFridgeOpen()
-  // garageRemote()
-  // turnOnTripodOnSunset()
-  // turnOnToiletLightWithDoor()
-  // TurnOnUpstairsHallWithSensor()
-  // personDetection()
-  // garage();
-  // BedroomACTimer();
-  // deskButton();
+  turnOnGarageLightWhenADoorIsOpened();
+  turnOnGardenLightWithGardenDoorAtNight();
+  turnEverythingOffWhenLeaving();
+  turnOnSomeLightsWhenComingHome()
+  nightMode()
+  wallSwitches()
+  automaticAlarm()
+  tripodButton()
+  coffeeMachineButton()
+  alertFridgeOpen()
+  garageRemote()
+  turnOnTripodOnSunset()
+  turnOnToiletLightWithDoor()
+  TurnOnUpstairsHallWithSensor()
+  personDetection()
+  garage();
+  BedroomACTimer();
+  deskButton();
 };
 
 base();
