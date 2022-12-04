@@ -10,10 +10,10 @@ export const turnOnGardenLightWithGardenDoorAtNight = () => {
       binary_sensor.garden_door_contact.isOn()
     ) {
       clearTimeout(timeoutID as number|undefined);
-      light.garden.turn_on();
+      light.garden.turnOn();
     } else {
       timeoutID = setTimeout(() => {
-        light.garden.turn_off();
+        light.garden.turnOff();
       }, 10 * 60 * 1000);
     }
   }, [sun.sun, binary_sensor.garden_door_contact]);

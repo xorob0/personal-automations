@@ -1,5 +1,5 @@
-import { effect } from "@herja/core";
-import { light, sun, person } from "generated/src";
+// import { effect } from "@herja/core";
+// import { light, sun, person } from "generated/src";
 
 export const turnOnTripodOnSunset = () => {
   // effect(() => {

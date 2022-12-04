@@ -5,6 +5,6 @@ export const turnOnToiletLightWithDoor = () => {
   effect((event)=>{
     console.log(event)
     if(event.data.new_state.state === 'on')
-      light.toilet.turn_on()
+      light.toilet.turnOn()
   },[binary_sensor.toilet_door_contact])
 };

@@ -14,8 +14,8 @@ export const turnOnSomeLightsWhenComingHome = () => {
       return
     if(!sun.sun.isAboveHorizon())
       return
-    light.hall.turn_on()
-    light.living_room_tripod.turn_on()
+    light.hall.turnOn()
+    light.living_room_tripod.turnOn()
     nobodyHome = false
   }, [binary_sensor.garage_door_contact, binary_sensor.entrance_door_contact]);
 };
