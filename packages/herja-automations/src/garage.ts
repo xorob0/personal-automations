@@ -119,7 +119,7 @@ export const garage = () => {
     console.log('event garage open', percentOpen, state)
     clearInterval(intervalID as number|undefined);
     if (percentOpen === 0) {
-      switches.garage_button.turn_on();
+      switches.garage_button.turnOn();
       return;
     }
     if (percentOpen === 100) {
@@ -127,16 +127,16 @@ export const garage = () => {
     }
     switch (state) {
       case GarageState.Closed:
-        switches.garage_button.turn_on();
+        switches.garage_button.turnOn();
         break;
       case GarageState.Open:
-        switches.garage_button.turn_on();
-        setTimeout(switches.garage_button.turn_on, 100);
-        setTimeout(switches.garage_button.turn_on, 200);
+        switches.garage_button.turnOn();
+        setTimeout(switches.garage_button.turnOn, 1000);
+        setTimeout(switches.garage_button.turnOn, 2000);
         break;
       case GarageState.Closing:
         switches.garage_button.turn_on();
-        setTimeout(switches.garage_button.turn_on, 100);
+        setTimeout(switches.garage_button.turnOn, 1000);
         break;
     }
     // TODO Ensure every 30s
@@ -146,7 +146,7 @@ export const garage = () => {
     console.log('event garage close', percentOpen, state)
     clearInterval(intervalID as number|undefined);
     if (percentOpen === 100) {
-      switches.garage_button.turn_on();
+      switches.garage_button.turnOn();
       return;
     }
     if (percentOpen === 0) {
@@ -154,16 +154,16 @@ export const garage = () => {
     }
     switch (state) {
       case GarageState.Open:
-        switches.garage_button.turn_on();
+        switches.garage_button.turnOn();
         break;
       case GarageState.Closed:
-        switches.garage_button.turn_on();
-        setTimeout(switches.garage_button.turn_on, 100);
-        setTimeout(switches.garage_button.turn_on, 200);
+        switches.garage_button.turnOn();
+        setTimeout(switches.garage_button.turnOn, 1000);
+        setTimeout(switches.garage_button.turnOn, 2000);
         break;
       case GarageState.Opening:
         switches.garage_button.turn_on();
-        setTimeout(switches.garage_button.turn_on, 100);
+        setTimeout(switches.garage_button.turnOn, 1000);
         break;
     }
     // TODO Ensure every 30s
@@ -174,10 +174,10 @@ export const garage = () => {
     clearInterval(intervalID as number|undefined);
     switch (state) {
       case GarageState.Closing:
-        switches.garage_button.turn_on();
+        switches.garage_button.turnOn();
         break;
       case GarageState.Opening:
-        switches.garage_button.turn_on();
+        switches.garage_button.turnOn();
         break;
     }
   }, [{ eventType: 'garage.stop' }]);
