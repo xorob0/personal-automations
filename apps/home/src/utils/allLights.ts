@@ -1,5 +1,5 @@
 import { light } from "generated/src";
-import { callService, Light, shadowState } from "@herja/core";
+import { callService, shadowState } from "@herja/core";
 
 export const missingLights = [light.toilet.entity_id, light.bathroom.entity_id, light.bathroom_spot_2.entity_id, light.bathroom_spot_1.entity_id]
 
@@ -10,10 +10,10 @@ export const getAllLights = ({exceptions}: AllLightsProps = {exceptions:[]} ) =>
     return false
   if(key.match(/light.[0-9a-f]{8}_[0-9a-f]{8}$/))
     return false
-  if(missingLights.includes(key))
+  if((missingLights as unknown as string).includes(key))
     return false
-  if(!exceptions.includes(key))
-    return true
+  return !exceptions.includes(key);
+
 })
 
 export const turnOffAllLights = async ({exceptions}: AllLightsProps = {exceptions:[]}) => {
