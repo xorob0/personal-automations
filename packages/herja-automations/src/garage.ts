@@ -135,7 +135,7 @@ export const garage = () => {
         setTimeout(switches.garage_button.turnOn, 2000);
         break;
       case GarageState.Closing:
-        switches.garage_button.turn_on();
+        switches.garage_button.turnOn();
         setTimeout(switches.garage_button.turnOn, 1000);
         break;
     }
@@ -162,7 +162,7 @@ export const garage = () => {
         setTimeout(switches.garage_button.turnOn, 2000);
         break;
       case GarageState.Opening:
-        switches.garage_button.turn_on();
+        switches.garage_button.turnOn();
         setTimeout(switches.garage_button.turnOn, 1000);
         break;
     }

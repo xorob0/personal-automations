@@ -1,4 +1,4 @@
-import {callService, shadowState, AirQuality, AirQualityProperties} from "@herja/core"
+import {AirQuality} from "@herja/core"
 export type AirQualityIDs = ""
 export type AirQualityEntities = Record<AirQualityIDs, AirQuality>
 
