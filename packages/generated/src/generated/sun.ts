@@ -1,4 +1,4 @@
-import {callService, shadowState, Sun, SunProperties} from "@herja/core"
+import {shadowState, Sun, SunProperties} from "@herja/core"
 export type SunIDs = "sun"
 export type SunEntities = Record<SunIDs, Sun>
 
