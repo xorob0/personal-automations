@@ -7,15 +7,15 @@ export const humidifier: Humidifier<HumidifierIDs> = {
 ['bedroom']: {
   entity_id: "humidifier.bedroom",
 get entity() { return {state: shadowState["humidifier.bedroom"].state, attributes: shadowState["humidifier.bedroom"].attributes} as HumidifierProperties},
-turnOn() { return callService("humidifier", "turn_on", {}, {entity_id: "bedroom"})},
-turnOff() { return callService("humidifier", "turn_off", {}, {entity_id: "bedroom"})}
+turnOn() { return callService("humidifier", "turn_on", {}, {entity_id: "humidifier.bedroom"})},
+turnOff() { return callService("humidifier", "turn_off", {}, {entity_id: "humidifier.bedroom"})}
 },
 
 ['living_room']: {
   entity_id: "humidifier.living_room",
 get entity() { return {state: shadowState["humidifier.living_room"].state, attributes: shadowState["humidifier.living_room"].attributes} as HumidifierProperties},
-turnOn() { return callService("humidifier", "turn_on", {}, {entity_id: "living_room"})},
-turnOff() { return callService("humidifier", "turn_off", {}, {entity_id: "living_room"})}
+turnOn() { return callService("humidifier", "turn_on", {}, {entity_id: "humidifier.living_room"})},
+turnOff() { return callService("humidifier", "turn_off", {}, {entity_id: "humidifier.living_room"})}
 },
 
 }
