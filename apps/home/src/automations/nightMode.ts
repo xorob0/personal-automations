@@ -9,6 +9,7 @@ const lightBedroom = [light.bedroom_secondary_lamp.entity_id,
   light.bedside_lamp.entity_id,
   light.bedroom_lights.entity_id,
   light.bedroom_secondary_lights.entity_id,
+  light.bedroom_tv_light.entity_id,
   light.bedroom_bed_light_2.entity_id]
 
 const outlets = [switches.desk_outlet, switches.christmas_tree_led_outlet]

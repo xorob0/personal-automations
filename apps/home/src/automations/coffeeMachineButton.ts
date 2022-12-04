@@ -3,6 +3,7 @@
 //
 // let timeoutID: NodeJS.Timer|undefined = undefined;
 
+// TODO re enable when I have another coffee machine outlet
 export const coffeeMachineButton = () => {
   // effect(()=>{
   //   if(sensor.tripod_button_action.state.state === 'single')
