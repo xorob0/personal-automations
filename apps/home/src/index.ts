@@ -1,4 +1,4 @@
-import { configure, shadowState } from "@herja/core";
+import { configure } from "@herja/core";
 import { garage } from "@herja/automations";
 import { turnOnGardenLightWithGardenDoorAtNight } from "./automations/turnOnGardenLightWithGardenDoorAtNight";
 import { turnOnGarageLightWhenADoorIsOpened } from "./automations/turnOnGarageLightWenADoorIsOpened";
