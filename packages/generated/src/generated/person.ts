@@ -1,4 +1,4 @@
-import {callService, shadowState, Person, PersonProperties} from "@herja/core"
+import { shadowState, Person, PersonProperties} from "@herja/core"
 export type PersonIDs = "tim" | "gaby"
 export type PersonEntities = Record<PersonIDs, Person>
 
