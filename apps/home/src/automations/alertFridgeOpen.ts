@@ -11,7 +11,7 @@ export const alertFridgeOpen = () => {
       timeoutID = setTimeout(()=>{
         const distanceChange = formatDistance(new Date(binary_sensor.fridge_door_sensor_contact.entity.attributes.last_changed), new Date(), { addSuffix: true })
         //TODO add notify
-        callService('notify', 'mobile_app_s22', {title: 'Alert fridge open', message: 'The fridge was last closed ' + distanceChange})
+        callService('notify', 'mobile_app_tims_iphone', {title: 'Alert fridge open', message: 'The fridge was last closed ' + distanceChange})
       }, 3*60*1000)
     }
     else{
