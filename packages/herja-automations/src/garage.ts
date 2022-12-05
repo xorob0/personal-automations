@@ -184,6 +184,7 @@ export const garage = () => {
 
   effect(
     async (event) => {
+      if(!event) return
       console.log('event garage set position', percentOpen, state, event)
       console.log(event.data.position);
       if(typeof event.data.position !== 'number')
