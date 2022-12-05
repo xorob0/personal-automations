@@ -3,7 +3,7 @@ import { alarm_control_panel, binary_sensor, light, sun } from "generated/src";
 
 export const TurnOnUpstairsHallWithSensor = () => {
   effect((event)=>{
-    if(event.data.new_state.state && alarm_control_panel.alarmo.isDisarmed() && sun.sun.isBelowHorizon())
+    if(event?.data.new_state.state && alarm_control_panel.alarmo.isDisarmed() && sun.sun.isBelowHorizon())
     {
       light.hall_upstairs.turnOn()
       setTimeout(() => {
