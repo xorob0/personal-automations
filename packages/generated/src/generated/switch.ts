@@ -1,5 +1,5 @@
 import {callService, shadowState, Switch, SwitchProperties, SwitchStateMapper} from "@herja/core"
-export type SwitchIDs = "adaptive_lighting_bedroom" | "adaptive_lighting_sleep_mode_bedroom" | "adaptive_lighting_adapt_color_bedroom" | "adaptive_lighting_adapt_brightness_bedroom" | "adaptive_lighting_hall" | "adaptive_lighting_sleep_mode_hall" | "adaptive_lighting_adapt_color_hall" | "adaptive_lighting_adapt_brightness_hall" | "adaptive_lighting_living_room" | "adaptive_lighting_sleep_mode_living_room" | "adaptive_lighting_adapt_color_living_room" | "adaptive_lighting_adapt_brightness_living_room" | "wallbox_portal_pause_resume" | "g4_doorbell_status_light_on" | "g4_doorbell_high_fps" | "g4_doorbell_system_sounds" | "g4_doorbell_overlay_show_name" | "g4_doorbell_overlay_show_date" | "g4_doorbell_overlay_show_logo" | "g4_doorbell_overlay_show_bitrate" | "g4_doorbell_detections_motion" | "g4_doorbell_detections_person" | "g4_doorbell_detections_vehicle" | "g4_doorbell_detections_package" | "dream_machine_pro_analytics_enabled" | "dream_machine_pro_insights_enabled" | "g4_doorbell_privacy_mode" | "hall_stairs_switch" | "bedside_lamp" | "bedroom_secondary_lamp" | "garage_button" | "christmas_tree_led_outlet" | "washing_machine_plug" | "bedroom_switch" | "siren_alarm" | "siren_temperature_alarm" | "siren_humidity_alarm" | "desk_outlet" | "hall_entrance" | "hall_dual_switch_l2" | "hall_dual_switch_l1" | "garden" | "garage_light_switch" | "bedroom_humidifier_switch" | "nibe_133481_48043" | "scene_max_brightness" | "scene_medium_brightness" | "living_room_humidifier" | "bedroom_humidifier" | "siren" | "living_room_bluetooth_inquiries" | "bedroom_bluetooth_inquiries" | "garage_bluetooth_inquiries" | "0x00124b00239c172d" | "g4_doorbell_hdr_mode" | "g4_bullet_overlay_show_name" | "g4_bullet_overlay_show_date" | "g4_bullet_overlay_show_logo" | "g4_bullet_overlay_show_bitrate" | "g4_bullet_detections_motion" | "g4_bullet_privacy_mode" | "uvc_g4_bullet"
+export type SwitchIDs = "adaptive_lighting_bedroom" | "adaptive_lighting_sleep_mode_bedroom" | "adaptive_lighting_adapt_color_bedroom" | "adaptive_lighting_adapt_brightness_bedroom" | "adaptive_lighting_hall" | "adaptive_lighting_sleep_mode_hall" | "adaptive_lighting_adapt_color_hall" | "adaptive_lighting_adapt_brightness_hall" | "adaptive_lighting_living_room" | "adaptive_lighting_sleep_mode_living_room" | "adaptive_lighting_adapt_color_living_room" | "adaptive_lighting_adapt_brightness_living_room" | "wallbox_portal_pause_resume" | "g4_doorbell_status_light_on" | "g4_doorbell_hdr_mode" | "g4_doorbell_high_fps" | "g4_doorbell_system_sounds" | "g4_doorbell_overlay_show_name" | "g4_doorbell_overlay_show_date" | "g4_doorbell_overlay_show_logo" | "g4_doorbell_overlay_show_bitrate" | "g4_doorbell_detections_motion" | "g4_doorbell_detections_person" | "g4_doorbell_detections_vehicle" | "g4_doorbell_detections_package" | "g4_bullet_hdr_mode" | "g4_bullet_high_fps" | "g4_bullet_overlay_show_name" | "g4_bullet_overlay_show_date" | "g4_bullet_overlay_show_logo" | "g4_bullet_overlay_show_bitrate" | "g4_bullet_detections_motion" | "g4_bullet_detections_person" | "g4_bullet_detections_vehicle" | "dream_machine_pro_analytics_enabled" | "dream_machine_pro_insights_enabled" | "g4_doorbell_privacy_mode" | "g4_bullet_privacy_mode" | "uvc_g4_bullet" | "washing_machine_plug" | "bedroom_switch" | "siren_alarm" | "siren_temperature_alarm" | "siren_humidity_alarm" | "desk_outlet" | "hall_entrance" | "hall_dual_switch_l2" | "hall_dual_switch_l1" | "garden" | "garage_light_switch" | "bedroom_humidifier_switch" | "bedside_lamp" | "bedroom_secondary_lamp" | "garage_button" | "christmas_tree_led_outlet" | "hall_stairs_switch" | "nibe_133481_48043" | "living_room_bluetooth_inquiries" | "bedroom_bluetooth_inquiries" | "garage_bluetooth_inquiries" | "0x00124b00239c172d"
 export type SwitchEntities = Record<SwitchIDs, Switch>
 
 export const switches: Switch<SwitchIDs> = {
@@ -130,6 +130,15 @@ toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_doo
 isOn() { return shadowState["switch.g4_doorbell_status_light_on"].state === "on" }
 },
 
+['g4_doorbell_hdr_mode']: {
+  entity_id: "switch.g4_doorbell_hdr_mode",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_doorbell_hdr_mode"].state as string], attributes: shadowState["switch.g4_doorbell_hdr_mode"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_doorbell_hdr_mode"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_doorbell_hdr_mode"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_doorbell_hdr_mode"})},
+isOn() { return shadowState["switch.g4_doorbell_hdr_mode"].state === "on" }
+},
+
 ['g4_doorbell_high_fps']: {
   entity_id: "switch.g4_doorbell_high_fps",
 get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_doorbell_high_fps"].state as string], attributes: shadowState["switch.g4_doorbell_high_fps"].attributes} as SwitchProperties},
@@ -220,6 +229,87 @@ toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_doo
 isOn() { return shadowState["switch.g4_doorbell_detections_package"].state === "on" }
 },
 
+['g4_bullet_hdr_mode']: {
+  entity_id: "switch.g4_bullet_hdr_mode",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_hdr_mode"].state as string], attributes: shadowState["switch.g4_bullet_hdr_mode"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_hdr_mode"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_hdr_mode"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_hdr_mode"})},
+isOn() { return shadowState["switch.g4_bullet_hdr_mode"].state === "on" }
+},
+
+['g4_bullet_high_fps']: {
+  entity_id: "switch.g4_bullet_high_fps",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_high_fps"].state as string], attributes: shadowState["switch.g4_bullet_high_fps"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_high_fps"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_high_fps"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_high_fps"})},
+isOn() { return shadowState["switch.g4_bullet_high_fps"].state === "on" }
+},
+
+['g4_bullet_overlay_show_name']: {
+  entity_id: "switch.g4_bullet_overlay_show_name",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_overlay_show_name"].state as string], attributes: shadowState["switch.g4_bullet_overlay_show_name"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_overlay_show_name"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_overlay_show_name"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_overlay_show_name"})},
+isOn() { return shadowState["switch.g4_bullet_overlay_show_name"].state === "on" }
+},
+
+['g4_bullet_overlay_show_date']: {
+  entity_id: "switch.g4_bullet_overlay_show_date",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_overlay_show_date"].state as string], attributes: shadowState["switch.g4_bullet_overlay_show_date"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_overlay_show_date"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_overlay_show_date"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_overlay_show_date"})},
+isOn() { return shadowState["switch.g4_bullet_overlay_show_date"].state === "on" }
+},
+
+['g4_bullet_overlay_show_logo']: {
+  entity_id: "switch.g4_bullet_overlay_show_logo",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_overlay_show_logo"].state as string], attributes: shadowState["switch.g4_bullet_overlay_show_logo"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_overlay_show_logo"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_overlay_show_logo"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_overlay_show_logo"})},
+isOn() { return shadowState["switch.g4_bullet_overlay_show_logo"].state === "on" }
+},
+
+['g4_bullet_overlay_show_bitrate']: {
+  entity_id: "switch.g4_bullet_overlay_show_bitrate",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_overlay_show_bitrate"].state as string], attributes: shadowState["switch.g4_bullet_overlay_show_bitrate"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_overlay_show_bitrate"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_overlay_show_bitrate"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_overlay_show_bitrate"})},
+isOn() { return shadowState["switch.g4_bullet_overlay_show_bitrate"].state === "on" }
+},
+
+['g4_bullet_detections_motion']: {
+  entity_id: "switch.g4_bullet_detections_motion",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_detections_motion"].state as string], attributes: shadowState["switch.g4_bullet_detections_motion"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_detections_motion"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_detections_motion"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_detections_motion"})},
+isOn() { return shadowState["switch.g4_bullet_detections_motion"].state === "on" }
+},
+
+['g4_bullet_detections_person']: {
+  entity_id: "switch.g4_bullet_detections_person",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_detections_person"].state as string], attributes: shadowState["switch.g4_bullet_detections_person"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_detections_person"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_detections_person"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_detections_person"})},
+isOn() { return shadowState["switch.g4_bullet_detections_person"].state === "on" }
+},
+
+['g4_bullet_detections_vehicle']: {
+  entity_id: "switch.g4_bullet_detections_vehicle",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_detections_vehicle"].state as string], attributes: shadowState["switch.g4_bullet_detections_vehicle"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_detections_vehicle"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_detections_vehicle"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_detections_vehicle"})},
+isOn() { return shadowState["switch.g4_bullet_detections_vehicle"].state === "on" }
+},
+
 ['dream_machine_pro_analytics_enabled']: {
   entity_id: "switch.dream_machine_pro_analytics_enabled",
 get entity() { return {state: SwitchStateMapper[shadowState["switch.dream_machine_pro_analytics_enabled"].state as string], attributes: shadowState["switch.dream_machine_pro_analytics_enabled"].attributes} as SwitchProperties},
@@ -247,49 +337,22 @@ toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_doo
 isOn() { return shadowState["switch.g4_doorbell_privacy_mode"].state === "on" }
 },
 
-['hall_stairs_switch']: {
-  entity_id: "switch.hall_stairs_switch",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.hall_stairs_switch"].state as string], attributes: shadowState["switch.hall_stairs_switch"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.hall_stairs_switch"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.hall_stairs_switch"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.hall_stairs_switch"})},
-isOn() { return shadowState["switch.hall_stairs_switch"].state === "on" }
+['g4_bullet_privacy_mode']: {
+  entity_id: "switch.g4_bullet_privacy_mode",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_privacy_mode"].state as string], attributes: shadowState["switch.g4_bullet_privacy_mode"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_privacy_mode"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_privacy_mode"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_privacy_mode"})},
+isOn() { return shadowState["switch.g4_bullet_privacy_mode"].state === "on" }
 },
 
-['bedside_lamp']: {
-  entity_id: "switch.bedside_lamp",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.bedside_lamp"].state as string], attributes: shadowState["switch.bedside_lamp"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.bedside_lamp"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.bedside_lamp"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.bedside_lamp"})},
-isOn() { return shadowState["switch.bedside_lamp"].state === "on" }
-},
-
-['bedroom_secondary_lamp']: {
-  entity_id: "switch.bedroom_secondary_lamp",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.bedroom_secondary_lamp"].state as string], attributes: shadowState["switch.bedroom_secondary_lamp"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.bedroom_secondary_lamp"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.bedroom_secondary_lamp"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.bedroom_secondary_lamp"})},
-isOn() { return shadowState["switch.bedroom_secondary_lamp"].state === "on" }
-},
-
-['garage_button']: {
-  entity_id: "switch.garage_button",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.garage_button"].state as string], attributes: shadowState["switch.garage_button"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.garage_button"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.garage_button"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.garage_button"})},
-isOn() { return shadowState["switch.garage_button"].state === "on" }
-},
-
-['christmas_tree_led_outlet']: {
-  entity_id: "switch.christmas_tree_led_outlet",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.christmas_tree_led_outlet"].state as string], attributes: shadowState["switch.christmas_tree_led_outlet"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.christmas_tree_led_outlet"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.christmas_tree_led_outlet"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.christmas_tree_led_outlet"})},
-isOn() { return shadowState["switch.christmas_tree_led_outlet"].state === "on" }
+['uvc_g4_bullet']: {
+  entity_id: "switch.uvc_g4_bullet",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.uvc_g4_bullet"].state as string], attributes: shadowState["switch.uvc_g4_bullet"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.uvc_g4_bullet"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.uvc_g4_bullet"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.uvc_g4_bullet"})},
+isOn() { return shadowState["switch.uvc_g4_bullet"].state === "on" }
 },
 
 ['washing_machine_plug']: {
@@ -400,6 +463,51 @@ toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.bedroo
 isOn() { return shadowState["switch.bedroom_humidifier_switch"].state === "on" }
 },
 
+['bedside_lamp']: {
+  entity_id: "switch.bedside_lamp",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.bedside_lamp"].state as string], attributes: shadowState["switch.bedside_lamp"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.bedside_lamp"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.bedside_lamp"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.bedside_lamp"})},
+isOn() { return shadowState["switch.bedside_lamp"].state === "on" }
+},
+
+['bedroom_secondary_lamp']: {
+  entity_id: "switch.bedroom_secondary_lamp",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.bedroom_secondary_lamp"].state as string], attributes: shadowState["switch.bedroom_secondary_lamp"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.bedroom_secondary_lamp"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.bedroom_secondary_lamp"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.bedroom_secondary_lamp"})},
+isOn() { return shadowState["switch.bedroom_secondary_lamp"].state === "on" }
+},
+
+['garage_button']: {
+  entity_id: "switch.garage_button",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.garage_button"].state as string], attributes: shadowState["switch.garage_button"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.garage_button"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.garage_button"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.garage_button"})},
+isOn() { return shadowState["switch.garage_button"].state === "on" }
+},
+
+['christmas_tree_led_outlet']: {
+  entity_id: "switch.christmas_tree_led_outlet",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.christmas_tree_led_outlet"].state as string], attributes: shadowState["switch.christmas_tree_led_outlet"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.christmas_tree_led_outlet"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.christmas_tree_led_outlet"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.christmas_tree_led_outlet"})},
+isOn() { return shadowState["switch.christmas_tree_led_outlet"].state === "on" }
+},
+
+['hall_stairs_switch']: {
+  entity_id: "switch.hall_stairs_switch",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.hall_stairs_switch"].state as string], attributes: shadowState["switch.hall_stairs_switch"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.hall_stairs_switch"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.hall_stairs_switch"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.hall_stairs_switch"})},
+isOn() { return shadowState["switch.hall_stairs_switch"].state === "on" }
+},
+
 ['nibe_133481_48043']: {
   entity_id: "switch.nibe_133481_48043",
 get entity() { return {state: SwitchStateMapper[shadowState["switch.nibe_133481_48043"].state as string], attributes: shadowState["switch.nibe_133481_48043"].attributes} as SwitchProperties},
@@ -407,51 +515,6 @@ turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.nib
 turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.nibe_133481_48043"})},
 toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.nibe_133481_48043"})},
 isOn() { return shadowState["switch.nibe_133481_48043"].state === "on" }
-},
-
-['scene_max_brightness']: {
-  entity_id: "switch.scene_max_brightness",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.scene_max_brightness"].state as string], attributes: shadowState["switch.scene_max_brightness"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.scene_max_brightness"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.scene_max_brightness"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.scene_max_brightness"})},
-isOn() { return shadowState["switch.scene_max_brightness"].state === "on" }
-},
-
-['scene_medium_brightness']: {
-  entity_id: "switch.scene_medium_brightness",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.scene_medium_brightness"].state as string], attributes: shadowState["switch.scene_medium_brightness"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.scene_medium_brightness"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.scene_medium_brightness"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.scene_medium_brightness"})},
-isOn() { return shadowState["switch.scene_medium_brightness"].state === "on" }
-},
-
-['living_room_humidifier']: {
-  entity_id: "switch.living_room_humidifier",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.living_room_humidifier"].state as string], attributes: shadowState["switch.living_room_humidifier"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.living_room_humidifier"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.living_room_humidifier"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.living_room_humidifier"})},
-isOn() { return shadowState["switch.living_room_humidifier"].state === "on" }
-},
-
-['bedroom_humidifier']: {
-  entity_id: "switch.bedroom_humidifier",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.bedroom_humidifier"].state as string], attributes: shadowState["switch.bedroom_humidifier"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.bedroom_humidifier"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.bedroom_humidifier"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.bedroom_humidifier"})},
-isOn() { return shadowState["switch.bedroom_humidifier"].state === "on" }
-},
-
-['siren']: {
-  entity_id: "switch.siren",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.siren"].state as string], attributes: shadowState["switch.siren"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.siren"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.siren"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.siren"})},
-isOn() { return shadowState["switch.siren"].state === "on" }
 },
 
 ['living_room_bluetooth_inquiries']: {
@@ -488,78 +551,6 @@ turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.0x0
 turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.0x00124b00239c172d"})},
 toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.0x00124b00239c172d"})},
 isOn() { return shadowState["switch.0x00124b00239c172d"].state === "on" }
-},
-
-['g4_doorbell_hdr_mode']: {
-  entity_id: "switch.g4_doorbell_hdr_mode",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_doorbell_hdr_mode"].state as string], attributes: shadowState["switch.g4_doorbell_hdr_mode"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_doorbell_hdr_mode"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_doorbell_hdr_mode"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_doorbell_hdr_mode"})},
-isOn() { return shadowState["switch.g4_doorbell_hdr_mode"].state === "on" }
-},
-
-['g4_bullet_overlay_show_name']: {
-  entity_id: "switch.g4_bullet_overlay_show_name",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_overlay_show_name"].state as string], attributes: shadowState["switch.g4_bullet_overlay_show_name"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_overlay_show_name"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_overlay_show_name"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_overlay_show_name"})},
-isOn() { return shadowState["switch.g4_bullet_overlay_show_name"].state === "on" }
-},
-
-['g4_bullet_overlay_show_date']: {
-  entity_id: "switch.g4_bullet_overlay_show_date",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_overlay_show_date"].state as string], attributes: shadowState["switch.g4_bullet_overlay_show_date"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_overlay_show_date"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_overlay_show_date"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_overlay_show_date"})},
-isOn() { return shadowState["switch.g4_bullet_overlay_show_date"].state === "on" }
-},
-
-['g4_bullet_overlay_show_logo']: {
-  entity_id: "switch.g4_bullet_overlay_show_logo",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_overlay_show_logo"].state as string], attributes: shadowState["switch.g4_bullet_overlay_show_logo"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_overlay_show_logo"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_overlay_show_logo"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_overlay_show_logo"})},
-isOn() { return shadowState["switch.g4_bullet_overlay_show_logo"].state === "on" }
-},
-
-['g4_bullet_overlay_show_bitrate']: {
-  entity_id: "switch.g4_bullet_overlay_show_bitrate",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_overlay_show_bitrate"].state as string], attributes: shadowState["switch.g4_bullet_overlay_show_bitrate"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_overlay_show_bitrate"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_overlay_show_bitrate"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_overlay_show_bitrate"})},
-isOn() { return shadowState["switch.g4_bullet_overlay_show_bitrate"].state === "on" }
-},
-
-['g4_bullet_detections_motion']: {
-  entity_id: "switch.g4_bullet_detections_motion",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_detections_motion"].state as string], attributes: shadowState["switch.g4_bullet_detections_motion"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_detections_motion"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_detections_motion"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_detections_motion"})},
-isOn() { return shadowState["switch.g4_bullet_detections_motion"].state === "on" }
-},
-
-['g4_bullet_privacy_mode']: {
-  entity_id: "switch.g4_bullet_privacy_mode",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.g4_bullet_privacy_mode"].state as string], attributes: shadowState["switch.g4_bullet_privacy_mode"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.g4_bullet_privacy_mode"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.g4_bullet_privacy_mode"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.g4_bullet_privacy_mode"})},
-isOn() { return shadowState["switch.g4_bullet_privacy_mode"].state === "on" }
-},
-
-['uvc_g4_bullet']: {
-  entity_id: "switch.uvc_g4_bullet",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.uvc_g4_bullet"].state as string], attributes: shadowState["switch.uvc_g4_bullet"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.uvc_g4_bullet"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.uvc_g4_bullet"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.uvc_g4_bullet"})},
-isOn() { return shadowState["switch.uvc_g4_bullet"].state === "on" }
 },
 
 }

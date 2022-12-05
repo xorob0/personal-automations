@@ -1,5 +1,5 @@
 import {callService, shadowState, Remote, RemoteProperties} from "@herja/core"
-export type RemoteIDs = "bedroom_ir_blaster_remote" | "living_room_ir_blaster_remote_2" | "secondary_room_ir_blaster_remote" | "office_ir_blaster_remote"
+export type RemoteIDs = "bedroom_ir_blaster_remote" | "secondary_room_ir_blaster_remote" | "office_ir_blaster_remote" | "living_room_ir_blaster_remote_2"
 export type RemoteEntities = Record<RemoteIDs, Remote>
 
 export const remote: Remote<RemoteIDs> = {
@@ -13,17 +13,6 @@ sendCommand(command: string|string[]) { return callService("remote", "send_comma
 learnCommand(attributes: {command: string, timeout:number}) { return callService("remote", "press", attributes, {entity_id: "remote.bedroom_ir_blaster_remote"})},
 toggle() { return callService("remote", "toggle", {}, {entity_id: "remote.bedroom_ir_blaster_remote"})},
 deleteCommand(command:string) { return callService("remote", "delete_command", {command}, {entity_id: "remote.bedroom_ir_blaster_remote"})}
-},
-
-['living_room_ir_blaster_remote_2']: {
-  entity_id: "remote.living_room_ir_blaster_remote_2",
-get entity() { return {state: shadowState["remote.living_room_ir_blaster_remote_2"].state, attributes: shadowState["remote.living_room_ir_blaster_remote_2"].attributes} as RemoteProperties},
-turnOn() { return callService("remote", "turn_on", {}, {entity_id: "remote.living_room_ir_blaster_remote_2"})},
-turnOff() { return callService("remote", "turn_off", {}, {entity_id: "remote.living_room_ir_blaster_remote_2"})},
-sendCommand(command: string|string[]) { return callService("remote", "send_command", {command}, {entity_id: "remote.living_room_ir_blaster_remote_2"})},
-learnCommand(attributes: {command: string, timeout:number}) { return callService("remote", "press", attributes, {entity_id: "remote.living_room_ir_blaster_remote_2"})},
-toggle() { return callService("remote", "toggle", {}, {entity_id: "remote.living_room_ir_blaster_remote_2"})},
-deleteCommand(command:string) { return callService("remote", "delete_command", {command}, {entity_id: "remote.living_room_ir_blaster_remote_2"})}
 },
 
 ['secondary_room_ir_blaster_remote']: {
@@ -46,6 +35,17 @@ sendCommand(command: string|string[]) { return callService("remote", "send_comma
 learnCommand(attributes: {command: string, timeout:number}) { return callService("remote", "press", attributes, {entity_id: "remote.office_ir_blaster_remote"})},
 toggle() { return callService("remote", "toggle", {}, {entity_id: "remote.office_ir_blaster_remote"})},
 deleteCommand(command:string) { return callService("remote", "delete_command", {command}, {entity_id: "remote.office_ir_blaster_remote"})}
+},
+
+['living_room_ir_blaster_remote_2']: {
+  entity_id: "remote.living_room_ir_blaster_remote_2",
+get entity() { return {state: shadowState["remote.living_room_ir_blaster_remote_2"].state, attributes: shadowState["remote.living_room_ir_blaster_remote_2"].attributes} as RemoteProperties},
+turnOn() { return callService("remote", "turn_on", {}, {entity_id: "remote.living_room_ir_blaster_remote_2"})},
+turnOff() { return callService("remote", "turn_off", {}, {entity_id: "remote.living_room_ir_blaster_remote_2"})},
+sendCommand(command: string|string[]) { return callService("remote", "send_command", {command}, {entity_id: "remote.living_room_ir_blaster_remote_2"})},
+learnCommand(attributes: {command: string, timeout:number}) { return callService("remote", "press", attributes, {entity_id: "remote.living_room_ir_blaster_remote_2"})},
+toggle() { return callService("remote", "toggle", {}, {entity_id: "remote.living_room_ir_blaster_remote_2"})},
+deleteCommand(command:string) { return callService("remote", "delete_command", {command}, {entity_id: "remote.living_room_ir_blaster_remote_2"})}
 },
 
 }

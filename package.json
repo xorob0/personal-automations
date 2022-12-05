@@ -13,6 +13,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@types/node-cron": "^3.0.6",
     "prettier": "latest",
     "turbo": "latest"
   },
@@ -20,5 +21,8 @@
     "npm": ">=7.0.0",
     "node": ">=14.0.0"
   },
-  "packageManager": "npm@8.3.1"
+  "packageManager": "npm@8.3.1",
+  "dependencies": {
+    "node-cron": "^3.0.2"
+  }
 }

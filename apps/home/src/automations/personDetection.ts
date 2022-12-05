@@ -43,7 +43,6 @@ let lastTim = 'unknown'
 export const personDetection = () => {
   const {setHome, setNotHome} = createMQTTDeviceTracker('Tim calculated')
   effect((e)=>{
-    console.log(e)
     const weight = tim_sensors.reduce((acc, s) => {
       if(s.sensor.entity.state === s.value)
         return acc + s.weight;
