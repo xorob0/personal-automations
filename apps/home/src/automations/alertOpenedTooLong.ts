@@ -1,6 +1,6 @@
 import { binary_sensor } from "generated/src";
 import { callService } from "@herja/core";
-import { alertOpened } from "@herja/automations/src/alertOpened";
+import { alertOpened } from "@herja/automations";
 
 const delayFridgeOpenedTooLong = 3;
 const alertFridgeOpenedTooLong = () => {

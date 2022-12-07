@@ -12,7 +12,7 @@ export type AlertOpenedProps = {
 
 export const alertOpened = ({onOpenedTooLong, delay, isOpened, sensor }:AlertOpenedProps) => {
   effect(()=>{
-    if(isOpened ? isOpened() : sensor.entity.state === "on")
+    if(isOpened ? isOpened() : sensor.entity.state === true)
     {
       timeoutID = setTimeout(()=>{
         onOpenedTooLong()
