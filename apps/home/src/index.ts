@@ -7,7 +7,6 @@ import { wallSwitches } from "./automations/wallSwitches";
 import { automaticAlarm } from "./automations/automaticAlarm";
 import { tripodButton } from "./automations/tripodButton";
 import { coffeeMachineButton } from "./automations/coffeeMachineButton";
-import { alertFridgeOpen } from "./automations/alertFridgeOpen";
 import { garageRemote } from "./automations/garageRemote";
 import { turnOnTripodOnSunset } from "./automations/turnOnTripodOnSunset";
 import { turnOnToiletLightWithDoor } from "./automations/TurnOnToiletLightWithDoor";
@@ -18,6 +17,7 @@ import { turnEverythingOffWhenLeaving } from "./automations/turnEverythingOffWhe
 import { personDetection } from "./automations/personDetection";
 import { deskButton } from "./automations/DeskButton";
 import { alertCarUnplugged } from "./automations/alertCarUnplugged";
+import { allAlertsOpenedTooLong } from "./automations/alertOpenedTooLong";
 
 require('dotenv').config();
 
@@ -38,7 +38,7 @@ const base = async () => {
   automaticAlarm()
   tripodButton()
   coffeeMachineButton()
-  alertFridgeOpen()
+  allAlertsOpenedTooLong()
   garageRemote()
   turnOnTripodOnSunset()
   turnOnToiletLightWithDoor()
