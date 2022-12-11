@@ -1,6 +1,6 @@
 import { callService, effect } from "@herja/core";
 import { binary_sensor, switches } from "generated/src";
-import { createMQTTSensor } from "mqtt-utils/src";
+import { COVER_STATE, createMQTTCover } from "mqtt-utils/src";
 
 const MOVE_SPEED = 190;
 
@@ -10,32 +10,14 @@ function delay(ms: number) {
 
 let percentOpen: number = -1;
 
-enum GarageState {
-  Unknown = 'unknown',
-  Open = 'open',
-  Closed = 'closed',
-  Opening = 'opening',
-  Closing = 'closing',
-}
 
-let state = GarageState.Unknown;
+let state = COVER_STATE.CLOSED;
 
 let intervalID: NodeJS.Timer|undefined  = undefined;
 
 export const garage = () => {
   console.log('starting garage')
-  const garagePosition = createMQTTSensor('garage_position')
-  const garageState = createMQTTSensor('garage_state')
-  const setPercentOpen = (value: number) => {
-    console.log("setPercentOpen", value);
-    percentOpen = value;
-    garagePosition.set(value.toString());
-  };
-  const setState = (value: GarageState) => {
-    console.log("setState", value);
-    state = value;
-    garageState.set(value.toString());
-  };
+  const {setPosition: setPercentOpen, setState} = createMQTTCover({name: 'Garage 4_MQTT'})
 
   const IntervalIncrement = () => {
     console.log("IntervalIncrement");
@@ -53,42 +35,42 @@ export const garage = () => {
   };
 
   if (!binary_sensor.garage_electric_door_sensor_closed_contact.isOn()) {
-    setState(GarageState.Closed)
+    setState(COVER_STATE.CLOSED)
     console.log('detected as closed')
-    percentOpen = 0
+    setPercentOpen(0)
   }
   else if (!binary_sensor.garage_electric_door_sensor_open_contact.isOn()) {
-    setState(GarageState.Open)
+    setState(COVER_STATE.OPEN)
     console.log('detected as open')
-    percentOpen = 100
+    setPercentOpen(100)
   }
   else {
-    setState(GarageState.Opening)
+    setState(COVER_STATE.OPENING)
     console.log('detected as unknown, assuming opening')
-    percentOpen = 50
+    setPercentOpen(50)
   }
 
     effect(() => {
       console.log('binary_sensor.garage_electric_door_sensor_closed_contact changed', binary_sensor.garage_electric_door_sensor_closed_contact.isOn())
     if (binary_sensor.garage_electric_door_sensor_closed_contact.isOn()) {
-      setState(GarageState.Opening);
+      setState(COVER_STATE.OPENING);
       IntervalIncrement();
     } else {
       clearInterval(intervalID as number|undefined);
       setPercentOpen(0);
-      setState(GarageState.Closed);
+      setState(COVER_STATE.OPENING);
     }
   }, [binary_sensor.garage_electric_door_sensor_closed_contact]);
 
   effect(() => {
     console.log('binary_sensor.garage_electric_door_sensor_open_contact changed', binary_sensor.garage_electric_door_sensor_open_contact.isOn())
     if (binary_sensor.garage_electric_door_sensor_open_contact.isOn()) {
-      setState(GarageState.Closing);
+      setState(COVER_STATE.CLOSING);
       IntervalDecrement();
     } else {
       clearInterval(intervalID as number|undefined);
       setPercentOpen(100);
-      setState(GarageState.Open);
+      setState(COVER_STATE.OPEN);
     }
   }, [binary_sensor.garage_electric_door_sensor_open_contact]);
 
@@ -97,19 +79,19 @@ export const garage = () => {
     if (switches.garage_button.isOn()) {
       clearInterval(intervalID as number|undefined);
       switch (state) {
-        case GarageState.Closed:
-          setState(GarageState.Opening);
+        case COVER_STATE.CLOSED:
+          setState(COVER_STATE.OPENING);
           IntervalIncrement();
           break;
-        case GarageState.Closing:
-          setState(GarageState.Closed);
+        case COVER_STATE.CLOSING:
+          setState(COVER_STATE.CLOSED);
           break;
-        case GarageState.Open:
-          setState(GarageState.Closing);
+        case COVER_STATE.OPEN:
+          setState(COVER_STATE.CLOSING);
           IntervalDecrement();
           break;
-        case GarageState.Opening:
-          setState(GarageState.Open);
+        case COVER_STATE.OPENING:
+          setState(COVER_STATE.OPEN);
           break;
       }
     }
@@ -126,15 +108,15 @@ export const garage = () => {
       return;
     }
     switch (state) {
-      case GarageState.Closed:
+      case COVER_STATE.CLOSED:
         switches.garage_button.turnOn();
         break;
-      case GarageState.Open:
+      case COVER_STATE.OPEN:
         switches.garage_button.turnOn();
         setTimeout(switches.garage_button.turnOn, 1000);
         setTimeout(switches.garage_button.turnOn, 2000);
         break;
-      case GarageState.Closing:
+      case COVER_STATE.CLOSING:
         switches.garage_button.turnOn();
         setTimeout(switches.garage_button.turnOn, 1000);
         break;
@@ -153,15 +135,15 @@ export const garage = () => {
       return;
     }
     switch (state) {
-      case GarageState.Open:
+      case COVER_STATE.OPEN:
         switches.garage_button.turnOn();
         break;
-      case GarageState.Closed:
+      case COVER_STATE.CLOSED:
         switches.garage_button.turnOn();
         setTimeout(switches.garage_button.turnOn, 1000);
         setTimeout(switches.garage_button.turnOn, 2000);
         break;
-      case GarageState.Opening:
+      case COVER_STATE.OPENING:
         switches.garage_button.turnOn();
         setTimeout(switches.garage_button.turnOn, 1000);
         break;
@@ -173,10 +155,10 @@ export const garage = () => {
     console.log('event garage stop', percentOpen, state)
     clearInterval(intervalID as number|undefined);
     switch (state) {
-      case GarageState.Closing:
+      case COVER_STATE.CLOSING:
         switches.garage_button.turnOn();
         break;
-      case GarageState.Opening:
+      case COVER_STATE.OPENING:
         switches.garage_button.turnOn();
         break;
     }
