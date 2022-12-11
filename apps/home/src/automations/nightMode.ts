@@ -27,8 +27,8 @@ const turnOnBedroomLight = () =>{
 }
 
 export const nightMode = () => {
-  effect(async (e)=>{
-    if(e.data.new_state.state !== 'single' && e.data.new_state.state !== "on")
+  effect(async (event)=>{
+    if(event?.data.new_state.state !== 'single' && event?.data.new_state.state !== "on")
       return
 
     clearTimeout(timeoutID as number|undefined)
@@ -44,6 +44,9 @@ export const nightMode = () => {
     // if a light in the house is on
     if(isALightOn(allLights))
     {
+      alarm_control_panel.alarmo.armNight()
+      console.log('alarm should be armed for night')
+
       // if a light is on but not a light in the bedroom
       if(isALightOn(getAllLights({exceptions: lightBedroom}))){
         await turnOffAllLights({exceptions: lightBedroom})
@@ -53,8 +56,6 @@ export const nightMode = () => {
       else{
         await turnOffAllLights()
       }
-      alarm_control_panel.alarmo.armNight()
-      console.log('alarm should be armed for night')
     }
     else {
       turnOnBedroomLight()

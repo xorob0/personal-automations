@@ -31,3 +31,6 @@ apps/home/.env
 
 # idea
 .idea/*
+
+# herja
+herja.config.json

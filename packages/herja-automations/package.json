@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "tsup ./src/index.ts --minify --clean --dts --splitting",
-    "dev": "tsup ./src/index.ts --clean --watch --ignore-watch ./src/generated --onSuccess 'node ./dist/index.js'",
+    "dev": "tsup src/index.ts --clean --watch src --dts",
     "lint": "eslint src/**/*.ts",
     "test": "vitest --global test.ts",
     "format": "prettier --write 'src/**/*.{js,ts}'",

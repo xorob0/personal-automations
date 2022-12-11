@@ -1,8 +1,11 @@
-import { effect } from "@herja/core";
-import {  person, alarm_control_panel } from "generated/src";
+import { AlarmControlPanelState, effect } from "@herja/core";
+import { alarm_control_panel, person } from "generated/src";
 
 export const automaticAlarm = () => {
   effect(() => {
+    if(alarm_control_panel.alarmo.entity.state === AlarmControlPanelState.ARMED_NIGHT)
+      return
+
     if (
       person.gaby.isHome() || person.tim.isHome()
     ) {
