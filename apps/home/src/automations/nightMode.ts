@@ -1,4 +1,4 @@
-import { effect, MediaPlayerEntity, shadowState } from "@herja/core";
+import { effect, MediaPlayerEntity, shadowState, SunState } from "@herja/core";
 import { sun, sensor, light, alarm_control_panel, switches, binary_sensor } from "generated/src";
 import { clearTimeout } from "timers";
 import { getAllLights, turnOffAllLights } from "../utils/allLights";
@@ -45,8 +45,6 @@ export const nightMode = () => {
     if(isALightOn(allLights))
     {
       alarm_control_panel.alarmo.armNight()
-      console.log('alarm should be armed for night')
-
       // if a light is on but not a light in the bedroom
       if(isALightOn(getAllLights({exceptions: lightBedroom}))){
         await turnOffAllLights({exceptions: lightBedroom})
@@ -64,17 +62,16 @@ export const nightMode = () => {
 
   //TODO disable alarm when bedroom door is opened
 
-  effect(()=>{
-    console.log(JSON.stringify(alarm_control_panel.alarmo))
+  effect((event)=>{
     if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
       return
 
-    if( sun.sun.isAboveHorizon()){
+    if( event?.data.new_state.state === SunState.ABOVE_HORIZON && event?.data.old_state.state === SunState.BELOW_HORIZON){
       alarm_control_panel.alarmo.disarm()
     }
   }, [sun.sun])
-  effect((e)=>{
-    if(e.data.new_state.state !== 'off')
+  effect((event)=>{
+    if(event?.data.new_state.state !== 'off')
       return
     if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
       return
