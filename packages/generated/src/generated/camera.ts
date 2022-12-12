@@ -1,5 +1,5 @@
 import {callService, shadowState, Camera, CameraProperties} from "@herja/core"
-export type CameraIDs = "living_room_panel" | "g4_bullet_high" | "g4_doorbell_high" | "robot_rendered_map" | "map_data"
+export type CameraIDs = "living_room_panel" | "map_data" | "g4_bullet_high" | "g4_doorbell_high" | "robot_rendered_map"
 export type CameraEntities = Record<CameraIDs, Camera>
 
 export const camera: Camera<CameraIDs> = {
@@ -11,6 +11,15 @@ turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.livin
 turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.living_room_panel"})},
 enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.living_room_panel"})},
 disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.living_room_panel"})}
+},
+
+['map_data']: {
+  entity_id: "camera.map_data",
+get entity() { return {state: shadowState["camera.map_data"].state, attributes: shadowState["camera.map_data"].attributes} as CameraProperties},
+turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.map_data"})},
+turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.map_data"})},
+enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.map_data"})},
+disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.map_data"})}
 },
 
 ['g4_bullet_high']: {
@@ -38,15 +47,6 @@ turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.robot
 turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.robot_rendered_map"})},
 enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.robot_rendered_map"})},
 disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.robot_rendered_map"})}
-},
-
-['map_data']: {
-  entity_id: "camera.map_data",
-get entity() { return {state: shadowState["camera.map_data"].state, attributes: shadowState["camera.map_data"].attributes} as CameraProperties},
-turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.map_data"})},
-turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.map_data"})},
-enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.map_data"})},
-disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.map_data"})}
 },
 
 }
