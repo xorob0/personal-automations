@@ -50,4 +50,8 @@ const base = async () => {
   alertCarUnplugged()
 };
 
-base();
+try{
+  base();
+}catch(e){
+  console.error("[index] error: ", e)
+}
