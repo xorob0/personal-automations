@@ -18,6 +18,7 @@ import { personDetection } from "./automations/personDetection";
 import { deskButton } from "./automations/DeskButton";
 import { alertCarUnplugged } from "./automations/alertCarUnplugged";
 import { allAlertsOpenedTooLong } from "./automations/alertOpenedTooLong";
+import { roomBusy } from "./automations/roomBusy";
 
 require('dotenv').config();
 
@@ -48,6 +49,7 @@ const base = async () => {
   BedroomACTimer();
   deskButton();
   alertCarUnplugged()
+  roomBusy()
 };
 
 try{

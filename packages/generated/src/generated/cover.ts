@@ -1,22 +1,22 @@
 import {callService, shadowState, Cover, CoverProperties} from "@herja/core"
-export type CoverIDs = "garage_electric_door" | "garage_4_mqtt" | "garage_3_mqtt" | "garage_mqtt"
+export type CoverIDs = "garage_mqtt6" | "garage_4_mqtt" | "garage_mqtt5" | "garage_3_mqtt" | "garage_cover" | "garage_mqtt"
 export type CoverEntities = Record<CoverIDs, Cover>
 
 export const cover: Cover<CoverIDs> = {
 
-['garage_electric_door']: {
-  entity_id: "cover.garage_electric_door",
-get entity() { return {state: shadowState["cover.garage_electric_door"].state, attributes: shadowState["cover.garage_electric_door"].attributes} as CoverProperties},
-isClosed() { return shadowState["cover.garage_electric_door"].state === "closed" },
-open() { return callService("cover", "open_cover", {}, {entity_id: "cover.garage_electric_door"})},
-close() { return callService("cover", "close_cover", {}, {entity_id: "cover.garage_electric_door"})},
-openTilt() { return callService("cover", "open_cover_tilt", {}, {entity_id: "cover.garage_electric_door"})},
-closeTilt() { return callService("cover", "close_cover_tilt", {}, {entity_id: "cover.garage_electric_door"})},
-stop() { return callService("cover", "stop_cover", {}, {entity_id: "cover.garage_electric_door"})},
-stopTilt() { return callService("cover", "stop_cover_tilt", {}, {entity_id: "cover.garage_electric_door"})},
-toggle() { return callService("cover", "toggle", {}, {entity_id: "cover.garage_electric_door"})},
-setPosition(position: number) { return callService("cover", "set_cover_position", {position}, {entity_id: "cover.garage_electric_door"})},
-setTiltPosition(tilt_position: number) { return callService("cover", "set_cover_tilt_position", {tilt_position}, {entity_id: "cover.garage_electric_door"})}
+['garage_mqtt6']: {
+  entity_id: "cover.garage_mqtt6",
+get entity() { return {state: shadowState["cover.garage_mqtt6"].state, attributes: shadowState["cover.garage_mqtt6"].attributes} as CoverProperties},
+isClosed() { return shadowState["cover.garage_mqtt6"].state === "closed" },
+open() { return callService("cover", "open_cover", {}, {entity_id: "cover.garage_mqtt6"})},
+close() { return callService("cover", "close_cover", {}, {entity_id: "cover.garage_mqtt6"})},
+openTilt() { return callService("cover", "open_cover_tilt", {}, {entity_id: "cover.garage_mqtt6"})},
+closeTilt() { return callService("cover", "close_cover_tilt", {}, {entity_id: "cover.garage_mqtt6"})},
+stop() { return callService("cover", "stop_cover", {}, {entity_id: "cover.garage_mqtt6"})},
+stopTilt() { return callService("cover", "stop_cover_tilt", {}, {entity_id: "cover.garage_mqtt6"})},
+toggle() { return callService("cover", "toggle", {}, {entity_id: "cover.garage_mqtt6"})},
+setPosition(position: number) { return callService("cover", "set_cover_position", {position}, {entity_id: "cover.garage_mqtt6"})},
+setTiltPosition(tilt_position: number) { return callService("cover", "set_cover_tilt_position", {tilt_position}, {entity_id: "cover.garage_mqtt6"})}
 },
 
 ['garage_4_mqtt']: {
@@ -34,6 +34,21 @@ setPosition(position: number) { return callService("cover", "set_cover_position"
 setTiltPosition(tilt_position: number) { return callService("cover", "set_cover_tilt_position", {tilt_position}, {entity_id: "cover.garage_4_mqtt"})}
 },
 
+['garage_mqtt5']: {
+  entity_id: "cover.garage_mqtt5",
+get entity() { return {state: shadowState["cover.garage_mqtt5"].state, attributes: shadowState["cover.garage_mqtt5"].attributes} as CoverProperties},
+isClosed() { return shadowState["cover.garage_mqtt5"].state === "closed" },
+open() { return callService("cover", "open_cover", {}, {entity_id: "cover.garage_mqtt5"})},
+close() { return callService("cover", "close_cover", {}, {entity_id: "cover.garage_mqtt5"})},
+openTilt() { return callService("cover", "open_cover_tilt", {}, {entity_id: "cover.garage_mqtt5"})},
+closeTilt() { return callService("cover", "close_cover_tilt", {}, {entity_id: "cover.garage_mqtt5"})},
+stop() { return callService("cover", "stop_cover", {}, {entity_id: "cover.garage_mqtt5"})},
+stopTilt() { return callService("cover", "stop_cover_tilt", {}, {entity_id: "cover.garage_mqtt5"})},
+toggle() { return callService("cover", "toggle", {}, {entity_id: "cover.garage_mqtt5"})},
+setPosition(position: number) { return callService("cover", "set_cover_position", {position}, {entity_id: "cover.garage_mqtt5"})},
+setTiltPosition(tilt_position: number) { return callService("cover", "set_cover_tilt_position", {tilt_position}, {entity_id: "cover.garage_mqtt5"})}
+},
+
 ['garage_3_mqtt']: {
   entity_id: "cover.garage_3_mqtt",
 get entity() { return {state: shadowState["cover.garage_3_mqtt"].state, attributes: shadowState["cover.garage_3_mqtt"].attributes} as CoverProperties},
@@ -47,6 +62,21 @@ stopTilt() { return callService("cover", "stop_cover_tilt", {}, {entity_id: "cov
 toggle() { return callService("cover", "toggle", {}, {entity_id: "cover.garage_3_mqtt"})},
 setPosition(position: number) { return callService("cover", "set_cover_position", {position}, {entity_id: "cover.garage_3_mqtt"})},
 setTiltPosition(tilt_position: number) { return callService("cover", "set_cover_tilt_position", {tilt_position}, {entity_id: "cover.garage_3_mqtt"})}
+},
+
+['garage_cover']: {
+  entity_id: "cover.garage_cover",
+get entity() { return {state: shadowState["cover.garage_cover"].state, attributes: shadowState["cover.garage_cover"].attributes} as CoverProperties},
+isClosed() { return shadowState["cover.garage_cover"].state === "closed" },
+open() { return callService("cover", "open_cover", {}, {entity_id: "cover.garage_cover"})},
+close() { return callService("cover", "close_cover", {}, {entity_id: "cover.garage_cover"})},
+openTilt() { return callService("cover", "open_cover_tilt", {}, {entity_id: "cover.garage_cover"})},
+closeTilt() { return callService("cover", "close_cover_tilt", {}, {entity_id: "cover.garage_cover"})},
+stop() { return callService("cover", "stop_cover", {}, {entity_id: "cover.garage_cover"})},
+stopTilt() { return callService("cover", "stop_cover_tilt", {}, {entity_id: "cover.garage_cover"})},
+toggle() { return callService("cover", "toggle", {}, {entity_id: "cover.garage_cover"})},
+setPosition(position: number) { return callService("cover", "set_cover_position", {position}, {entity_id: "cover.garage_cover"})},
+setTiltPosition(tilt_position: number) { return callService("cover", "set_cover_tilt_position", {tilt_position}, {entity_id: "cover.garage_cover"})}
 },
 
 ['garage_mqtt']: {
