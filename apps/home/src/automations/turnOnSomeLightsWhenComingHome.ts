@@ -13,5 +13,5 @@ export const turnOnSomeLightsWhenComingHome = () => {
     if(sun.sun.isAboveHorizon())
       return
     light.hall.turnOn()
-  }:, [binary_sensor.garage_door_contact, binary_sensor.entrance_door_contact]);
+  }, [binary_sensor.garage_door_contact, binary_sensor.entrance_door_contact]);
 };
