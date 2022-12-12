@@ -13,9 +13,9 @@ armAway(options?: ArmingOptions, serviceData?: Record<string, any>) { return cal
 armHome(options?: ArmingOptions, serviceData?: Record<string, any>) { return callService("alarm_control_panel", "alarm_arm_home", {code: process?.env?.ALARM_CODE, ...serviceData}, {entity_id: "alarm_control_panel.alarmo"})},
 armNight(options?: ArmingOptions, serviceData?: Record<string, any>) { return callService("alarm_control_panel", "alarm_arm_night", {code: process?.env?.ALARM_CODE, ...serviceData}, {entity_id: "alarm_control_panel.alarmo"})},
 armVacation(options?: ArmingOptions, serviceData?: Record<string, any>) { return callService("alarm_control_panel", "alarm_arm_vacation", {code: process?.env?.ALARM_CODE, ...serviceData}, {entity_id: "alarm_control_panel.alarmo"})},
-armCustomBypass(options?: ArmingOptions, serviceData?: Record<string, any>) { return callService("alarm_control_panel", "alarm_arm_vacation", {code: process?.env?.ALARM_CODE, ...serviceData}, {entity_id: "alarm_control_panel.alarmo"})},
-trigger(serviceData?: Record<string, any>) { return callService("alarm_control_panel", "trigger", {code: process?.env?.ALARM_CODE, ...serviceData}, {entity_id: "alarm_control_panel.alarmo"})},
-disarm(serviceData?: Record<string, any>) { return callService("alarm_control_panel", "disarm", {code: process?.env?.ALARM_CODE, ...serviceData}, {entity_id: "alarm_control_panel.alarmo"})}
+armCustomBypass(options?: ArmingOptions, serviceData?: Record<string, any>) { return callService("alarm_control_panel", "alarm_custom_bypass", {code: process?.env?.ALARM_CODE, ...serviceData}, {entity_id: "alarm_control_panel.alarmo"})},
+trigger(serviceData?: Record<string, any>) { return callService("alarm_control_panel", "alarm_trigger", {code: process?.env?.ALARM_CODE, ...serviceData}, {entity_id: "alarm_control_panel.alarmo"})},
+disarm(serviceData?: Record<string, any>) { return callService("alarm_control_panel", "alarm_disarm", {code: process?.env?.ALARM_CODE, ...serviceData}, {entity_id: "alarm_control_panel.alarmo"})}
 },
 
 }

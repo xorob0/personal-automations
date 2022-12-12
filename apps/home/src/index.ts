@@ -52,4 +52,8 @@ const base = async () => {
   roomBusy()
 };
 
-base();
+try{
+  base();
+}catch(e){
+  console.error("[index] error: ", e)
+}
