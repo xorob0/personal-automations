@@ -95,7 +95,7 @@ export const createMQTTCover = ({name, onStop, onClose, onOpen, onSetPercent}:cr
       }
     }
     if(topic === MQTTconfig.set_position_topic){
-      onSetPercent?.(parseInt(message.toString(), setPosition))
+      onSetPercent?.(parseInt(message.toString()), setPosition)
     }
   })
 
