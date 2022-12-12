@@ -37,14 +37,18 @@ export enum COVER_STATE {
   UNKNOWN = 'UNKNOWN',
 }
 
+export type SetPosition = (position: number | ((p:number) => number)) => void
+
 export type createMQTTCoverConfig = {
   name: string
-  onOpen?: () => void
-  onClose?: () => void
-  onSetPercent?: (percent: number) => void
-  onStop?: () => void
+  onOpen?: (position: number) => void
+  onClose?: (position: number) => void
+  onSetPercent?: (position: number, setPosition:SetPosition) => void
+  onStop?: (position: number) => void
 
 }
+
+const positions: Record<string, number> = {}
 
 export const createMQTTCover = ({name, onStop, onClose, onOpen, onSetPercent}:createMQTTCoverConfig) => {
   if( !client.connected){
@@ -65,13 +69,93 @@ export const createMQTTCover = ({name, onStop, onClose, onOpen, onSetPercent}:cr
     position_topic: `${HerjaTopic}/position`,
     set_position_topic: `${HerjaTopic}/set_position`,
   }
-  const setPosition = (position: number) => client.publish(MQTTconfig.position_topic, position.toString()  )
+  const setPosition = (position: number | ((p:number) => number)) => {
+    positions[unique_id] = typeof position === 'function' ? position(positions[unique_id]) : position
+    client.publish(MQTTconfig.position_topic, positions[unique_id].toString()  )
+  }
   const setState = (state: COVER_STATE) => client.publish(MQTTconfig.state_topic, state)
 
   client.publish(`${HATopic}/config`, JSON.stringify(MQTTconfig), {retain: true, qos: 2}, ()=>console.log('config pushed') )
-  client.subscribe(MQTTconfig.command_topic, {qos: 0}, ()=>console.log('subscribed') )
-  client.subscribe(MQTTconfig.set_position_topic, {qos: 0}, ()=>console.log('set position') )
+  client.publish(MQTTconfig.state_topic, "unknown", {retain: true, qos: 2}, ()=>console.log('state unknown') )
+  client.publish(MQTTconfig.position_topic, "-1", {retain: true, qos: 2}, ()=>console.log('position unknown') )
+  client.subscribe(MQTTconfig.command_topic, {qos: 0}, (command)=>console.log('subscribed to command') )
+  client.subscribe(MQTTconfig.set_position_topic, {qos: 0}, ()=>console.log('subscribed to position') )
+
+  client.on("message", (topic, message) => {
+
+    if(topic === MQTTconfig.command_topic){
+      if(message.toString() === "OPEN"){
+        onOpen?.(positions[unique_id])
+      }
+      if(message.toString() === "CLOSE"){
+        onClose?.(positions[unique_id])
+      }
+      if(message.toString() === "STOP"){
+        onStop?.(positions[unique_id])
+      }
+    }
+    if(topic === MQTTconfig.set_position_topic){
+      onSetPercent?.(parseInt(message.toString(), setPosition))
+    }
+  })
 
   return {setState, setPosition}
 }
 
+export enum SWITCH_STATE {
+  ON = 'ON',
+  OFF = 'OFF',
+}
+export type createMQTTSwitchConfig = {
+  name: string
+  onToggle?: (arg: {setState: ((state:SWITCH_STATE| ((old_state:SWITCH_STATE) => SWITCH_STATE)) => void)}) => void
+  onTurnOn?: (arg: {setState: ((state:SWITCH_STATE| ((old_state:SWITCH_STATE) => SWITCH_STATE)) => void)}) => void
+  onTurnOff?: (arg: {setState: ((state:SWITCH_STATE| ((old_state:SWITCH_STATE) => SWITCH_STATE)) => void)}) => void
+}
+
+
+const states: Record<string, SWITCH_STATE> = {}
+
+export const createMQTTSwitch = ({name, onTurnOff: onTurnOffFromProps, onTurnOn: onTurnOnFromProps, onToggle:onToggleFromProps}:createMQTTSwitchConfig ) => {
+  if( !client.connected){
+    throw Error('MQTT client not connected')
+  }
+
+  const onTurnOn = onTurnOnFromProps || (({setState}) => setState(SWITCH_STATE.ON))
+  const onTurnOff = onTurnOnFromProps || (({setState}) => setState(SWITCH_STATE.OFF))
+  const onToggle = onToggleFromProps || (({setState}) => setState((state) => state === SWITCH_STATE.ON ? SWITCH_STATE.OFF : SWITCH_STATE.ON))
+
+  const unique_id = name.replace(/[^a-zA-Z\d:]/g, "_").toLowerCase()
+  const HATopic = `homeassistant/switch/${unique_id}`
+  const HerjaTopic = `herja/switch/${unique_id}`
+  const MQTTconfig = {
+    name,
+    unique_id,
+    state_topic: `${HerjaTopic}/state`,
+    command_topic: `${HerjaTopic}/command`,
+  }
+  const setState = (state: SWITCH_STATE | ((old_state:SWITCH_STATE) => SWITCH_STATE)) => {
+    states[unique_id] = typeof state === 'function' ? state(states[unique_id]) : state
+    client.publish(MQTTconfig.state_topic, typeof state === 'function' ? state(states[unique_id]) : state)
+  }
+
+  client.publish(`${HATopic}/config`, JSON.stringify(MQTTconfig), {retain: true, qos: 2}, ()=>console.log(unique_id, 'config pushed') )
+  client.subscribe(MQTTconfig.command_topic, {qos: 0}, (command)=>console.log('subscribed to command') )
+  client.publish(MQTTconfig.state_topic, "OFF", {retain: true, qos: 2}, ()=>console.log('state off') )
+
+  client.on("message", (topic, message) => {
+    if(topic === MQTTconfig.command_topic){
+      if(message.toString() === "ON"){
+        onTurnOn?.({setState})
+      }
+      if(message.toString() === "OFF"){
+        onTurnOff?.({setState})
+      }
+      if(message.toString() === "TOGGLE"){
+        onToggle?.({setState})
+      }
+    }
+  })
+
+  return {setState}
+}

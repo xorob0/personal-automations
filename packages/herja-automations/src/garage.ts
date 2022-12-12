@@ -8,29 +8,111 @@ function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-let percentOpen: number = -1;
-
-
 let state = COVER_STATE.CLOSED;
 
 let intervalID: NodeJS.Timer|undefined  = undefined;
 
 export const garage = () => {
   console.log('starting garage')
-  const {setPosition: setPercentOpen, setState} = createMQTTCover({name: 'Garage 4_MQTT'})
+  const {setPosition: setPercentOpen, setState} = createMQTTCover({
+    name: 'Garage Cover',
+    onOpen: (position) => {
+      console.log('event garage open', state)
+      clearInterval(intervalID as number|undefined);
+      if (position === 0) {
+        switches.garage_button.turnOn();
+        return;
+      }
+      if (position === 100) {
+        return;
+      }
+      switch (state) {
+        case COVER_STATE.CLOSED:
+          switches.garage_button.turnOn();
+          break;
+        case COVER_STATE.OPEN:
+          switches.garage_button.turnOn();
+          setTimeout(switches.garage_button.turnOn, 1000);
+          setTimeout(switches.garage_button.turnOn, 2000);
+          break;
+        case COVER_STATE.CLOSING:
+          switches.garage_button.turnOn();
+          setTimeout(switches.garage_button.turnOn, 1000);
+          break;
+      }
+      // TODO Ensure every 30s
+    },
+    onClose: (position) => {
+      console.log('event garage close', position, state)
+      clearInterval(intervalID as number|undefined);
+      if (position === 100) {
+        switches.garage_button.turnOn();
+        return;
+      }
+      if (position === 0) {
+        return;
+      }
+      switch (state) {
+        case COVER_STATE.OPEN:
+          switches.garage_button.turnOn();
+          break;
+        case COVER_STATE.CLOSED:
+          switches.garage_button.turnOn();
+          setTimeout(switches.garage_button.turnOn, 1000);
+          setTimeout(switches.garage_button.turnOn, 2000);
+          break;
+        case COVER_STATE.OPENING:
+          switches.garage_button.turnOn();
+          setTimeout(switches.garage_button.turnOn, 1000);
+          break;
+      }
+    },
+    onStop: (position) => {
+      console.log('event garage stop', position, state)
+      clearInterval(intervalID as number|undefined);
+      switch (state) {
+        case COVER_STATE.CLOSING:
+          switches.garage_button.turnOn();
+          break;
+        case COVER_STATE.OPENING:
+          switches.garage_button.turnOn();
+          break;
+      }
+    },
+    onSetPercent : async (position) => {
+        console.log(position);
+        clearInterval(intervalID as number|undefined);
+        // TODO handle position 0
+        console.log('setting position', position);
+        console.log('closing');
+        callService('cover', 'close_cover', undefined, {
+          entity_id: 'cover.garage_cover',
+        });
+        await delay(MOVE_SPEED * position * 0.2);
+        console.log('opening');
+        callService('cover', 'open_cover', undefined, {
+          entity_id: 'cover.garage_cover',
+        });
+        await delay(MOVE_SPEED * position);
+        console.log('stopping');
+        callService('cover', 'stop_cover', undefined, {
+          entity_id: 'cover.garage_cover',
+        });
+      },
+  })
 
   const IntervalIncrement = () => {
     console.log("IntervalIncrement");
     clearInterval(intervalID as number|undefined);
     intervalID = setInterval(() => {
-      if (percentOpen < 99) setPercentOpen(percentOpen + 1);
+      setPercentOpen(position => position <= 99 ? position + 1 : 99);
     }, MOVE_SPEED);
   };
   const IntervalDecrement = () => {
     console.log("IntervalDecrement");
     clearInterval(intervalID as number|undefined);
     intervalID = setInterval(() => {
-      if (percentOpen > 1) setPercentOpen(percentOpen - 1);
+      setPercentOpen(position => position >= 1 ? position - 1 : 1);
     }, MOVE_SPEED);
   };
 
@@ -96,99 +178,4 @@ export const garage = () => {
       }
     }
   }, [switches.garage_button]);
-
-  effect(() => {
-    console.log('event garage open', percentOpen, state)
-    clearInterval(intervalID as number|undefined);
-    if (percentOpen === 0) {
-      switches.garage_button.turnOn();
-      return;
-    }
-    if (percentOpen === 100) {
-      return;
-    }
-    switch (state) {
-      case COVER_STATE.CLOSED:
-        switches.garage_button.turnOn();
-        break;
-      case COVER_STATE.OPEN:
-        switches.garage_button.turnOn();
-        setTimeout(switches.garage_button.turnOn, 1000);
-        setTimeout(switches.garage_button.turnOn, 2000);
-        break;
-      case COVER_STATE.CLOSING:
-        switches.garage_button.turnOn();
-        setTimeout(switches.garage_button.turnOn, 1000);
-        break;
-    }
-    // TODO Ensure every 30s
-  }, [{ eventType: 'garage.open' }]);
-
-  effect(() => {
-    console.log('event garage close', percentOpen, state)
-    clearInterval(intervalID as number|undefined);
-    if (percentOpen === 100) {
-      switches.garage_button.turnOn();
-      return;
-    }
-    if (percentOpen === 0) {
-      return;
-    }
-    switch (state) {
-      case COVER_STATE.OPEN:
-        switches.garage_button.turnOn();
-        break;
-      case COVER_STATE.CLOSED:
-        switches.garage_button.turnOn();
-        setTimeout(switches.garage_button.turnOn, 1000);
-        setTimeout(switches.garage_button.turnOn, 2000);
-        break;
-      case COVER_STATE.OPENING:
-        switches.garage_button.turnOn();
-        setTimeout(switches.garage_button.turnOn, 1000);
-        break;
-    }
-    // TODO Ensure every 30s
-  }, [{ eventType: 'garage.close' }]);
-
-  effect(() => {
-    console.log('event garage stop', percentOpen, state)
-    clearInterval(intervalID as number|undefined);
-    switch (state) {
-      case COVER_STATE.CLOSING:
-        switches.garage_button.turnOn();
-        break;
-      case COVER_STATE.OPENING:
-        switches.garage_button.turnOn();
-        break;
-    }
-  }, [{ eventType: 'garage.stop' }]);
-
-  effect(
-    async (event) => {
-      if(!event) return
-      console.log('event garage set position', percentOpen, state, event)
-      console.log(event.data.position);
-      if(typeof event.data.position !== 'number')
-        return
-      clearInterval(intervalID as number|undefined);
-      // TODO handle position 0
-      console.log('setting position', event.data.position);
-      console.log('closing');
-      callService('cover', 'close_cover', undefined, {
-        entity_id: 'cover.garage_electric_door',
-      });
-      await delay(MOVE_SPEED * event.data.position * 0.2);
-      console.log('opening');
-      callService('cover', 'open_cover', undefined, {
-        entity_id: 'cover.garage_electric_door',
-      });
-      await delay(MOVE_SPEED * event.data.position);
-      console.log('stopping');
-      callService('cover', 'stop_cover', undefined, {
-        entity_id: 'cover.garage_electric_door',
-      });
-    },
-    [{ eventType: 'garage.set_position' }]
-  );
 };
