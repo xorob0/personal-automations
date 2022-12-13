@@ -6,11 +6,12 @@ export const automaticAlarm = () => {
     if(alarm_control_panel.alarmo.entity.state === AlarmControlPanelState.ARMED_NIGHT)
       return
 
-    if (
-      person.gaby.isHome() || person.tim.isHome()
-    ) {
+    const isSomeoneHome = person.gaby.isHome() || person.tim.isHome()
+    if (isSomeoneHome) {
+      console.log('disarm')
       alarm_control_panel.alarmo.disarm()
     } else {
+      console.log('arm away')
       alarm_control_panel.alarmo.armAway()
     }
   }, [person.tim, person.gaby]);

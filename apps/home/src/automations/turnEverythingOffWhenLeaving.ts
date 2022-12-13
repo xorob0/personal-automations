@@ -3,7 +3,9 @@ import { alarm_control_panel, person, vacuum } from "generated/src";
 
 let timeoutID: NodeJS.Timer|undefined = undefined;
 
-const log = (msg: string) => console.log(`[turnEverythingOffWhenLeaving]: ${msg}`)
+const log = (...msg: any[]) => console.log(`[turnEverythingOffWhenLeaving]: ${msg.concat(" ")}`)
+
+let ranOnce = false
 
 export const turnEverythingOffWhenLeaving = () => {
   effect(() => {
@@ -11,9 +13,11 @@ export const turnEverythingOffWhenLeaving = () => {
     if(alarm_control_panel.alarmo.entity.state === AlarmControlPanelState.ARMED_NIGHT ){
       return
     }
-    if (
-      person.gaby.isHome() || person.tim.isHome()
-    ) {
+    const isSomeoneHome = person.gaby.isHome() || person.tim.isHome()
+    if (isSomeoneHome) {
+      if(!ranOnce)
+        return
+      ranOnce = false
       log('clearTimeout ' + person.tim.entity.state + ' ' + person.gaby.entity.state)
       clearTimeout(timeoutID as number|undefined);
       try{
@@ -23,6 +27,9 @@ export const turnEverythingOffWhenLeaving = () => {
         log('vacuum error', e)
       }
     } else {
+      if(ranOnce)
+        return
+      ranOnce = true
       log('setTimeout ' + person.tim.entity.state + ' ' + person.gaby.entity.state)
       timeoutID = setTimeout(() => {
         // TODO extract turn on/off all lights
