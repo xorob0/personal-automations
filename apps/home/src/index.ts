@@ -19,6 +19,7 @@ import { deskButton } from "./automations/DeskButton";
 import { alertCarUnplugged } from "./automations/alertCarUnplugged";
 import { allAlertsOpenedTooLong } from "./automations/alertOpenedTooLong";
 import { roomBusy } from "./automations/roomBusy";
+import { createHumidifiers } from "./automations/humidifiers";
 
 require('dotenv').config();
 
@@ -50,6 +51,7 @@ const base = async () => {
   deskButton();
   alertCarUnplugged()
   roomBusy()
+  createHumidifiers()
 };
 
 try{
