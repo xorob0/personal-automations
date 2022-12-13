@@ -1,5 +1,4 @@
 import mqtt from "mqtt"
-import { BetterHassEntity, effect } from "@herja/core";
 
 export const client = mqtt.connect('mqtt://192.168.2.65:1883' );
 
