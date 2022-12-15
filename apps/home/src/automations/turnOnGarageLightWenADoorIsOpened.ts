@@ -15,5 +15,5 @@ export const turnOnGarageLightWhenADoorIsOpened = () => {effect(() => {
       light.garage.turnOff()
     }, 2 * 60 * 1000);
   }
-}, [binary_sensor.garage_door_contact, binary_sensor.garage_electric_door_sensor_closed_contact])}
+}, [binary_sensor.garage_door_contact, binary_sensor.garage_electric_door_sensor_closed_contact, binary_sensor.g4_bullet_motion])}
 
