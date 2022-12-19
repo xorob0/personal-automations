@@ -10,10 +10,12 @@ export const createHumidifiers = () => {
       switches.bedroom_humidifier_switch.turnOn();
       await sleep(10 * 1000)
       remote.bedroom_ir_blaster_remote.sendCommand("b64:JgBQAAABKZQTEhUREhMVEBMTFBEUERUREzcSOBQ3EzcTNxQ3FTUUNxMSFBEUEhQRExIUEhM3ExIUNxM3FDYTOBI4FDcTEhU1EwAFFQABK0sTAA0")
+      await sleep(1000)
+      remote.living_room_ir_blaster_remote_2.sendCommand("b64:JgBYAAABLpEUEhUQFRIUERQQFhAVERUQFTYTNxM3FjUTNxQ3EzcUNxM3FBIVEBU2EzcTExM3ExMTExI3FDcTEhMUEjcTFBI3EwAFFQABLUkTAAxWAAEuSBUADQU")
     },
     turnOff: () => switches.bedroom_humidifier_switch.turnOff(),
     humiditySensor: sensor.living_room_ir_blaster_humidity_2,
-    minDiff: 10
+    minDiff: 3
   })
 
   createMQTTHumidifier({
@@ -27,9 +29,13 @@ export const createHumidifiers = () => {
       switches.living_room_humidifier_switch.turnOn();
       await sleep(10 * 1000)
       remote.living_room_ir_blaster_remote_2.sendCommand("b64:JgBQAAABKZQTEhUREhMVEBMTFBEUERUREzcSOBQ3EzcTNxQ3FTUUNxMSFBEUEhQRExIUEhM3ExIUNxM3FDYTOBI4FDcTEhU1EwAFFQABK0sTAA0")
+      await sleep(1 * 1000)
+      remote.living_room_ir_blaster_remote_2.sendCommand("b64:JgBYAAABLpEUEhUQFRIUERQQFhAVERUQFTYTNxM3FjUTNxQ3EzcUNxM3FBIVEBU2EzcTExM3ExMTExI3FDcTEhMUEjcTFBI3EwAFFQABLUkTAAxWAAEuSBUADQU")
     },
     turnOff: () => switches.bedroom_humidifier_switch.turnOff(),
     humiditySensor: sensor.living_room_ir_blaster_humidity_2,
-    minDiff: 10
+    minDiff: 3
+
   })
+
 }
