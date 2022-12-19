@@ -1,25 +1,16 @@
 import {callService, shadowState, Camera, CameraProperties} from "@herja/core"
-export type CameraIDs = "living_room_panel" | "map_data" | "g4_bullet_high" | "g4_doorbell_high" | "robot_rendered_map"
+export type CameraIDs = "g4_doorbell_high" | "g4_bullet_high" | "map_data" | "robot_rendered_map"
 export type CameraEntities = Record<CameraIDs, Camera>
 
 export const camera: Camera<CameraIDs> = {
 
-['living_room_panel']: {
-  entity_id: "camera.living_room_panel",
-get entity() { return {state: shadowState["camera.living_room_panel"].state, attributes: shadowState["camera.living_room_panel"].attributes} as CameraProperties},
-turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.living_room_panel"})},
-turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.living_room_panel"})},
-enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.living_room_panel"})},
-disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.living_room_panel"})}
-},
-
-['map_data']: {
-  entity_id: "camera.map_data",
-get entity() { return {state: shadowState["camera.map_data"].state, attributes: shadowState["camera.map_data"].attributes} as CameraProperties},
-turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.map_data"})},
-turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.map_data"})},
-enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.map_data"})},
-disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.map_data"})}
+['g4_doorbell_high']: {
+  entity_id: "camera.g4_doorbell_high",
+get entity() { return {state: shadowState["camera.g4_doorbell_high"].state, attributes: shadowState["camera.g4_doorbell_high"].attributes} as CameraProperties},
+turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.g4_doorbell_high"})},
+turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.g4_doorbell_high"})},
+enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.g4_doorbell_high"})},
+disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.g4_doorbell_high"})}
 },
 
 ['g4_bullet_high']: {
@@ -31,13 +22,13 @@ enableMotionDetection() { return callService("camera", "enable_motion_detection"
 disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.g4_bullet_high"})}
 },
 
-['g4_doorbell_high']: {
-  entity_id: "camera.g4_doorbell_high",
-get entity() { return {state: shadowState["camera.g4_doorbell_high"].state, attributes: shadowState["camera.g4_doorbell_high"].attributes} as CameraProperties},
-turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.g4_doorbell_high"})},
-turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.g4_doorbell_high"})},
-enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.g4_doorbell_high"})},
-disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.g4_doorbell_high"})}
+['map_data']: {
+  entity_id: "camera.map_data",
+get entity() { return {state: shadowState["camera.map_data"].state, attributes: shadowState["camera.map_data"].attributes} as CameraProperties},
+turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.map_data"})},
+turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.map_data"})},
+enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.map_data"})},
+disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.map_data"})}
 },
 
 ['robot_rendered_map']: {
