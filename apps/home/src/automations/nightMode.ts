@@ -1,5 +1,5 @@
 import { effect, MediaPlayerEntity, shadowState, SunState } from "@herja/core";
-import { sun, sensor, light, alarm_control_panel, switches, binary_sensor } from "generated/src";
+import { sun, sensor, light, alarm_control_panel, switches, binary_sensor, humidifier, climate } from "generated/src";
 import { clearTimeout } from "timers";
 import { getAllLights, turnOffAllLights } from "../utils/allLights";
 
@@ -30,6 +30,8 @@ export const nightMode = () => {
   effect(async (event)=>{
     if(event?.data.new_state.state !== 'single' && event?.data.new_state.state !== "on")
       return
+
+    humidifier.bedroom.turnOff()
 
     clearTimeout(timeoutID as number|undefined)
 
@@ -77,4 +79,13 @@ export const nightMode = () => {
       return
     alarm_control_panel.alarmo.disarm()
   }, [binary_sensor.tim_s_id_4_car_is_active])
+
+  effect(()=>{
+    humidifier.bedroom.turnOn()
+  }, ["0 10 * * *"])
+
+  effect(()=>{
+    climate.bedroom_ac.setHeating()
+    climate.bedroom_ac.setTargetTemperature(20)
+  }, ["0 21 * * *"])
 };
