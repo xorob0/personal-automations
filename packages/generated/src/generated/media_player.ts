@@ -1,17 +1,17 @@
 import {callService, shadowState, MediaPlayer, MediaPlayerProperties, Media} from "@herja/core"
-export type MediaPlayerIDs = "spotify_tim" | "g4_doorbell_speaker" | "plex_plex_for_android_tv_shield_android_tv" | "ebbff7dd_e82b404f" | "aadf3129_ecd1ece2" | "snapcast_group_e290b1ac_54c9_4c56_affb_d643ee8e385c" | "snapcast_group_d388b62b_954a_3c20_e0f4_97a9c3d7eb6a" | "snapcast_group_8b5371a4_7868_33e4_c642_938d495880a5" | "snapcast_client_fa646a44_3603_4033_a68f_fe6194b5713e" | "snapcast_client_3739bb6c_54ae_4d5c_8896_5915004c3b76" | "snapcast_client_92db579b_66f1_4e96_84fb_832f867a8a53" | "plex_frederic_plex_for_android_tv_oy_tab_kids" | "plex_plex_for_android_tv_shield_android_tv_2" | "plex_plex_web_firefox_osx" | "plex_clement_plex_web_firefox_windows" | "plex_plex_for_ios_ipad_de_gaby" | "plex_plex_for_android_mobile_galaxy_s22" | "plex_kapy_plex_for_android_mobile_galaxy_s20" | "plex_frederic_plex_for_android_mobile_galaxy_s20" | "plex_frederic_plex_for_android_mobile_sm_s901b" | "android_tv_192_168_1_166" | "android_tv_192_168_1_194" | "plex_plex_for_android_tv_bq_5059_strike_power"
+export type MediaPlayerIDs = "android_tv_192_168_1_166" | "g4_doorbell_speaker" | "spotify_tim" | "ebbff7dd_e82b404f" | "aadf3129_ecd1ece2" | "snapcast_group_e290b1ac_54c9_4c56_affb_d643ee8e385c" | "snapcast_group_d388b62b_954a_3c20_e0f4_97a9c3d7eb6a" | "snapcast_group_8b5371a4_7868_33e4_c642_938d495880a5" | "snapcast_client_fa646a44_3603_4033_a68f_fe6194b5713e" | "snapcast_client_3739bb6c_54ae_4d5c_8896_5915004c3b76" | "snapcast_client_92db579b_66f1_4e96_84fb_832f867a8a53" | "plex_plex_for_android_tv_shield_android_tv" | "plex_frederic_plex_for_android_tv_oy_tab_kids" | "plex_plex_for_android_tv_shield_android_tv_2" | "plex_plex_web_firefox_osx" | "plex_clement_plex_web_firefox_windows" | "plex_plex_for_ios_ipad_de_gaby" | "plex_plex_for_android_mobile_galaxy_s22" | "plex_kapy_plex_for_android_mobile_galaxy_s20" | "plex_frederic_plex_for_android_mobile_galaxy_s20" | "plex_frederic_plex_for_android_mobile_sm_s901b" | "android_tv_192_168_1_194" | "plex_plex_for_android_tv_bq_5059_strike_power"
 export type MediaPlayerEntities = Record<MediaPlayerIDs, MediaPlayer>
 
 export const media_player: MediaPlayer<MediaPlayerIDs> = {
 
-['spotify_tim']: {
-  entity_id: "media_player.spotify_tim",
-get entity() { return {state: shadowState["media_player.spotify_tim"].state, attributes: shadowState["media_player.spotify_tim"].attributes} as MediaPlayerProperties},
-turnOn() { return callService("media_player", "turn_on", {}, {entity_id: "media_player.spotify_tim"})},
-turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "media_player.spotify_tim"})},
-playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.spotify_tim"})},
-selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.spotify_tim"})},
-selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.spotify_tim"})}
+['android_tv_192_168_1_166']: {
+  entity_id: "media_player.android_tv_192_168_1_166",
+get entity() { return {state: shadowState["media_player.android_tv_192_168_1_166"].state, attributes: shadowState["media_player.android_tv_192_168_1_166"].attributes} as MediaPlayerProperties},
+turnOn() { return callService("media_player", "turn_on", {}, {entity_id: "media_player.android_tv_192_168_1_166"})},
+turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "media_player.android_tv_192_168_1_166"})},
+playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.android_tv_192_168_1_166"})},
+selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.android_tv_192_168_1_166"})},
+selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.android_tv_192_168_1_166"})}
 },
 
 ['g4_doorbell_speaker']: {
@@ -24,14 +24,14 @@ selectSource(source:string) { return callService("media_player", "select_sound",
 selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.g4_doorbell_speaker"})}
 },
 
-['plex_plex_for_android_tv_shield_android_tv']: {
-  entity_id: "media_player.plex_plex_for_android_tv_shield_android_tv",
-get entity() { return {state: shadowState["media_player.plex_plex_for_android_tv_shield_android_tv"].state, attributes: shadowState["media_player.plex_plex_for_android_tv_shield_android_tv"].attributes} as MediaPlayerProperties},
-turnOn() { return callService("media_player", "turn_on", {}, {entity_id: "media_player.plex_plex_for_android_tv_shield_android_tv"})},
-turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "media_player.plex_plex_for_android_tv_shield_android_tv"})},
-playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.plex_plex_for_android_tv_shield_android_tv"})},
-selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.plex_plex_for_android_tv_shield_android_tv"})},
-selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.plex_plex_for_android_tv_shield_android_tv"})}
+['spotify_tim']: {
+  entity_id: "media_player.spotify_tim",
+get entity() { return {state: shadowState["media_player.spotify_tim"].state, attributes: shadowState["media_player.spotify_tim"].attributes} as MediaPlayerProperties},
+turnOn() { return callService("media_player", "turn_on", {}, {entity_id: "media_player.spotify_tim"})},
+turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "media_player.spotify_tim"})},
+playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.spotify_tim"})},
+selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.spotify_tim"})},
+selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.spotify_tim"})}
 },
 
 ['ebbff7dd_e82b404f']: {
@@ -112,6 +112,16 @@ turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "medi
 playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.snapcast_client_92db579b_66f1_4e96_84fb_832f867a8a53"})},
 selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.snapcast_client_92db579b_66f1_4e96_84fb_832f867a8a53"})},
 selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.snapcast_client_92db579b_66f1_4e96_84fb_832f867a8a53"})}
+},
+
+['plex_plex_for_android_tv_shield_android_tv']: {
+  entity_id: "media_player.plex_plex_for_android_tv_shield_android_tv",
+get entity() { return {state: shadowState["media_player.plex_plex_for_android_tv_shield_android_tv"].state, attributes: shadowState["media_player.plex_plex_for_android_tv_shield_android_tv"].attributes} as MediaPlayerProperties},
+turnOn() { return callService("media_player", "turn_on", {}, {entity_id: "media_player.plex_plex_for_android_tv_shield_android_tv"})},
+turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "media_player.plex_plex_for_android_tv_shield_android_tv"})},
+playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.plex_plex_for_android_tv_shield_android_tv"})},
+selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.plex_plex_for_android_tv_shield_android_tv"})},
+selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.plex_plex_for_android_tv_shield_android_tv"})}
 },
 
 ['plex_frederic_plex_for_android_tv_oy_tab_kids']: {
@@ -202,16 +212,6 @@ turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "medi
 playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.plex_frederic_plex_for_android_mobile_sm_s901b"})},
 selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.plex_frederic_plex_for_android_mobile_sm_s901b"})},
 selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.plex_frederic_plex_for_android_mobile_sm_s901b"})}
-},
-
-['android_tv_192_168_1_166']: {
-  entity_id: "media_player.android_tv_192_168_1_166",
-get entity() { return {state: shadowState["media_player.android_tv_192_168_1_166"].state, attributes: shadowState["media_player.android_tv_192_168_1_166"].attributes} as MediaPlayerProperties},
-turnOn() { return callService("media_player", "turn_on", {}, {entity_id: "media_player.android_tv_192_168_1_166"})},
-turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "media_player.android_tv_192_168_1_166"})},
-playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.android_tv_192_168_1_166"})},
-selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.android_tv_192_168_1_166"})},
-selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.android_tv_192_168_1_166"})}
 },
 
 ['android_tv_192_168_1_194']: {
