@@ -31,7 +31,7 @@ export const nightMode = () => {
     if(event?.data.new_state.state !== 'single' && event?.data.new_state.state !== "on")
       return
 
-    humidifier.bedroom.turnOff()
+    humidifier.bedroom_humidifier.turnOff()
 
     clearTimeout(timeoutID as number|undefined)
 
@@ -51,6 +51,9 @@ export const nightMode = () => {
       if(isALightOn(getAllLights({exceptions: lightBedroom}))){
         await turnOffAllLights({exceptions: lightBedroom})
         turnOnBedroomLight()
+        climate.bedroom_ac.turnOff()
+        climate.office_ac.turnOff()
+        climate.secondary_room_ac.turnOff()
       }
       // if the only light that is on is in the bedroom
       else{
@@ -81,7 +84,7 @@ export const nightMode = () => {
   }, [binary_sensor.tim_s_id_4_car_is_active])
 
   effect(()=>{
-    humidifier.bedroom.turnOn()
+    humidifier.bedroom_humidifier.turnOn()
   }, ["0 10 * * *"])
 
   effect(()=>{
