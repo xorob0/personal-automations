@@ -19,16 +19,19 @@ export type createMQTTHumidifierConfig = {
   turnOff: () => void
   humiditySensor: BetterHassEntity
   minDiff?: number
+  defaultTarget?: number
 }
 
 const states: Record<string, HUMIDIFIER_STATE> = {}
 const targetHumidities: Record<string, number> = {}
 const humidityLevels: Record<string, HUMIDIFIER_HUMIDITY_LEVEL> = {}
 
-export const createMQTTHumidifier = ({name, onHumidityTooHigh, onHumidityTooLow,turnOff, humiditySensor, minDiff: minDiffFromProps}:createMQTTHumidifierConfig ) => {
+export const createMQTTHumidifier = ({name, defaultTarget, onHumidityTooHigh, onHumidityTooLow,turnOff, humiditySensor, minDiff: minDiffFromProps}:createMQTTHumidifierConfig ) => {
   if( !client.connected){
     throw Error('MQTT client not connected')
   }
+
+
 
   const minDiff = minDiffFromProps || 10
 
@@ -42,6 +45,9 @@ export const createMQTTHumidifier = ({name, onHumidityTooHigh, onHumidityTooLow,
     command_topic: `${HerjaTopic}/command`,
     target_humidity_command_topic: `${HerjaTopic}/target_humidity_command`,
   }
+
+
+  targetHumidities[unique_id] = defaultTarget || 0
 
   const onChange = () => {
     if(!humiditySensor?.entity?.state)

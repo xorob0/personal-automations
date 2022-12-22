@@ -1,8 +1,17 @@
 import {callService, shadowState, Camera, CameraProperties} from "@herja/core"
-export type CameraIDs = "g4_doorbell_high" | "g4_bullet_high" | "map_data" | "robot_rendered_map"
+export type CameraIDs = "map_data" | "g4_doorbell_high" | "g4_bullet_high" | "robot_rendered_map"
 export type CameraEntities = Record<CameraIDs, Camera>
 
 export const camera: Camera<CameraIDs> = {
+
+['map_data']: {
+  entity_id: "camera.map_data",
+get entity() { return {state: shadowState["camera.map_data"].state, attributes: shadowState["camera.map_data"].attributes} as CameraProperties},
+turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.map_data"})},
+turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.map_data"})},
+enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.map_data"})},
+disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.map_data"})}
+},
 
 ['g4_doorbell_high']: {
   entity_id: "camera.g4_doorbell_high",
@@ -20,15 +29,6 @@ turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.g4_bu
 turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.g4_bullet_high"})},
 enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.g4_bullet_high"})},
 disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.g4_bullet_high"})}
-},
-
-['map_data']: {
-  entity_id: "camera.map_data",
-get entity() { return {state: shadowState["camera.map_data"].state, attributes: shadowState["camera.map_data"].attributes} as CameraProperties},
-turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.map_data"})},
-turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.map_data"})},
-enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.map_data"})},
-disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.map_data"})}
 },
 
 ['robot_rendered_map']: {
