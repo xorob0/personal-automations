@@ -15,7 +15,8 @@ export const createHumidifiers = () => {
     },
     turnOff: () => switches.bedroom_humidifier_switch.turnOff(),
     humiditySensor: sensor.living_room_ir_blaster_humidity_2,
-    minDiff: 3
+    minDiff: 3,
+    defaultTarget: 55
   })
 
   createMQTTHumidifier({
@@ -34,8 +35,8 @@ export const createHumidifiers = () => {
     },
     turnOff: () => switches.bedroom_humidifier_switch.turnOff(),
     humiditySensor: sensor.living_room_ir_blaster_humidity_2,
-    minDiff: 3
-
+    minDiff: 3,
+    defaultTarget: 55
   })
 
 }

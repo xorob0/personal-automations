@@ -1,5 +1,5 @@
 import {shadowState, DeviceTracker, DeviceTrackerProperties} from "@herja/core"
-export type DeviceTrackerIDs = "gaby_galaxy_s20" | "hostname1" | "tim_iphone_ip" | "00_01_2e_65_c0_dc" | "02_42_c0_a8_c8_03" | "aida" | "broadlink_wifi_device_23_cb_47" | "yeelink_light_color2_miio134290485" | "broadlink_remote_0c_81_90" | "openwrt" | "sma3004169620" | "living_room" | "bedroom" | "48_b0_2d_15_21_c5" | "gs1200_8" | "ce_4e_3a_21_d1_16" | "fritz1" | "92_ce_51_71_7e_6c" | "2c_76_8a_5a_f2_d4" | "78_d6_dc_2f_29_a8" | "kapy" | "54_10_ec_c4_ef_fa" | "64_b5_c6_52_0c_fd" | "14_7d_da_07_bf_1f" | "2c_f0_5d_85_80_3c" | "50_ec_50_1b_3a_85" | "04_03_d6_07_6b_09" | "galaxywatch3_6bc3" | "86_68_bf_9c_55_5c" | "2e_cf_bf_46_3b_bb" | "mirahi_c02cm4h9md6t" | "antonios_mbp" | "64_4b_f0_2b_93_d8" | "ipad" | "tims_mbp" | "kobo" | "air_de_gaby" | "6c_3c_7c_02_33_af" | "galaxy_s22" | "ea_99_73_29_70_32" | "lt_621jtg3" | "android_5ef1b103dc61d633" | "7a_c1_86_3d_b5_93" | "synologynas" | "wb457613" | "antonioplewatch" | "94_18_82_c6_a8_00" | "32_25_e5_6c_52_92" | "broadlink_remote_b8_f4_bf" | "galaxy_s22_2" | "ca_14_46_8a_20_2a" | "72_31_7e_fa_4f_c0" | "ea_52_c4_99_56_8f" | "victors_mbp" | "60_22_32_36_3b_f8" | "galaxy_s22_3" | "galaxy_s22_4" | "60_22_32_33_8d_ec" | "00_90_9e_9d_84_8e" | "broadlink_remote_72_4c_9b" | "ba_6b_79_eb_92_7c" | "galaxy_s22_5" | "galaxy_s22_6" | "kapy_2" | "32_2b_1c_02_37_a0" | "42_24_66_e9_f0_84" | "pink" | "2a_06_c2_4a_01_15" | "00_04_4b_fc_fb_81" | "00_04_4b_fb_74_e1" | "living_room_esp32" | "c0_49_ef_ca_39_c4" | "34_86_5d_fd_76_8c" | "c8_f0_9e_9e_0f_98" | "b6_b1_26_aa_df_85" | "be_b6_67_82_75_a2" | "2e_e4_84_ab_72_75" | "0e_79_d2_f5_4b_1e" | "02_d3_ef_d7_03_9a" | "ba_f7_93_f6_8a_d8" | "3e_6e_9e_5a_e0_a8" | "6e_81_87_c1_bc_3e" | "da_5f_69_7c_31_c8" | "tim_s_id_4_tracker" | "sm_g980f" | "s22" | "tims_iphone" | "tims_macbook_pro" | "tims_ipone_tracker" | "tim_s_watch_tracker" | "tim_s_ipone_tracker" | "tim_s_ipone_tracker_2" | "tim_s_phone_tracker" | "gaby_s_phone_tracker" | "tim_all_in_one" | "gaby_all_in_one" | "unifi_92_ce_51_71_7e_6c_default" | "tims_mbp_2" | "unifi_00_04_4b_fb_74_e1_default" | "tim_calculated" | "01073d14_3789_4814_82fe_330131debcf9_100_1" | "747addc7_9fb4_43c1_ba7f_41c38118048f_100_1" | "e20a39f4_73f5_4bc4_1864_17d1ad07a962_17667_14594_8ed9" | "sb0c958382bb2fbd7c_4623" | "e2c56db5_dffb_48d2_b060_d0f5a71096e0_0_0" | "unifi_2e_e4_84_ab_72_75_default" | "accma99c32488a978558_fb1f" | "aida_2" | "unifi_54_10_ec_c4_ef_fa_default" | "wb457613_2" | "sma3004169620_2" | "gs1200_8_2" | "unifi_2c_76_8a_5a_f2_d4_default" | "unifi_2c_76_8a_5a_f2_d5_default" | "unifi_48_b0_2d_15_21_c5_default" | "g4_doorbell" | "unifi_ba_f7_93_f6_8a_d8_default" | "u6_lite_living_room" | "dream_machine_pro" | "u6_lite_tatoo_room" | "us24pro" | "kapy_3" | "air_de_gaby_2" | "android_5ef1b103dc61d633_2" | "unifi_3e_6e_9e_5a_e0_a8_default" | "uvc_g4_bullet" | "lt_621jtg3_2" | "unifi_64_4b_f0_2b_93_d8_default" | "broadlink_wifi_device_23_cb_47_2" | "broadlink_remote_72_4c_9b_2" | "broadlink_remote_0c_81_90_2" | "broadlink_remote_b8_f4_bf_2" | "galaxywatch3_6bc3_2" | "unifi_ae_d2_4a_a3_f5_28_default" | "unifi_7a_43_d0_03_dc_aa_default" | "galaxy_s22_7" | "unifi_50_ec_50_1b_3a_85_default" | "living_room_esp32_2" | "unifi_6c_3c_7c_02_33_af_default" | "unifi_da_5f_69_7c_31_c8_default" | "unifi_92_99_c1_60_3c_ae_default" | "unifi_78_d6_dc_2f_29_a8_default" | "galaxy_j5_2016" | "unifi_cc_9f_7a_e2_ae_81_default" | "unifi_04_03_d6_07_6b_09_default" | "unifi_00_90_9e_9d_84_8e_default" | "unifi_d2_21_f9_85_ae_ce_default" | "unifi_02_17_f9_4d_0a_70_default"
+export type DeviceTrackerIDs = "gaby_galaxy_s20" | "hostname1" | "tim_iphone_ip" | "00_01_2e_65_c0_dc" | "02_42_c0_a8_c8_03" | "aida" | "broadlink_wifi_device_23_cb_47" | "yeelink_light_color2_miio134290485" | "broadlink_remote_0c_81_90" | "openwrt" | "sma3004169620" | "living_room" | "bedroom" | "48_b0_2d_15_21_c5" | "gs1200_8" | "ce_4e_3a_21_d1_16" | "fritz1" | "92_ce_51_71_7e_6c" | "2c_76_8a_5a_f2_d4" | "78_d6_dc_2f_29_a8" | "kapy" | "54_10_ec_c4_ef_fa" | "64_b5_c6_52_0c_fd" | "14_7d_da_07_bf_1f" | "2c_f0_5d_85_80_3c" | "50_ec_50_1b_3a_85" | "04_03_d6_07_6b_09" | "galaxywatch3_6bc3" | "86_68_bf_9c_55_5c" | "2e_cf_bf_46_3b_bb" | "mirahi_c02cm4h9md6t" | "antonios_mbp" | "64_4b_f0_2b_93_d8" | "ipad" | "tims_mbp" | "kobo" | "air_de_gaby" | "6c_3c_7c_02_33_af" | "galaxy_s22" | "ea_99_73_29_70_32" | "lt_621jtg3" | "android_5ef1b103dc61d633" | "7a_c1_86_3d_b5_93" | "synologynas" | "wb457613" | "antonioplewatch" | "94_18_82_c6_a8_00" | "32_25_e5_6c_52_92" | "broadlink_remote_b8_f4_bf" | "galaxy_s22_2" | "ca_14_46_8a_20_2a" | "72_31_7e_fa_4f_c0" | "ea_52_c4_99_56_8f" | "victors_mbp" | "60_22_32_36_3b_f8" | "galaxy_s22_3" | "galaxy_s22_4" | "60_22_32_33_8d_ec" | "00_90_9e_9d_84_8e" | "broadlink_remote_72_4c_9b" | "ba_6b_79_eb_92_7c" | "galaxy_s22_5" | "galaxy_s22_6" | "kapy_2" | "32_2b_1c_02_37_a0" | "42_24_66_e9_f0_84" | "pink" | "2a_06_c2_4a_01_15" | "00_04_4b_fc_fb_81" | "00_04_4b_fb_74_e1" | "living_room_esp32" | "c0_49_ef_ca_39_c4" | "34_86_5d_fd_76_8c" | "c8_f0_9e_9e_0f_98" | "b6_b1_26_aa_df_85" | "be_b6_67_82_75_a2" | "2e_e4_84_ab_72_75" | "0e_79_d2_f5_4b_1e" | "02_d3_ef_d7_03_9a" | "ba_f7_93_f6_8a_d8" | "3e_6e_9e_5a_e0_a8" | "6e_81_87_c1_bc_3e" | "da_5f_69_7c_31_c8" | "unifi_2c_76_8a_5a_f2_d4_default" | "unifi_48_b0_2d_15_21_c5_default" | "aida_2" | "unifi_54_10_ec_c4_ef_fa_default" | "tims_mbp_2" | "g4_doorbell" | "broadlink_remote_0c_81_90_2" | "broadlink_remote_b8_f4_bf_2" | "unifi_78_d6_dc_2f_29_a8_default" | "unifi_00_90_9e_9d_84_8e_default" | "uvc_g4_bullet" | "unifi_ba_f7_93_f6_8a_d8_default" | "wb457613_2" | "living_room_esp32_2" | "unifi_f4_cf_a2_f6_8f_73_default" | "unifi_6c_3c_7c_02_33_af_default" | "kapy_3" | "unifi_2e_e4_84_ab_72_75_default" | "broadlink_wifi_device_23_cb_47_2" | "unifi_92_ce_51_71_7e_6c_default" | "sma3004169620_2" | "unifi_00_04_4b_fb_74_e1_default" | "unifi_50_ec_50_1b_3a_85_default" | "unifi_2c_76_8a_5a_f2_d5_default" | "broadlink_remote_72_4c_9b_2" | "gs1200_8_2" | "air_de_gaby_2" | "android_5ef1b103dc61d633_2" | "unifi_3e_6e_9e_5a_e0_a8_default" | "lt_621jtg3_2" | "unifi_64_4b_f0_2b_93_d8_default" | "galaxywatch3_6bc3_2" | "unifi_ae_d2_4a_a3_f5_28_default" | "unifi_7a_43_d0_03_dc_aa_default" | "galaxy_s22_7" | "unifi_da_5f_69_7c_31_c8_default" | "unifi_92_99_c1_60_3c_ae_default" | "galaxy_j5_2016" | "unifi_cc_9f_7a_e2_ae_81_default" | "unifi_04_03_d6_07_6b_09_default" | "unifi_d2_21_f9_85_ae_ce_default" | "unifi_02_17_f9_4d_0a_70_default" | "u6_lite_living_room" | "dream_machine_pro" | "u6_lite_tatoo_room" | "us24pro" | "sm_g980f" | "s22" | "tims_iphone" | "tims_macbook_pro" | "tim_calculated" | "tim_s_id_4_tracker" | "tims_ipone_tracker" | "tim_s_watch_tracker" | "tim_s_ipone_tracker" | "tim_s_ipone_tracker_2" | "tim_s_phone_tracker" | "gaby_s_phone_tracker" | "tim_all_in_one" | "gaby_all_in_one" | "01073d14_3789_4814_82fe_330131debcf9_100_1" | "747addc7_9fb4_43c1_ba7f_41c38118048f_100_1" | "e20a39f4_73f5_4bc4_1864_17d1ad07a962_17667_14594_8ed9" | "sb0c958382bb2fbd7c_4623" | "e2c56db5_dffb_48d2_b060_d0f5a71096e0_0_0" | "accma99c32488a978558_fb1f"
 export type DeviceTrackerEntities = Record<DeviceTrackerIDs, DeviceTracker>
 
 export const device_tracker: DeviceTracker<DeviceTrackerIDs> = {
@@ -502,10 +502,280 @@ get entity() { return {state: shadowState["device_tracker.da_5f_69_7c_31_c8"].st
 isHome() { return shadowState["device_tracker.da_5f_69_7c_31_c8"].state === "home"}
 },
 
-['tim_s_id_4_tracker']: {
-  entity_id: "device_tracker.tim_s_id_4_tracker",
-get entity() { return {state: shadowState["device_tracker.tim_s_id_4_tracker"].state, attributes: shadowState["device_tracker.tim_s_id_4_tracker"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.tim_s_id_4_tracker"].state === "home"}
+['unifi_2c_76_8a_5a_f2_d4_default']: {
+  entity_id: "device_tracker.unifi_2c_76_8a_5a_f2_d4_default",
+get entity() { return {state: shadowState["device_tracker.unifi_2c_76_8a_5a_f2_d4_default"].state, attributes: shadowState["device_tracker.unifi_2c_76_8a_5a_f2_d4_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_2c_76_8a_5a_f2_d4_default"].state === "home"}
+},
+
+['unifi_48_b0_2d_15_21_c5_default']: {
+  entity_id: "device_tracker.unifi_48_b0_2d_15_21_c5_default",
+get entity() { return {state: shadowState["device_tracker.unifi_48_b0_2d_15_21_c5_default"].state, attributes: shadowState["device_tracker.unifi_48_b0_2d_15_21_c5_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_48_b0_2d_15_21_c5_default"].state === "home"}
+},
+
+['aida_2']: {
+  entity_id: "device_tracker.aida_2",
+get entity() { return {state: shadowState["device_tracker.aida_2"].state, attributes: shadowState["device_tracker.aida_2"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.aida_2"].state === "home"}
+},
+
+['unifi_54_10_ec_c4_ef_fa_default']: {
+  entity_id: "device_tracker.unifi_54_10_ec_c4_ef_fa_default",
+get entity() { return {state: shadowState["device_tracker.unifi_54_10_ec_c4_ef_fa_default"].state, attributes: shadowState["device_tracker.unifi_54_10_ec_c4_ef_fa_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_54_10_ec_c4_ef_fa_default"].state === "home"}
+},
+
+['tims_mbp_2']: {
+  entity_id: "device_tracker.tims_mbp_2",
+get entity() { return {state: shadowState["device_tracker.tims_mbp_2"].state, attributes: shadowState["device_tracker.tims_mbp_2"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.tims_mbp_2"].state === "home"}
+},
+
+['g4_doorbell']: {
+  entity_id: "device_tracker.g4_doorbell",
+get entity() { return {state: shadowState["device_tracker.g4_doorbell"].state, attributes: shadowState["device_tracker.g4_doorbell"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.g4_doorbell"].state === "home"}
+},
+
+['broadlink_remote_0c_81_90_2']: {
+  entity_id: "device_tracker.broadlink_remote_0c_81_90_2",
+get entity() { return {state: shadowState["device_tracker.broadlink_remote_0c_81_90_2"].state, attributes: shadowState["device_tracker.broadlink_remote_0c_81_90_2"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.broadlink_remote_0c_81_90_2"].state === "home"}
+},
+
+['broadlink_remote_b8_f4_bf_2']: {
+  entity_id: "device_tracker.broadlink_remote_b8_f4_bf_2",
+get entity() { return {state: shadowState["device_tracker.broadlink_remote_b8_f4_bf_2"].state, attributes: shadowState["device_tracker.broadlink_remote_b8_f4_bf_2"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.broadlink_remote_b8_f4_bf_2"].state === "home"}
+},
+
+['unifi_78_d6_dc_2f_29_a8_default']: {
+  entity_id: "device_tracker.unifi_78_d6_dc_2f_29_a8_default",
+get entity() { return {state: shadowState["device_tracker.unifi_78_d6_dc_2f_29_a8_default"].state, attributes: shadowState["device_tracker.unifi_78_d6_dc_2f_29_a8_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_78_d6_dc_2f_29_a8_default"].state === "home"}
+},
+
+['unifi_00_90_9e_9d_84_8e_default']: {
+  entity_id: "device_tracker.unifi_00_90_9e_9d_84_8e_default",
+get entity() { return {state: shadowState["device_tracker.unifi_00_90_9e_9d_84_8e_default"].state, attributes: shadowState["device_tracker.unifi_00_90_9e_9d_84_8e_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_00_90_9e_9d_84_8e_default"].state === "home"}
+},
+
+['uvc_g4_bullet']: {
+  entity_id: "device_tracker.uvc_g4_bullet",
+get entity() { return {state: shadowState["device_tracker.uvc_g4_bullet"].state, attributes: shadowState["device_tracker.uvc_g4_bullet"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.uvc_g4_bullet"].state === "home"}
+},
+
+['unifi_ba_f7_93_f6_8a_d8_default']: {
+  entity_id: "device_tracker.unifi_ba_f7_93_f6_8a_d8_default",
+get entity() { return {state: shadowState["device_tracker.unifi_ba_f7_93_f6_8a_d8_default"].state, attributes: shadowState["device_tracker.unifi_ba_f7_93_f6_8a_d8_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_ba_f7_93_f6_8a_d8_default"].state === "home"}
+},
+
+['wb457613_2']: {
+  entity_id: "device_tracker.wb457613_2",
+get entity() { return {state: shadowState["device_tracker.wb457613_2"].state, attributes: shadowState["device_tracker.wb457613_2"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.wb457613_2"].state === "home"}
+},
+
+['living_room_esp32_2']: {
+  entity_id: "device_tracker.living_room_esp32_2",
+get entity() { return {state: shadowState["device_tracker.living_room_esp32_2"].state, attributes: shadowState["device_tracker.living_room_esp32_2"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.living_room_esp32_2"].state === "home"}
+},
+
+['unifi_f4_cf_a2_f6_8f_73_default']: {
+  entity_id: "device_tracker.unifi_f4_cf_a2_f6_8f_73_default",
+get entity() { return {state: shadowState["device_tracker.unifi_f4_cf_a2_f6_8f_73_default"].state, attributes: shadowState["device_tracker.unifi_f4_cf_a2_f6_8f_73_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_f4_cf_a2_f6_8f_73_default"].state === "home"}
+},
+
+['unifi_6c_3c_7c_02_33_af_default']: {
+  entity_id: "device_tracker.unifi_6c_3c_7c_02_33_af_default",
+get entity() { return {state: shadowState["device_tracker.unifi_6c_3c_7c_02_33_af_default"].state, attributes: shadowState["device_tracker.unifi_6c_3c_7c_02_33_af_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_6c_3c_7c_02_33_af_default"].state === "home"}
+},
+
+['kapy_3']: {
+  entity_id: "device_tracker.kapy_3",
+get entity() { return {state: shadowState["device_tracker.kapy_3"].state, attributes: shadowState["device_tracker.kapy_3"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.kapy_3"].state === "home"}
+},
+
+['unifi_2e_e4_84_ab_72_75_default']: {
+  entity_id: "device_tracker.unifi_2e_e4_84_ab_72_75_default",
+get entity() { return {state: shadowState["device_tracker.unifi_2e_e4_84_ab_72_75_default"].state, attributes: shadowState["device_tracker.unifi_2e_e4_84_ab_72_75_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_2e_e4_84_ab_72_75_default"].state === "home"}
+},
+
+['broadlink_wifi_device_23_cb_47_2']: {
+  entity_id: "device_tracker.broadlink_wifi_device_23_cb_47_2",
+get entity() { return {state: shadowState["device_tracker.broadlink_wifi_device_23_cb_47_2"].state, attributes: shadowState["device_tracker.broadlink_wifi_device_23_cb_47_2"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.broadlink_wifi_device_23_cb_47_2"].state === "home"}
+},
+
+['unifi_92_ce_51_71_7e_6c_default']: {
+  entity_id: "device_tracker.unifi_92_ce_51_71_7e_6c_default",
+get entity() { return {state: shadowState["device_tracker.unifi_92_ce_51_71_7e_6c_default"].state, attributes: shadowState["device_tracker.unifi_92_ce_51_71_7e_6c_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_92_ce_51_71_7e_6c_default"].state === "home"}
+},
+
+['sma3004169620_2']: {
+  entity_id: "device_tracker.sma3004169620_2",
+get entity() { return {state: shadowState["device_tracker.sma3004169620_2"].state, attributes: shadowState["device_tracker.sma3004169620_2"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.sma3004169620_2"].state === "home"}
+},
+
+['unifi_00_04_4b_fb_74_e1_default']: {
+  entity_id: "device_tracker.unifi_00_04_4b_fb_74_e1_default",
+get entity() { return {state: shadowState["device_tracker.unifi_00_04_4b_fb_74_e1_default"].state, attributes: shadowState["device_tracker.unifi_00_04_4b_fb_74_e1_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_00_04_4b_fb_74_e1_default"].state === "home"}
+},
+
+['unifi_50_ec_50_1b_3a_85_default']: {
+  entity_id: "device_tracker.unifi_50_ec_50_1b_3a_85_default",
+get entity() { return {state: shadowState["device_tracker.unifi_50_ec_50_1b_3a_85_default"].state, attributes: shadowState["device_tracker.unifi_50_ec_50_1b_3a_85_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_50_ec_50_1b_3a_85_default"].state === "home"}
+},
+
+['unifi_2c_76_8a_5a_f2_d5_default']: {
+  entity_id: "device_tracker.unifi_2c_76_8a_5a_f2_d5_default",
+get entity() { return {state: shadowState["device_tracker.unifi_2c_76_8a_5a_f2_d5_default"].state, attributes: shadowState["device_tracker.unifi_2c_76_8a_5a_f2_d5_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_2c_76_8a_5a_f2_d5_default"].state === "home"}
+},
+
+['broadlink_remote_72_4c_9b_2']: {
+  entity_id: "device_tracker.broadlink_remote_72_4c_9b_2",
+get entity() { return {state: shadowState["device_tracker.broadlink_remote_72_4c_9b_2"].state, attributes: shadowState["device_tracker.broadlink_remote_72_4c_9b_2"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.broadlink_remote_72_4c_9b_2"].state === "home"}
+},
+
+['gs1200_8_2']: {
+  entity_id: "device_tracker.gs1200_8_2",
+get entity() { return {state: shadowState["device_tracker.gs1200_8_2"].state, attributes: shadowState["device_tracker.gs1200_8_2"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.gs1200_8_2"].state === "home"}
+},
+
+['air_de_gaby_2']: {
+  entity_id: "device_tracker.air_de_gaby_2",
+get entity() { return {state: shadowState["device_tracker.air_de_gaby_2"].state, attributes: shadowState["device_tracker.air_de_gaby_2"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.air_de_gaby_2"].state === "home"}
+},
+
+['android_5ef1b103dc61d633_2']: {
+  entity_id: "device_tracker.android_5ef1b103dc61d633_2",
+get entity() { return {state: shadowState["device_tracker.android_5ef1b103dc61d633_2"].state, attributes: shadowState["device_tracker.android_5ef1b103dc61d633_2"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.android_5ef1b103dc61d633_2"].state === "home"}
+},
+
+['unifi_3e_6e_9e_5a_e0_a8_default']: {
+  entity_id: "device_tracker.unifi_3e_6e_9e_5a_e0_a8_default",
+get entity() { return {state: shadowState["device_tracker.unifi_3e_6e_9e_5a_e0_a8_default"].state, attributes: shadowState["device_tracker.unifi_3e_6e_9e_5a_e0_a8_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_3e_6e_9e_5a_e0_a8_default"].state === "home"}
+},
+
+['lt_621jtg3_2']: {
+  entity_id: "device_tracker.lt_621jtg3_2",
+get entity() { return {state: shadowState["device_tracker.lt_621jtg3_2"].state, attributes: shadowState["device_tracker.lt_621jtg3_2"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.lt_621jtg3_2"].state === "home"}
+},
+
+['unifi_64_4b_f0_2b_93_d8_default']: {
+  entity_id: "device_tracker.unifi_64_4b_f0_2b_93_d8_default",
+get entity() { return {state: shadowState["device_tracker.unifi_64_4b_f0_2b_93_d8_default"].state, attributes: shadowState["device_tracker.unifi_64_4b_f0_2b_93_d8_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_64_4b_f0_2b_93_d8_default"].state === "home"}
+},
+
+['galaxywatch3_6bc3_2']: {
+  entity_id: "device_tracker.galaxywatch3_6bc3_2",
+get entity() { return {state: shadowState["device_tracker.galaxywatch3_6bc3_2"].state, attributes: shadowState["device_tracker.galaxywatch3_6bc3_2"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.galaxywatch3_6bc3_2"].state === "home"}
+},
+
+['unifi_ae_d2_4a_a3_f5_28_default']: {
+  entity_id: "device_tracker.unifi_ae_d2_4a_a3_f5_28_default",
+get entity() { return {state: shadowState["device_tracker.unifi_ae_d2_4a_a3_f5_28_default"].state, attributes: shadowState["device_tracker.unifi_ae_d2_4a_a3_f5_28_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_ae_d2_4a_a3_f5_28_default"].state === "home"}
+},
+
+['unifi_7a_43_d0_03_dc_aa_default']: {
+  entity_id: "device_tracker.unifi_7a_43_d0_03_dc_aa_default",
+get entity() { return {state: shadowState["device_tracker.unifi_7a_43_d0_03_dc_aa_default"].state, attributes: shadowState["device_tracker.unifi_7a_43_d0_03_dc_aa_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_7a_43_d0_03_dc_aa_default"].state === "home"}
+},
+
+['galaxy_s22_7']: {
+  entity_id: "device_tracker.galaxy_s22_7",
+get entity() { return {state: shadowState["device_tracker.galaxy_s22_7"].state, attributes: shadowState["device_tracker.galaxy_s22_7"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.galaxy_s22_7"].state === "home"}
+},
+
+['unifi_da_5f_69_7c_31_c8_default']: {
+  entity_id: "device_tracker.unifi_da_5f_69_7c_31_c8_default",
+get entity() { return {state: shadowState["device_tracker.unifi_da_5f_69_7c_31_c8_default"].state, attributes: shadowState["device_tracker.unifi_da_5f_69_7c_31_c8_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_da_5f_69_7c_31_c8_default"].state === "home"}
+},
+
+['unifi_92_99_c1_60_3c_ae_default']: {
+  entity_id: "device_tracker.unifi_92_99_c1_60_3c_ae_default",
+get entity() { return {state: shadowState["device_tracker.unifi_92_99_c1_60_3c_ae_default"].state, attributes: shadowState["device_tracker.unifi_92_99_c1_60_3c_ae_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_92_99_c1_60_3c_ae_default"].state === "home"}
+},
+
+['galaxy_j5_2016']: {
+  entity_id: "device_tracker.galaxy_j5_2016",
+get entity() { return {state: shadowState["device_tracker.galaxy_j5_2016"].state, attributes: shadowState["device_tracker.galaxy_j5_2016"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.galaxy_j5_2016"].state === "home"}
+},
+
+['unifi_cc_9f_7a_e2_ae_81_default']: {
+  entity_id: "device_tracker.unifi_cc_9f_7a_e2_ae_81_default",
+get entity() { return {state: shadowState["device_tracker.unifi_cc_9f_7a_e2_ae_81_default"].state, attributes: shadowState["device_tracker.unifi_cc_9f_7a_e2_ae_81_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_cc_9f_7a_e2_ae_81_default"].state === "home"}
+},
+
+['unifi_04_03_d6_07_6b_09_default']: {
+  entity_id: "device_tracker.unifi_04_03_d6_07_6b_09_default",
+get entity() { return {state: shadowState["device_tracker.unifi_04_03_d6_07_6b_09_default"].state, attributes: shadowState["device_tracker.unifi_04_03_d6_07_6b_09_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_04_03_d6_07_6b_09_default"].state === "home"}
+},
+
+['unifi_d2_21_f9_85_ae_ce_default']: {
+  entity_id: "device_tracker.unifi_d2_21_f9_85_ae_ce_default",
+get entity() { return {state: shadowState["device_tracker.unifi_d2_21_f9_85_ae_ce_default"].state, attributes: shadowState["device_tracker.unifi_d2_21_f9_85_ae_ce_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_d2_21_f9_85_ae_ce_default"].state === "home"}
+},
+
+['unifi_02_17_f9_4d_0a_70_default']: {
+  entity_id: "device_tracker.unifi_02_17_f9_4d_0a_70_default",
+get entity() { return {state: shadowState["device_tracker.unifi_02_17_f9_4d_0a_70_default"].state, attributes: shadowState["device_tracker.unifi_02_17_f9_4d_0a_70_default"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.unifi_02_17_f9_4d_0a_70_default"].state === "home"}
+},
+
+['u6_lite_living_room']: {
+  entity_id: "device_tracker.u6_lite_living_room",
+get entity() { return {state: shadowState["device_tracker.u6_lite_living_room"].state, attributes: shadowState["device_tracker.u6_lite_living_room"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.u6_lite_living_room"].state === "home"}
+},
+
+['dream_machine_pro']: {
+  entity_id: "device_tracker.dream_machine_pro",
+get entity() { return {state: shadowState["device_tracker.dream_machine_pro"].state, attributes: shadowState["device_tracker.dream_machine_pro"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.dream_machine_pro"].state === "home"}
+},
+
+['u6_lite_tatoo_room']: {
+  entity_id: "device_tracker.u6_lite_tatoo_room",
+get entity() { return {state: shadowState["device_tracker.u6_lite_tatoo_room"].state, attributes: shadowState["device_tracker.u6_lite_tatoo_room"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.u6_lite_tatoo_room"].state === "home"}
+},
+
+['us24pro']: {
+  entity_id: "device_tracker.us24pro",
+get entity() { return {state: shadowState["device_tracker.us24pro"].state, attributes: shadowState["device_tracker.us24pro"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.us24pro"].state === "home"}
 },
 
 ['sm_g980f']: {
@@ -530,6 +800,18 @@ isHome() { return shadowState["device_tracker.tims_iphone"].state === "home"}
   entity_id: "device_tracker.tims_macbook_pro",
 get entity() { return {state: shadowState["device_tracker.tims_macbook_pro"].state, attributes: shadowState["device_tracker.tims_macbook_pro"].attributes} as DeviceTrackerProperties},
 isHome() { return shadowState["device_tracker.tims_macbook_pro"].state === "home"}
+},
+
+['tim_calculated']: {
+  entity_id: "device_tracker.tim_calculated",
+get entity() { return {state: shadowState["device_tracker.tim_calculated"].state, attributes: shadowState["device_tracker.tim_calculated"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.tim_calculated"].state === "home"}
+},
+
+['tim_s_id_4_tracker']: {
+  entity_id: "device_tracker.tim_s_id_4_tracker",
+get entity() { return {state: shadowState["device_tracker.tim_s_id_4_tracker"].state, attributes: shadowState["device_tracker.tim_s_id_4_tracker"].attributes} as DeviceTrackerProperties},
+isHome() { return shadowState["device_tracker.tim_s_id_4_tracker"].state === "home"}
 },
 
 ['tims_ipone_tracker']: {
@@ -580,30 +862,6 @@ get entity() { return {state: shadowState["device_tracker.gaby_all_in_one"].stat
 isHome() { return shadowState["device_tracker.gaby_all_in_one"].state === "home"}
 },
 
-['unifi_92_ce_51_71_7e_6c_default']: {
-  entity_id: "device_tracker.unifi_92_ce_51_71_7e_6c_default",
-get entity() { return {state: shadowState["device_tracker.unifi_92_ce_51_71_7e_6c_default"].state, attributes: shadowState["device_tracker.unifi_92_ce_51_71_7e_6c_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_92_ce_51_71_7e_6c_default"].state === "home"}
-},
-
-['tims_mbp_2']: {
-  entity_id: "device_tracker.tims_mbp_2",
-get entity() { return {state: shadowState["device_tracker.tims_mbp_2"].state, attributes: shadowState["device_tracker.tims_mbp_2"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.tims_mbp_2"].state === "home"}
-},
-
-['unifi_00_04_4b_fb_74_e1_default']: {
-  entity_id: "device_tracker.unifi_00_04_4b_fb_74_e1_default",
-get entity() { return {state: shadowState["device_tracker.unifi_00_04_4b_fb_74_e1_default"].state, attributes: shadowState["device_tracker.unifi_00_04_4b_fb_74_e1_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_00_04_4b_fb_74_e1_default"].state === "home"}
-},
-
-['tim_calculated']: {
-  entity_id: "device_tracker.tim_calculated",
-get entity() { return {state: shadowState["device_tracker.tim_calculated"].state, attributes: shadowState["device_tracker.tim_calculated"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.tim_calculated"].state === "home"}
-},
-
 ['01073d14_3789_4814_82fe_330131debcf9_100_1']: {
   entity_id: "device_tracker.01073d14_3789_4814_82fe_330131debcf9_100_1",
 get entity() { return {state: shadowState["device_tracker.01073d14_3789_4814_82fe_330131debcf9_100_1"].state, attributes: shadowState["device_tracker.01073d14_3789_4814_82fe_330131debcf9_100_1"].attributes} as DeviceTrackerProperties},
@@ -634,262 +892,10 @@ get entity() { return {state: shadowState["device_tracker.e2c56db5_dffb_48d2_b06
 isHome() { return shadowState["device_tracker.e2c56db5_dffb_48d2_b060_d0f5a71096e0_0_0"].state === "home"}
 },
 
-['unifi_2e_e4_84_ab_72_75_default']: {
-  entity_id: "device_tracker.unifi_2e_e4_84_ab_72_75_default",
-get entity() { return {state: shadowState["device_tracker.unifi_2e_e4_84_ab_72_75_default"].state, attributes: shadowState["device_tracker.unifi_2e_e4_84_ab_72_75_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_2e_e4_84_ab_72_75_default"].state === "home"}
-},
-
 ['accma99c32488a978558_fb1f']: {
   entity_id: "device_tracker.accma99c32488a978558_fb1f",
 get entity() { return {state: shadowState["device_tracker.accma99c32488a978558_fb1f"].state, attributes: shadowState["device_tracker.accma99c32488a978558_fb1f"].attributes} as DeviceTrackerProperties},
 isHome() { return shadowState["device_tracker.accma99c32488a978558_fb1f"].state === "home"}
-},
-
-['aida_2']: {
-  entity_id: "device_tracker.aida_2",
-get entity() { return {state: shadowState["device_tracker.aida_2"].state, attributes: shadowState["device_tracker.aida_2"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.aida_2"].state === "home"}
-},
-
-['unifi_54_10_ec_c4_ef_fa_default']: {
-  entity_id: "device_tracker.unifi_54_10_ec_c4_ef_fa_default",
-get entity() { return {state: shadowState["device_tracker.unifi_54_10_ec_c4_ef_fa_default"].state, attributes: shadowState["device_tracker.unifi_54_10_ec_c4_ef_fa_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_54_10_ec_c4_ef_fa_default"].state === "home"}
-},
-
-['wb457613_2']: {
-  entity_id: "device_tracker.wb457613_2",
-get entity() { return {state: shadowState["device_tracker.wb457613_2"].state, attributes: shadowState["device_tracker.wb457613_2"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.wb457613_2"].state === "home"}
-},
-
-['sma3004169620_2']: {
-  entity_id: "device_tracker.sma3004169620_2",
-get entity() { return {state: shadowState["device_tracker.sma3004169620_2"].state, attributes: shadowState["device_tracker.sma3004169620_2"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.sma3004169620_2"].state === "home"}
-},
-
-['gs1200_8_2']: {
-  entity_id: "device_tracker.gs1200_8_2",
-get entity() { return {state: shadowState["device_tracker.gs1200_8_2"].state, attributes: shadowState["device_tracker.gs1200_8_2"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.gs1200_8_2"].state === "home"}
-},
-
-['unifi_2c_76_8a_5a_f2_d4_default']: {
-  entity_id: "device_tracker.unifi_2c_76_8a_5a_f2_d4_default",
-get entity() { return {state: shadowState["device_tracker.unifi_2c_76_8a_5a_f2_d4_default"].state, attributes: shadowState["device_tracker.unifi_2c_76_8a_5a_f2_d4_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_2c_76_8a_5a_f2_d4_default"].state === "home"}
-},
-
-['unifi_2c_76_8a_5a_f2_d5_default']: {
-  entity_id: "device_tracker.unifi_2c_76_8a_5a_f2_d5_default",
-get entity() { return {state: shadowState["device_tracker.unifi_2c_76_8a_5a_f2_d5_default"].state, attributes: shadowState["device_tracker.unifi_2c_76_8a_5a_f2_d5_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_2c_76_8a_5a_f2_d5_default"].state === "home"}
-},
-
-['unifi_48_b0_2d_15_21_c5_default']: {
-  entity_id: "device_tracker.unifi_48_b0_2d_15_21_c5_default",
-get entity() { return {state: shadowState["device_tracker.unifi_48_b0_2d_15_21_c5_default"].state, attributes: shadowState["device_tracker.unifi_48_b0_2d_15_21_c5_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_48_b0_2d_15_21_c5_default"].state === "home"}
-},
-
-['g4_doorbell']: {
-  entity_id: "device_tracker.g4_doorbell",
-get entity() { return {state: shadowState["device_tracker.g4_doorbell"].state, attributes: shadowState["device_tracker.g4_doorbell"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.g4_doorbell"].state === "home"}
-},
-
-['unifi_ba_f7_93_f6_8a_d8_default']: {
-  entity_id: "device_tracker.unifi_ba_f7_93_f6_8a_d8_default",
-get entity() { return {state: shadowState["device_tracker.unifi_ba_f7_93_f6_8a_d8_default"].state, attributes: shadowState["device_tracker.unifi_ba_f7_93_f6_8a_d8_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_ba_f7_93_f6_8a_d8_default"].state === "home"}
-},
-
-['u6_lite_living_room']: {
-  entity_id: "device_tracker.u6_lite_living_room",
-get entity() { return {state: shadowState["device_tracker.u6_lite_living_room"].state, attributes: shadowState["device_tracker.u6_lite_living_room"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.u6_lite_living_room"].state === "home"}
-},
-
-['dream_machine_pro']: {
-  entity_id: "device_tracker.dream_machine_pro",
-get entity() { return {state: shadowState["device_tracker.dream_machine_pro"].state, attributes: shadowState["device_tracker.dream_machine_pro"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.dream_machine_pro"].state === "home"}
-},
-
-['u6_lite_tatoo_room']: {
-  entity_id: "device_tracker.u6_lite_tatoo_room",
-get entity() { return {state: shadowState["device_tracker.u6_lite_tatoo_room"].state, attributes: shadowState["device_tracker.u6_lite_tatoo_room"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.u6_lite_tatoo_room"].state === "home"}
-},
-
-['us24pro']: {
-  entity_id: "device_tracker.us24pro",
-get entity() { return {state: shadowState["device_tracker.us24pro"].state, attributes: shadowState["device_tracker.us24pro"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.us24pro"].state === "home"}
-},
-
-['kapy_3']: {
-  entity_id: "device_tracker.kapy_3",
-get entity() { return {state: shadowState["device_tracker.kapy_3"].state, attributes: shadowState["device_tracker.kapy_3"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.kapy_3"].state === "home"}
-},
-
-['air_de_gaby_2']: {
-  entity_id: "device_tracker.air_de_gaby_2",
-get entity() { return {state: shadowState["device_tracker.air_de_gaby_2"].state, attributes: shadowState["device_tracker.air_de_gaby_2"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.air_de_gaby_2"].state === "home"}
-},
-
-['android_5ef1b103dc61d633_2']: {
-  entity_id: "device_tracker.android_5ef1b103dc61d633_2",
-get entity() { return {state: shadowState["device_tracker.android_5ef1b103dc61d633_2"].state, attributes: shadowState["device_tracker.android_5ef1b103dc61d633_2"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.android_5ef1b103dc61d633_2"].state === "home"}
-},
-
-['unifi_3e_6e_9e_5a_e0_a8_default']: {
-  entity_id: "device_tracker.unifi_3e_6e_9e_5a_e0_a8_default",
-get entity() { return {state: shadowState["device_tracker.unifi_3e_6e_9e_5a_e0_a8_default"].state, attributes: shadowState["device_tracker.unifi_3e_6e_9e_5a_e0_a8_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_3e_6e_9e_5a_e0_a8_default"].state === "home"}
-},
-
-['uvc_g4_bullet']: {
-  entity_id: "device_tracker.uvc_g4_bullet",
-get entity() { return {state: shadowState["device_tracker.uvc_g4_bullet"].state, attributes: shadowState["device_tracker.uvc_g4_bullet"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.uvc_g4_bullet"].state === "home"}
-},
-
-['lt_621jtg3_2']: {
-  entity_id: "device_tracker.lt_621jtg3_2",
-get entity() { return {state: shadowState["device_tracker.lt_621jtg3_2"].state, attributes: shadowState["device_tracker.lt_621jtg3_2"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.lt_621jtg3_2"].state === "home"}
-},
-
-['unifi_64_4b_f0_2b_93_d8_default']: {
-  entity_id: "device_tracker.unifi_64_4b_f0_2b_93_d8_default",
-get entity() { return {state: shadowState["device_tracker.unifi_64_4b_f0_2b_93_d8_default"].state, attributes: shadowState["device_tracker.unifi_64_4b_f0_2b_93_d8_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_64_4b_f0_2b_93_d8_default"].state === "home"}
-},
-
-['broadlink_wifi_device_23_cb_47_2']: {
-  entity_id: "device_tracker.broadlink_wifi_device_23_cb_47_2",
-get entity() { return {state: shadowState["device_tracker.broadlink_wifi_device_23_cb_47_2"].state, attributes: shadowState["device_tracker.broadlink_wifi_device_23_cb_47_2"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.broadlink_wifi_device_23_cb_47_2"].state === "home"}
-},
-
-['broadlink_remote_72_4c_9b_2']: {
-  entity_id: "device_tracker.broadlink_remote_72_4c_9b_2",
-get entity() { return {state: shadowState["device_tracker.broadlink_remote_72_4c_9b_2"].state, attributes: shadowState["device_tracker.broadlink_remote_72_4c_9b_2"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.broadlink_remote_72_4c_9b_2"].state === "home"}
-},
-
-['broadlink_remote_0c_81_90_2']: {
-  entity_id: "device_tracker.broadlink_remote_0c_81_90_2",
-get entity() { return {state: shadowState["device_tracker.broadlink_remote_0c_81_90_2"].state, attributes: shadowState["device_tracker.broadlink_remote_0c_81_90_2"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.broadlink_remote_0c_81_90_2"].state === "home"}
-},
-
-['broadlink_remote_b8_f4_bf_2']: {
-  entity_id: "device_tracker.broadlink_remote_b8_f4_bf_2",
-get entity() { return {state: shadowState["device_tracker.broadlink_remote_b8_f4_bf_2"].state, attributes: shadowState["device_tracker.broadlink_remote_b8_f4_bf_2"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.broadlink_remote_b8_f4_bf_2"].state === "home"}
-},
-
-['galaxywatch3_6bc3_2']: {
-  entity_id: "device_tracker.galaxywatch3_6bc3_2",
-get entity() { return {state: shadowState["device_tracker.galaxywatch3_6bc3_2"].state, attributes: shadowState["device_tracker.galaxywatch3_6bc3_2"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.galaxywatch3_6bc3_2"].state === "home"}
-},
-
-['unifi_ae_d2_4a_a3_f5_28_default']: {
-  entity_id: "device_tracker.unifi_ae_d2_4a_a3_f5_28_default",
-get entity() { return {state: shadowState["device_tracker.unifi_ae_d2_4a_a3_f5_28_default"].state, attributes: shadowState["device_tracker.unifi_ae_d2_4a_a3_f5_28_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_ae_d2_4a_a3_f5_28_default"].state === "home"}
-},
-
-['unifi_7a_43_d0_03_dc_aa_default']: {
-  entity_id: "device_tracker.unifi_7a_43_d0_03_dc_aa_default",
-get entity() { return {state: shadowState["device_tracker.unifi_7a_43_d0_03_dc_aa_default"].state, attributes: shadowState["device_tracker.unifi_7a_43_d0_03_dc_aa_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_7a_43_d0_03_dc_aa_default"].state === "home"}
-},
-
-['galaxy_s22_7']: {
-  entity_id: "device_tracker.galaxy_s22_7",
-get entity() { return {state: shadowState["device_tracker.galaxy_s22_7"].state, attributes: shadowState["device_tracker.galaxy_s22_7"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.galaxy_s22_7"].state === "home"}
-},
-
-['unifi_50_ec_50_1b_3a_85_default']: {
-  entity_id: "device_tracker.unifi_50_ec_50_1b_3a_85_default",
-get entity() { return {state: shadowState["device_tracker.unifi_50_ec_50_1b_3a_85_default"].state, attributes: shadowState["device_tracker.unifi_50_ec_50_1b_3a_85_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_50_ec_50_1b_3a_85_default"].state === "home"}
-},
-
-['living_room_esp32_2']: {
-  entity_id: "device_tracker.living_room_esp32_2",
-get entity() { return {state: shadowState["device_tracker.living_room_esp32_2"].state, attributes: shadowState["device_tracker.living_room_esp32_2"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.living_room_esp32_2"].state === "home"}
-},
-
-['unifi_6c_3c_7c_02_33_af_default']: {
-  entity_id: "device_tracker.unifi_6c_3c_7c_02_33_af_default",
-get entity() { return {state: shadowState["device_tracker.unifi_6c_3c_7c_02_33_af_default"].state, attributes: shadowState["device_tracker.unifi_6c_3c_7c_02_33_af_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_6c_3c_7c_02_33_af_default"].state === "home"}
-},
-
-['unifi_da_5f_69_7c_31_c8_default']: {
-  entity_id: "device_tracker.unifi_da_5f_69_7c_31_c8_default",
-get entity() { return {state: shadowState["device_tracker.unifi_da_5f_69_7c_31_c8_default"].state, attributes: shadowState["device_tracker.unifi_da_5f_69_7c_31_c8_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_da_5f_69_7c_31_c8_default"].state === "home"}
-},
-
-['unifi_92_99_c1_60_3c_ae_default']: {
-  entity_id: "device_tracker.unifi_92_99_c1_60_3c_ae_default",
-get entity() { return {state: shadowState["device_tracker.unifi_92_99_c1_60_3c_ae_default"].state, attributes: shadowState["device_tracker.unifi_92_99_c1_60_3c_ae_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_92_99_c1_60_3c_ae_default"].state === "home"}
-},
-
-['unifi_78_d6_dc_2f_29_a8_default']: {
-  entity_id: "device_tracker.unifi_78_d6_dc_2f_29_a8_default",
-get entity() { return {state: shadowState["device_tracker.unifi_78_d6_dc_2f_29_a8_default"].state, attributes: shadowState["device_tracker.unifi_78_d6_dc_2f_29_a8_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_78_d6_dc_2f_29_a8_default"].state === "home"}
-},
-
-['galaxy_j5_2016']: {
-  entity_id: "device_tracker.galaxy_j5_2016",
-get entity() { return {state: shadowState["device_tracker.galaxy_j5_2016"].state, attributes: shadowState["device_tracker.galaxy_j5_2016"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.galaxy_j5_2016"].state === "home"}
-},
-
-['unifi_cc_9f_7a_e2_ae_81_default']: {
-  entity_id: "device_tracker.unifi_cc_9f_7a_e2_ae_81_default",
-get entity() { return {state: shadowState["device_tracker.unifi_cc_9f_7a_e2_ae_81_default"].state, attributes: shadowState["device_tracker.unifi_cc_9f_7a_e2_ae_81_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_cc_9f_7a_e2_ae_81_default"].state === "home"}
-},
-
-['unifi_04_03_d6_07_6b_09_default']: {
-  entity_id: "device_tracker.unifi_04_03_d6_07_6b_09_default",
-get entity() { return {state: shadowState["device_tracker.unifi_04_03_d6_07_6b_09_default"].state, attributes: shadowState["device_tracker.unifi_04_03_d6_07_6b_09_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_04_03_d6_07_6b_09_default"].state === "home"}
-},
-
-['unifi_00_90_9e_9d_84_8e_default']: {
-  entity_id: "device_tracker.unifi_00_90_9e_9d_84_8e_default",
-get entity() { return {state: shadowState["device_tracker.unifi_00_90_9e_9d_84_8e_default"].state, attributes: shadowState["device_tracker.unifi_00_90_9e_9d_84_8e_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_00_90_9e_9d_84_8e_default"].state === "home"}
-},
-
-['unifi_d2_21_f9_85_ae_ce_default']: {
-  entity_id: "device_tracker.unifi_d2_21_f9_85_ae_ce_default",
-get entity() { return {state: shadowState["device_tracker.unifi_d2_21_f9_85_ae_ce_default"].state, attributes: shadowState["device_tracker.unifi_d2_21_f9_85_ae_ce_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_d2_21_f9_85_ae_ce_default"].state === "home"}
-},
-
-['unifi_02_17_f9_4d_0a_70_default']: {
-  entity_id: "device_tracker.unifi_02_17_f9_4d_0a_70_default",
-get entity() { return {state: shadowState["device_tracker.unifi_02_17_f9_4d_0a_70_default"].state, attributes: shadowState["device_tracker.unifi_02_17_f9_4d_0a_70_default"].attributes} as DeviceTrackerProperties},
-isHome() { return shadowState["device_tracker.unifi_02_17_f9_4d_0a_70_default"].state === "home"}
 },
 
 }

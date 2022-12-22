@@ -1,7 +1,18 @@
 import { effect, MediaPlayerEntity, shadowState, SunState } from "@herja/core";
-import { sun, sensor, light, alarm_control_panel, switches, binary_sensor, humidifier, climate } from "generated/src";
+import {
+  sun,
+  sensor,
+  light,
+  alarm_control_panel,
+  switches,
+  binary_sensor,
+  humidifier,
+  climate,
+  media_player
+} from "generated/src";
 import { clearTimeout } from "timers";
 import { getAllLights, turnOffAllLights } from "../utils/allLights";
+import { fan } from "generated/src/generated/fan";
 
 let timeoutID: NodeJS.Timer|undefined = undefined;
 
@@ -31,8 +42,6 @@ export const nightMode = () => {
     if(event?.data.new_state.state !== 'single' && event?.data.new_state.state !== "on")
       return
 
-    humidifier.bedroom_humidifier.turnOff()
-
     clearTimeout(timeoutID as number|undefined)
 
     const allLights = getAllLights()
@@ -47,6 +56,9 @@ export const nightMode = () => {
     if(isALightOn(allLights))
     {
       alarm_control_panel.alarmo.armNight()
+      humidifier.bedroom_humidifier.turnOff()
+      fan.afzuiging_badkamer.setSpeedPercentage?.(0)
+      media_player.android_tv_192_168_1_166.turnOff()
       // if a light is on but not a light in the bedroom
       if(isALightOn(getAllLights({exceptions: lightBedroom}))){
         await turnOffAllLights({exceptions: lightBedroom})
@@ -65,8 +77,6 @@ export const nightMode = () => {
     }
   }, [sensor.bedside_button_action, sensor.bedroom_button_tim_action, sensor.bedroom_button_gaby_action])
 
-  //TODO disable alarm when bedroom door is opened
-
   effect((event)=>{
     if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
       return
@@ -75,6 +85,7 @@ export const nightMode = () => {
       alarm_control_panel.alarmo.disarm()
     }
   }, [sun.sun])
+
   effect((event)=>{
     if(event?.data.new_state.state !== 'off')
       return
@@ -88,6 +99,8 @@ export const nightMode = () => {
   }, ["0 10 * * *"])
 
   effect(()=>{
+    if(sensor.bedroom_ir_blaster_temperature.entity.state > 20)
+      return
     climate.bedroom_ac.setHeating()
     climate.bedroom_ac.setTargetTemperature(20)
   }, ["0 21 * * *"])
