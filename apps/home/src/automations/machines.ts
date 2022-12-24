@@ -25,23 +25,23 @@ export const machines = () => {
   }, [sensor.dishwasher_outlet_power])
 
   effect(()=>{
-    if(sensor.washing_machine_outlet_power.entity.state <= idlePowerDishWasher)
+    if(sensor.washing_machine_outlet_power.entity.state <= idlePowerWashingMachine)
       setStateWashingMachine(BINARY_SENSOR_STATE.OFF);
     else
       setStateWashingMachine(BINARY_SENSOR_STATE.ON);
   }, [sensor.washing_machine_outlet_power])
 
-  callbackAfterDelay({
-    condition: () => sensor.washing_machine_outlet_power.entity.state > idlePowerWashingMachine,
-    sensor: sensor.washing_machine_outlet_power,
-    callback: () => callService('notify', 'mobile_app_tims_iphone', {title: 'Washing machine finished', message: `The washing machine has finished washing`}),
-    delay: 1000 * 60 * delayWashingMachine,
-  });
-  callbackAfterDelay({
-    condition: () => sensor.dishwasher_outlet_power.entity.state > idlePowerDishWasher,
-    sensor: sensor.dishwasher_outlet_power,
-    callback: () => callService('notify', 'mobile_app_tims_iphone', {title: 'Dishwasher finished', message: `The dishwasher has finished washing`}),
-    delay: 1000 * 60 * delayDishWasher,
-  });
+  // callbackAfterDelay({
+  //   condition: () => sensor.washing_machine_outlet_power.entity.state > idlePowerWashingMachine,
+  //   sensor: sensor.washing_machine_outlet_power,
+  //   callback: () => callService('notify', 'mobile_app_tims_iphone', {title: 'Washing machine finished', message: `The washing machine has finished washing`}),
+  //   delay:  delayWashingMachine,
+  // });
+  // callbackAfterDelay({
+  //   condition: () => sensor.dishwasher_outlet_power.entity.state > idlePowerDishWasher,
+  //   sensor: sensor.dishwasher_outlet_power,
+  //   callback: () => callService('notify', 'mobile_app_tims_iphone', {title: 'Dishwasher finished', message: `The dishwasher has finished washing`}),
+  //   delay: delayDishWasher,
+  // });
 
 }
