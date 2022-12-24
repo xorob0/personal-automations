@@ -11,10 +11,10 @@ const delayDishWasher = 5 * 60 * 1000;
 
 export const machines = () => {
   const {setState: setStateDishWasher} = createMQTTBinarySensor({
-    name: 'dishwasher_washing',
+    name: 'Dishwasher washing',
   })
   const {setState: setStateWashingMachine} = createMQTTBinarySensor({
-    name: 'dishwasher_washing',
+    name: 'Washing machine washing',
   })
 
   effect(()=>{
@@ -31,17 +31,17 @@ export const machines = () => {
       setStateWashingMachine(BINARY_SENSOR_STATE.ON);
   }, [sensor.washing_machine_outlet_power])
 
-  // callbackAfterDelay({
-  //   condition: () => sensor.washing_machine_outlet_power.entity.state > idlePowerWashingMachine,
-  //   sensor: sensor.washing_machine_outlet_power,
-  //   callback: () => callService('notify', 'mobile_app_tims_iphone', {title: 'Washing machine finished', message: `The washing machine has finished washing`}),
-  //   delay:  delayWashingMachine,
-  // });
-  // callbackAfterDelay({
-  //   condition: () => sensor.dishwasher_outlet_power.entity.state > idlePowerDishWasher,
-  //   sensor: sensor.dishwasher_outlet_power,
-  //   callback: () => callService('notify', 'mobile_app_tims_iphone', {title: 'Dishwasher finished', message: `The dishwasher has finished washing`}),
-  //   delay: delayDishWasher,
-  // });
+  callbackAfterDelay({
+    condition: () => sensor.washing_machine_outlet_power.entity.state > idlePowerWashingMachine,
+    sensor: sensor.washing_machine_outlet_power,
+    callback: () => callService('notify', 'mobile_app_tims_iphone', {title: 'Washing machine finished', message: `The washing machine has finished washing`}),
+    delay:  delayWashingMachine,
+  });
+  callbackAfterDelay({
+    condition: () => sensor.dishwasher_outlet_power.entity.state > idlePowerDishWasher,
+    sensor: sensor.dishwasher_outlet_power,
+    callback: () => callService('notify', 'mobile_app_tims_iphone', {title: 'Dishwasher finished', message: `The dishwasher has finished washing`}),
+    delay: delayDishWasher,
+  });
 
 }
