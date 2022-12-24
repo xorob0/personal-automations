@@ -1,3 +1,3 @@
 export * from './garage'
-export * from './alertOpened'
+export * from './callbackAfterDelay'
 

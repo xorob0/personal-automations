@@ -7,12 +7,12 @@ let valueBeforeShower = 0;
 
 export const hvacOnHumidity = () => {
   effect((event)=>{
-    if(parseFloat(event?.data.new_state.state || '') > 65){
+    if(parseFloat(event?.data.new_state.state || '') > 60){
       valueBeforeShower = fan.afzuiging_badkamer.entity.attributes.percentage
       fan.afzuiging_badkamer.setSpeedPercentage?.(100)
       showerOn = true
     }
-    else if(showerOn && parseFloat(event?.data.new_state.state || '') < 55){
+    else if(showerOn && parseFloat(event?.data.new_state.state || '') < 60){
       fan.afzuiging_badkamer.setSpeedPercentage?.(valueBeforeShower)
       showerOn = false
     }
