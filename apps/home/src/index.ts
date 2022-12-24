@@ -21,6 +21,7 @@ import { allAlertsOpenedTooLong } from "./automations/alertOpenedTooLong";
 import { roomBusy } from "./automations/roomBusy";
 import { createHumidifiers } from "./automations/humidifiers";
 import { hvacOnHumidity } from "./automations/hvacOnHumidity";
+import { machines } from "./automations/machines";
 
 require('dotenv').config();
 
@@ -54,6 +55,7 @@ const base = async () => {
   roomBusy()
   createHumidifiers()
   hvacOnHumidity()
+  machines()
 };
 
 try{

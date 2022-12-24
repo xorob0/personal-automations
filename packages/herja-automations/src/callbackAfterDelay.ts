@@ -3,19 +3,19 @@ import { BetterHassEntity, effect } from "@herja/core";
 let timeoutID: NodeJS.Timer|undefined = undefined;
 
 
-export type AlertOpenedProps = {
+export type AlertAfterDelayProps = {
   sensor: BetterHassEntity;
-  isOpened?: () => boolean;
-  onOpenedTooLong: () => void;
+  condition?: () => boolean;
+  callback: () => void;
   delay: number;
 }
 
-export const alertOpened = ({onOpenedTooLong, delay, isOpened, sensor }:AlertOpenedProps) => {
+export const callbackAfterDelay = ({callback, delay, condition, sensor }:AlertAfterDelayProps) => {
   effect(()=>{
-    if(isOpened ? isOpened() : sensor.entity.state === true)
+    if(condition ? condition() : sensor.entity.state === true)
     {
       timeoutID = setTimeout(()=>{
-        onOpenedTooLong()
+        callback()
       }, delay)
     }
     else{
