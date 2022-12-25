@@ -1,5 +1,5 @@
 import { AlarmControlPanelState, callService, effect, shadowState } from "@herja/core";
-import { alarm_control_panel, person, switches, vacuum } from "generated/src";
+import { fan, alarm_control_panel, person, switches, vacuum } from "generated/src";
 
 let timeoutID: NodeJS.Timer|undefined = undefined;
 
@@ -22,6 +22,7 @@ export const turnEverythingOffWhenLeaving = () => {
       ranOnce = false
       log('clearTimeout ' + person.tim.entity.state + ' ' + person.gaby.entity.state)
       clearTimeout(timeoutID as number|undefined);
+      fan.afzuiging_badkamer.setSpeedPercentage?.(0)
       try{
         vacuum.valetudo.returnToBase()
       }
@@ -38,10 +39,12 @@ export const turnEverythingOffWhenLeaving = () => {
         const allLights = Object.keys(shadowState).filter(key=> key.match(/^light\./)).filter(key=> !key.match(/light.[0-9a-f]{8}_[0-9a-f]{8}$/))
         try{
           callService('light', 'turn_off', undefined, {entity_id: allLights})
+          // TODO export this list to reuse
           outlets.forEach((outlet) =>{
             outlet.turnOff()
           })
 
+          fan.afzuiging_badkamer.setSpeedPercentage?.(100)
           vacuum.valetudo.start()
         }
         catch(e){
