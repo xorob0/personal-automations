@@ -1,5 +1,5 @@
 import {callService, shadowState, Light, LightProperties, LightTurnOnAttributes} from "@herja/core"
-export type LightIDs = "bedside_lamp" | "garden" | "bedroom_secondary_lamp" | "bedroom_secondary_lights" | "bedroom_lights" | "bathroom" | "garage" | "hall_upstairs" | "hall" | "living_room_all" | "dining_room_spots" | "living_room_spots" | "kitchen_spots" | "bedroom_tv_light" | "living_room_tripod" | "bedroom_bed_light_2" | "living_room_light" | "bathroom_spot_1" | "hall_stairs" | "living_room_spot_1" | "kitchen_spot_3" | "garage_car" | "hall_entrance" | "garage_fridge" | "toilet" | "hall_upstairs_spot_1" | "hall_upstairs_spot_2" | "hall_upstairs_spot_3" | "bathroom_spot_2" | "office_light" | "kitchen_spot_2" | "dining_room_spot_1" | "dining_room_spot_2" | "secondary_room_light" | "kitchen_spot_1" | "dining_room_spot_3" | "living_room_spot_2" | "living_room_spot_3"
+export type LightIDs = "bedside_lamp" | "garden" | "bedroom_secondary_lamp" | "bedroom_secondary_lights" | "bedroom_lights" | "bathroom" | "garage" | "hall_upstairs" | "hall" | "living_room_all" | "dining_room_spots" | "living_room_spots" | "kitchen_spots" | "bedroom_tv_light" | "living_room_tripod" | "bedroom_bed_light_2" | "living_room_light" | "bathroom_spot_1" | "hall_stairs" | "living_room_spot_1" | "kitchen_spot_3" | "garage_car" | "hall_entrance" | "garage_fridge" | "toilet" | "hall_upstairs_spot_1" | "hall_upstairs_spot_2" | "hall_upstairs_spot_3" | "bathroom_spot_2" | "office_light" | "kitchen_spot_2" | "dining_room_spot_1" | "dining_room_spot_2" | "secondary_room_light" | "kitchen_spot_1" | "dining_room_spot_3" | "living_room_spot_2" | "living_room_spot_3" | "yeelight_color_0x8011c35"
 export type LightEntities = Record<LightIDs, Light>
 
 export const light: Light<LightIDs> = {
@@ -306,6 +306,14 @@ get entity() { return {state: shadowState["light.living_room_spot_3"].state, att
 turnOn(attributes?: LightTurnOnAttributes) { return callService("light", "turn_on", attributes || {}, {entity_id: "light.living_room_spot_3"})},
 turnOff() { return callService("light", "turn_off", {}, {entity_id: "light.living_room_spot_3"})},
 toggle(attributes?: LightTurnOnAttributes) { return callService("light", "toggle", attributes || {}, {entity_id: "light.living_room_spot_3"})}
+},
+
+['yeelight_color_0x8011c35']: {
+  entity_id: "light.yeelight_color_0x8011c35",
+get entity() { return {state: shadowState["light.yeelight_color_0x8011c35"].state, attributes: shadowState["light.yeelight_color_0x8011c35"].attributes} as LightProperties},
+turnOn(attributes?: LightTurnOnAttributes) { return callService("light", "turn_on", attributes || {}, {entity_id: "light.yeelight_color_0x8011c35"})},
+turnOff() { return callService("light", "turn_off", {}, {entity_id: "light.yeelight_color_0x8011c35"})},
+toggle(attributes?: LightTurnOnAttributes) { return callService("light", "toggle", attributes || {}, {entity_id: "light.yeelight_color_0x8011c35"})}
 },
 
 }
