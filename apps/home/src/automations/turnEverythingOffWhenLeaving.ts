@@ -1,5 +1,5 @@
 import { AlarmControlPanelState, callService, effect, shadowState } from "@herja/core";
-import { fan, alarm_control_panel, person, switches, vacuum } from "generated/src";
+import { fan, alarm_control_panel, person, switches, vacuum, binary_sensor } from "generated/src";
 
 let timeoutID: NodeJS.Timer|undefined = undefined;
 
@@ -46,6 +46,9 @@ export const turnEverythingOffWhenLeaving = () => {
 
           fan.afzuiging_badkamer.setSpeedPercentage?.(100)
           vacuum.valetudo.start()
+          if(binary_sensor.washing_machine_washing.isOn()){
+            callService('notify', 'mobile_app_tims_iphone', {title: 'The washing maching is still on', message: `If you leave too long it might not smell good`}),
+          }
         }
         catch(e){
           log("setTimeout callservice error", e)

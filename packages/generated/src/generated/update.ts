@@ -1,5 +1,5 @@
 import {callService, shadowState, Update, UpdateProperties, UpdateInstallAttributes} from "@herja/core"
-export type UpdateIDs = "hacs_update" | "vacuum_card_update" | "ha_floorplan_update" | "time_picker_card_update" | "mini_graph_card_update" | "alarmo_card_update" | "card_mod_update" | "adaptive_lighting_update" | "power_calculation_update" | "alarmo_update" | "node_red_companion_update" | "nibe_uplink_update" | "better_thermostat_ui_update" | "smartir_update" | "music_assistant_update" | "home_assistant_swipe_navigation_update" | "volkswagen_we_connect_id_update" | "u6_lite_living_room" | "dream_machine_pro" | "u6_lite_tatoo_room" | "unifi_device_update_60_22_32_4f_27_60" | "bedroom_tv_light" | "living_room_tripod" | "bedroom_bed_light_2" | "living_room_light" | "living_room_humidifier_switch" | "bedroom_button_gaby" | "bedroom_button_tim" | "desk_outlet" | "bathroom_spot_1" | "hall_stairs" | "kitchen_spot_3" | "garage_car" | "hall_entrance" | "garage_fridge" | "bedroom_humidifier_switch" | "garage_remote" | "toilet" | "bedside_lamp" | "hall_upstairs_spot_1" | "hall_upstairs_spot_2" | "hall_upstairs_spot_3" | "bedroom_secondary_lamp" | "bathroom_spot_2" | "office_light" | "living_room_remote" | "kitchen_spot_2" | "dining_room_spot_1" | "christmas_tree_led_outlet" | "dining_room_spot_2" | "secondary_room_light" | "kitchen_spot_1" | "dining_room_spot_3" | "living_room_spot_3" | "nibe_133481_update" | "browser_mod_update" | "fan_control_entity_row_update" | "fan_percent_button_row_update"
+export type UpdateIDs = "hacs_update" | "vacuum_card_update" | "ha_floorplan_update" | "time_picker_card_update" | "mini_graph_card_update" | "alarmo_card_update" | "card_mod_update" | "adaptive_lighting_update" | "power_calculation_update" | "alarmo_update" | "node_red_companion_update" | "nibe_uplink_update" | "better_thermostat_ui_update" | "smartir_update" | "music_assistant_update" | "home_assistant_swipe_navigation_update" | "volkswagen_we_connect_id_update" | "u6_lite_living_room" | "dream_machine_pro" | "u6_lite_tatoo_room" | "unifi_device_update_60_22_32_4f_27_60" | "bedroom_tv_light" | "living_room_tripod" | "bedroom_bed_light_2" | "living_room_light" | "living_room_humidifier_switch" | "bedroom_button_gaby" | "bedroom_button_tim" | "desk_outlet" | "bathroom_spot_1" | "hall_stairs" | "kitchen_spot_3" | "garage_car" | "hall_entrance" | "garage_fridge" | "bedroom_humidifier_switch" | "garage_remote" | "toilet" | "bedside_lamp" | "hall_upstairs_spot_1" | "hall_upstairs_spot_2" | "hall_upstairs_spot_3" | "bedroom_secondary_lamp" | "bathroom_spot_2" | "office_light" | "living_room_remote" | "kitchen_spot_2" | "dining_room_spot_1" | "christmas_tree_led_outlet" | "dining_room_spot_2" | "secondary_room_light" | "kitchen_spot_1" | "dining_room_spot_3" | "living_room_spot_3" | "nibe_133481_update" | "browser_mod_update" | "fan_control_entity_row_update" | "fan_percent_button_row_update" | "coffee_machine_outlet" | "dishwasher_outlet" | "washing_machine_outlet"
 export type UpdateEntities = Record<UpdateIDs, Update>
 
 export const update: Update<UpdateIDs> = {
@@ -350,6 +350,24 @@ install(attributes: UpdateInstallAttributes) { return callService("update", "ins
   entity_id: "update.fan_percent_button_row_update",
 get entity() { return {state: shadowState["update.fan_percent_button_row_update"].state, attributes: shadowState["update.fan_percent_button_row_update"].attributes} as UpdateProperties},
 install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.fan_percent_button_row_update"})}
+},
+
+['coffee_machine_outlet']: {
+  entity_id: "update.coffee_machine_outlet",
+get entity() { return {state: shadowState["update.coffee_machine_outlet"].state, attributes: shadowState["update.coffee_machine_outlet"].attributes} as UpdateProperties},
+install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.coffee_machine_outlet"})}
+},
+
+['dishwasher_outlet']: {
+  entity_id: "update.dishwasher_outlet",
+get entity() { return {state: shadowState["update.dishwasher_outlet"].state, attributes: shadowState["update.dishwasher_outlet"].attributes} as UpdateProperties},
+install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.dishwasher_outlet"})}
+},
+
+['washing_machine_outlet']: {
+  entity_id: "update.washing_machine_outlet",
+get entity() { return {state: shadowState["update.washing_machine_outlet"].state, attributes: shadowState["update.washing_machine_outlet"].attributes} as UpdateProperties},
+install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.washing_machine_outlet"})}
 },
 
 }
