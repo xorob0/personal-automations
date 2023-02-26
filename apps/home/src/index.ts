@@ -1,5 +1,4 @@
-import { configure } from '@herja/core';
-import * as mqtt from 'mqtt';
+import { configure } from "@herja/core";
 import { garage } from "@herja/automations";
 import { turnOnGardenLightWithGardenDoorAtNight } from "./automations/turnOnGardenLightWithGardenDoorAtNight";
 import { turnOnGarageLightWhenADoorIsOpened } from "./automations/turnOnGarageLightWenADoorIsOpened";
@@ -8,7 +7,6 @@ import { wallSwitches } from "./automations/wallSwitches";
 import { automaticAlarm } from "./automations/automaticAlarm";
 import { tripodButton } from "./automations/tripodButton";
 import { coffeeMachineButton } from "./automations/coffeeMachineButton";
-import { alertFridgeOpen } from "./automations/alertFridgeOpen";
 import { garageRemote } from "./automations/garageRemote";
 import { turnOnTripodOnSunset } from "./automations/turnOnTripodOnSunset";
 import { turnOnToiletLightWithDoor } from "./automations/TurnOnToiletLightWithDoor";
@@ -17,6 +15,13 @@ import { BedroomACTimer } from "./automations/bedroomACTimer";
 import { turnOnSomeLightsWhenComingHome } from "./automations/turnOnSomeLightsWhenComingHome";
 import { turnEverythingOffWhenLeaving } from "./automations/turnEverythingOffWhenLeaving";
 import { personDetection } from "./automations/personDetection";
+import { deskButton } from "./automations/DeskButton";
+import { alertCarUnplugged } from "./automations/alertCarUnplugged";
+import { allAlertsOpenedTooLong } from "./automations/alertOpenedTooLong";
+import { roomBusy } from "./automations/roomBusy";
+import { createHumidifiers } from "./automations/humidifiers";
+import { hvacOnHumidity } from "./automations/hvacOnHumidity";
+import { machines } from "./automations/machines";
 
 require('dotenv').config();
 
@@ -37,7 +42,7 @@ const base = async () => {
   automaticAlarm()
   tripodButton()
   coffeeMachineButton()
-  alertFridgeOpen()
+  allAlertsOpenedTooLong()
   garageRemote()
   turnOnTripodOnSunset()
   turnOnToiletLightWithDoor()
@@ -45,6 +50,16 @@ const base = async () => {
   personDetection()
   garage();
   BedroomACTimer();
+  deskButton();
+  alertCarUnplugged()
+  roomBusy()
+  createHumidifiers()
+  hvacOnHumidity()
+  machines()
 };
 
-base();
+try{
+  base();
+}catch(e){
+  console.error("[index] error: ", e)
+}

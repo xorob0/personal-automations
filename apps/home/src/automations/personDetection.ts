@@ -1,6 +1,5 @@
-import mqtt from 'mqtt'
 import { effect } from "@herja/core";
-import { sensor, binary_sensor, light } from "generated/src";
+import { sensor, binary_sensor } from "generated/src";
 import { createMQTTDeviceTracker } from "mqtt-utils/src";
 
 const TIMEOUT = 5 * 60 * 1000
@@ -44,9 +43,8 @@ let lastTim = 'unknown'
 export const personDetection = () => {
   const {setHome, setNotHome} = createMQTTDeviceTracker('Tim calculated')
   effect((e)=>{
-    console.log(e)
     const weight = tim_sensors.reduce((acc, s) => {
-      if(s.sensor.state.state === s.value)
+      if(s.sensor.entity.state === s.value)
         return acc + s.weight;
       return acc
     }, 0)
