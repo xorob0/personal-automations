@@ -1,6 +1,6 @@
 import mqtt from "mqtt"
 
-export const client = mqtt.connect('mqtt://192.168.2.65:1883' );
+export const client = mqtt.connect('mqtt://192.168.1.65:1883' );
 
 export const createMQTTEntity = ({entityType, name, config}: {entityType:string, name:string, config?:Record<string, string>}) => {
   if( !client.connected){
