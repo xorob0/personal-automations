@@ -8,6 +8,7 @@ export const coffeeMachineButton = () => {
     if(sensor.tripod_button_action.state.state === 'single')
       switches.coffee_machine_outlet.toggle()
   }, [sensor.coffee_machine_button_action])
+
   effect(()=>{
     if(switches.coffee_machine_outlet.isOn())
       timeoutID = setTimeout(()=>{
