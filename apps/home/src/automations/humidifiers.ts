@@ -14,7 +14,7 @@ export const createHumidifiers = () => {
       remote.living_room_ir_blaster_remote_2.sendCommand("b64:JgBYAAABLpEUEhUQFRIUERQQFhAVERUQFTYTNxM3FjUTNxQ3EzcUNxM3FBIVEBU2EzcTExM3ExMTExI3FDcTEhMUEjcTFBI3EwAFFQABLUkTAAxWAAEuSBUADQU")
     },
     turnOff: () => switches.bedroom_humidifier_switch.turnOff(),
-    humiditySensor: sensor.living_room_ir_blaster_humidity_2,
+    humiditySensor: sensor.living_room_ir_blaster_humidity,
     minDiff: 3,
     defaultTarget: 55
   })
@@ -34,7 +34,7 @@ export const createHumidifiers = () => {
       remote.living_room_ir_blaster_remote_2.sendCommand("b64:JgBYAAABLpEUEhUQFRIUERQQFhAVERUQFTYTNxM3FjUTNxQ3EzcUNxM3FBIVEBU2EzcTExM3ExMTExI3FDcTEhMUEjcTFBI3EwAFFQABLUkTAAxWAAEuSBUADQU")
     },
     turnOff: () => switches.bedroom_humidifier_switch.turnOff(),
-    humiditySensor: sensor.living_room_ir_blaster_humidity_2,
+    humiditySensor: sensor.living_room_ir_blaster_humidity,
     minDiff: 3,
     defaultTarget: 55
   })
