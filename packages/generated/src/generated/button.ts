@@ -1,20 +1,8 @@
 import {callService, shadowState, Button, ButtonProperties} from "@herja/core"
-export type ButtonIDs = "wvgzzze2zmp011645_start_climate" | "wvgzzze2zmp011645_toggle_ac_charge_speed" | "scan_clients_celty_3_0" | "tim_s_id_4_stop_climate"
+export type ButtonIDs = "scan_clients_celty_3_0" | "charger_reset" | "charger_unlock"
 export type ButtonEntities = Record<ButtonIDs, Button>
 
 export const button: Button<ButtonIDs> = {
-
-['wvgzzze2zmp011645_start_climate']: {
-  entity_id: "button.wvgzzze2zmp011645_start_climate",
-get entity() { return {state: shadowState["button.wvgzzze2zmp011645_start_climate"].state, attributes: shadowState["button.wvgzzze2zmp011645_start_climate"].attributes} as ButtonProperties},
-press() { return callService("button", "press", {}, {entity_id: "button.wvgzzze2zmp011645_start_climate"})}
-},
-
-['wvgzzze2zmp011645_toggle_ac_charge_speed']: {
-  entity_id: "button.wvgzzze2zmp011645_toggle_ac_charge_speed",
-get entity() { return {state: shadowState["button.wvgzzze2zmp011645_toggle_ac_charge_speed"].state, attributes: shadowState["button.wvgzzze2zmp011645_toggle_ac_charge_speed"].attributes} as ButtonProperties},
-press() { return callService("button", "press", {}, {entity_id: "button.wvgzzze2zmp011645_toggle_ac_charge_speed"})}
-},
 
 ['scan_clients_celty_3_0']: {
   entity_id: "button.scan_clients_celty_3_0",
@@ -22,10 +10,16 @@ get entity() { return {state: shadowState["button.scan_clients_celty_3_0"].state
 press() { return callService("button", "press", {}, {entity_id: "button.scan_clients_celty_3_0"})}
 },
 
-['tim_s_id_4_stop_climate']: {
-  entity_id: "button.tim_s_id_4_stop_climate",
-get entity() { return {state: shadowState["button.tim_s_id_4_stop_climate"].state, attributes: shadowState["button.tim_s_id_4_stop_climate"].attributes} as ButtonProperties},
-press() { return callService("button", "press", {}, {entity_id: "button.tim_s_id_4_stop_climate"})}
+['charger_reset']: {
+  entity_id: "button.charger_reset",
+get entity() { return {state: shadowState["button.charger_reset"].state, attributes: shadowState["button.charger_reset"].attributes} as ButtonProperties},
+press() { return callService("button", "press", {}, {entity_id: "button.charger_reset"})}
+},
+
+['charger_unlock']: {
+  entity_id: "button.charger_unlock",
+get entity() { return {state: shadowState["button.charger_unlock"].state, attributes: shadowState["button.charger_unlock"].attributes} as ButtonProperties},
+press() { return callService("button", "press", {}, {entity_id: "button.charger_unlock"})}
 },
 
 }

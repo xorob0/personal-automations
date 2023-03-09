@@ -1,5 +1,5 @@
 import {callService, shadowState, Lock, LockProperties} from "@herja/core"
-export type LockIDs = "washing_machine_outlet_child_lock" | "dishwasher_outlet_child_lock" | "coffee_machine_outlet_child_lock" | "living_room_humidifier_switch_child_lock" | "desk_outlet_child_lock" | "bedroom_humidifier_switch_child_lock" | "bedside_lamp_child_lock" | "bedroom_secondary_lamp_child_lock" | "christmas_tree_led_outlet_child_lock" | "wallbox_portal_locked_unlocked"
+export type LockIDs = "washing_machine_outlet_child_lock" | "dishwasher_outlet_child_lock" | "coffee_machine_outlet_child_lock" | "living_room_humidifier_switch_child_lock" | "desk_outlet_child_lock" | "bedroom_humidifier_switch_child_lock" | "bedside_lamp_child_lock" | "bedroom_secondary_lamp_child_lock" | "christmas_tree_led_outlet_child_lock"
 export type LockEntities = Record<LockIDs, Lock>
 
 export const lock: Lock<LockIDs> = {
@@ -74,14 +74,6 @@ get entity() { return {state: shadowState["lock.christmas_tree_led_outlet_child_
 lock() { return callService("lock", "lock", {}, {entity_id: "lock.christmas_tree_led_outlet_child_lock"})},
 unlock() { return callService("lock", "unlock", {}, {entity_id: "lock.christmas_tree_led_outlet_child_lock"})},
 open() { return callService("lock", "open", {}, {entity_id: "lock.christmas_tree_led_outlet_child_lock"})}
-},
-
-['wallbox_portal_locked_unlocked']: {
-  entity_id: "lock.wallbox_portal_locked_unlocked",
-get entity() { return {state: shadowState["lock.wallbox_portal_locked_unlocked"].state, attributes: shadowState["lock.wallbox_portal_locked_unlocked"].attributes} as LockProperties},
-lock() { return callService("lock", "lock", {}, {entity_id: "lock.wallbox_portal_locked_unlocked"})},
-unlock() { return callService("lock", "unlock", {}, {entity_id: "lock.wallbox_portal_locked_unlocked"})},
-open() { return callService("lock", "open", {}, {entity_id: "lock.wallbox_portal_locked_unlocked"})}
 },
 
 }

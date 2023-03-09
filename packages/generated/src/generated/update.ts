@@ -1,5 +1,5 @@
 import {callService, shadowState, Update, UpdateProperties, UpdateInstallAttributes} from "@herja/core"
-export type UpdateIDs = "hacs_update" | "adaptive_lighting_update" | "power_calculation_update" | "alarmo_update" | "node_red_companion_update" | "nibe_uplink_update" | "smartir_update" | "music_assistant_update" | "volkswagen_we_connect_id_update" | "vacuum_card_update" | "ha_floorplan_update" | "fan_control_entity_row_update" | "fan_percent_button_row_update" | "time_picker_card_update" | "mini_graph_card_update" | "alarmo_card_update" | "card_mod_update" | "better_thermostat_ui_update" | "home_assistant_swipe_navigation_update" | "u6_lite_living_room" | "dream_machine_pro" | "u6_lite_tatoo_room" | "unifi_device_update_60_22_32_4f_27_60" | "washing_machine_outlet" | "dishwasher_outlet" | "coffee_machine_outlet" | "bedroom_tv_light" | "living_room_tripod" | "bedroom_bed_light_2" | "living_room_light" | "living_room_humidifier_switch" | "bedroom_button_gaby" | "bedroom_button_tim" | "desk_outlet" | "bathroom_spot_1" | "hall_stairs" | "kitchen_spot_3" | "garage_car" | "hall_entrance" | "garage_fridge" | "bedroom_humidifier_switch" | "garage_remote" | "toilet" | "bedside_lamp" | "hall_upstairs_spot_1" | "hall_upstairs_spot_2" | "hall_upstairs_spot_3" | "bedroom_secondary_lamp" | "bathroom_spot_2" | "office_light" | "living_room_remote" | "kitchen_spot_2" | "dining_room_spot_1" | "christmas_tree_led_outlet" | "dining_room_spot_2" | "secondary_room_light" | "kitchen_spot_1" | "dining_room_spot_3" | "living_room_spot_3" | "nibe_133481_update" | "browser_mod_update"
+export type UpdateIDs = "hacs_update" | "adaptive_lighting_update" | "power_calculation_update" | "open_charge_point_protocol_ocpp_update" | "alarmo_update" | "nibe_uplink_update" | "smartir_update" | "music_assistant_update" | "volkswagen_we_connect_id_update" | "vacuum_card_update" | "ha_floorplan_update" | "fan_control_entity_row_update" | "fan_percent_button_row_update" | "time_picker_card_update" | "mini_graph_card_update" | "alarmo_card_update" | "card_mod_update" | "better_thermostat_ui_update" | "home_assistant_swipe_navigation_update" | "washing_machine_outlet" | "dishwasher_outlet" | "coffee_machine_outlet" | "bedroom_tv_light" | "living_room_tripod" | "bedroom_bed_light_2" | "living_room_light" | "living_room_humidifier_switch" | "bedroom_button_gaby" | "bedroom_button_tim" | "desk_outlet" | "bathroom_spot_1" | "hall_stairs" | "kitchen_spot_3" | "garage_car" | "hall_entrance" | "garage_fridge" | "bedroom_humidifier_switch" | "garage_remote" | "toilet" | "bedside_lamp" | "hall_upstairs_spot_1" | "hall_upstairs_spot_2" | "hall_upstairs_spot_3" | "bedroom_secondary_lamp" | "bathroom_spot_2" | "office_light" | "living_room_remote" | "kitchen_spot_2" | "dining_room_spot_1" | "christmas_tree_led_outlet" | "dining_room_spot_2" | "secondary_room_light" | "kitchen_spot_1" | "dining_room_spot_3" | "living_room_spot_3" | "nibe_133481_update" | "u6_lite_living_room" | "dream_machine_pro" | "u6_lite_tatoo_room" | "unifi_device_update_60_22_32_4f_27_60" | "browser_mod_update" | "office_switch" | "living_room_switch"
 export type UpdateEntities = Record<UpdateIDs, Update>
 
 export const update: Update<UpdateIDs> = {
@@ -22,16 +22,16 @@ get entity() { return {state: shadowState["update.power_calculation_update"].sta
 install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.power_calculation_update"})}
 },
 
+['open_charge_point_protocol_ocpp_update']: {
+  entity_id: "update.open_charge_point_protocol_ocpp_update",
+get entity() { return {state: shadowState["update.open_charge_point_protocol_ocpp_update"].state, attributes: shadowState["update.open_charge_point_protocol_ocpp_update"].attributes} as UpdateProperties},
+install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.open_charge_point_protocol_ocpp_update"})}
+},
+
 ['alarmo_update']: {
   entity_id: "update.alarmo_update",
 get entity() { return {state: shadowState["update.alarmo_update"].state, attributes: shadowState["update.alarmo_update"].attributes} as UpdateProperties},
 install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.alarmo_update"})}
-},
-
-['node_red_companion_update']: {
-  entity_id: "update.node_red_companion_update",
-get entity() { return {state: shadowState["update.node_red_companion_update"].state, attributes: shadowState["update.node_red_companion_update"].attributes} as UpdateProperties},
-install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.node_red_companion_update"})}
 },
 
 ['nibe_uplink_update']: {
@@ -116,30 +116,6 @@ install(attributes: UpdateInstallAttributes) { return callService("update", "ins
   entity_id: "update.home_assistant_swipe_navigation_update",
 get entity() { return {state: shadowState["update.home_assistant_swipe_navigation_update"].state, attributes: shadowState["update.home_assistant_swipe_navigation_update"].attributes} as UpdateProperties},
 install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.home_assistant_swipe_navigation_update"})}
-},
-
-['u6_lite_living_room']: {
-  entity_id: "update.u6_lite_living_room",
-get entity() { return {state: shadowState["update.u6_lite_living_room"].state, attributes: shadowState["update.u6_lite_living_room"].attributes} as UpdateProperties},
-install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.u6_lite_living_room"})}
-},
-
-['dream_machine_pro']: {
-  entity_id: "update.dream_machine_pro",
-get entity() { return {state: shadowState["update.dream_machine_pro"].state, attributes: shadowState["update.dream_machine_pro"].attributes} as UpdateProperties},
-install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.dream_machine_pro"})}
-},
-
-['u6_lite_tatoo_room']: {
-  entity_id: "update.u6_lite_tatoo_room",
-get entity() { return {state: shadowState["update.u6_lite_tatoo_room"].state, attributes: shadowState["update.u6_lite_tatoo_room"].attributes} as UpdateProperties},
-install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.u6_lite_tatoo_room"})}
-},
-
-['unifi_device_update_60_22_32_4f_27_60']: {
-  entity_id: "update.unifi_device_update_60_22_32_4f_27_60",
-get entity() { return {state: shadowState["update.unifi_device_update_60_22_32_4f_27_60"].state, attributes: shadowState["update.unifi_device_update_60_22_32_4f_27_60"].attributes} as UpdateProperties},
-install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.unifi_device_update_60_22_32_4f_27_60"})}
 },
 
 ['washing_machine_outlet']: {
@@ -364,10 +340,46 @@ get entity() { return {state: shadowState["update.nibe_133481_update"].state, at
 install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.nibe_133481_update"})}
 },
 
+['u6_lite_living_room']: {
+  entity_id: "update.u6_lite_living_room",
+get entity() { return {state: shadowState["update.u6_lite_living_room"].state, attributes: shadowState["update.u6_lite_living_room"].attributes} as UpdateProperties},
+install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.u6_lite_living_room"})}
+},
+
+['dream_machine_pro']: {
+  entity_id: "update.dream_machine_pro",
+get entity() { return {state: shadowState["update.dream_machine_pro"].state, attributes: shadowState["update.dream_machine_pro"].attributes} as UpdateProperties},
+install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.dream_machine_pro"})}
+},
+
+['u6_lite_tatoo_room']: {
+  entity_id: "update.u6_lite_tatoo_room",
+get entity() { return {state: shadowState["update.u6_lite_tatoo_room"].state, attributes: shadowState["update.u6_lite_tatoo_room"].attributes} as UpdateProperties},
+install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.u6_lite_tatoo_room"})}
+},
+
+['unifi_device_update_60_22_32_4f_27_60']: {
+  entity_id: "update.unifi_device_update_60_22_32_4f_27_60",
+get entity() { return {state: shadowState["update.unifi_device_update_60_22_32_4f_27_60"].state, attributes: shadowState["update.unifi_device_update_60_22_32_4f_27_60"].attributes} as UpdateProperties},
+install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.unifi_device_update_60_22_32_4f_27_60"})}
+},
+
 ['browser_mod_update']: {
   entity_id: "update.browser_mod_update",
 get entity() { return {state: shadowState["update.browser_mod_update"].state, attributes: shadowState["update.browser_mod_update"].attributes} as UpdateProperties},
 install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.browser_mod_update"})}
+},
+
+['office_switch']: {
+  entity_id: "update.office_switch",
+get entity() { return {state: shadowState["update.office_switch"].state, attributes: shadowState["update.office_switch"].attributes} as UpdateProperties},
+install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.office_switch"})}
+},
+
+['living_room_switch']: {
+  entity_id: "update.living_room_switch",
+get entity() { return {state: shadowState["update.living_room_switch"].state, attributes: shadowState["update.living_room_switch"].attributes} as UpdateProperties},
+install(attributes: UpdateInstallAttributes) { return callService("update", "install", attributes, {entity_id: "update.living_room_switch"})}
 },
 
 }
