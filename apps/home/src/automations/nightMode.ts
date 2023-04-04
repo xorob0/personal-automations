@@ -58,7 +58,7 @@ export const nightMode = () => {
       alarm_control_panel.alarmo.armNight()
       humidifier.bedroom_humidifier.turnOff()
       fan.afzuiging_badkamer.setSpeedPercentage?.(0)
-      media_player.android_tv_192_168_1_166.turnOff()
+      media_player.android_tv_192_168_1_53.turnOff()
       // if a light is on but not a light in the bedroom
       if(isALightOn(getAllLights({exceptions: lightBedroom}))){
         await turnOffAllLights({exceptions: lightBedroom})
@@ -86,13 +86,14 @@ export const nightMode = () => {
     }
   }, [sun.sun])
 
-  effect((event)=>{
-    if(event?.data.new_state.state !== 'off')
-      return
-    if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
-      return
-    alarm_control_panel.alarmo.disarm()
-  }, [binary_sensor.tim_s_id_4_car_is_active])
+  // TODO fix car
+  // effect((event)=>{
+  //   if(event?.data.new_state.state !== 'off')
+  //     return
+  //   if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
+  //     return
+  //   alarm_control_panel.alarmo.disarm()
+  // }, [binary_sensor.tim_s_id_4_car_is_active])
 
   effect(()=>{
     humidifier.bedroom_humidifier.turnOn()

@@ -1,5 +1,5 @@
 import {callService, shadowState, Switch, SwitchProperties, SwitchStateMapper} from "@herja/core"
-export type SwitchIDs = "adaptive_lighting_bedroom" | "adaptive_lighting_sleep_mode_bedroom" | "adaptive_lighting_adapt_color_bedroom" | "adaptive_lighting_adapt_brightness_bedroom" | "adaptive_lighting_hall" | "adaptive_lighting_sleep_mode_hall" | "adaptive_lighting_adapt_color_hall" | "adaptive_lighting_adapt_brightness_hall" | "adaptive_lighting_living_room" | "adaptive_lighting_sleep_mode_living_room" | "adaptive_lighting_adapt_color_living_room" | "adaptive_lighting_adapt_brightness_living_room" | "charger_charge_control" | "charger_availability" | "fansendlow" | "fansendmedium" | "fansendhigh" | "fansendtimer1" | "fansendtimer2" | "fansendtimer3" | "fansendjoin" | "bedroom_switch" | "siren_alarm" | "siren_temperature_alarm" | "siren_humidity_alarm" | "desk_outlet" | "hall_entrance" | "hall_dual_switch_l2" | "hall_dual_switch_l1" | "garden" | "living_room_spot_1_do_not_disturb" | "garage_light_switch" | "bedroom_humidifier_switch" | "bedside_lamp" | "bedroom_secondary_lamp" | "garage_button" | "christmas_tree_led_outlet" | "hall_stairs_switch" | "living_room_spot_2_do_not_disturb" | "0xa4c1386aadc6a696" | "washing_machine_outlet" | "dishwasher_outlet" | "coffee_machine_outlet" | "living_room_humidifier_switch" | "g4_bullet_high_fps" | "g4_bullet_overlay_show_name" | "g4_bullet_overlay_show_date" | "g4_bullet_overlay_show_logo" | "g4_bullet_overlay_show_bitrate" | "g4_bullet_detections_motion" | "g4_bullet_detections_person" | "g4_bullet_detections_vehicle" | "g4_doorbell_status_light_on" | "g4_doorbell_hdr_mode" | "g4_doorbell_high_fps" | "g4_doorbell_system_sounds" | "g4_doorbell_overlay_show_name" | "g4_doorbell_overlay_show_date" | "g4_doorbell_overlay_show_logo" | "g4_doorbell_overlay_show_bitrate" | "g4_doorbell_detections_motion" | "g4_doorbell_detections_person" | "g4_doorbell_detections_vehicle" | "g4_doorbell_detections_package" | "dream_machine_pro_analytics_enabled" | "dream_machine_pro_insights_enabled" | "g4_bullet_privacy_mode" | "g4_doorbell_privacy_mode" | "tatoo_in_progress" | "meeting_in_progress" | "nibe_133481_48043" | "living_room_bluetooth_inquiries" | "bedroom_bluetooth_inquiries" | "garage_bluetooth_inquiries" | "0x00124b00239c172d" | "g4_bullet_hdr_mode" | "tato_in_progress" | "meting_in_progress" | "test_in_progress" | "g4_instant_overlay_show_name" | "g4_instant_overlay_show_date" | "g4_instant_overlay_show_logo" | "g4_instant_overlay_show_nerd_mode" | "g4_instant_detections_motion" | "g4_instant_privacy_mode" | "garden_2"
+export type SwitchIDs = "adaptive_lighting_bedroom" | "adaptive_lighting_sleep_mode_bedroom" | "adaptive_lighting_adapt_color_bedroom" | "adaptive_lighting_adapt_brightness_bedroom" | "adaptive_lighting_hall" | "adaptive_lighting_sleep_mode_hall" | "adaptive_lighting_adapt_color_hall" | "adaptive_lighting_adapt_brightness_hall" | "adaptive_lighting_living_room" | "adaptive_lighting_sleep_mode_living_room" | "adaptive_lighting_adapt_color_living_room" | "adaptive_lighting_adapt_brightness_living_room" | "charger_charge_control" | "charger_availability" | "fansendlow" | "fansendmedium" | "fansendhigh" | "fansendtimer1" | "fansendtimer2" | "fansendtimer3" | "fansendjoin" | "bedroom_switch" | "siren_alarm" | "siren_temperature_alarm" | "siren_humidity_alarm" | "desk_outlet" | "hall_entrance" | "hall_dual_switch_l2" | "hall_dual_switch_l1" | "garden" | "living_room_spot_1_do_not_disturb" | "garage_light_switch" | "bedroom_humidifier_switch" | "bedside_lamp" | "bedroom_secondary_lamp" | "garage_button" | "christmas_tree_led_outlet" | "hall_stairs_switch" | "living_room_spot_2_do_not_disturb" | "washing_machine_outlet" | "dishwasher_outlet" | "coffee_machine_outlet" | "living_room_humidifier_switch" | "g4_bullet_high_fps" | "g4_bullet_overlay_show_name" | "g4_bullet_overlay_show_date" | "g4_bullet_overlay_show_logo" | "g4_bullet_overlay_show_bitrate" | "g4_bullet_detections_motion" | "g4_bullet_detections_person" | "g4_bullet_detections_vehicle" | "g4_doorbell_status_light_on" | "g4_doorbell_hdr_mode" | "g4_doorbell_high_fps" | "g4_doorbell_system_sounds" | "g4_doorbell_overlay_show_name" | "g4_doorbell_overlay_show_date" | "g4_doorbell_overlay_show_logo" | "g4_doorbell_overlay_show_bitrate" | "g4_doorbell_detections_motion" | "g4_doorbell_detections_person" | "g4_doorbell_detections_vehicle" | "g4_doorbell_detections_package" | "dream_machine_pro_analytics_enabled" | "dream_machine_pro_insights_enabled" | "g4_bullet_privacy_mode" | "g4_doorbell_privacy_mode" | "tatoo_in_progress" | "meeting_in_progress" | "nibe_133481_48043" | "living_room_bluetooth_inquiries" | "bedroom_bluetooth_inquiries" | "garage_bluetooth_inquiries" | "0x00124b00239c172d" | "g4_bullet_hdr_mode" | "tato_in_progress" | "meting_in_progress" | "test_in_progress" | "g4_instant_overlay_show_name" | "g4_instant_overlay_show_date" | "g4_instant_overlay_show_logo" | "g4_instant_overlay_show_nerd_mode" | "g4_instant_detections_motion" | "g4_instant_privacy_mode" | "garden_2" | "3dprinter"
 export type SwitchEntities = Record<SwitchIDs, Switch>
 
 export const switches: Switch<SwitchIDs> = {
@@ -353,15 +353,6 @@ turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.liv
 turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.living_room_spot_2_do_not_disturb"})},
 toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.living_room_spot_2_do_not_disturb"})},
 isOn() { return shadowState["switch.living_room_spot_2_do_not_disturb"].state === "on" }
-},
-
-['0xa4c1386aadc6a696']: {
-  entity_id: "switch.0xa4c1386aadc6a696",
-get entity() { return {state: SwitchStateMapper[shadowState["switch.0xa4c1386aadc6a696"].state as string], attributes: shadowState["switch.0xa4c1386aadc6a696"].attributes} as SwitchProperties},
-turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.0xa4c1386aadc6a696"})},
-turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.0xa4c1386aadc6a696"})},
-toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.0xa4c1386aadc6a696"})},
-isOn() { return shadowState["switch.0xa4c1386aadc6a696"].state === "on" }
 },
 
 ['washing_machine_outlet']: {
@@ -776,6 +767,15 @@ turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.gar
 turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.garden_2"})},
 toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.garden_2"})},
 isOn() { return shadowState["switch.garden_2"].state === "on" }
+},
+
+['3dprinter']: {
+  entity_id: "switch.3dprinter",
+get entity() { return {state: SwitchStateMapper[shadowState["switch.3dprinter"].state as string], attributes: shadowState["switch.3dprinter"].attributes} as SwitchProperties},
+turnOff() { return callService("switch", "turn_off", {}, {entity_id: "switch.3dprinter"})},
+turnOn() { return callService("switch", "turn_on", {}, {entity_id: "switch.3dprinter"})},
+toggle() { return callService("switch", "toggle", {}, {entity_id: "switch.3dprinter"})},
+isOn() { return shadowState["switch.3dprinter"].state === "on" }
 },
 
 }

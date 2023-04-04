@@ -1,20 +1,8 @@
 import {callService, shadowState, Select, SelectProperties} from "@herja/core"
-export type SelectIDs = "0xa4c1386aadc6a696_indicator_mode" | "0xa4c1386aadc6a696_power_outage_memory" | "washing_machine_outlet_indicator_mode" | "washing_machine_outlet_power_outage_memory" | "dishwasher_outlet_indicator_mode" | "dishwasher_outlet_power_outage_memory" | "coffee_machine_outlet_indicator_mode" | "coffee_machine_outlet_power_outage_memory" | "bedroom_tv_light_power_on_behavior" | "living_room_tripod_power_on_behavior" | "bedroom_bed_light_power_on_behavior_2" | "living_room_light_power_on_behavior" | "living_room_humidifier_switch_indicator_mode" | "living_room_humidifier_switch_power_outage_memory" | "bedroom_switch_switch_type" | "bedroom_switch_power_on_behavior" | "siren_volume" | "siren_melody" | "desk_outlet_indicator_mode" | "desk_outlet_power_outage_memory" | "bathroom_spot_1_power_on_behavior" | "hall_entrance_switch_type" | "hall_entrance_power_on_behavior" | "hall_dual_switch_switch_type" | "hall_dual_switch_power_on_behavior" | "garden_switch_type" | "garden_power_on_behavior" | "hall_stairs_power_on_behavior" | "kitchen_spot_3_power_on_behavior" | "garage_car_power_on_behavior" | "hall_entrance_power_on_behavior_2" | "garage_fridge_power_on_behavior" | "garage_light_switch_switch_type" | "garage_light_switch_power_on_behavior" | "bedroom_humidifier_switch_indicator_mode" | "bedroom_humidifier_switch_power_outage_memory" | "toilet_power_on_behavior" | "bedside_lamp_indicator_mode" | "bedside_lamp_power_outage_memory" | "hall_upstairs_spot_1_power_on_behavior" | "hall_upstairs_spot_2_power_on_behavior" | "hall_upstairs_spot_3_power_on_behavior" | "bedroom_secondary_lamp_indicator_mode" | "bedroom_secondary_lamp_power_outage_memory" | "bathroom_spot_2_power_on_behavior" | "office_light_power_on_behavior" | "garage_button_power_on_behavior" | "kitchen_spot_2_power_on_behavior" | "dining_room_spot_1_power_on_behavior" | "christmas_tree_led_outlet_indicator_mode" | "christmas_tree_led_outlet_power_outage_memory" | "dining_room_spot_2_power_on_behavior" | "secondary_room_light_power_on_behavior" | "kitchen_spot_1_power_on_behavior" | "dining_room_spot_3_power_on_behavior" | "hall_stairs_switch_switch_type" | "hall_stairs_switch_power_on_behavior" | "living_room_spot_3_power_on_behavior" | "g4_bullet_recording_mode" | "g4_bullet_infrared_mode" | "g4_doorbell_recording_mode" | "g4_doorbell_infrared_mode" | "g4_doorbell_doorbell_text" | "g4_doorbell_chime_type" | "g4_instant_recording_mode" | "garden_switch_type_2" | "garden_power_on_behavior_2"
+export type SelectIDs = "washing_machine_outlet_indicator_mode" | "washing_machine_outlet_power_outage_memory" | "dishwasher_outlet_indicator_mode" | "dishwasher_outlet_power_outage_memory" | "coffee_machine_outlet_indicator_mode" | "coffee_machine_outlet_power_outage_memory" | "bedroom_tv_light_power_on_behavior" | "living_room_tripod_power_on_behavior" | "bedroom_bed_light_power_on_behavior_2" | "living_room_light_power_on_behavior" | "living_room_humidifier_switch_indicator_mode" | "living_room_humidifier_switch_power_outage_memory" | "bedroom_switch_switch_type" | "bedroom_switch_power_on_behavior" | "siren_volume" | "siren_melody" | "desk_outlet_indicator_mode" | "desk_outlet_power_outage_memory" | "bathroom_spot_1_power_on_behavior" | "hall_entrance_switch_type" | "hall_entrance_power_on_behavior" | "hall_dual_switch_switch_type" | "hall_dual_switch_power_on_behavior" | "garden_switch_type" | "garden_power_on_behavior" | "hall_stairs_power_on_behavior" | "kitchen_spot_3_power_on_behavior" | "garage_car_power_on_behavior" | "hall_entrance_power_on_behavior_2" | "garage_fridge_power_on_behavior" | "garage_light_switch_switch_type" | "garage_light_switch_power_on_behavior" | "bedroom_humidifier_switch_indicator_mode" | "bedroom_humidifier_switch_power_outage_memory" | "toilet_power_on_behavior" | "bedside_lamp_indicator_mode" | "bedside_lamp_power_outage_memory" | "hall_upstairs_spot_1_power_on_behavior" | "hall_upstairs_spot_2_power_on_behavior" | "hall_upstairs_spot_3_power_on_behavior" | "bedroom_secondary_lamp_indicator_mode" | "bedroom_secondary_lamp_power_outage_memory" | "bathroom_spot_2_power_on_behavior" | "office_light_power_on_behavior" | "garage_button_power_on_behavior" | "kitchen_spot_2_power_on_behavior" | "dining_room_spot_1_power_on_behavior" | "christmas_tree_led_outlet_indicator_mode" | "christmas_tree_led_outlet_power_outage_memory" | "dining_room_spot_2_power_on_behavior" | "secondary_room_light_power_on_behavior" | "kitchen_spot_1_power_on_behavior" | "dining_room_spot_3_power_on_behavior" | "hall_stairs_switch_switch_type" | "hall_stairs_switch_power_on_behavior" | "living_room_spot_3_power_on_behavior" | "g4_bullet_recording_mode" | "g4_bullet_infrared_mode" | "g4_doorbell_recording_mode" | "g4_doorbell_infrared_mode" | "g4_doorbell_doorbell_text" | "g4_doorbell_chime_type" | "g4_instant_recording_mode" | "garden_switch_type_2" | "garden_power_on_behavior_2" | "3dprinter_indicator_mode" | "3dprinter_power_outage_memory"
 export type SelectEntities = Record<SelectIDs, Select>
 
 export const select: Select<SelectIDs> = {
-
-['0xa4c1386aadc6a696_indicator_mode']: {
-  entity_id: "select.0xa4c1386aadc6a696_indicator_mode",
-get entity() { return {state: shadowState["select.0xa4c1386aadc6a696_indicator_mode"].state, attributes: shadowState["select.0xa4c1386aadc6a696_indicator_mode"].attributes} as SelectProperties},
-selectOption(option:string) { return callService("select", "select_option", {option}, {entity_id: "select.0xa4c1386aadc6a696_indicator_mode"})}
-},
-
-['0xa4c1386aadc6a696_power_outage_memory']: {
-  entity_id: "select.0xa4c1386aadc6a696_power_outage_memory",
-get entity() { return {state: shadowState["select.0xa4c1386aadc6a696_power_outage_memory"].state, attributes: shadowState["select.0xa4c1386aadc6a696_power_outage_memory"].attributes} as SelectProperties},
-selectOption(option:string) { return callService("select", "select_option", {option}, {entity_id: "select.0xa4c1386aadc6a696_power_outage_memory"})}
-},
 
 ['washing_machine_outlet_indicator_mode']: {
   entity_id: "select.washing_machine_outlet_indicator_mode",
@@ -404,6 +392,18 @@ selectOption(option:string) { return callService("select", "select_option", {opt
   entity_id: "select.garden_power_on_behavior_2",
 get entity() { return {state: shadowState["select.garden_power_on_behavior_2"].state, attributes: shadowState["select.garden_power_on_behavior_2"].attributes} as SelectProperties},
 selectOption(option:string) { return callService("select", "select_option", {option}, {entity_id: "select.garden_power_on_behavior_2"})}
+},
+
+['3dprinter_indicator_mode']: {
+  entity_id: "select.3dprinter_indicator_mode",
+get entity() { return {state: shadowState["select.3dprinter_indicator_mode"].state, attributes: shadowState["select.3dprinter_indicator_mode"].attributes} as SelectProperties},
+selectOption(option:string) { return callService("select", "select_option", {option}, {entity_id: "select.3dprinter_indicator_mode"})}
+},
+
+['3dprinter_power_outage_memory']: {
+  entity_id: "select.3dprinter_power_outage_memory",
+get entity() { return {state: shadowState["select.3dprinter_power_outage_memory"].state, attributes: shadowState["select.3dprinter_power_outage_memory"].attributes} as SelectProperties},
+selectOption(option:string) { return callService("select", "select_option", {option}, {entity_id: "select.3dprinter_power_outage_memory"})}
 },
 
 }
