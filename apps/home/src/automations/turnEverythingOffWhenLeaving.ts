@@ -21,6 +21,9 @@ export const turnEverythingOffWhenLeaving = () => {
         return
       ranOnce = false
       log('clearTimeout ' + person.tim.entity.state + ' ' + person.gaby.entity.state)
+
+      alarm_control_panel.alarmo.disarm()
+
       clearTimeout(timeoutID as number|undefined);
       fan.afzuiging_badkamer.setSpeedPercentage?.(0)
       try{
@@ -43,6 +46,8 @@ export const turnEverythingOffWhenLeaving = () => {
           outlets.forEach((outlet) =>{
             outlet.turnOff()
           })
+
+          alarm_control_panel.alarmo.armAway()
 
           fan.afzuiging_badkamer.setSpeedPercentage?.(100)
           vacuum.valetudo_downstair_vacuum.start()

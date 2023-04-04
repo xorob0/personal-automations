@@ -5,7 +5,6 @@ import { binary_sensor, sensor, switches } from "generated/src";
 let timeoutID: NodeJS.Timer|undefined = undefined;
 export const coffeeMachineButton = () => {
   effect(()=>{
-    console.log('coffee machine button pressed ', sensor.coffee_machine_button_action.entity.state)
     if(sensor.coffee_machine_button_action.entity.state === "on") {
       switches.coffee_machine_outlet.turnOn()
     }
