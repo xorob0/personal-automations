@@ -86,6 +86,13 @@ export const nightMode = () => {
     }
   }, [sun.sun])
 
+  effect(()=>{
+    if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
+      return
+
+    alarm_control_panel.alarmo.disarm()
+  }, [{eventType:'tim_wakeup'}])
+
   // TODO fix car
   // effect((event)=>{
   //   if(event?.data.new_state.state !== 'off')
