@@ -24,7 +24,7 @@ export const turnEverythingOffWhenLeaving = () => {
       clearTimeout(timeoutID as number|undefined);
       fan.afzuiging_badkamer.setSpeedPercentage?.(0)
       try{
-        vacuum.valetudo.returnToBase()
+        vacuum.valetudo_downstair_vacuum.returnToBase()
       }
       catch(e){
         log('vacuum error', e)
@@ -45,7 +45,7 @@ export const turnEverythingOffWhenLeaving = () => {
           })
 
           fan.afzuiging_badkamer.setSpeedPercentage?.(100)
-          vacuum.valetudo.start()
+          vacuum.valetudo_downstair_vacuum.start()
           if(binary_sensor.washing_machine_washing.isOn()){
             callService('notify', 'mobile_app_tims_iphone', {title: 'The washing maching is still on', message: `If you leave too long it might not smell good`})
           }
