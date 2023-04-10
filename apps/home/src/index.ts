@@ -6,7 +6,7 @@ import { turnOnGarageLightWhenADoorIsOpened } from "./automations/turnOnGarageLi
 import { wallSwitches } from "./automations/wallSwitches";
 import { automaticAlarm } from "./automations/automaticAlarm";
 import { tripodButton } from "./automations/tripodButton";
-// import { coffeeMachineButton } from "./automations/coffeeMachineButton";
+import { coffeeMachineButton } from "./automations/coffeeMachineButton";
 import { garageRemote } from "./automations/garageRemote";
 import { turnOnTripodOnSunset } from "./automations/turnOnTripodOnSunset";
 import { turnOnToiletLightWithDoor } from "./automations/TurnOnToiletLightWithDoor";
@@ -41,7 +41,7 @@ const base = async () => {
   wallSwitches()
   automaticAlarm()
   tripodButton()
-  // coffeeMachineButton()
+  coffeeMachineButton()
   allAlertsOpenedTooLong()
   garageRemote()
   turnOnTripodOnSunset()

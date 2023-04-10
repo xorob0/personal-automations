@@ -22,7 +22,7 @@ const lightBedroom = [light.bedroom_secondary_lamp.entity_id,
   light.bedroom_tv_light.entity_id,
   light.bedroom_bed_light_2.entity_id]
 
-const outlets = [switches.desk_outlet, switches.christmas_tree_led_outlet]
+const outlets = [switches.desk_outlet]
 const mediaPlayers:MediaPlayerEntity[] = []
 
 const isALightOn = (entities: string[]) => entities.map(key => shadowState[key].state === 'on').includes(true)

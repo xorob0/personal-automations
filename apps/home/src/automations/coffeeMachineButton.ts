@@ -13,8 +13,8 @@ export const coffeeMachineButton = () => {
     }, [sensor.coffee_machine_button_action])
 
   effect(()=>{
-    clearTimeout(timeoutID as number|undefined);
     if(switches.coffee_machine_outlet.isOn())
+      clearTimeout(timeoutID as number|undefined);
       timeoutID = setTimeout(()=>{
         switches.coffee_machine_outlet.turnOff()
     },90 * 60 * 1000)
