@@ -5,7 +5,6 @@ import {
   light,
   alarm_control_panel,
   switches,
-  binary_sensor,
   humidifier,
   climate,
   media_player

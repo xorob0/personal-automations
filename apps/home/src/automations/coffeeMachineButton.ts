@@ -1,7 +1,6 @@
 import { effect } from "@herja/core";
-import { binary_sensor, sensor, switches } from "generated/src";
+import { sensor, switches } from "generated/src";
 
-// TODO change button coffe machine
 let timeoutID: NodeJS.Timer|undefined = undefined;
 export const coffeeMachineButton = () => {
   effect(()=>{
