@@ -22,6 +22,8 @@ import { roomBusy } from "./automations/roomBusy";
 import { createHumidifiers } from "./automations/humidifiers";
 import { hvacOnHumidity } from "./automations/hvacOnHumidity";
 import { machines } from "./automations/machines";
+import { livingRoomRemote } from "./automations/LivingRoomRemote";
+import { hallPresenceSensor } from "./automations/HallPresenceSensor";
 
 require('dotenv').config();
 
@@ -56,6 +58,8 @@ const base = async () => {
   createHumidifiers()
   hvacOnHumidity()
   machines()
+  livingRoomRemote()
+  hallPresenceSensor()
 };
 
 try{

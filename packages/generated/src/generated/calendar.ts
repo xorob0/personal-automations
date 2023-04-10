@@ -1,5 +1,5 @@
 import {callService, shadowState, Calendar, CalendarProperties} from "@herja/core"
-export type CalendarIDs = "inbox" | "srl" | "to_buy" | "chores" | "selfhosted" | "home_assistant" | "o25" | "zorgi" | "gaby_gifts" | "herja" | "activities_exporter" | "personal" | "contact_birthdays" | "default_task_calendar_name" | "personal_gaby"
+export type CalendarIDs = "inbox" | "srl" | "to_buy" | "chores" | "selfhosted" | "home_assistant" | "o25" | "zorgi" | "gaby_gifts" | "herja" | "activities_exporter" | "default_task_calendar_name" | "personal" | "contact_birthdays" | "personal_gaby"
 export type CalendarEntities = Record<CalendarIDs, Calendar>
 
 export const calendar: Calendar<CalendarIDs> = {
@@ -59,6 +59,11 @@ get entity() { return {state: shadowState["calendar.herja"].state, attributes: s
 get entity() { return {state: shadowState["calendar.activities_exporter"].state, attributes: shadowState["calendar.activities_exporter"].attributes} as CalendarProperties}
 },
 
+['default_task_calendar_name']: {
+  entity_id: "calendar.default_task_calendar_name",
+get entity() { return {state: shadowState["calendar.default_task_calendar_name"].state, attributes: shadowState["calendar.default_task_calendar_name"].attributes} as CalendarProperties}
+},
+
 ['personal']: {
   entity_id: "calendar.personal",
 get entity() { return {state: shadowState["calendar.personal"].state, attributes: shadowState["calendar.personal"].attributes} as CalendarProperties}
@@ -67,11 +72,6 @@ get entity() { return {state: shadowState["calendar.personal"].state, attributes
 ['contact_birthdays']: {
   entity_id: "calendar.contact_birthdays",
 get entity() { return {state: shadowState["calendar.contact_birthdays"].state, attributes: shadowState["calendar.contact_birthdays"].attributes} as CalendarProperties}
-},
-
-['default_task_calendar_name']: {
-  entity_id: "calendar.default_task_calendar_name",
-get entity() { return {state: shadowState["calendar.default_task_calendar_name"].state, attributes: shadowState["calendar.default_task_calendar_name"].attributes} as CalendarProperties}
 },
 
 ['personal_gaby']: {
