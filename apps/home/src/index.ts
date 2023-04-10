@@ -58,8 +58,8 @@ const base = async () => {
   createHumidifiers()
   hvacOnHumidity()
   machines()
-  livingRoomRemote()
-  hallPresenceSensor()
+  // livingRoomRemote()
+  // hallPresenceSensor()
 };
 
 base().catch(e => console.error("[index] error: ", e));
