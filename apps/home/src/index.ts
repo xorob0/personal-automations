@@ -2,17 +2,17 @@ import { configure } from "@herja/core";
 import { garage } from "@herja/automations";
 import { turnOnGardenLightWithGardenDoorAtNight } from "./automations/turnOnGardenLightWithGardenDoorAtNight";
 import { turnOnGarageLightWhenADoorIsOpened } from "./automations/turnOnGarageLightWenADoorIsOpened";
-import { nightMode } from "./automations/nightMode";
+// import { nightMode } from "./automations/nightMode";
 import { wallSwitches } from "./automations/wallSwitches";
 import { automaticAlarm } from "./automations/automaticAlarm";
 import { tripodButton } from "./automations/tripodButton";
-import { coffeeMachineButton } from "./automations/coffeeMachineButton";
+// import { coffeeMachineButton } from "./automations/coffeeMachineButton";
 import { garageRemote } from "./automations/garageRemote";
 import { turnOnTripodOnSunset } from "./automations/turnOnTripodOnSunset";
 import { turnOnToiletLightWithDoor } from "./automations/TurnOnToiletLightWithDoor";
 // import { TurnOnUpstairsHallWithSensor } from "./automations/TurnOnUpstairsHallWithSensor";
 import { BedroomACTimer } from "./automations/bedroomACTimer";
-import { turnOnSomeLightsWhenComingHome } from "./automations/turnOnSomeLightsWhenComingHome";
+// import { turnOnSomeLightsWhenComingHome } from "./automations/turnOnSomeLightsWhenComingHome";
 import { turnEverythingOffWhenLeaving } from "./automations/turnEverythingOffWhenLeaving";
 import { personDetection } from "./automations/personDetection";
 import { deskButton } from "./automations/DeskButton";
@@ -37,12 +37,12 @@ const base = async () => {
   turnOnGarageLightWhenADoorIsOpened();
   turnOnGardenLightWithGardenDoorAtNight();
   turnEverythingOffWhenLeaving();
-  turnOnSomeLightsWhenComingHome()
-  nightMode()
+  // turnOnSomeLightsWhenComingHome()
+  // nightMode()
   wallSwitches()
   automaticAlarm()
   tripodButton()
-  coffeeMachineButton()
+  // coffeeMachineButton()
   allAlertsOpenedTooLong()
   garageRemote()
   turnOnTripodOnSunset()
