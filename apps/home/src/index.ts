@@ -47,7 +47,7 @@ const base = async () => {
   garageRemote()
   turnOnTripodOnSunset()
   turnOnToiletLightWithDoor()
-  TurnOnUpstairsHallWithSensor()
+  // TurnOnUpstairsHallWithSensor()
   personDetection()
   garage();
   BedroomACTimer();
