@@ -10,7 +10,7 @@ import { coffeeMachineButton } from "./automations/coffeeMachineButton";
 import { garageRemote } from "./automations/garageRemote";
 import { turnOnTripodOnSunset } from "./automations/turnOnTripodOnSunset";
 import { turnOnToiletLightWithDoor } from "./automations/TurnOnToiletLightWithDoor";
-import { TurnOnUpstairsHallWithSensor } from "./automations/TurnOnUpstairsHallWithSensor";
+// import { TurnOnUpstairsHallWithSensor } from "./automations/TurnOnUpstairsHallWithSensor";
 import { BedroomACTimer } from "./automations/bedroomACTimer";
 import { turnOnSomeLightsWhenComingHome } from "./automations/turnOnSomeLightsWhenComingHome";
 import { turnEverythingOffWhenLeaving } from "./automations/turnEverythingOffWhenLeaving";
