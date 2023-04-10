@@ -62,8 +62,4 @@ const base = async () => {
   hallPresenceSensor()
 };
 
-try{
-  base();
-}catch(e){
-  console.error("[index] error: ", e)
-}
+base().catch(e => console.error("[index] error: ", e));
