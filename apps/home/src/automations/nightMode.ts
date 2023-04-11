@@ -76,14 +76,14 @@ export const nightMode = () => {
     }
   }, [sensor.bedside_button_action, sensor.bedroom_button_tim_action, sensor.bedroom_button_gaby_action])
   //
-  effect((event)=>{
-    if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
-      return
-
-    if( event?.data.new_state.state === SunState.ABOVE_HORIZON && event?.data.old_state.state === SunState.BELOW_HORIZON){
-      alarm_control_panel.alarmo.disarm()
-    }
-  }, [sun.sun])
+  // effect((event)=>{
+  //   if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
+  //     return
+  //
+  //   if( event?.data.new_state.state === SunState.ABOVE_HORIZON && event?.data.old_state.state === SunState.BELOW_HORIZON){
+  //     alarm_control_panel.alarmo.disarm()
+  //   }
+  // }, [sun.sun])
   //
   effect(()=>{
     if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
