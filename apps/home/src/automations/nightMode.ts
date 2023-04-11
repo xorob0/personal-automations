@@ -76,21 +76,21 @@ export const nightMode = () => {
     }
   }, [sensor.bedside_button_action, sensor.bedroom_button_tim_action, sensor.bedroom_button_gaby_action])
 
-  // effect((event)=>{
-  //   if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
-  //     return
-  //
-  //   if( event?.data.new_state.state === SunState.ABOVE_HORIZON && event?.data.old_state.state === SunState.BELOW_HORIZON){
-  //     alarm_control_panel.alarmo.disarm()
-  //   }
-  // }, [sun.sun])
-  //
-  // effect(()=>{
-  //   if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
-  //     return
-  //
-  //   alarm_control_panel.alarmo.disarm()
-  // }, [{eventType:'tim_wakeup'}])
+  effect((event)=>{
+    if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
+      return
+
+    if( event?.data.new_state.state === SunState.ABOVE_HORIZON && event?.data.old_state.state === SunState.BELOW_HORIZON){
+      alarm_control_panel.alarmo.disarm()
+    }
+  }, [sun.sun])
+
+  effect(()=>{
+    if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
+      return
+
+    alarm_control_panel.alarmo.disarm()
+  }, [{eventType:'tim_wakeup'}])
 
   // TODO fix car
   // effect((event)=>{
@@ -101,14 +101,14 @@ export const nightMode = () => {
   //   alarm_control_panel.alarmo.disarm()
   // }, [binary_sensor.tim_s_id_4_car_is_active])
 
-  effect(()=>{
-    humidifier.bedroom_humidifier.turnOn()
-  }, ["0 10 * * *"])
-
-  effect(()=>{
-    if(sensor.bedroom_ir_blaster_temperature.entity.state > 20)
-      return
-    climate.bedroom_ac.setHeating()
-    climate.bedroom_ac.setTargetTemperature(20)
-  }, ["0 21 * * *"])
+  // effect(()=>{
+  //   humidifier.bedroom_humidifier.turnOn()
+  // }, ["0 10 * * *"])
+  //
+  // effect(()=>{
+  //   if(sensor.bedroom_ir_blaster_temperature.entity.state > 20)
+  //     return
+  //   climate.bedroom_ac.setHeating()
+  //   climate.bedroom_ac.setTargetTemperature(20)
+  // }, ["0 21 * * *"])
 };
