@@ -75,31 +75,31 @@ export const nightMode = () => {
       turnOnBedroomLight()
     }
   }, [sensor.bedside_button_action, sensor.bedroom_button_tim_action, sensor.bedroom_button_gaby_action])
-  //
-  // effect((event)=>{
-  //   if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
-  //     return
-  //
-  //   if( event?.data.new_state.state === SunState.ABOVE_HORIZON && event?.data.old_state.state === SunState.BELOW_HORIZON){
-  //     alarm_control_panel.alarmo.disarm()
-  //   }
-  // }, [sun.sun])
-  //
-  effect(()=>{
+
+  effect((event)=>{
     if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
       return
 
-    alarm_control_panel.alarmo.disarm()
-  }, [{eventType:'tim_wakeup'}])
-  //
+    if( event?.data.new_state.state === SunState.ABOVE_HORIZON && event?.data.old_state.state === SunState.BELOW_HORIZON){
+      alarm_control_panel.alarmo.disarm()
+    }
+  }, [sun.sun])
+
   // effect(()=>{
-  //   humidifier.bedroom_humidifier.turnOn()
-  // }, ["0 10 * * *"])
-  //
-  // effect(()=>{
-  //   if(sensor.bedroom_ir_blaster_temperature.entity.state > 20)
+  //   if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
   //     return
-  //   climate.bedroom_ac.setHeating()
-  //   climate.bedroom_ac.setTargetTemperature(20)
-  // }, ["0 21 * * *"])
+  //
+  //   alarm_control_panel.alarmo.disarm()
+  // }, [{eventType:'tim_wakeup'}])
+
+  effect(()=>{
+    humidifier.bedroom_humidifier.turnOn()
+  }, ["0 10 * * *"])
+
+  effect(()=>{
+    if(sensor.bedroom_ir_blaster_temperature.entity.state > 20)
+      return
+    climate.bedroom_ac.setHeating()
+    climate.bedroom_ac.setTargetTemperature(20)
+  }, ["0 21 * * *"])
 };
