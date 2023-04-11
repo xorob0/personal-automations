@@ -37,44 +37,44 @@ const turnOnBedroomLight = () =>{
 }
 
 export const nightMode = () => {
-  effect(async (event)=>{
-    if(event?.data.new_state.state !== 'single' && event?.data.new_state.state !== "on")
-      return
-
-    clearTimeout(timeoutID as number|undefined)
-
-    const allLights = getAllLights()
-    outlets.forEach((outlet) =>{
-      outlet.turnOff()
-    })
-    mediaPlayers.forEach((media_player) =>{
-      media_player.turnOff()
-    })
-
-    // if a light in the house is on
-    if(isALightOn(allLights))
-    {
-      alarm_control_panel.alarmo.armNight()
-      humidifier.bedroom_humidifier.turnOff()
-      fan.afzuiging_badkamer.setSpeedPercentage?.(0)
-      media_player.android_tv_192_168_1_53.turnOff()
-      // if a light is on but not a light in the bedroom
-      if(isALightOn(getAllLights({exceptions: lightBedroom}))){
-        await turnOffAllLights({exceptions: lightBedroom})
-        turnOnBedroomLight()
-        climate.bedroom_ac.turnOff()
-        climate.office_ac.turnOff()
-        climate.secondary_room_ac.turnOff()
-      }
-      // if the only light that is on is in the bedroom
-      else{
-        await turnOffAllLights()
-      }
-    }
-    else {
-      turnOnBedroomLight()
-    }
-  }, [sensor.bedside_button_action, sensor.bedroom_button_tim_action, sensor.bedroom_button_gaby_action])
+  // effect(async (event)=>{
+  //   if(event?.data.new_state.state !== 'single' && event?.data.new_state.state !== "on")
+  //     return
+  //
+  //   clearTimeout(timeoutID as number|undefined)
+  //
+  //   const allLights = getAllLights()
+  //   outlets.forEach((outlet) =>{
+  //     outlet.turnOff()
+  //   })
+  //   mediaPlayers.forEach((media_player) =>{
+  //     media_player.turnOff()
+  //   })
+  //
+  //   // if a light in the house is on
+  //   if(isALightOn(allLights))
+  //   {
+  //     alarm_control_panel.alarmo.armNight()
+  //     humidifier.bedroom_humidifier.turnOff()
+  //     fan.afzuiging_badkamer.setSpeedPercentage?.(0)
+  //     media_player.android_tv_192_168_1_53.turnOff()
+  //     // if a light is on but not a light in the bedroom
+  //     if(isALightOn(getAllLights({exceptions: lightBedroom}))){
+  //       await turnOffAllLights({exceptions: lightBedroom})
+  //       turnOnBedroomLight()
+  //       climate.bedroom_ac.turnOff()
+  //       climate.office_ac.turnOff()
+  //       climate.secondary_room_ac.turnOff()
+  //     }
+  //     // if the only light that is on is in the bedroom
+  //     else{
+  //       await turnOffAllLights()
+  //     }
+  //   }
+  //   else {
+  //     turnOnBedroomLight()
+  //   }
+  // }, [sensor.bedside_button_action, sensor.bedroom_button_tim_action, sensor.bedroom_button_gaby_action])
 
   effect((event)=>{
     if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
