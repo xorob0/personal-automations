@@ -2,7 +2,7 @@ import { configure } from "@herja/core";
 import { garage } from "@herja/automations";
 import { turnOnGardenLightWithGardenDoorAtNight } from "./automations/turnOnGardenLightWithGardenDoorAtNight";
 import { turnOnGarageLightWhenADoorIsOpened } from "./automations/turnOnGarageLightWenADoorIsOpened";
-// import { nightMode } from "./automations/nightMode";
+import { nightMode } from "./automations/nightMode";
 import { wallSwitches } from "./automations/wallSwitches";
 import { automaticAlarm } from "./automations/automaticAlarm";
 import { tripodButton } from "./automations/tripodButton";
@@ -37,7 +37,7 @@ const base = async () => {
   turnOnGarageLightWhenADoorIsOpened();
   turnOnGardenLightWithGardenDoorAtNight();
   turnEverythingOffWhenLeaving();
-  // nightMode()
+  nightMode()
   wallSwitches()
   automaticAlarm()
   tripodButton()
