@@ -13,7 +13,6 @@ import { turnOnToiletLightWithDoor } from "./automations/TurnOnToiletLightWithDo
 import { TurnOnUpstairsHallWithSensor } from "./automations/TurnOnUpstairsHallWithSensor";
 import { BedroomACTimer } from "./automations/bedroomACTimer";
 import { turnEverythingOffWhenLeaving } from "./automations/turnEverythingOffWhenLeaving";
-import { personDetection } from "./automations/personDetection";
 import { deskButton } from "./automations/DeskButton";
 import { alertCarUnplugged } from "./automations/alertCarUnplugged";
 import { allAlertsOpenedTooLong } from "./automations/alertOpenedTooLong";
@@ -47,7 +46,6 @@ const base = async () => {
   turnOnTripodOnSunset()
   turnOnToiletLightWithDoor()
   TurnOnUpstairsHallWithSensor()
-  personDetection()
   garage();
   BedroomACTimer();
   deskButton();
