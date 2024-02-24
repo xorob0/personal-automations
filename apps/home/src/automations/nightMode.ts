@@ -10,7 +10,7 @@ import {
   media_player
 } from "generated/src";
 import { clearTimeout } from "timers";
-import { getAllLights, turnOffAllLights } from "../utils/allLights";
+import { turnOffAllLights } from "../utils/allLights";
 import { fan } from "generated/src/generated/fan";
 
 let timeoutID: NodeJS.Timer|undefined = undefined;
@@ -23,7 +23,7 @@ const lightBedroom = [light.bedroom_secondary_lamp.entity_id,
   light.bedroom_bed_light_2.entity_id]
 
 const outlets = [switches.desk_outlet]
-const mediaPlayers:MediaPlayerEntity[] = []
+const mediaPlayers:MediaPlayerEntity[] = [media_player.living_room]
 
 const isALightOn = (entities: string[]) => entities.map(key => shadowState[key].state === 'on').includes(true)
 
@@ -43,7 +43,6 @@ export const nightMode = () => {
 
     clearTimeout(timeoutID as number|undefined)
 
-    const allLights = getAllLights()
     outlets.forEach((outlet) =>{
       outlet.turnOff()
     })
@@ -51,27 +50,23 @@ export const nightMode = () => {
       media_player.turnOff()
     })
 
-    // if a light in the house is on
-    if(isALightOn(allLights))
+    fan.afzuiging_badkamer.setSpeedPercentage?.(0)
+    humidifier.bedroom_humidifier.turnOff()
+
+    if(alarm_control_panel.alarmo.isDisarmed())
     {
       alarm_control_panel.alarmo.armNight()
-      humidifier.bedroom_humidifier.turnOff()
-      fan.afzuiging_badkamer.setSpeedPercentage?.(0)
-      media_player.living_room.turnOff()
-      // if a light is on but not a light in the bedroom
-      if(isALightOn(getAllLights({exceptions: lightBedroom}))){
-        await turnOffAllLights({exceptions: lightBedroom})
-        turnOnBedroomLight()
-        climate.bedroom_ac.turnOff()
-        climate.office_ac.turnOff()
-        climate.secondary_room_ac.turnOff()
-      }
-      // if the only light that is on is in the bedroom
-      else{
-        await turnOffAllLights()
-      }
+      await turnOffAllLights({exceptions: lightBedroom})
+      turnOnBedroomLight()
+      climate.bedroom_ac.turnOff()
+      climate.office_ac.turnOff()
+      climate.secondary_room_ac.turnOff()
+      return
     }
-    else {
+    if(isALightOn(lightBedroom)){
+      await turnOffAllLights()
+    }
+    else{
       turnOnBedroomLight()
     }
   }, [sensor.bedside_button_action, sensor.bedroom_button_tim_action, sensor.bedroom_button_gaby_action])
@@ -85,21 +80,23 @@ export const nightMode = () => {
     }
   }, [sun.sun])
 
-  // effect(()=>{
-  //   if(alarm_control_panel.alarmo.entity.state !== 'armed_night')
-  //     return
-  //
-  //   alarm_control_panel.alarmo.disarm()
-  // }, [{eventType:'tim_wakeup'}])
-
   effect(()=>{
-    humidifier.bedroom_humidifier.turnOn()
-  }, ["0 10 * * *"])
+    if(sensor.bedroom_ir_blaster_temperature.entity.state < 18){
+      climate.bedroom_ac.setHeating()
+      climate.bedroom_ac.setTargetTemperature(19)
+    }
 
-  effect(()=>{
-    if(sensor.bedroom_ir_blaster_temperature.entity.state > 20)
-      return
-    climate.bedroom_ac.setHeating()
-    climate.bedroom_ac.setTargetTemperature(20)
+    if(sensor.bedroom_ir_blaster_temperature.entity.state > 22){
+      climate.bedroom_ac.setCooling()
+      climate.bedroom_ac.setTargetTemperature(20)
+    }
   }, ["0 21 * * *"])
+
+
+  effect((event)=>{
+    if(event?.data.actionName !== "wake_up" || alarm_control_panel.alarmo.entity.state !== 'armed_night')
+      return
+
+    alarm_control_panel.alarmo.disarm()
+  }, [{eventType: "shortcut_event"}])
 };
