@@ -18,8 +18,8 @@ const alertFridgeOpenedTooLong = () => {
     delay: 1000 * 60 * delayEntranceDoorOpenTooLong,
   });
   callbackAfterDelay({
-    condition: () => !cover.garage_mqtt.isClosed(),
-    sensor: cover.garage_mqtt,
+    condition: () => !cover.garage_cover.isClosed(),
+    sensor: cover.garage_cover,
     callback: () => callService('notify', 'mobile_app_tims_iphone', {title: 'Garage still open', message: `The garage electric door has been open for ${delayFridgeOpenTooLong} minutes`}),
     delay: 1000 * 60 * delayGarageOpenTooLong,
   });

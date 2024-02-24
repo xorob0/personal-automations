@@ -57,7 +57,7 @@ export const nightMode = () => {
       alarm_control_panel.alarmo.armNight()
       humidifier.bedroom_humidifier.turnOff()
       fan.afzuiging_badkamer.setSpeedPercentage?.(0)
-      media_player.android_tv_192_168_1_53.turnOff()
+      media_player.living_room.turnOff()
       // if a light is on but not a light in the bedroom
       if(isALightOn(getAllLights({exceptions: lightBedroom}))){
         await turnOffAllLights({exceptions: lightBedroom})
