@@ -1,5 +1,5 @@
 import {callService, shadowState, Button, ButtonProperties} from "@herja/core"
-export type ButtonIDs = "charger_reset" | "charger_unlock" | "scan_clients_celty_3_0" | "octoprint_resume_job" | "octoprint_pause_job" | "octoprint_stop_job" | "tim_s_id_4_start_climate" | "tim_s_id_4_stop_climate" | "tim_s_id_4_toggle_ac_charge_speed" | "tim_s_id_4_start_charging" | "tim_s_id_4_stop_charging"
+export type ButtonIDs = "charger_reset" | "charger_unlock" | "scan_clients_celty_3_0" | "tim_s_id_4_start_climate" | "tim_s_id_4_stop_climate" | "tim_s_id_4_toggle_ac_charge_speed" | "tim_s_id_4_start_charging" | "tim_s_id_4_stop_charging"
 export type ButtonEntities = Record<ButtonIDs, Button>
 
 export const button: Button<ButtonIDs> = {
@@ -20,24 +20,6 @@ press() { return callService("button", "press", {}, {entity_id: "button.charger_
   entity_id: "button.scan_clients_celty_3_0",
 get entity() { return {state: shadowState["button.scan_clients_celty_3_0"].state, attributes: shadowState["button.scan_clients_celty_3_0"].attributes} as ButtonProperties},
 press() { return callService("button", "press", {}, {entity_id: "button.scan_clients_celty_3_0"})}
-},
-
-['octoprint_resume_job']: {
-  entity_id: "button.octoprint_resume_job",
-get entity() { return {state: shadowState["button.octoprint_resume_job"].state, attributes: shadowState["button.octoprint_resume_job"].attributes} as ButtonProperties},
-press() { return callService("button", "press", {}, {entity_id: "button.octoprint_resume_job"})}
-},
-
-['octoprint_pause_job']: {
-  entity_id: "button.octoprint_pause_job",
-get entity() { return {state: shadowState["button.octoprint_pause_job"].state, attributes: shadowState["button.octoprint_pause_job"].attributes} as ButtonProperties},
-press() { return callService("button", "press", {}, {entity_id: "button.octoprint_pause_job"})}
-},
-
-['octoprint_stop_job']: {
-  entity_id: "button.octoprint_stop_job",
-get entity() { return {state: shadowState["button.octoprint_stop_job"].state, attributes: shadowState["button.octoprint_stop_job"].attributes} as ButtonProperties},
-press() { return callService("button", "press", {}, {entity_id: "button.octoprint_stop_job"})}
 },
 
 ['tim_s_id_4_start_climate']: {

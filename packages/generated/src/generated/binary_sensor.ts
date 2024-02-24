@@ -1,133 +1,196 @@
 import {shadowState, BinarySensor, BinarySensorProperties, BinarySensorStateMapper} from "@herja/core"
-export type BinarySensorIDs = "gaby_s_galaxy_s21_4" | "tim_s_galaxy_s22_4" | "id_4_2" | "gaby_s_galaxy_s21_bedroom" | "tim_s_galaxy_s22_bedroom" | "gaby_s_galaxy_s21_garage" | "tim_s_galaxy_s22_garage" | "id_4_garage" | "tim_watch_living_room_presence" | "gaby_living_room_presence" | "tim_iphone_living_room_presence" | "octoprint_printing" | "octoprint_printing_error" | "tim_watch_office_presence" | "gaby_office_presence" | "tim_iphone_office_presence" | "dishwasher_washing" | "washing_machine_washing" | "sm_g980f_is_charging" | "sm_g980f_headphones" | "sm_g980f_mic_muted" | "sm_g980f_speakerphone" | "sm_g980f_music_active" | "sm_g980f_bluetooth_state" | "sm_g980f_device_locked" | "sm_g980f_device_secure" | "sm_g980f_keyguard_locked" | "sm_g980f_keyguard_secure" | "sm_g980f_mobile_data" | "sm_g980f_mobile_data_roaming" | "sm_g980f_wifi_state" | "tims_macbook_pro_camera_in_use" | "tims_macbook_pro_audio_input_in_use" | "tims_macbook_pro_audio_output_in_use" | "tims_macbook_pro_active" | "tims_macbook_pro_focus" | "tims_iphone_focus" | "living_room_spot_3_update_available" | "dining_room_spot_3_update_available" | "kitchen_spot_1_update_available" | "dining_room_spot_2_update_available" | "christmas_tree_led_outlet_update_available" | "dining_room_spot_1_update_available" | "kitchen_spot_2_update_available" | "bathroom_spot_2_update_available" | "bedroom_secondary_lamp_update_available" | "stairs_motion_sensor_occupancy" | "stairs_motion_sensor_battery_low" | "stairs_motion_sensor_tamper" | "hall_upstairs_spot_3_update_available" | "hall_upstairs_spot_2_update_available" | "hall_upstairs_spot_1_update_available" | "fridge_door_sensor_contact" | "bedside_lamp_update_available" | "toilet_update_available" | "garage_electric_door_sensor_open_contact" | "bedroom_humidifier_switch_update_available" | "garage_door_contact" | "garden_door_contact" | "toilet_door_contact" | "toilet_door_battery_low" | "entrance_door_contact" | "garage_fridge_update_available" | "hall_entrance_update_available" | "garage_car_update_available" | "kitchen_spot_3_update_available" | "hall_stairs_update_available" | "bathroom_spot_1_update_available" | "desk_outlet_update_available" | "bedroom_window_bed_contact" | "garage_electric_door_sensor_closed_contact" | "siren_battery_low" | "bathroom_door_contact" | "bathroom_door_battery_low" | "bedroom_button_tim_update_available" | "bedroom_button_gaby_update_available" | "g4_bullet_is_dark" | "g4_doorbell_is_dark" | "g4_instant_is_dark" | "g4_bullet_motion" | "g4_bullet_object_detected" | "g4_bullet_person_detected" | "g4_bullet_vehicle_detected" | "g4_bullet_audio_object_detected" | "g4_doorbell_doorbell" | "g4_doorbell_motion" | "g4_doorbell_object_detected" | "g4_doorbell_person_detected" | "g4_doorbell_vehicle_detected" | "g4_doorbell_package_detected" | "g4_doorbell_audio_object_detected" | "g4_instant_motion" | "g4_instant_object_detected" | "g4_instant_person_detected" | "g4_instant_vehicle_detected" | "g4_instant_audio_object_detected" | "dream_machine_pro_hdd_1" | "updater" | "my_wall_panel_usb_plugged" | "my_wall_panel_ac_plugged" | "my_wall_panel_charging" | "my_wall_panel_face_detected" | "my_wall_panel_motion_detected" | "gaby_s_galaxy_s21" | "tim_s_galaxy_s22" | "gaby_s_galaxy_s21_3" | "tim_s_galaxy_s22_3" | "id_4" | "nextcloud_system_enable_avatars" | "nextcloud_system_enable_previews" | "nextcloud_system_filelocking_enabled" | "nextcloud_system_debug" | "tim_living_room_presence" | "gaby_s_galaxy_s21_office_2" | "tim_s_id_4_climatisation_without_external_power" | "tim_s_id_4_climatisation_at_unlock" | "tim_s_id_4_zone_front_left_enabled" | "tim_s_id_4_zone_front_right_enabled" | "tim_s_id_4_window_heating_enabled" | "tim_s_id_4_front_window_heating_state" | "tim_s_id_4_rear_window_heating_state" | "tim_s_id_4_insufficient_battery_level_warning" | "tim_s_id_4_car_is_online" | "tim_s_id_4_car_is_active" | "tim_s_id_4_lights_right" | "tim_s_id_4_lights_left" | "hall_motion_sensor_occupancy"
+export type BinarySensorIDs = "g4_bullet_is_dark" | "g4_doorbell_is_dark" | "g4_instant_is_dark" | "g4_bullet_motion" | "g4_bullet_object_detected" | "g4_bullet_person_detected" | "g4_bullet_vehicle_detected" | "g4_bullet_audio_object_detected" | "g4_bullet_smoke_alarm_detected" | "g4_bullet_co_alarm_detected" | "g4_doorbell_doorbell" | "g4_doorbell_motion" | "g4_doorbell_object_detected" | "g4_doorbell_person_detected" | "g4_doorbell_vehicle_detected" | "g4_doorbell_package_detected" | "g4_doorbell_audio_object_detected" | "g4_doorbell_smoke_alarm_detected" | "g4_doorbell_co_alarm_detected" | "g4_instant_motion" | "g4_instant_object_detected" | "g4_instant_person_detected" | "g4_instant_vehicle_detected" | "g4_instant_audio_object_detected" | "g4_instant_smoke_alarm_detected" | "g4_instant_co_alarm_detected" | "dream_machine_pro_hdd_1" | "sm_g980f_is_charging" | "sm_g980f_headphones" | "sm_g980f_mic_muted" | "sm_g980f_speakerphone" | "sm_g980f_music_active" | "sm_g980f_bluetooth_state" | "sm_g980f_device_locked" | "sm_g980f_device_secure" | "sm_g980f_keyguard_locked" | "sm_g980f_keyguard_secure" | "sm_g980f_mobile_data" | "sm_g980f_mobile_data_roaming" | "sm_g980f_wifi_state" | "tims_macbook_pro_camera_in_use" | "tims_macbook_pro_audio_input_in_use" | "tims_macbook_pro_audio_output_in_use" | "tims_macbook_pro_active" | "tims_macbook_pro_focus" | "tims_iphone_focus" | "iphone_focus" | "dishwasher_washing" | "washing_machine_washing" | "iphone_focus_2" | "gaby_s_galaxy_s21_bedroom" | "tim_s_galaxy_s22_bedroom" | "gaby_s_galaxy_s21_garage" | "tim_s_galaxy_s22_garage" | "id_4_garage" | "gaby_s_galaxy_s21_4" | "tim_s_galaxy_s22_4" | "id_4_2" | "tim_watch_living_room_presence" | "gaby_living_room_presence" | "tim_iphone_living_room_presence" | "tim_watch_office_presence" | "gaby_office_presence" | "tim_iphone_office_presence" | "living_room_spot_3_update_available" | "dining_room_spot_3_update_available" | "kitchen_spot_1_update_available" | "dining_room_spot_2_update_available" | "christmas_tree_led_outlet_update_available" | "dining_room_spot_1_update_available" | "kitchen_spot_2_update_available" | "bathroom_spot_2_update_available" | "bedroom_secondary_lamp_update_available" | "stairs_motion_sensor_occupancy" | "stairs_motion_sensor_battery_low" | "stairs_motion_sensor_tamper" | "hall_upstairs_spot_3_update_available" | "hall_upstairs_spot_2_update_available" | "hall_upstairs_spot_1_update_available" | "fridge_door_sensor_contact" | "bedside_lamp_update_available" | "hall_motion_sensor_occupancy" | "toilet_update_available" | "garage_electric_door_sensor_open_contact" | "bedroom_humidifier_switch_update_available" | "garage_door_contact" | "garden_door_contact" | "toilet_door_contact" | "toilet_door_battery_low" | "entrance_door_contact" | "garage_fridge_update_available" | "hall_entrance_update_available" | "garage_car_update_available" | "kitchen_spot_3_update_available" | "hall_stairs_update_available" | "bathroom_spot_1_update_available" | "bedroom_window_bed_contact" | "garage_electric_door_sensor_closed_contact" | "siren_battery_low" | "bathroom_door_contact" | "bathroom_door_battery_low" | "bedroom_button_tim_update_available" | "bedroom_button_gaby_update_available" | "updater" | "my_wall_panel_usb_plugged" | "my_wall_panel_ac_plugged" | "my_wall_panel_charging" | "my_wall_panel_face_detected" | "my_wall_panel_motion_detected" | "desk_outlet_update_available" | "gaby_s_galaxy_s21" | "tim_s_galaxy_s22" | "gaby_s_galaxy_s21_3" | "tim_s_galaxy_s22_3" | "id_4" | "nextcloud_system_enable_avatars" | "nextcloud_system_enable_previews" | "nextcloud_system_filelocking_enabled" | "nextcloud_system_debug" | "tim_living_room_presence" | "gaby_s_galaxy_s21_office_2" | "tim_s_id_4_climatisation_without_external_power" | "tim_s_id_4_climatisation_at_unlock" | "tim_s_id_4_zone_front_left_enabled" | "tim_s_id_4_zone_front_right_enabled" | "tim_s_id_4_window_heating_enabled" | "tim_s_id_4_front_window_heating_state" | "tim_s_id_4_rear_window_heating_state" | "tim_s_id_4_insufficient_battery_level_warning" | "tim_s_id_4_car_is_online" | "tim_s_id_4_car_is_active" | "tim_s_id_4_lights_right" | "tim_s_id_4_lights_left" | "bathroom_leak_sensor_water_leak" | "bathroom_leak_sensor_battery_low"
 export type BinarySensorEntities = Record<BinarySensorIDs, BinarySensor>
 
 export const binary_sensor: BinarySensor<BinarySensorIDs> = {
 
-['gaby_s_galaxy_s21_4']: {
-  entity_id: "binary_sensor.gaby_s_galaxy_s21_4",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.gaby_s_galaxy_s21_4"].state as string], attributes: shadowState["binary_sensor.gaby_s_galaxy_s21_4"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.gaby_s_galaxy_s21_4"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.gaby_s_galaxy_s21_4"].state.toString() === "off"}
+['g4_bullet_is_dark']: {
+  entity_id: "binary_sensor.g4_bullet_is_dark",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_bullet_is_dark"].state as string], attributes: shadowState["binary_sensor.g4_bullet_is_dark"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_bullet_is_dark"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_bullet_is_dark"].state.toString() === "off"}
 },
 
-['tim_s_galaxy_s22_4']: {
-  entity_id: "binary_sensor.tim_s_galaxy_s22_4",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.tim_s_galaxy_s22_4"].state as string], attributes: shadowState["binary_sensor.tim_s_galaxy_s22_4"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.tim_s_galaxy_s22_4"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.tim_s_galaxy_s22_4"].state.toString() === "off"}
+['g4_doorbell_is_dark']: {
+  entity_id: "binary_sensor.g4_doorbell_is_dark",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_is_dark"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_is_dark"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_doorbell_is_dark"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_doorbell_is_dark"].state.toString() === "off"}
 },
 
-['id_4_2']: {
-  entity_id: "binary_sensor.id_4_2",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.id_4_2"].state as string], attributes: shadowState["binary_sensor.id_4_2"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.id_4_2"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.id_4_2"].state.toString() === "off"}
+['g4_instant_is_dark']: {
+  entity_id: "binary_sensor.g4_instant_is_dark",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_instant_is_dark"].state as string], attributes: shadowState["binary_sensor.g4_instant_is_dark"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_instant_is_dark"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_instant_is_dark"].state.toString() === "off"}
 },
 
-['gaby_s_galaxy_s21_bedroom']: {
-  entity_id: "binary_sensor.gaby_s_galaxy_s21_bedroom",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.gaby_s_galaxy_s21_bedroom"].state as string], attributes: shadowState["binary_sensor.gaby_s_galaxy_s21_bedroom"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.gaby_s_galaxy_s21_bedroom"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.gaby_s_galaxy_s21_bedroom"].state.toString() === "off"}
+['g4_bullet_motion']: {
+  entity_id: "binary_sensor.g4_bullet_motion",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_bullet_motion"].state as string], attributes: shadowState["binary_sensor.g4_bullet_motion"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_bullet_motion"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_bullet_motion"].state.toString() === "off"}
 },
 
-['tim_s_galaxy_s22_bedroom']: {
-  entity_id: "binary_sensor.tim_s_galaxy_s22_bedroom",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.tim_s_galaxy_s22_bedroom"].state as string], attributes: shadowState["binary_sensor.tim_s_galaxy_s22_bedroom"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.tim_s_galaxy_s22_bedroom"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.tim_s_galaxy_s22_bedroom"].state.toString() === "off"}
+['g4_bullet_object_detected']: {
+  entity_id: "binary_sensor.g4_bullet_object_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_bullet_object_detected"].state as string], attributes: shadowState["binary_sensor.g4_bullet_object_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_bullet_object_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_bullet_object_detected"].state.toString() === "off"}
 },
 
-['gaby_s_galaxy_s21_garage']: {
-  entity_id: "binary_sensor.gaby_s_galaxy_s21_garage",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.gaby_s_galaxy_s21_garage"].state as string], attributes: shadowState["binary_sensor.gaby_s_galaxy_s21_garage"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.gaby_s_galaxy_s21_garage"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.gaby_s_galaxy_s21_garage"].state.toString() === "off"}
+['g4_bullet_person_detected']: {
+  entity_id: "binary_sensor.g4_bullet_person_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_bullet_person_detected"].state as string], attributes: shadowState["binary_sensor.g4_bullet_person_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_bullet_person_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_bullet_person_detected"].state.toString() === "off"}
 },
 
-['tim_s_galaxy_s22_garage']: {
-  entity_id: "binary_sensor.tim_s_galaxy_s22_garage",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.tim_s_galaxy_s22_garage"].state as string], attributes: shadowState["binary_sensor.tim_s_galaxy_s22_garage"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.tim_s_galaxy_s22_garage"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.tim_s_galaxy_s22_garage"].state.toString() === "off"}
+['g4_bullet_vehicle_detected']: {
+  entity_id: "binary_sensor.g4_bullet_vehicle_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_bullet_vehicle_detected"].state as string], attributes: shadowState["binary_sensor.g4_bullet_vehicle_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_bullet_vehicle_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_bullet_vehicle_detected"].state.toString() === "off"}
 },
 
-['id_4_garage']: {
-  entity_id: "binary_sensor.id_4_garage",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.id_4_garage"].state as string], attributes: shadowState["binary_sensor.id_4_garage"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.id_4_garage"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.id_4_garage"].state.toString() === "off"}
+['g4_bullet_audio_object_detected']: {
+  entity_id: "binary_sensor.g4_bullet_audio_object_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_bullet_audio_object_detected"].state as string], attributes: shadowState["binary_sensor.g4_bullet_audio_object_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_bullet_audio_object_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_bullet_audio_object_detected"].state.toString() === "off"}
 },
 
-['tim_watch_living_room_presence']: {
-  entity_id: "binary_sensor.tim_watch_living_room_presence",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.tim_watch_living_room_presence"].state as string], attributes: shadowState["binary_sensor.tim_watch_living_room_presence"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.tim_watch_living_room_presence"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.tim_watch_living_room_presence"].state.toString() === "off"}
+['g4_bullet_smoke_alarm_detected']: {
+  entity_id: "binary_sensor.g4_bullet_smoke_alarm_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_bullet_smoke_alarm_detected"].state as string], attributes: shadowState["binary_sensor.g4_bullet_smoke_alarm_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_bullet_smoke_alarm_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_bullet_smoke_alarm_detected"].state.toString() === "off"}
 },
 
-['gaby_living_room_presence']: {
-  entity_id: "binary_sensor.gaby_living_room_presence",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.gaby_living_room_presence"].state as string], attributes: shadowState["binary_sensor.gaby_living_room_presence"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.gaby_living_room_presence"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.gaby_living_room_presence"].state.toString() === "off"}
+['g4_bullet_co_alarm_detected']: {
+  entity_id: "binary_sensor.g4_bullet_co_alarm_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_bullet_co_alarm_detected"].state as string], attributes: shadowState["binary_sensor.g4_bullet_co_alarm_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_bullet_co_alarm_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_bullet_co_alarm_detected"].state.toString() === "off"}
 },
 
-['tim_iphone_living_room_presence']: {
-  entity_id: "binary_sensor.tim_iphone_living_room_presence",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.tim_iphone_living_room_presence"].state as string], attributes: shadowState["binary_sensor.tim_iphone_living_room_presence"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.tim_iphone_living_room_presence"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.tim_iphone_living_room_presence"].state.toString() === "off"}
+['g4_doorbell_doorbell']: {
+  entity_id: "binary_sensor.g4_doorbell_doorbell",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_doorbell"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_doorbell"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_doorbell_doorbell"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_doorbell_doorbell"].state.toString() === "off"}
 },
 
-['octoprint_printing']: {
-  entity_id: "binary_sensor.octoprint_printing",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.octoprint_printing"].state as string], attributes: shadowState["binary_sensor.octoprint_printing"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.octoprint_printing"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.octoprint_printing"].state.toString() === "off"}
+['g4_doorbell_motion']: {
+  entity_id: "binary_sensor.g4_doorbell_motion",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_motion"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_motion"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_doorbell_motion"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_doorbell_motion"].state.toString() === "off"}
 },
 
-['octoprint_printing_error']: {
-  entity_id: "binary_sensor.octoprint_printing_error",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.octoprint_printing_error"].state as string], attributes: shadowState["binary_sensor.octoprint_printing_error"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.octoprint_printing_error"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.octoprint_printing_error"].state.toString() === "off"}
+['g4_doorbell_object_detected']: {
+  entity_id: "binary_sensor.g4_doorbell_object_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_object_detected"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_object_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_doorbell_object_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_doorbell_object_detected"].state.toString() === "off"}
 },
 
-['tim_watch_office_presence']: {
-  entity_id: "binary_sensor.tim_watch_office_presence",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.tim_watch_office_presence"].state as string], attributes: shadowState["binary_sensor.tim_watch_office_presence"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.tim_watch_office_presence"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.tim_watch_office_presence"].state.toString() === "off"}
+['g4_doorbell_person_detected']: {
+  entity_id: "binary_sensor.g4_doorbell_person_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_person_detected"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_person_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_doorbell_person_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_doorbell_person_detected"].state.toString() === "off"}
 },
 
-['gaby_office_presence']: {
-  entity_id: "binary_sensor.gaby_office_presence",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.gaby_office_presence"].state as string], attributes: shadowState["binary_sensor.gaby_office_presence"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.gaby_office_presence"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.gaby_office_presence"].state.toString() === "off"}
+['g4_doorbell_vehicle_detected']: {
+  entity_id: "binary_sensor.g4_doorbell_vehicle_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_vehicle_detected"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_vehicle_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_doorbell_vehicle_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_doorbell_vehicle_detected"].state.toString() === "off"}
 },
 
-['tim_iphone_office_presence']: {
-  entity_id: "binary_sensor.tim_iphone_office_presence",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.tim_iphone_office_presence"].state as string], attributes: shadowState["binary_sensor.tim_iphone_office_presence"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.tim_iphone_office_presence"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.tim_iphone_office_presence"].state.toString() === "off"}
+['g4_doorbell_package_detected']: {
+  entity_id: "binary_sensor.g4_doorbell_package_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_package_detected"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_package_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_doorbell_package_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_doorbell_package_detected"].state.toString() === "off"}
 },
 
-['dishwasher_washing']: {
-  entity_id: "binary_sensor.dishwasher_washing",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.dishwasher_washing"].state as string], attributes: shadowState["binary_sensor.dishwasher_washing"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.dishwasher_washing"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.dishwasher_washing"].state.toString() === "off"}
+['g4_doorbell_audio_object_detected']: {
+  entity_id: "binary_sensor.g4_doorbell_audio_object_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_audio_object_detected"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_audio_object_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_doorbell_audio_object_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_doorbell_audio_object_detected"].state.toString() === "off"}
 },
 
-['washing_machine_washing']: {
-  entity_id: "binary_sensor.washing_machine_washing",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.washing_machine_washing"].state as string], attributes: shadowState["binary_sensor.washing_machine_washing"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.washing_machine_washing"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.washing_machine_washing"].state.toString() === "off"}
+['g4_doorbell_smoke_alarm_detected']: {
+  entity_id: "binary_sensor.g4_doorbell_smoke_alarm_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_smoke_alarm_detected"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_smoke_alarm_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_doorbell_smoke_alarm_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_doorbell_smoke_alarm_detected"].state.toString() === "off"}
+},
+
+['g4_doorbell_co_alarm_detected']: {
+  entity_id: "binary_sensor.g4_doorbell_co_alarm_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_co_alarm_detected"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_co_alarm_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_doorbell_co_alarm_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_doorbell_co_alarm_detected"].state.toString() === "off"}
+},
+
+['g4_instant_motion']: {
+  entity_id: "binary_sensor.g4_instant_motion",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_instant_motion"].state as string], attributes: shadowState["binary_sensor.g4_instant_motion"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_instant_motion"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_instant_motion"].state.toString() === "off"}
+},
+
+['g4_instant_object_detected']: {
+  entity_id: "binary_sensor.g4_instant_object_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_instant_object_detected"].state as string], attributes: shadowState["binary_sensor.g4_instant_object_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_instant_object_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_instant_object_detected"].state.toString() === "off"}
+},
+
+['g4_instant_person_detected']: {
+  entity_id: "binary_sensor.g4_instant_person_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_instant_person_detected"].state as string], attributes: shadowState["binary_sensor.g4_instant_person_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_instant_person_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_instant_person_detected"].state.toString() === "off"}
+},
+
+['g4_instant_vehicle_detected']: {
+  entity_id: "binary_sensor.g4_instant_vehicle_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_instant_vehicle_detected"].state as string], attributes: shadowState["binary_sensor.g4_instant_vehicle_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_instant_vehicle_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_instant_vehicle_detected"].state.toString() === "off"}
+},
+
+['g4_instant_audio_object_detected']: {
+  entity_id: "binary_sensor.g4_instant_audio_object_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_instant_audio_object_detected"].state as string], attributes: shadowState["binary_sensor.g4_instant_audio_object_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_instant_audio_object_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_instant_audio_object_detected"].state.toString() === "off"}
+},
+
+['g4_instant_smoke_alarm_detected']: {
+  entity_id: "binary_sensor.g4_instant_smoke_alarm_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_instant_smoke_alarm_detected"].state as string], attributes: shadowState["binary_sensor.g4_instant_smoke_alarm_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_instant_smoke_alarm_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_instant_smoke_alarm_detected"].state.toString() === "off"}
+},
+
+['g4_instant_co_alarm_detected']: {
+  entity_id: "binary_sensor.g4_instant_co_alarm_detected",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_instant_co_alarm_detected"].state as string], attributes: shadowState["binary_sensor.g4_instant_co_alarm_detected"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.g4_instant_co_alarm_detected"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.g4_instant_co_alarm_detected"].state.toString() === "off"}
+},
+
+['dream_machine_pro_hdd_1']: {
+  entity_id: "binary_sensor.dream_machine_pro_hdd_1",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.dream_machine_pro_hdd_1"].state as string], attributes: shadowState["binary_sensor.dream_machine_pro_hdd_1"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.dream_machine_pro_hdd_1"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.dream_machine_pro_hdd_1"].state.toString() === "off"}
 },
 
 ['sm_g980f_is_charging']: {
@@ -263,6 +326,132 @@ isOn() { return shadowState["binary_sensor.tims_iphone_focus"].state.toString() 
 isOff() { return shadowState["binary_sensor.tims_iphone_focus"].state.toString() === "off"}
 },
 
+['iphone_focus']: {
+  entity_id: "binary_sensor.iphone_focus",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.iphone_focus"].state as string], attributes: shadowState["binary_sensor.iphone_focus"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.iphone_focus"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.iphone_focus"].state.toString() === "off"}
+},
+
+['dishwasher_washing']: {
+  entity_id: "binary_sensor.dishwasher_washing",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.dishwasher_washing"].state as string], attributes: shadowState["binary_sensor.dishwasher_washing"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.dishwasher_washing"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.dishwasher_washing"].state.toString() === "off"}
+},
+
+['washing_machine_washing']: {
+  entity_id: "binary_sensor.washing_machine_washing",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.washing_machine_washing"].state as string], attributes: shadowState["binary_sensor.washing_machine_washing"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.washing_machine_washing"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.washing_machine_washing"].state.toString() === "off"}
+},
+
+['iphone_focus_2']: {
+  entity_id: "binary_sensor.iphone_focus_2",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.iphone_focus_2"].state as string], attributes: shadowState["binary_sensor.iphone_focus_2"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.iphone_focus_2"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.iphone_focus_2"].state.toString() === "off"}
+},
+
+['gaby_s_galaxy_s21_bedroom']: {
+  entity_id: "binary_sensor.gaby_s_galaxy_s21_bedroom",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.gaby_s_galaxy_s21_bedroom"].state as string], attributes: shadowState["binary_sensor.gaby_s_galaxy_s21_bedroom"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.gaby_s_galaxy_s21_bedroom"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.gaby_s_galaxy_s21_bedroom"].state.toString() === "off"}
+},
+
+['tim_s_galaxy_s22_bedroom']: {
+  entity_id: "binary_sensor.tim_s_galaxy_s22_bedroom",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.tim_s_galaxy_s22_bedroom"].state as string], attributes: shadowState["binary_sensor.tim_s_galaxy_s22_bedroom"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.tim_s_galaxy_s22_bedroom"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.tim_s_galaxy_s22_bedroom"].state.toString() === "off"}
+},
+
+['gaby_s_galaxy_s21_garage']: {
+  entity_id: "binary_sensor.gaby_s_galaxy_s21_garage",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.gaby_s_galaxy_s21_garage"].state as string], attributes: shadowState["binary_sensor.gaby_s_galaxy_s21_garage"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.gaby_s_galaxy_s21_garage"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.gaby_s_galaxy_s21_garage"].state.toString() === "off"}
+},
+
+['tim_s_galaxy_s22_garage']: {
+  entity_id: "binary_sensor.tim_s_galaxy_s22_garage",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.tim_s_galaxy_s22_garage"].state as string], attributes: shadowState["binary_sensor.tim_s_galaxy_s22_garage"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.tim_s_galaxy_s22_garage"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.tim_s_galaxy_s22_garage"].state.toString() === "off"}
+},
+
+['id_4_garage']: {
+  entity_id: "binary_sensor.id_4_garage",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.id_4_garage"].state as string], attributes: shadowState["binary_sensor.id_4_garage"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.id_4_garage"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.id_4_garage"].state.toString() === "off"}
+},
+
+['gaby_s_galaxy_s21_4']: {
+  entity_id: "binary_sensor.gaby_s_galaxy_s21_4",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.gaby_s_galaxy_s21_4"].state as string], attributes: shadowState["binary_sensor.gaby_s_galaxy_s21_4"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.gaby_s_galaxy_s21_4"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.gaby_s_galaxy_s21_4"].state.toString() === "off"}
+},
+
+['tim_s_galaxy_s22_4']: {
+  entity_id: "binary_sensor.tim_s_galaxy_s22_4",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.tim_s_galaxy_s22_4"].state as string], attributes: shadowState["binary_sensor.tim_s_galaxy_s22_4"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.tim_s_galaxy_s22_4"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.tim_s_galaxy_s22_4"].state.toString() === "off"}
+},
+
+['id_4_2']: {
+  entity_id: "binary_sensor.id_4_2",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.id_4_2"].state as string], attributes: shadowState["binary_sensor.id_4_2"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.id_4_2"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.id_4_2"].state.toString() === "off"}
+},
+
+['tim_watch_living_room_presence']: {
+  entity_id: "binary_sensor.tim_watch_living_room_presence",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.tim_watch_living_room_presence"].state as string], attributes: shadowState["binary_sensor.tim_watch_living_room_presence"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.tim_watch_living_room_presence"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.tim_watch_living_room_presence"].state.toString() === "off"}
+},
+
+['gaby_living_room_presence']: {
+  entity_id: "binary_sensor.gaby_living_room_presence",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.gaby_living_room_presence"].state as string], attributes: shadowState["binary_sensor.gaby_living_room_presence"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.gaby_living_room_presence"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.gaby_living_room_presence"].state.toString() === "off"}
+},
+
+['tim_iphone_living_room_presence']: {
+  entity_id: "binary_sensor.tim_iphone_living_room_presence",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.tim_iphone_living_room_presence"].state as string], attributes: shadowState["binary_sensor.tim_iphone_living_room_presence"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.tim_iphone_living_room_presence"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.tim_iphone_living_room_presence"].state.toString() === "off"}
+},
+
+['tim_watch_office_presence']: {
+  entity_id: "binary_sensor.tim_watch_office_presence",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.tim_watch_office_presence"].state as string], attributes: shadowState["binary_sensor.tim_watch_office_presence"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.tim_watch_office_presence"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.tim_watch_office_presence"].state.toString() === "off"}
+},
+
+['gaby_office_presence']: {
+  entity_id: "binary_sensor.gaby_office_presence",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.gaby_office_presence"].state as string], attributes: shadowState["binary_sensor.gaby_office_presence"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.gaby_office_presence"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.gaby_office_presence"].state.toString() === "off"}
+},
+
+['tim_iphone_office_presence']: {
+  entity_id: "binary_sensor.tim_iphone_office_presence",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.tim_iphone_office_presence"].state as string], attributes: shadowState["binary_sensor.tim_iphone_office_presence"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.tim_iphone_office_presence"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.tim_iphone_office_presence"].state.toString() === "off"}
+},
+
 ['living_room_spot_3_update_available']: {
   entity_id: "binary_sensor.living_room_spot_3_update_available",
 get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.living_room_spot_3_update_available"].state as string], attributes: shadowState["binary_sensor.living_room_spot_3_update_available"].attributes} as BinarySensorProperties},
@@ -382,6 +571,13 @@ isOn() { return shadowState["binary_sensor.bedside_lamp_update_available"].state
 isOff() { return shadowState["binary_sensor.bedside_lamp_update_available"].state.toString() === "off"}
 },
 
+['hall_motion_sensor_occupancy']: {
+  entity_id: "binary_sensor.hall_motion_sensor_occupancy",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.hall_motion_sensor_occupancy"].state as string], attributes: shadowState["binary_sensor.hall_motion_sensor_occupancy"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.hall_motion_sensor_occupancy"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.hall_motion_sensor_occupancy"].state.toString() === "off"}
+},
+
 ['toilet_update_available']: {
   entity_id: "binary_sensor.toilet_update_available",
 get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.toilet_update_available"].state as string], attributes: shadowState["binary_sensor.toilet_update_available"].attributes} as BinarySensorProperties},
@@ -480,13 +676,6 @@ isOn() { return shadowState["binary_sensor.bathroom_spot_1_update_available"].st
 isOff() { return shadowState["binary_sensor.bathroom_spot_1_update_available"].state.toString() === "off"}
 },
 
-['desk_outlet_update_available']: {
-  entity_id: "binary_sensor.desk_outlet_update_available",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.desk_outlet_update_available"].state as string], attributes: shadowState["binary_sensor.desk_outlet_update_available"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.desk_outlet_update_available"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.desk_outlet_update_available"].state.toString() === "off"}
-},
-
 ['bedroom_window_bed_contact']: {
   entity_id: "binary_sensor.bedroom_window_bed_contact",
 get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.bedroom_window_bed_contact"].state as string], attributes: shadowState["binary_sensor.bedroom_window_bed_contact"].attributes} as BinarySensorProperties},
@@ -536,153 +725,6 @@ isOn() { return shadowState["binary_sensor.bedroom_button_gaby_update_available"
 isOff() { return shadowState["binary_sensor.bedroom_button_gaby_update_available"].state.toString() === "off"}
 },
 
-['g4_bullet_is_dark']: {
-  entity_id: "binary_sensor.g4_bullet_is_dark",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_bullet_is_dark"].state as string], attributes: shadowState["binary_sensor.g4_bullet_is_dark"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_bullet_is_dark"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_bullet_is_dark"].state.toString() === "off"}
-},
-
-['g4_doorbell_is_dark']: {
-  entity_id: "binary_sensor.g4_doorbell_is_dark",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_is_dark"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_is_dark"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_doorbell_is_dark"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_doorbell_is_dark"].state.toString() === "off"}
-},
-
-['g4_instant_is_dark']: {
-  entity_id: "binary_sensor.g4_instant_is_dark",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_instant_is_dark"].state as string], attributes: shadowState["binary_sensor.g4_instant_is_dark"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_instant_is_dark"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_instant_is_dark"].state.toString() === "off"}
-},
-
-['g4_bullet_motion']: {
-  entity_id: "binary_sensor.g4_bullet_motion",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_bullet_motion"].state as string], attributes: shadowState["binary_sensor.g4_bullet_motion"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_bullet_motion"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_bullet_motion"].state.toString() === "off"}
-},
-
-['g4_bullet_object_detected']: {
-  entity_id: "binary_sensor.g4_bullet_object_detected",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_bullet_object_detected"].state as string], attributes: shadowState["binary_sensor.g4_bullet_object_detected"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_bullet_object_detected"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_bullet_object_detected"].state.toString() === "off"}
-},
-
-['g4_bullet_person_detected']: {
-  entity_id: "binary_sensor.g4_bullet_person_detected",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_bullet_person_detected"].state as string], attributes: shadowState["binary_sensor.g4_bullet_person_detected"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_bullet_person_detected"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_bullet_person_detected"].state.toString() === "off"}
-},
-
-['g4_bullet_vehicle_detected']: {
-  entity_id: "binary_sensor.g4_bullet_vehicle_detected",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_bullet_vehicle_detected"].state as string], attributes: shadowState["binary_sensor.g4_bullet_vehicle_detected"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_bullet_vehicle_detected"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_bullet_vehicle_detected"].state.toString() === "off"}
-},
-
-['g4_bullet_audio_object_detected']: {
-  entity_id: "binary_sensor.g4_bullet_audio_object_detected",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_bullet_audio_object_detected"].state as string], attributes: shadowState["binary_sensor.g4_bullet_audio_object_detected"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_bullet_audio_object_detected"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_bullet_audio_object_detected"].state.toString() === "off"}
-},
-
-['g4_doorbell_doorbell']: {
-  entity_id: "binary_sensor.g4_doorbell_doorbell",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_doorbell"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_doorbell"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_doorbell_doorbell"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_doorbell_doorbell"].state.toString() === "off"}
-},
-
-['g4_doorbell_motion']: {
-  entity_id: "binary_sensor.g4_doorbell_motion",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_motion"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_motion"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_doorbell_motion"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_doorbell_motion"].state.toString() === "off"}
-},
-
-['g4_doorbell_object_detected']: {
-  entity_id: "binary_sensor.g4_doorbell_object_detected",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_object_detected"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_object_detected"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_doorbell_object_detected"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_doorbell_object_detected"].state.toString() === "off"}
-},
-
-['g4_doorbell_person_detected']: {
-  entity_id: "binary_sensor.g4_doorbell_person_detected",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_person_detected"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_person_detected"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_doorbell_person_detected"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_doorbell_person_detected"].state.toString() === "off"}
-},
-
-['g4_doorbell_vehicle_detected']: {
-  entity_id: "binary_sensor.g4_doorbell_vehicle_detected",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_vehicle_detected"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_vehicle_detected"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_doorbell_vehicle_detected"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_doorbell_vehicle_detected"].state.toString() === "off"}
-},
-
-['g4_doorbell_package_detected']: {
-  entity_id: "binary_sensor.g4_doorbell_package_detected",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_package_detected"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_package_detected"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_doorbell_package_detected"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_doorbell_package_detected"].state.toString() === "off"}
-},
-
-['g4_doorbell_audio_object_detected']: {
-  entity_id: "binary_sensor.g4_doorbell_audio_object_detected",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_doorbell_audio_object_detected"].state as string], attributes: shadowState["binary_sensor.g4_doorbell_audio_object_detected"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_doorbell_audio_object_detected"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_doorbell_audio_object_detected"].state.toString() === "off"}
-},
-
-['g4_instant_motion']: {
-  entity_id: "binary_sensor.g4_instant_motion",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_instant_motion"].state as string], attributes: shadowState["binary_sensor.g4_instant_motion"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_instant_motion"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_instant_motion"].state.toString() === "off"}
-},
-
-['g4_instant_object_detected']: {
-  entity_id: "binary_sensor.g4_instant_object_detected",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_instant_object_detected"].state as string], attributes: shadowState["binary_sensor.g4_instant_object_detected"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_instant_object_detected"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_instant_object_detected"].state.toString() === "off"}
-},
-
-['g4_instant_person_detected']: {
-  entity_id: "binary_sensor.g4_instant_person_detected",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_instant_person_detected"].state as string], attributes: shadowState["binary_sensor.g4_instant_person_detected"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_instant_person_detected"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_instant_person_detected"].state.toString() === "off"}
-},
-
-['g4_instant_vehicle_detected']: {
-  entity_id: "binary_sensor.g4_instant_vehicle_detected",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_instant_vehicle_detected"].state as string], attributes: shadowState["binary_sensor.g4_instant_vehicle_detected"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_instant_vehicle_detected"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_instant_vehicle_detected"].state.toString() === "off"}
-},
-
-['g4_instant_audio_object_detected']: {
-  entity_id: "binary_sensor.g4_instant_audio_object_detected",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.g4_instant_audio_object_detected"].state as string], attributes: shadowState["binary_sensor.g4_instant_audio_object_detected"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.g4_instant_audio_object_detected"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.g4_instant_audio_object_detected"].state.toString() === "off"}
-},
-
-['dream_machine_pro_hdd_1']: {
-  entity_id: "binary_sensor.dream_machine_pro_hdd_1",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.dream_machine_pro_hdd_1"].state as string], attributes: shadowState["binary_sensor.dream_machine_pro_hdd_1"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.dream_machine_pro_hdd_1"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.dream_machine_pro_hdd_1"].state.toString() === "off"}
-},
-
 ['updater']: {
   entity_id: "binary_sensor.updater",
 get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.updater"].state as string], attributes: shadowState["binary_sensor.updater"].attributes} as BinarySensorProperties},
@@ -723,6 +765,13 @@ isOff() { return shadowState["binary_sensor.my_wall_panel_face_detected"].state.
 get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.my_wall_panel_motion_detected"].state as string], attributes: shadowState["binary_sensor.my_wall_panel_motion_detected"].attributes} as BinarySensorProperties},
 isOn() { return shadowState["binary_sensor.my_wall_panel_motion_detected"].state.toString() === "on"},
 isOff() { return shadowState["binary_sensor.my_wall_panel_motion_detected"].state.toString() === "off"}
+},
+
+['desk_outlet_update_available']: {
+  entity_id: "binary_sensor.desk_outlet_update_available",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.desk_outlet_update_available"].state as string], attributes: shadowState["binary_sensor.desk_outlet_update_available"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.desk_outlet_update_available"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.desk_outlet_update_available"].state.toString() === "off"}
 },
 
 ['gaby_s_galaxy_s21']: {
@@ -886,11 +935,18 @@ isOn() { return shadowState["binary_sensor.tim_s_id_4_lights_left"].state.toStri
 isOff() { return shadowState["binary_sensor.tim_s_id_4_lights_left"].state.toString() === "off"}
 },
 
-['hall_motion_sensor_occupancy']: {
-  entity_id: "binary_sensor.hall_motion_sensor_occupancy",
-get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.hall_motion_sensor_occupancy"].state as string], attributes: shadowState["binary_sensor.hall_motion_sensor_occupancy"].attributes} as BinarySensorProperties},
-isOn() { return shadowState["binary_sensor.hall_motion_sensor_occupancy"].state.toString() === "on"},
-isOff() { return shadowState["binary_sensor.hall_motion_sensor_occupancy"].state.toString() === "off"}
+['bathroom_leak_sensor_water_leak']: {
+  entity_id: "binary_sensor.bathroom_leak_sensor_water_leak",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.bathroom_leak_sensor_water_leak"].state as string], attributes: shadowState["binary_sensor.bathroom_leak_sensor_water_leak"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.bathroom_leak_sensor_water_leak"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.bathroom_leak_sensor_water_leak"].state.toString() === "off"}
+},
+
+['bathroom_leak_sensor_battery_low']: {
+  entity_id: "binary_sensor.bathroom_leak_sensor_battery_low",
+get entity() { return {state: BinarySensorStateMapper[shadowState["binary_sensor.bathroom_leak_sensor_battery_low"].state as string], attributes: shadowState["binary_sensor.bathroom_leak_sensor_battery_low"].attributes} as BinarySensorProperties},
+isOn() { return shadowState["binary_sensor.bathroom_leak_sensor_battery_low"].state.toString() === "on"},
+isOff() { return shadowState["binary_sensor.bathroom_leak_sensor_battery_low"].state.toString() === "off"}
 },
 
 }

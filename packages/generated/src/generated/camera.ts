@@ -1,26 +1,8 @@
 import {callService, shadowState, Camera, CameraProperties} from "@herja/core"
-export type CameraIDs = "octoprint_camera" | "valetudo_downstair_vacuum_map_data" | "g4_bullet_high" | "g4_doorbell_high" | "g4_instant_high" | "robot_rendered_map" | "map_data"
+export type CameraIDs = "g4_bullet_high" | "g4_doorbell_high" | "g4_instant_high" | "valetudo_downstair_vacuum_map_data" | "robot_rendered_map" | "map_data"
 export type CameraEntities = Record<CameraIDs, Camera>
 
 export const camera: Camera<CameraIDs> = {
-
-['octoprint_camera']: {
-  entity_id: "camera.octoprint_camera",
-get entity() { return {state: shadowState["camera.octoprint_camera"].state, attributes: shadowState["camera.octoprint_camera"].attributes} as CameraProperties},
-turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.octoprint_camera"})},
-turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.octoprint_camera"})},
-enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.octoprint_camera"})},
-disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.octoprint_camera"})}
-},
-
-['valetudo_downstair_vacuum_map_data']: {
-  entity_id: "camera.valetudo_downstair_vacuum_map_data",
-get entity() { return {state: shadowState["camera.valetudo_downstair_vacuum_map_data"].state, attributes: shadowState["camera.valetudo_downstair_vacuum_map_data"].attributes} as CameraProperties},
-turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.valetudo_downstair_vacuum_map_data"})},
-turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.valetudo_downstair_vacuum_map_data"})},
-enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.valetudo_downstair_vacuum_map_data"})},
-disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.valetudo_downstair_vacuum_map_data"})}
-},
 
 ['g4_bullet_high']: {
   entity_id: "camera.g4_bullet_high",
@@ -47,6 +29,15 @@ turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.g4_in
 turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.g4_instant_high"})},
 enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.g4_instant_high"})},
 disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.g4_instant_high"})}
+},
+
+['valetudo_downstair_vacuum_map_data']: {
+  entity_id: "camera.valetudo_downstair_vacuum_map_data",
+get entity() { return {state: shadowState["camera.valetudo_downstair_vacuum_map_data"].state, attributes: shadowState["camera.valetudo_downstair_vacuum_map_data"].attributes} as CameraProperties},
+turnOn() { return callService("camera", "turn_on", {}, {entity_id: "camera.valetudo_downstair_vacuum_map_data"})},
+turnOff() { return callService("camera", "turn_off", {}, {entity_id: "camera.valetudo_downstair_vacuum_map_data"})},
+enableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.valetudo_downstair_vacuum_map_data"})},
+disableMotionDetection() { return callService("camera", "enable_motion_detection", {}, {entity_id: "camera.valetudo_downstair_vacuum_map_data"})}
 },
 
 ['robot_rendered_map']: {

@@ -1,5 +1,5 @@
 import {callService, shadowState, Light, LightProperties, LightTurnOnAttributes} from "@herja/core"
-export type LightIDs = "bedside_lamp" | "bedroom_secondary_lamp" | "garden" | "bedroom_secondary_lights" | "bedroom_lights" | "living_room_spot_3" | "living_room_spot_2" | "dining_room_spot_3" | "kitchen_spot_1" | "secondary_room_light" | "dining_room_spot_2" | "dining_room_spot_1" | "kitchen_spot_2" | "office_light" | "bathroom_spot_2" | "hall_upstairs_spot_3" | "hall_upstairs_spot_2" | "hall_upstairs_spot_1" | "toilet" | "garage_fridge" | "hall_entrance" | "garage_car" | "kitchen_spot_3" | "living_room_spot_1" | "hall_stairs" | "bathroom_spot_1" | "living_room_light" | "bedroom_bed_light_2" | "living_room_tripod" | "bedroom_tv_light" | "kitchen_spots" | "living_room_spots" | "dining_room_spots" | "hall" | "hall_upstairs" | "garage" | "bathroom" | "living_room_all_2" | "living_room_all"
+export type LightIDs = "bedside_lamp" | "bedroom_secondary_lamp" | "garden" | "bedroom_secondary_lights" | "bedroom_lights" | "living_room_spot_3" | "living_room_spot_2" | "dining_room_spot_3" | "kitchen_spot_1" | "secondary_room_light" | "dining_room_spot_2" | "dining_room_spot_1" | "kitchen_spot_2" | "office_light" | "bathroom_spot_2" | "hall_upstairs_spot_3" | "hall_upstairs_spot_2" | "hall_upstairs_spot_1" | "toilet" | "garage_fridge" | "hall_entrance" | "garage_car" | "kitchen_spot_3" | "living_room_spot_1" | "hall_stairs" | "bathroom_spot_1" | "living_room_light" | "bedroom_bed_light_2" | "living_room_tripod" | "bedroom_tv_light" | "kitchen_spots" | "living_room_spots" | "dining_room_spots" | "living_room_all" | "hall" | "hall_upstairs" | "garage" | "bathroom" | "living_room_all_2" | "dressing_room_light" | "bathroom_sink_light" | "bathroom_lights"
 export type LightEntities = Record<LightIDs, Light>
 
 export const light: Light<LightIDs> = {
@@ -268,6 +268,14 @@ turnOff() { return callService("light", "turn_off", {}, {entity_id: "light.dinin
 toggle(attributes?: LightTurnOnAttributes) { return callService("light", "toggle", attributes || {}, {entity_id: "light.dining_room_spots"})}
 },
 
+['living_room_all']: {
+  entity_id: "light.living_room_all",
+get entity() { return {state: shadowState["light.living_room_all"].state, attributes: shadowState["light.living_room_all"].attributes} as LightProperties},
+turnOn(attributes?: LightTurnOnAttributes) { return callService("light", "turn_on", attributes || {}, {entity_id: "light.living_room_all"})},
+turnOff() { return callService("light", "turn_off", {}, {entity_id: "light.living_room_all"})},
+toggle(attributes?: LightTurnOnAttributes) { return callService("light", "toggle", attributes || {}, {entity_id: "light.living_room_all"})}
+},
+
 ['hall']: {
   entity_id: "light.hall",
 get entity() { return {state: shadowState["light.hall"].state, attributes: shadowState["light.hall"].attributes} as LightProperties},
@@ -308,12 +316,28 @@ turnOff() { return callService("light", "turn_off", {}, {entity_id: "light.livin
 toggle(attributes?: LightTurnOnAttributes) { return callService("light", "toggle", attributes || {}, {entity_id: "light.living_room_all_2"})}
 },
 
-['living_room_all']: {
-  entity_id: "light.living_room_all",
-get entity() { return {state: shadowState["light.living_room_all"].state, attributes: shadowState["light.living_room_all"].attributes} as LightProperties},
-turnOn(attributes?: LightTurnOnAttributes) { return callService("light", "turn_on", attributes || {}, {entity_id: "light.living_room_all"})},
-turnOff() { return callService("light", "turn_off", {}, {entity_id: "light.living_room_all"})},
-toggle(attributes?: LightTurnOnAttributes) { return callService("light", "toggle", attributes || {}, {entity_id: "light.living_room_all"})}
+['dressing_room_light']: {
+  entity_id: "light.dressing_room_light",
+get entity() { return {state: shadowState["light.dressing_room_light"].state, attributes: shadowState["light.dressing_room_light"].attributes} as LightProperties},
+turnOn(attributes?: LightTurnOnAttributes) { return callService("light", "turn_on", attributes || {}, {entity_id: "light.dressing_room_light"})},
+turnOff() { return callService("light", "turn_off", {}, {entity_id: "light.dressing_room_light"})},
+toggle(attributes?: LightTurnOnAttributes) { return callService("light", "toggle", attributes || {}, {entity_id: "light.dressing_room_light"})}
+},
+
+['bathroom_sink_light']: {
+  entity_id: "light.bathroom_sink_light",
+get entity() { return {state: shadowState["light.bathroom_sink_light"].state, attributes: shadowState["light.bathroom_sink_light"].attributes} as LightProperties},
+turnOn(attributes?: LightTurnOnAttributes) { return callService("light", "turn_on", attributes || {}, {entity_id: "light.bathroom_sink_light"})},
+turnOff() { return callService("light", "turn_off", {}, {entity_id: "light.bathroom_sink_light"})},
+toggle(attributes?: LightTurnOnAttributes) { return callService("light", "toggle", attributes || {}, {entity_id: "light.bathroom_sink_light"})}
+},
+
+['bathroom_lights']: {
+  entity_id: "light.bathroom_lights",
+get entity() { return {state: shadowState["light.bathroom_lights"].state, attributes: shadowState["light.bathroom_lights"].attributes} as LightProperties},
+turnOn(attributes?: LightTurnOnAttributes) { return callService("light", "turn_on", attributes || {}, {entity_id: "light.bathroom_lights"})},
+turnOff() { return callService("light", "turn_off", {}, {entity_id: "light.bathroom_lights"})},
+toggle(attributes?: LightTurnOnAttributes) { return callService("light", "toggle", attributes || {}, {entity_id: "light.bathroom_lights"})}
 },
 
 }

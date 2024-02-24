@@ -1,5 +1,5 @@
 import { effect } from "@herja/core";
-import { light, switches } from "generated/src";
+import {light, sensor, switches} from "generated/src";
 
 export const wallSwitches = () => {
   effect(()=>{
@@ -26,4 +26,12 @@ export const wallSwitches = () => {
     if(switches.bedroom_switch.entity.state != null)
       light.bedroom_lights.toggle({brightness: 65})
   }, [switches.bedroom_switch])
+  effect(()=>{
+    if(sensor.office_switch_action.entity.state != null)
+      light.office_light.toggle()
+  }, [sensor.office_switch_action])
+  effect(()=>{
+    if(sensor.bathroom_main_switch_action.entity.state != null)
+      light.bathroom_lights.toggle()
+  }, [sensor.bathroom_main_switch_action])
 };

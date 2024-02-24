@@ -1,18 +1,8 @@
 import {callService, shadowState, MediaPlayer, MediaPlayerProperties, Media} from "@herja/core"
-export type MediaPlayerIDs = "plex_plex_for_apple_tv_apple_tv" | "living_room" | "g4_doorbell_speaker" | "g4_instant_speaker" | "ebbff7dd_e82b404f" | "aadf3129_ecd1ece2" | "snapcast_group_e290b1ac_54c9_4c56_affb_d643ee8e385c" | "snapcast_group_d388b62b_954a_3c20_e0f4_97a9c3d7eb6a" | "snapcast_group_8b5371a4_7868_33e4_c642_938d495880a5" | "snapcast_client_fa646a44_3603_4033_a68f_fe6194b5713e" | "snapcast_client_3739bb6c_54ae_4d5c_8896_5915004c3b76" | "snapcast_client_92db579b_66f1_4e96_84fb_832f867a8a53" | "plex_plex_for_android_tv_shield_android_tv" | "plex_frederic_plex_for_android_tv_oy_tab_kids" | "plex_plex_for_android_tv_shield_android_tv_2" | "plex_plex_web_firefox_osx" | "plex_clement_plex_web_firefox_windows" | "plex_plex_for_ios_ipad_de_gaby" | "plex_plex_for_android_mobile_galaxy_s22" | "plex_kapy_plex_for_android_mobile_galaxy_s20" | "plex_frederic_plex_for_android_mobile_galaxy_s20" | "plex_frederic_plex_for_android_mobile_sm_s901b" | "plex_plex_for_android_tv_bq_5059_strike_power" | "plex_bury_v_plex_for_apple_tv_apple_tv" | "plex_isa_plex_for_android_tv_aftss" | "plex_isa_plex_for_android_tv_aftss_2" | "plex_l_legacy_l_plex_web_chrome_windows" | "plex_l_legacy_l_plex_for_android_tv_shield_android_tv" | "plex_l_legacy_l_plex_for_android_mobile_galaxy_tab_a8" | "plex_hafxx_plex_for_android_tv_shield_android_tv" | "android_tv_192_168_1_53" | "plex_frederic_plex_for_xbox_xboxone" | "plex_plex_for_ios_iphone"
+export type MediaPlayerIDs = "living_room" | "g4_doorbell_speaker" | "g4_instant_speaker" | "ebbff7dd_e82b404f" | "aadf3129_ecd1ece2" | "snapcast_group_e290b1ac_54c9_4c56_affb_d643ee8e385c" | "snapcast_group_d388b62b_954a_3c20_e0f4_97a9c3d7eb6a" | "snapcast_group_8b5371a4_7868_33e4_c642_938d495880a5" | "snapcast_client_fa646a44_3603_4033_a68f_fe6194b5713e" | "snapcast_client_3739bb6c_54ae_4d5c_8896_5915004c3b76" | "snapcast_client_92db579b_66f1_4e96_84fb_832f867a8a53" | "plex_plex_for_android_tv_shield_android_tv" | "plex_frederic_plex_for_android_tv_oy_tab_kids" | "plex_plex_for_android_tv_shield_android_tv_2" | "plex_plex_web_firefox_osx" | "plex_clement_plex_web_firefox_windows" | "plex_plex_for_ios_ipad_de_gaby" | "plex_plex_for_android_mobile_galaxy_s22" | "plex_kapy_plex_for_android_mobile_galaxy_s20" | "plex_frederic_plex_for_android_mobile_galaxy_s20" | "plex_frederic_plex_for_android_mobile_sm_s901b" | "plex_plex_for_android_tv_bq_5059_strike_power" | "plex_bury_v_plex_for_apple_tv_apple_tv" | "plex_isa_plex_for_android_tv_aftss" | "plex_isa_plex_for_android_tv_aftss_2" | "plex_l_legacy_l_plex_web_chrome_windows" | "plex_l_legacy_l_plex_for_android_tv_shield_android_tv" | "plex_l_legacy_l_plex_for_android_mobile_galaxy_tab_a8" | "plex_hafxx_plex_for_android_tv_shield_android_tv" | "plex_plex_for_apple_tv_apple_tv" | "plex_frederic_plex_for_xbox_xboxone" | "plex_plex_for_ios_iphone" | "plex_frederic_plex_for_android_mobile_galaxy_s22" | "plex_frederic_plex_cast_chromecast" | "plex_kapy_plex_for_mac_tims_macbook_pro_local" | "plex_flo_g94_plex_for_android_mobile_galaxy_s22"
 export type MediaPlayerEntities = Record<MediaPlayerIDs, MediaPlayer>
 
 export const media_player: MediaPlayer<MediaPlayerIDs> = {
-
-['plex_plex_for_apple_tv_apple_tv']: {
-  entity_id: "media_player.plex_plex_for_apple_tv_apple_tv",
-get entity() { return {state: shadowState["media_player.plex_plex_for_apple_tv_apple_tv"].state, attributes: shadowState["media_player.plex_plex_for_apple_tv_apple_tv"].attributes} as MediaPlayerProperties},
-turnOn() { return callService("media_player", "turn_on", {}, {entity_id: "media_player.plex_plex_for_apple_tv_apple_tv"})},
-turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "media_player.plex_plex_for_apple_tv_apple_tv"})},
-playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.plex_plex_for_apple_tv_apple_tv"})},
-selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.plex_plex_for_apple_tv_apple_tv"})},
-selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.plex_plex_for_apple_tv_apple_tv"})}
-},
 
 ['living_room']: {
   entity_id: "media_player.living_room",
@@ -304,14 +294,14 @@ selectSource(source:string) { return callService("media_player", "select_sound",
 selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.plex_hafxx_plex_for_android_tv_shield_android_tv"})}
 },
 
-['android_tv_192_168_1_53']: {
-  entity_id: "media_player.android_tv_192_168_1_53",
-get entity() { return {state: shadowState["media_player.android_tv_192_168_1_53"].state, attributes: shadowState["media_player.android_tv_192_168_1_53"].attributes} as MediaPlayerProperties},
-turnOn() { return callService("media_player", "turn_on", {}, {entity_id: "media_player.android_tv_192_168_1_53"})},
-turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "media_player.android_tv_192_168_1_53"})},
-playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.android_tv_192_168_1_53"})},
-selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.android_tv_192_168_1_53"})},
-selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.android_tv_192_168_1_53"})}
+['plex_plex_for_apple_tv_apple_tv']: {
+  entity_id: "media_player.plex_plex_for_apple_tv_apple_tv",
+get entity() { return {state: shadowState["media_player.plex_plex_for_apple_tv_apple_tv"].state, attributes: shadowState["media_player.plex_plex_for_apple_tv_apple_tv"].attributes} as MediaPlayerProperties},
+turnOn() { return callService("media_player", "turn_on", {}, {entity_id: "media_player.plex_plex_for_apple_tv_apple_tv"})},
+turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "media_player.plex_plex_for_apple_tv_apple_tv"})},
+playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.plex_plex_for_apple_tv_apple_tv"})},
+selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.plex_plex_for_apple_tv_apple_tv"})},
+selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.plex_plex_for_apple_tv_apple_tv"})}
 },
 
 ['plex_frederic_plex_for_xbox_xboxone']: {
@@ -332,6 +322,46 @@ turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "medi
 playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.plex_plex_for_ios_iphone"})},
 selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.plex_plex_for_ios_iphone"})},
 selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.plex_plex_for_ios_iphone"})}
+},
+
+['plex_frederic_plex_for_android_mobile_galaxy_s22']: {
+  entity_id: "media_player.plex_frederic_plex_for_android_mobile_galaxy_s22",
+get entity() { return {state: shadowState["media_player.plex_frederic_plex_for_android_mobile_galaxy_s22"].state, attributes: shadowState["media_player.plex_frederic_plex_for_android_mobile_galaxy_s22"].attributes} as MediaPlayerProperties},
+turnOn() { return callService("media_player", "turn_on", {}, {entity_id: "media_player.plex_frederic_plex_for_android_mobile_galaxy_s22"})},
+turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "media_player.plex_frederic_plex_for_android_mobile_galaxy_s22"})},
+playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.plex_frederic_plex_for_android_mobile_galaxy_s22"})},
+selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.plex_frederic_plex_for_android_mobile_galaxy_s22"})},
+selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.plex_frederic_plex_for_android_mobile_galaxy_s22"})}
+},
+
+['plex_frederic_plex_cast_chromecast']: {
+  entity_id: "media_player.plex_frederic_plex_cast_chromecast",
+get entity() { return {state: shadowState["media_player.plex_frederic_plex_cast_chromecast"].state, attributes: shadowState["media_player.plex_frederic_plex_cast_chromecast"].attributes} as MediaPlayerProperties},
+turnOn() { return callService("media_player", "turn_on", {}, {entity_id: "media_player.plex_frederic_plex_cast_chromecast"})},
+turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "media_player.plex_frederic_plex_cast_chromecast"})},
+playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.plex_frederic_plex_cast_chromecast"})},
+selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.plex_frederic_plex_cast_chromecast"})},
+selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.plex_frederic_plex_cast_chromecast"})}
+},
+
+['plex_kapy_plex_for_mac_tims_macbook_pro_local']: {
+  entity_id: "media_player.plex_kapy_plex_for_mac_tims_macbook_pro_local",
+get entity() { return {state: shadowState["media_player.plex_kapy_plex_for_mac_tims_macbook_pro_local"].state, attributes: shadowState["media_player.plex_kapy_plex_for_mac_tims_macbook_pro_local"].attributes} as MediaPlayerProperties},
+turnOn() { return callService("media_player", "turn_on", {}, {entity_id: "media_player.plex_kapy_plex_for_mac_tims_macbook_pro_local"})},
+turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "media_player.plex_kapy_plex_for_mac_tims_macbook_pro_local"})},
+playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.plex_kapy_plex_for_mac_tims_macbook_pro_local"})},
+selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.plex_kapy_plex_for_mac_tims_macbook_pro_local"})},
+selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.plex_kapy_plex_for_mac_tims_macbook_pro_local"})}
+},
+
+['plex_flo_g94_plex_for_android_mobile_galaxy_s22']: {
+  entity_id: "media_player.plex_flo_g94_plex_for_android_mobile_galaxy_s22",
+get entity() { return {state: shadowState["media_player.plex_flo_g94_plex_for_android_mobile_galaxy_s22"].state, attributes: shadowState["media_player.plex_flo_g94_plex_for_android_mobile_galaxy_s22"].attributes} as MediaPlayerProperties},
+turnOn() { return callService("media_player", "turn_on", {}, {entity_id: "media_player.plex_flo_g94_plex_for_android_mobile_galaxy_s22"})},
+turnOff() { return callService("media_player", "turn_off", {}, {entity_id: "media_player.plex_flo_g94_plex_for_android_mobile_galaxy_s22"})},
+playMedia(media:Media) { return callService("media_player", "play_media", media, {entity_id: "media_player.plex_flo_g94_plex_for_android_mobile_galaxy_s22"})},
+selectSource(source:string) { return callService("media_player", "select_sound", {source}, {entity_id: "media_player.plex_flo_g94_plex_for_android_mobile_galaxy_s22"})},
+selectSoundMode(sound_mode:string) { return callService("media_player", "select_sound_mode", {}, {entity_id: "media_player.plex_flo_g94_plex_for_android_mobile_galaxy_s22"})}
 },
 
 }
