@@ -26,12 +26,12 @@ export const wallSwitches = () => {
     if(switches.bedroom_switch.entity.state != null)
       light.bedroom_lights.toggle({brightness: 65})
   }, [switches.bedroom_switch])
-  effect(()=>{
-    if(sensor.office_switch_action.entity.state != null)
+  effect((event)=>{
+    if(event?.data.new_state.state === 'left_press')
       light.office_light.toggle()
   }, [sensor.office_switch_action])
-  effect(()=>{
-    if(sensor.bathroom_main_switch_action.entity.state != null)
+  effect((event)=>{
+    if(event?.data.new_state.state === 'left_press')
       light.bathroom_lights.toggle()
   }, [sensor.bathroom_main_switch_action])
 };
