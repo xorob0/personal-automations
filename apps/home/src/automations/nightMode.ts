@@ -15,12 +15,14 @@ import { fan } from "generated/src/generated/fan";
 
 let timeoutID: NodeJS.Timer|undefined = undefined;
 
-const lightBedroom = [light.bedroom_secondary_lamp.entity_id,
+const lightBedroom = [
+  light.bedroom_secondary_lamp.entity_id,
   light.bedside_lamp.entity_id,
   light.bedroom_lights.entity_id,
   light.bedroom_secondary_lights.entity_id,
   light.bedroom_tv_light.entity_id,
-  light.bedroom_bed_light_2.entity_id]
+  light.bedroom_bed_light_2.entity_id
+]
 
 const outlets = [switches.desk_outlet]
 const mediaPlayers:MediaPlayerEntity[] = [media_player.living_room]
@@ -85,18 +87,15 @@ export const nightMode = () => {
       climate.bedroom_ac.setHeating()
       climate.bedroom_ac.setTargetTemperature(19)
     }
-
     if(sensor.bedroom_ir_blaster_temperature.entity.state > 22){
       climate.bedroom_ac.setCooling()
       climate.bedroom_ac.setTargetTemperature(20)
     }
   }, ["0 21 * * *"])
 
-
-  effect((event)=>{
-    if(event?.data.actionName !== "wake_up" || alarm_control_panel.alarmo.entity.state !== 'armed_night')
-      return
-
-    alarm_control_panel.alarmo.disarm()
-  }, [{eventType: "shortcut_event"}])
+  // effect((event)=>{
+  //   if(event?.data.actionName !== "wake_up" || alarm_control_panel.alarmo.entity.state !== 'armed_night')
+  //     return
+  //   alarm_control_panel.alarmo.disarm()
+  // }, [{eventType: "shortcut_event"}])
 };
